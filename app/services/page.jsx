@@ -13,7 +13,7 @@ import ServicesPageClient from './_client';
 // أو انسخ المحتوى داخل صفحة LastProjects: app/lastprojects/page.jsx كـ export const metadata = {...}
 // غيّر COMPANY_NAME و SITE_DOMAIN و مسارات الصور/الروابط حسب مشروعك.
 
-export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة إذا احتجت
+export const COMPANY_NAME = 'CodeOrigins'; // غيّر اسم الشركة إذا احتجت
 export const SITE_DOMAIN = 'https://code-origins.vercel.app'; // غيّر للدومين الحقيقي (بدون سلاش في النهاية)
 
 // ======================
@@ -107,7 +107,7 @@ export const servicesItemListJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   'name': `${COMPANY_NAME} — خدمات تطوير الويب`,
-  'description': 'قائمة الخدمات التقنية المقدّمة من CodeLegacy: تصميم، تطوير، سحابة، أمن، وصيانة.',
+  'description': 'قائمة الخدمات التقنية المقدّمة من CodeOrigins: تصميم، تطوير، سحابة، أمن، وصيانة.',
   'itemListElement': [
     {
       '@type': 'ListItem',

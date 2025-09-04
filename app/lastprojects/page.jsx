@@ -42,7 +42,7 @@ import {
 } from 'lucide-react';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 
-const CodeLegacyPortfolio = () => {
+const CodeOriginsPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -188,11 +188,11 @@ const CodeLegacyPortfolio = () => {
 
               {
                 title:
-                  'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
+                  'موقع لشركتنا الخاصة CodeOrigins — صفحة تعريفية وشبكة خدمات',
                 link: 'https://code-origins.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+                  'الصفحة الرسمية لشركة CodeOrigins: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
                 image:
                   'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
                 tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
@@ -623,4 +623,4 @@ const CodeLegacyPortfolio = () => {
   );
 };
 
-export default CodeLegacyPortfolio;
+export default CodeOriginsPortfolio;

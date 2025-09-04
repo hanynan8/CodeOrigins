@@ -157,7 +157,7 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {/* حقول خفيّة مفيدة */}
-              <input type="hidden" name="_subject" value="رسالة جديدة من موقع CodeLegacy" />
+              <input type="hidden" name="_subject" value="رسالة جديدة من موقع CodeOrigins" />
               <input type="hidden" name="_language" value="ar" />
 
               <div className="grid md:grid-cols-2 gap-4">

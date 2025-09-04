@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 
-const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => {
+const CodeOriginsClient = ({ services, projects, testimonials, webServices }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -43,7 +43,7 @@ const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => 
         {/* Hero Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <span className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl block mb-2 sm:mb-4 ">
-            CodeLegacy
+            CodeOrigins
           </span>
           <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl block mb-4 sm:mb-6">
             نبني{' '}
@@ -54,7 +54,7 @@ const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => 
             بالكود
           </span>
           <p className="text-gray-300 text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto leading-relaxed px-2">
-            في CodeLegacy، نحول أفكارك إلى مواقع ويب متطورة تترك بصمة دائمة في
+            في CodeOrigins، نحول أفكارك إلى مواقع ويب متطورة تترك بصمة دائمة في
             عالم التكنولوجيا
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both] px-2">
@@ -131,7 +131,7 @@ const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-gray-800">
               اكتشف{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                CodeLegacy
+                CodeOrigins
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-2">
@@ -146,7 +146,7 @@ const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => 
                   من نحن؟
                 </h3>
                 <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                  CodeLegacy هي شركة رائدة في مجال تطوير الويب، تأسست برؤية
+                  CodeOrigins هي شركة رائدة في مجال تطوير الويب، تأسست برؤية
                   لتحويل الأفكار إلى مواقع ويب مبتكرة. نحن فريق من الخبراء
                   المتحمسين الذين يجمعون بين الإبداع التقني والخبرة العملية
                   لتقديم مواقع ويب تتجاوز التوقعات، مع التركيز على الجودة،
@@ -543,4 +543,4 @@ const CodeLegacyClient = ({ services, projects, testimonials, webServices }) => 
   );
 };
 
-export default CodeLegacyClient;
+export default CodeOriginsClient;

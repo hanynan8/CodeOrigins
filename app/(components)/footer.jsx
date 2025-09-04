@@ -21,7 +21,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
               <Code className="w-7 h-7 sm:w-8 sm:h-8 text-blue-400" />
               <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                CodeLegacy
+                CodeOrigins
               </span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base text-center sm:text-start max-w-xs sm:max-w-none">
@@ -189,7 +189,7 @@ const Footer = () => {
                   href="//#feat"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  مميزات CodeLegacy
+                  مميزات CodeOrigins
                 </Link>
               </li>
               <li>
@@ -222,7 +222,7 @@ const Footer = () => {
             </div>
 
             <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
-              &copy; 2025 CodeLegacy. جميع الحقوق محفوظة.  
+              &copy; 2025 CodeOrigins. جميع الحقوق محفوظة.  
             </p>
           </div>
         </div>

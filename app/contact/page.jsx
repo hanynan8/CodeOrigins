@@ -45,7 +45,7 @@ const ContactPage = () => {
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-            تواصل مع <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
+            تواصل مع <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeOrigins</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto px-2 leading-relaxed">
             نحن هنا لنساعدك في تحقيق أفكارك التقنية. أخبرنا بتفاصيل مشروعك وسنرد عليك في أقرب وقت ممكن.

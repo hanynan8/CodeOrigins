@@ -52,7 +52,7 @@ const AboutPage = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <h1 className="text-4xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-[1.1] xs:leading-[1.2] sm:leading-tight">
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              CodeLegacy
+              CodeOrigins
             </span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-5xl mx-auto px-1 xs:px-2 leading-relaxed xs:leading-relaxed sm:leading-loose">
@@ -130,7 +130,7 @@ const AboutPage = () => {
               </span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed xs:leading-relaxed sm:leading-loose px-2">
-              تأسست CodeLegacy برؤية لتحويل الأفكار إلى مواقع ويب وتطبيقات رقمية
+              تأسست CodeOrigins برؤية لتحويل الأفكار إلى مواقع ويب وتطبيقات رقمية
               مبتكرة، مع التركيز على الجودة والأداء الاستثنائي.
             </p>
           </div>
@@ -142,7 +142,7 @@ const AboutPage = () => {
                   بدايتنا في عالم الويب
                 </h3>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-600 mb-4 xs:mb-6 leading-relaxed">
-                  بدأت CodeLegacy كفكرة بسيطة, عندما جمع مجموعة من مطوري الويب
+                  بدأت CodeOrigins كفكرة بسيطة, عندما جمع مجموعة من مطوري الويب
                   الشغوفين قواهم لتقديم مواقع ويب عالية الجودة. منذ ذلك الحين،
                   نمت الشركة لتصبح رائدة في تطوير الويب، مع التركيز على التقنيات
                   الحديثة والتصميم الجذاب.
@@ -283,7 +283,7 @@ const AboutPage = () => {
             ابدأ مشروع موقعك الإلكتروني معنا
           </h2>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2">
-            إذا كنت تبحث عن شريك موثوق في تطوير الويب، فإن CodeLegacy هي الخيار
+            إذا كنت تبحث عن شريك موثوق في تطوير الويب، فإن CodeOrigins هي الخيار
             الأمثل لتحقيق رؤيتك الرقمية وتطوير موقعك المثالي.
           </p>
           <WhatsAppButton
