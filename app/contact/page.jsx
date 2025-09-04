@@ -11,6 +11,9 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
+import SendEmail from '../(components)/(realComponents)/SendEmail'
+
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -110,160 +113,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Information Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-              معلومات <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">الاتصال</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              نحن متواجدون دائمًا للإجابة على استفساراتك. اختر الطريقة التي تناسبك للتواصل معنا.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
-              <div className="bg-blue-100 p-4 rounded-full mb-4 inline-block">
-                <Mail className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">البريد الإلكتروني</h3>
-              <p className="text-gray-600">CodeOrigins1@gmail.com</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
-              <div className="bg-blue-100 p-4 rounded-full mb-4 inline-block">
-                <Phone className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">الهاتف</h3>
-              <p className="text-gray-600">+20 1201061216</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
-              <div className="bg-blue-100 p-4 rounded-full mb-4 inline-block">
-                <MapPin className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">العنوان</h3>
-              <p className="text-gray-600">شارع التحرير، وسط البلد</p>
-              <p className="text-gray-600">القاهرة، مصر</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
-              <div className="bg-blue-100 p-4 rounded-full mb-4 inline-block">
-                <Calendar className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">ساعات العمل</h3>
-              <p className="text-gray-600">كل ايام الاسبوع</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-              أرسل <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">رسالتك</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              املأ النموذج أدناه وسيتواصل معك أحد خبرائنا قريبًا لمناقشة احتياجاتك التقنية.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    الاسم الكامل
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    البريد الإلكتروني
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    رقم الهاتف
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                    نوع الخدمة
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    required
-                  >
-                    <option value="">اختر نوع الخدمة</option>
-                    <option>تطوير مواقع الويب</option>
-                    <option>تطبيقات الموبايل</option>
-                    <option>الحلول السحابية</option>
-                    <option>الأمان السيبراني</option>
-                    <option>الذكاء الاصطناعي</option>
-                    <option>تصميم واجهات المستخدم</option>
-                    <option>أخرى</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  رسالتك
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="6"
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                إرسال الرسالة
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+      <SendEmail />
 
       {/* Social Media Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">

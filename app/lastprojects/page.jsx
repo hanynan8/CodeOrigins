@@ -42,6 +42,10 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
+
+import SendEmail from '../(components)/(realComponents)/SendEmail';
+import Tech from '../(components)/(realComponents)/tech';
 
 const CodeLegacyPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -345,75 +349,17 @@ const CodeLegacyPortfolio = () => {
           </div>
 
           <div className="text-center mb-16">
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
-            >
+            <WhatsAppButton className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105">
               تواصل معنا لمشروعك التالي
               <ExternalLink className="w-5 h-5" />
-            </Link>
+            </WhatsAppButton>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50" id="tech">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              التقنيات <span className="text-blue-600">المتطورة</span> التي
-              نستخدمها
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
-              وقوية
-            </p>
-          </div>
+      {/* Tech */}
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              { name: 'React', iconClass: 'devicon-react-original colored' },
-              { name: 'Next.js', iconClass: 'devicon-nextjs-original' },
-              { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
-              { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
-              { name: 'Laravel', iconClass: 'devicon-laravel-plain colored' },
-              {
-                name: 'CSS3',
-                iconClass: 'devicon-css3-plain colored',
-              },
-              { name: 'Python', iconClass: 'devicon-python-plain colored' },
-              { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
-              {
-                name: 'JavaScript',
-                iconClass: 'devicon-javascript-plain colored',
-              },
-              {
-                name: 'HTML5',
-                iconClass: 'devicon-html5-plain colored',
-              },
-              {
-                name: 'Express.js',
-                iconClass: 'devicon-express-original',
-              },
-              {
-                name: 'TypeScript',
-                iconClass: 'devicon-typescript-plain colored',
-              },
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 text-center"
-              >
-                <div className="w-16 h-16  rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <i className={`${tech.iconClass} text-6xl`}></i>
-                </div>
-                <h3 className="font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
-                  {tech.name}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Tech />
 
       {/* Advantages Section */}
       <section id="advantages" className="py-20 bg-white">
@@ -547,199 +493,8 @@ const CodeLegacyPortfolio = () => {
       </div>
 
       {/* Contact Section - Similar to Home for consistency */}
-      <section id="mail" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
-              هل أنت جاهز لبدء <span className="text-blue-600">مشروعك</span>؟
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              تواصل معنا اليوم ودعنا نحول فكرتك إلى موقع ويب مبهر يحقق أهدافك
-              ويتجاوز توقعاتك
-            </p>
-          </div>
+      <SendEmail />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                تواصل معنا مباشرة
-              </h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">
-                      البريد الإلكتروني
-                    </h4>
-                    <p className="text-gray-600">codeorigins1@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Phone className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">الهاتف</h4>
-                    <p className="text-gray-600">+20 01201061216</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">العنوان</h4>
-                    <p className="text-gray-600">شارع التحرير، وسط البلد</p>
-                    <p className="text-gray-600">القاهرة، مصر</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Calendar className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">ساعات العمل</h4>
-                    <p className="text-gray-600">كل الاسبوع</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <h4 className="font-semibold text-gray-800 mb-4">
-                  تابعنا على وسائل التواصل
-                </h4>
-                <div className="flex space-x-4 rtl:space-x-reverse">
-                  {[
-                    {
-                      name: 'Facebook',
-                      icon: <Facebook className="w-6 h-6" />,
-                      color: 'bg-blue-600',
-                      href: 'https://www.facebook.com/hany.nan.752/',
-                    },
-                    {
-                      name: 'Instagram',
-                      icon: <Instagram className="w-6 h-6" />,
-                      color: 'bg-pink-500',
-                      href: 'https://www.instagram.com/hany._younan/?__pwa=1',
-                    },
-                    {
-                      name: 'LinkedIn',
-                      icon: <Linkedin className="w-6 h-6" />,
-                      color: 'bg-blue-700',
-                      href: 'https://www.linkedin.com/in/hany-younan-5b7466372',
-                    },
-                  ].map((social, index) => (
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key={index}
-                      href={social.href}
-                      className={`${social.color} text-white p-3 rounded-full hover:opacity-90 transition-opacity`}
-                    >
-                      {social.icon}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                أرسل لنا رسالة
-              </h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      الاسم الكامل
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      البريد الإلكتروني
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    رقم الهاتف
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="service"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    نوع الخدمة
-                  </label>
-                  <select
-                    id="service"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  >
-                    <option>اختر نوع الخدمة</option>
-                    <option>تطوير مواقع الويب</option>
-                    <option>تطوير مواقع التجارة الإلكترونية</option>
-                    <option>تطوير تطبيقات الويب</option>
-                    <option>أمان مواقع الويب</option>
-                    <option>دمج الذكاء الاصطناعي في الويب</option>
-                    <option>تصميم واجهات المستخدم للويب</option>
-                    <option>أخرى</option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    رسالتك
-                  </label>
-                  <textarea
-                    id="message"
-                    rows="4"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  إرسال الرسالة
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
       <style jsx>{`
         @keyframes gradientShift {
           0% {

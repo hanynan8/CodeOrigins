@@ -57,6 +57,10 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+import Image from 'next/image';
+import Link from 'next/link';
+import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
+
 const ServicesPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -387,7 +391,7 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-[80vh] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden">
         {/* Background Animation */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
@@ -405,13 +409,18 @@ const ServicesPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white">
-              استكشف خدماتنا
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm">
-              احصل على عرض سعر مجاني
-            </button>
+            <Link href='#services'>
+              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white">
+                استكشف خدماتنا
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link >
+            <Link href='/lastprojects/#portfolio'>
+              <button className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm">
+                زور اعمالنا السابقة
+              </button>
+            </Link>
+
           </div>
 
           <div className="mt-12 grid md:grid-cols-4 gap-8 text-center">
@@ -487,7 +496,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id='services'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -546,9 +555,11 @@ const ServicesPage = () => {
 
 
                 <div className="flex gap-3">
-                  <button className={`flex-1 py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-semibold hover:opacity-90 transition-all transform hover:scale-105`}>
+                  <WhatsAppButton
+                  service={service}
+                  className={`flex-1 py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-semibold hover:opacity-90 transition-all transform hover:scale-105`}>
                     طلب الخدمة
-                  </button>
+                  </WhatsAppButton>
                 </div>
               </div>
             ))}
@@ -627,7 +638,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Technologies Section */}
-     <section className="py-20 bg-white" id='tech'>
+    <section className="py-20 bg-white" id='tech'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -748,14 +759,18 @@ const ServicesPage = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2">
-              احصل على عرض سعر مجاني
-              <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            </button>
-            <button className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm text-white flex items-center gap-2">
-              <Phone className="w-5 h-5" />
-              تواصل معنا الآن
-            </button>
+            <Link href ='/lastprojects/#portfolio'>
+              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2">
+                زور جميع اعمالنا السابقة
+                <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </button>
+            </Link>
+            
+              <WhatsAppButton className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm text-white flex items-center gap-2">
+                <Phone className="w-5 h-5" />
+                تواصل معنا الآن
+              </WhatsAppButton>
+            
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 text-center">

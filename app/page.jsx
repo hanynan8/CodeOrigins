@@ -27,8 +27,228 @@ import {
   Clock,
   CheckCircle,
   Smartphone,
+  ShoppingCart,
+  GraduationCap,
+  Cloud,
+  Rocket,
+  Headphones,
   Search,
+  Monitor,
+  Settings,
+  Lock,
+  Brain,
+  BarChart3,
+  Target,
+  Lightbulb,
+  Layers,
+  Server,
+  Briefcase,
+  Home,
+  BookOpen,
+  Coffee,
+  Stethoscope,
+  Camera,
+  Building,
+  Utensils,
+  Store,
+  FileText,
+  TrendingUp,
+  Gauge,
+  Sparkles,
 } from 'lucide-react';
+import SendEmail from './(components)/(realComponents)/SendEmail'
+import Tech from './(components)/(realComponents)/tech'
+import WhatsAppButton from './(components)/(realComponents)/WhatsForDetails'
+
+
+const services = [
+  {
+    id: 1,
+    title: 'المتاجر الإلكترونية',
+    shortDescription:
+      'منصات تجارة إلكترونية متكاملة مع أنظمة دفع آمنة وإدارة مخزون متقدمة',
+    fullDescription:
+      'نطور متاجر إلكترونية احترافية مع تجربة تسوق استثنائية وأنظمة إدارة شاملة تدعم نمو عملك التجاري.',
+    icon: <ShoppingCart className="w-12 h-12" />,
+    features: [
+      'تصميم متجاوب لجميع الأجهزة',
+      'أنظمة دفع متعددة وآمنة (فيزا، ماستركارد، فودافون كاش)',
+      'إدارة المخزون والطلبات الآلية',
+      'لوحة تحكم شاملة للبائع',
+      'تقارير مبيعات تفصيلية وتحليلات',
+      'تكامل مع شركات الشحن المحلية',
+      'نظام كوبونات ونقاط ولاء العملاء',
+      'دعم اللغة العربية والإنجليزية',
+    ],
+    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'PayPal'],
+    color: 'from-green-500 to-emerald-500',
+  },
+  {
+    id: 2,
+    title: 'المنصات التعليمية',
+    shortDescription:
+      'منصات تعليم إلكتروني متطورة مع أدوات تفاعلية وإدارة المحتوى',
+    fullDescription:
+      'نصمم منصات تعليمية شاملة تدعم التعلم التفاعلي مع أدوات متقدمة لإدارة الكورسات والطلاب.',
+    icon: <GraduationCap className="w-12 h-12" />,
+    features: [
+      'نظام إدارة الكورسات والدروس',
+      'مشغل فيديو متطور مع حماية المحتوى',
+      'نظام امتحانات وتقييم تلقائي',
+      'منتديات نقاش وتفاعل بين الطلاب',
+      'تتبع تقدم الطلاب وإحصائيات مفصلة',
+      'شهادات إنجاز رقمية',
+      'نظام دفع للكورسات المدفوعة',
+      'تطبيق موبايل للتعلم أثناء التنقل',
+    ],
+    technologies: ['Next.js', 'MongoDB', 'Node.js', 'AWS S3', 'Socket.io'],
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    id: 3,
+    title: 'منصات SaaS',
+    shortDescription:
+      'حلول برمجية كخدمة قابلة للتوسع مع اشتراكات متعددة المستويات',
+    fullDescription:
+      'نطور منصات SaaS متكاملة مع أنظمة اشتراك مرنة ولوحات تحكم متقدمة لإدارة العملاء والخدمات.',
+    icon: <Cloud className="w-12 h-12" />,
+    features: [
+      'نظام اشتراكات متعدد المستويات',
+      'لوحات تحكم منفصلة للمشرفين والعملاء',
+      'API قوي للتكامل مع تطبيقات أخرى',
+      'نظام فوترة وتحصيل آلي',
+      'تحليلات وتقارير في الوقت الفعلي',
+      'نظام دعم فني متكامل',
+      'أمان متقدم وحماية البيانات',
+      'قابلية التوسع السحابي',
+    ],
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
+    color: 'from-purple-500 to-pink-500',
+  },
+  {
+    id: 4,
+    title: 'صفحات الهبوط Landing Pages',
+    shortDescription:
+      'صفحات هبوط عالية التحويل مصممة لزيادة المبيعات والعملاء المحتملين',
+    fullDescription:
+      'نصمم صفحات هبوط احترافية محسنة للتحويل مع تحليلات متقدمة وأدوات تتبع الأداء.',
+    icon: <Rocket className="w-12 h-12" />,
+    features: [
+      'تصميم محسن لمعدل التحويل (CRO)',
+      'سرعة تحميل فائقة',
+      'تحسين محركات البحث (SEO)',
+      'نماذج جمع بيانات العملاء المحتملين',
+      'تكامل مع أدوات التسويق الرقمي',
+      'تحليلات مفصلة للزوار والتحويلات',
+      'اختبار A/B للعناصر المختلفة',
+      'تصميم متجاوب لجميع الأجهزة',
+    ],
+    technologies: ['Next.js', 'Tailwind CSS', 'Google Analytics', 'Hotjar'],
+    color: 'from-orange-500 to-red-500',
+  },
+  {
+    id: 5,
+    title: 'مواقع المطاعم والكافيهات',
+    shortDescription:
+      'مواقع تفاعلية للمطاعم مع قوائم طعام رقمية ونظام حجز الطاولات',
+    fullDescription:
+      'نطور مواقع مطاعم شاملة مع قوائم طعام جذابة وأنظمة حجز وطلب أونلاين.',
+    icon: <Utensils className="w-12 h-12" />,
+    features: [
+      'قائمة طعام رقمية تفاعلية مع الصور',
+      'نظام حجز الطاولات أونلاين',
+      'نظام طلب وتوصيل',
+      'معرض صور للمطعم والأطباق',
+      'تكامل مع خرائط جوجل للموقع',
+      'نظام تقييم وآراء العملاء',
+      'عروض وقوائم خاصة',
+      'تكامل مع وسائل التواصل الاجتماعي',
+    ],
+    technologies: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
+    color: 'from-blue-600 to-purple-600',
+  },
+  {
+    id: 6,
+    title: 'مواقع العيادات والمستشفيات',
+    shortDescription: 'حلول طبية رقمية مع أنظمة حجز المواعيد وإدارة المرضى',
+    fullDescription:
+      'نصمم مواقع طبية متخصصة تسهل على المرضى حجز المواعيد وتساعد الأطباء في إدارة عياداتهم.',
+    icon: <Stethoscope className="w-12 h-12" />,
+    features: [
+      'نظام حجز المواعيد الذكي',
+      'ملفات المرضى الإلكترونية',
+      'نظام تذكير بالمواعيد',
+      'معلومات الأطباء والتخصصات',
+      'نظام استشارات أونلاين',
+      'تكامل مع أنظمة الدفع الطبية',
+      'تقارير طبية وإحصائيات',
+      'حماية عالية لخصوصية البيانات',
+    ],
+    technologies: ['Next.js', 'MongoDB', 'Tailwind CSS', 'HIPAA Compliance'],
+    color: 'from-teal-500 to-green-500',
+  },
+  {
+    id: 7,
+    title: 'مواقع الشركات والأعمال',
+    shortDescription:
+      'مواقع شركات احترافية تعكس هوية العلامة التجارية وتعزز الثقة',
+    fullDescription:
+      'نطور مواقع شركات متميزة تعرض خدماتك بشكل احترافي وتبني الثقة مع عملائك.',
+    icon: <Building className="w-12 h-12" />,
+    features: [
+      'تصميم يعكس هوية العلامة التجارية',
+      'صفحات خدمات ومشاريع تفصيلية',
+      'نماذج التواصل وطلب عروض الأسعار',
+      'مدونة للمحتوى والأخبار',
+      'فريق العمل وصفحات الشركة',
+      'شهادات وآراء العملاء',
+      'معرض أعمال ومشاريع سابقة',
+      'تحسين محركات البحث المتقدم',
+    ],
+    technologies: ['Next.js', 'Node.js', 'MongoDB', 'AWS'],
+    color: 'from-indigo-500 to-purple-500',
+  },
+  {
+    id: 8,
+    title: 'مواقع الأشخاص والـ Portfolio',
+    shortDescription: 'مواقع شخصية ومعارض أعمال احترافية للمبدعين والمتخصصين',
+    fullDescription:
+      'نصمم مواقع شخصية مميزة تبرز مهاراتك وأعمالك بشكل جذاب ومهني.',
+    icon: <Camera className="w-12 h-12" />,
+    features: [
+      'معرض أعمال تفاعلي مع فلاتر',
+      'سيرة ذاتية رقمية شاملة',
+      'مدونة شخصية للكتابة والمشاركة',
+      'نماذج التواصل المباشر',
+      'تكامل مع الشبكات الاجتماعية',
+      'شهادات وتوصيات',
+      'قسم الخبرات والمهارات',
+      'تحسين للظهور في محركات البحث',
+    ],
+    technologies: ['React', 'Tailwind', 'MongoDB', 'Netlify'],
+    color: 'from-pink-500 to-rose-500',
+  },
+  {
+    id: 9,
+    title: 'مواقع الأخبار والمجلات',
+    shortDescription: 'منصات إعلامية متطورة مع إدارة محتوى وأنظمة نشر مرنة',
+    fullDescription:
+      'نطور مواقع إخبارية شاملة مع أدوات نشر متقدمة وإدارة محتوى سهلة.',
+    icon: <FileText className="w-12 h-12" />,
+    features: [
+      'نظام إدارة محتوى متقدم',
+      'محرر نصوص ثري مع إمكانيات متقدمة',
+      'نظام تصنيف وعلامات للمقالات',
+      'تعليقات القراء وتفاعل اجتماعي',
+      'نظام اشتراك النشرة الإخبارية',
+      'بحث متقدم في المحتوى',
+      'إعلانات وأنظمة تحقيق دخل',
+      'تحليلات قراءة مفصلة',
+    ],
+    technologies: ['Next.js', 'Sanity CMS', 'MongoDB', 'Algolia Search'],
+    color: 'from-slate-500 to-gray-600',
+  },
+];
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -77,13 +297,17 @@ const CodeLegacyHomepage = () => {
             عالم التكنولوجيا
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both]">
-            <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 flex items-center gap-2 shadow-2xl">
-              ابدأ رحلتك معنا
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm">
-              اكتشف أعمالنا
-            </button>
+            <Link href={'/services'}>
+              <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 flex items-center gap-2 shadow-2xl">
+                ابدأ رحلتك معنا
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+            <Link href='/lastprojects/#portfolio'>
+              <button className="border-2 border-white/30 px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm">
+                اكتشف أعمالنا السابقة
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -173,13 +397,13 @@ const CodeLegacyHomepage = () => {
                   المتسارع. سواء كنت شركة ناشئة أو مؤسسة كبرى، نحن هنا لنكون
                   شريكك في النجاح.
                 </p>
-                <a
+                <Link
                   href="/about"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
                 >
                   تعرف على قصتنا
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </Link>
               </div>
               <div className="absolute -top-4 -right-4 w-16 h-16 bg-blue-600/10 rounded-full animate-pulse"></div>
               <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-purple-600/10 rounded-full animate-pulse delay-300"></div>
@@ -235,111 +459,91 @@ const CodeLegacyHomepage = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-              خدماتنا <span className="text-blue-600">في تطوير الويب</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              خدمات <span className="text-blue-600">تطوير الويب</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نقدم حلول ويب شاملة تلبي احتياجات عملك وتحقق أهدافك التقنية بأحدث
-              الممارسات والتقنيات العالمية
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+              نقدم حلول ويب شاملة لجميع أنواع المواقع والمنصات الرقمية بأحدث
+              التقنيات ومعايير الجودة العالمية
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                icon: <Globe className="w-12 h-12" />,
-                title: 'متاجر إلكترونية',
-                description:
-                  'تصميم وتطوير متاجر إلكترونية متكاملة مع أنظمة دفع آمنة وإدارة مخزون فعالة',
-                features: [
-                  'سلة تسوق تفاعلية',
-                  'تكامل بوابات الدفع',
-                  'إدارة المنتجات بسهولة',
-                ],
-              },
-              {
-                icon: <Users className="w-12 h-12" />,
-                title: 'مواقع تعليمية',
-                description:
-                  'منصات تعليمية تفاعلية تدعم التعلم عن بعد مع أدوات إدارة المحتوى التعليمي',
-                features: [
-                  'دروس تفاعلية',
-                  'إدارة الطلاب',
-                  'اختبارات عبر الإنترنت',
-                ],
-              },
-              {
-                icon: <Database className="w-12 h-12" />,
-                title: 'تطبيقات SaaS',
-                description:
-                  'تطوير تطبيقات ويب قائمة على السحابة لتقديم خدمات برمجية مرنة وقابلة للتوسع',
-                features: ['اشتراكات مرنة', 'واجهات API قوية', 'تكامل سحابي'],
-              },
-              {
-                icon: <Shield className="w-12 h-12" />,
-                title: 'مواقع Landing Page',
-                description:
-                  'صفحات هبوط جذابة مصممة لتحويل الزوار إلى عملاء باستخدام تصاميم مبتكرة',
-                features: ['تصميم جذاب', 'تحسين التحويل', 'تحليلات دقيقة'],
-              },
-              {
-                icon: <Cpu className="w-12 h-12" />,
-                title: 'مواقع المطاعم',
-                description:
-                  'مواقع ويب مخصصة للمطاعم مع أنظمة حجز وطلبات طعام عبر الإنترنت',
-                features: ['قوائم طعام تفاعلية', 'حجز طاولات', 'تكامل الدفع'],
-              },
-              {
-                icon: <Palette className="w-12 h-12" />,
-                title: 'مواقع Portfolio',
-                description:
-                  'مواقع عرض أعمال احترافية لعرض المشاريع والإنجازات بتصميم عصري',
-                features: ['عرض مشاريع مميزة', 'تصميم متجاوب', 'سهولة التخصيص'],
-              },
-            ].map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
               <div
-                key={index}
-                className="group bg-gray-50 rounded-2xl p-8 hover:bg-blue-50 transition-all duration-300 border border-gray-200 hover:border-blue-300 hover:shadow-xl"
+                key={service.id}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-200 hover:-translate-y-2"
               >
-                <div className="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div
+                  className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}
+                >
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-blue-700 transition-colors">
+
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-700 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  {service.description}
+
+                <p className="text-gray-600 mb-6 leading-relaxed">
+                  {service.shortDescription}
                 </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center text-sm text-gray-500"
+
+                <div className="space-y-2 mb-6">
+                  <h4 className="font-semibold text-gray-800">أهم المميزات:</h4>
+                  <ul className="space-y-1">
+                    {service.features.slice(0, 4).map((feature, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center text-sm text-gray-600"
+                      >
+                        <CheckCircle className="w-4 h-4 text-green-500 ml-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-1 mb-6">
+                  {service.technologies.slice(0, 3).map((tech, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded"
                     >
-                      <CheckCircle className="w-4 h-4 text-green-500 ml-2" />
-                      {feature}
-                    </li>
+                      {tech}
+                    </span>
                   ))}
-                </ul>
+                  {service.technologies.length > 3 && (
+                    <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">
+                      +{service.technologies.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex gap-3">
+                  <WhatsAppButton
+                    service={service}
+                    className={`flex-1 py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-semibold hover:opacity-90 transition-all transform hover:scale-105`}
+                  >
+                    طلب الخدمة
+                  </WhatsAppButton>
+                </div>
               </div>
             ))}
           </div>
-
-          <div className="text-center">
-            <a
+          <div className="text-center mt-12">
+            <Link
               href="/services"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
             >
               استكشف جميع خدماتنا
               <ExternalLink className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
       {/* Portfolio Section */}
       <section id="portfolio" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -386,6 +590,105 @@ const CodeLegacyHomepage = () => {
                 image:
                   'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
                 tech: ['Tailwind', 'Node.js', 'MongoDb', 'Next'],
+              },
+              {
+                title:
+                  'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
+                link: 'https://code-origins.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+              },
+
+              {
+                title: 'موقع لشركة MF Group للواجهات المعمارية',
+                link: 'https://hanynan8.github.io/test-MFGroup/',
+                category: 'موقع ويب',
+                description:
+                  'موقع عرض محافظ أعمال (portfolio) وخدمات تصميم واجهات معمارية، يحتوي معرض صور للمشروعات، وصف للخدمات، ونموذج تواصل لطلبات الاستشارة والمشاريع.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
+                tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+              },
+
+              {
+                title: 'Newton — موقع تصميم معماري وديكور',
+                link: 'https://hanywebdev.github.io/Architecture-Interior-Design-Landing-Page--Publi/',
+                category: 'موقع ويب',
+                description:
+                  'موقع عرض خدمات التصميم الداخلي والمعماري مع معرض مشاريع، وصف الخدمات (تصميم داخلي، تخطيط المساحات، استشارات المواد)، ونموذج لحجز استشارة.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(522).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+              },
+              {
+                title: 'Portfolio شخصي — عرض المهارات والأعمال',
+                link: 'https://my-portfolio-tau-six-33.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'محفظة أعمال شخصية لعرض المشاريع، المهارات، السيرة الذاتية وروابط التواصل. تصميم بسيط وسريع للزوار وأرباب العمل لعرض الخبرات والأمثلة العملية.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
+                tech: ['React', 'Django (نماذج/Blog)', 'PostgreSQL', 'OAuth'],
+              },
+              {
+                title: 'InvSmart — منصة استشارات مالية واستثمارية',
+                link: 'https://hanynan8.github.io/Financial-Consulting-Landing-Page/',
+                category: 'موقع ويب',
+                description:
+                  'موقع خدمات مالية واستشارية يدعم وصف المنتجات الاستثمارية، ملفات العملاء، تقارير مالية مبسطة، وتكامل مبدئي مع واجهات بنكية عبر API (نماذج وتقارير). مناسب للشركات الصغيرة والمتوسطة.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(529).png?raw=true',
+                tech: ['React', 'Django (نماذج API)', 'PostgreSQL', 'OAuth'],
+              },
+              {
+                title: 'WaVer — تطبيق ويب لإدارة المهام والمشاريع (SaaS)',
+                link: 'https://saa-s-seven-kappa.vercel.app',
+                category: 'موقع ويب',
+                description:
+                  'منصة SaaS لإدارة المشاريع والمهام: لوحات كانبان، فرق عمل، تتبع الوقت، وإشعارات. مناسبة للفرق الصغيرة والمتوسطة مع خصائص تعاون ومشاركة الملفات.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(502).png?raw=true',
+                tech: ['WordPress (واجهة محتوى)', 'PHP', 'MySQL', 'SEO Tools'],
+              },
+
+              {
+                title: 'Kremora — متجر حلويات إلكتروني',
+                link: 'https://hanynan8.github.io/test-Sweety/',
+                category: 'موقع ويب',
+                description:
+                  'متجر حلويات إلكتروني يعرض أصناف متعددة من الحلويات مع صفحات منتجات مفصّلة، سلة مشتريات، ونموذج طلب/حجز. تصميم لطيف يركّز على الصور والمنتجات الموسمية.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
+                tech: [
+                  'React',
+                  'Django (API-ready)',
+                  'PostgreSQL',
+                  'OAuth (اختياري)',
+                ],
+              },
+              {
+                title: 'حبارة برنت — طلب خدمات الطباعة أونلاين',
+                link: 'https://print-your-paper.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'منصة طلب خدمات الطباعة: رفع ملفات، اختيار خيارات الطباعة (ورق، قياس، تشطيب)، وتتبع الطلبات. تستهدف المطابع الصغيرة والمتوسطة لتلقي طلبات بسهولة عبر الويب.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(802).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+              },
+              {
+                title: 'صفحة وصفي لوظيفة مدير الموارد البشرية - CodeCraft',
+                link: 'https://hr-design.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'صفحة وصف وظيفي احترافية تعرض متطلبات وظيفة مدير الموارد البشرية، المسؤوليات، المزايا، وطريقة التقديم عبر استمارة اتصال موجهة لمرشحي الشركة.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(803).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
               },
             ].map((project, index) => (
               <div
@@ -443,15 +746,14 @@ const CodeLegacyHomepage = () => {
               </div>
             ))}
           </div>
-
           <div className="text-center">
-            <a
-              href="/portfolio"
+            <Link
+              href='/lastprojects/#portfolio'
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
             >
               استكشف جميع أعمالنا
               <ExternalLink className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -526,65 +828,9 @@ const CodeLegacyHomepage = () => {
           </div>
         </div>
       </section>
+      {/* Tech */}
 
-      <section className="py-20 bg-white" id="tech">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              التقنيات <span className="text-blue-600">المتطورة</span> التي
-              نستخدمها
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
-              وقوية
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            {[
-              { name: 'React', iconClass: 'devicon-react-original colored' },
-              { name: 'Next.js', iconClass: 'devicon-nextjs-original' },
-              { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
-              { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
-              { name: 'Laravel', iconClass: 'devicon-laravel-plain colored' },
-              {
-                name: 'CSS3',
-                iconClass: 'devicon-css3-plain colored',
-              },
-              { name: 'Python', iconClass: 'devicon-python-plain colored' },
-              { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
-              {
-                name: 'JavaScript',
-                iconClass: 'devicon-javascript-plain colored',
-              },
-              {
-                name: 'HTML5',
-                iconClass: 'devicon-html5-plain colored',
-              },
-              {
-                name: 'Express.js',
-                iconClass: 'devicon-express-original',
-              },
-              {
-                name: 'TypeScript',
-                iconClass: 'devicon-typescript-plain colored',
-              },
-            ].map((tech, index) => (
-              <div
-                key={index}
-                className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 text-center"
-              >
-                <div className="w-16 h-16  rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <i className={`${tech.iconClass} text-6xl`}></i>
-                </div>
-                <h3 className="font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
-                  {tech.name}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Tech />
 
       {/* Testimonials Section */}
       <section className="py-20 bg-gray-50" id="clients">
@@ -666,199 +912,7 @@ const CodeLegacyHomepage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="mail" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
-              هل أنت جاهز لبدء <span className="text-blue-600">مشروعك</span>؟
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              تواصل معنا اليوم ودعنا نحول فكرتك إلى موقع ويب مبهر يحقق أهدافك
-              ويتجاوز توقعاتك
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                تواصل معنا مباشرة
-              </h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Mail className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">
-                      البريد الإلكتروني
-                    </h4>
-                    <p className="text-gray-600">codeorigins1@gmail.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Phone className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">الهاتف</h4>
-                    <p className="text-gray-600">+20 01201061216</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <MapPin className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">العنوان</h4>
-                    <p className="text-gray-600">شارع التحرير، وسط البلد</p>
-                    <p className="text-gray-600">القاهرة، مصر</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <Calendar className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">ساعات العمل</h4>
-                    <p className="text-gray-600">كل الاسبوع</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <h4 className="font-semibold text-gray-800 mb-4">
-                  تابعنا على وسائل التواصل
-                </h4>
-                <div className="flex space-x-4 rtl:space-x-reverse">
-                  {[
-                    {
-                      name: 'Facebook',
-                      icon: <Facebook className="w-6 h-6" />,
-                      color: 'bg-blue-600',
-                      href: 'https://www.facebook.com/hany.nan.752/',
-                    },
-                    {
-                      name: 'Instagram',
-                      icon: <Instagram className="w-6 h-6" />,
-                      color: 'bg-pink-500',
-                      href: 'https://www.instagram.com/hany._younan/?__pwa=1',
-                    },
-                    {
-                      name: 'LinkedIn',
-                      icon: <Linkedin className="w-6 h-6" />,
-                      color: 'bg-blue-700',
-                      href: 'https://www.linkedin.com/in/hany-younan-5b7466372',
-                    },
-                  ].map((social, index) => (
-                    <Link
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key={index}
-                      href={social.href}
-                      className={`${social.color} text-white p-3 rounded-full hover:opacity-90 transition-opacity`}
-                    >
-                      {social.icon}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                أرسل لنا رسالة
-              </h3>
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      الاسم الكامل
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      البريد الإلكتروني
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    رقم الهاتف
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="service"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    نوع الخدمة
-                  </label>
-                  <select
-                    id="service"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  >
-                    <option>اختر نوع الخدمة</option>
-                    <option>تطوير مواقع الويب</option>
-                    <option>تطوير مواقع التجارة الإلكترونية</option>
-                    <option>تطوير تطبيقات الويب</option>
-                    <option>أمان مواقع الويب</option>
-                    <option>دمج الذكاء الاصطناعي في الويب</option>
-                    <option>تصميم واجهات المستخدم للويب</option>
-                    <option>أخرى</option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    رسالتك
-                  </label>
-                  <textarea
-                    id="message"
-                    rows="4"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  إرسال الرسالة
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+        <SendEmail />
 
       <style jsx>{`
         @keyframes pulse {

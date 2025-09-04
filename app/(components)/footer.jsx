@@ -63,52 +63,52 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   منصات SaaS
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   صفحات هبوط
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   متاجر إلكترونية
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   مواقع مطاعم
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   مواقع عيادات
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/lastprojects"
+                <Link
+                  href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
                   بورتفوليو شخصي
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -120,44 +120,44 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
               <li>
-                <a
+                <Link
                   href="/about"
                   className="hover:text-blue-400 transition-colors"
                 >
                   من نحن
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/services"
                   className="hover:text-blue-400 transition-colors"
                 >
                   خدماتنا
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/lastprojects"
                   className="hover:text-blue-400 transition-colors"
                 >
                   اعمالنا السابقة
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   className="hover:text-blue-400 transition-colors"
                 >
                   تواصل معنا
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/services#faq"
                   className="hover:text-blue-400 transition-colors"
                 >
                   الأسئلة الشائعة
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -169,36 +169,36 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
               <li>
-                <a
-                  href="#tech"
+                <Link
+                  href="/lastprojects//#tech"
                   className="hover:text-blue-400 transition-colors"
                 >
                   التقنيات المستخدمة
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#clients"
+                <Link
+                  href="//#clients"
                   className="hover:text-blue-400 transition-colors"
                 >
                   تقييمات العملاء
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#feat"
+                <Link
+                  href="//#feat"
                   className="hover:text-blue-400 transition-colors"
                 >
                   مميزات CodeLegacy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#mail"
+                <Link
+                  href="/contact/#mail"
                   className="hover:text-blue-400 transition-colors"
                 >
                   ارسل رسالة لنا
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
