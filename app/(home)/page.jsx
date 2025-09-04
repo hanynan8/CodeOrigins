@@ -57,6 +57,166 @@ import Tech from '../(components)/(realComponents)/tech';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import CodeLegacyClient from './_client';
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// file: app/metadata.js  (أو انسخ المحتوى داخل app/page.jsx كـ export const metadata = {...})
+// استبدل هذا الملف بمحتوى صفحة الـ Home (الرئيسية)
+// تأكد أن لديك الصور (og-home.jpg, twitter-home.jpg, logo.png) داخل public/
+
+export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة لو حابب
+export const SITE_DOMAIN = 'https://code-origins.vercel.app'; // غيّر للدومين الحقيقي (بدون سلاش في النهاية)
+
+// ========== Metadata لـ Home (الرئيسية) ==========
+export const metadata = {
+  // عنوان رئيسي قوي للـ homepage — مزيج براند + SEO + Local
+  title: `الصفحة الرئيسية`,
+
+  // وصف قصير يظهر في نتائج البحث
+  description:
+    'CodeLegacy — شريكك في بناء مواقع سريعة وآمنة، متاجر إلكترونية قابلة للتوسعة، ومنصات SaaS. خدمات تصميم UX/UI، تحسين أداء، أمن، ونشر سحابي احترافي.',
+
+  // مجموعة كلمات مفتاحية واسعة ومركزة للـ Home (استعمل منها 8-20 لكل صفحة فرعية)
+  keywords: [
+    // عام - براند وخدمات رئيسية
+    'شركة تطوير ويب', 'CodeLegacy', 'تطوير مواقع في القاهرة', 'web development company egypt', 'تصميم مواقع',
+    'تطوير متجر الكتروني', 'ecommerce development', 'saas development', 'UX UI design', 'تصميم واجهات',
+    // تكنولوجي
+    'Next.js', 'Next.js development', 'React', 'Node.js', 'TypeScript', 'PWA development', 'headless ecommerce',
+    'GraphQL', 'REST API', 'Docker', 'Kubernetes',
+    // أداء وأمن
+    'performance optimization', 'تحسين LCP', 'core web vitals', 'web application security', 'penetration testing',
+    // سحابة وعمليات
+    'cloud migration', 'AWS migration', 'DevOps services', 'CI/CD pipeline', 'monitoring and observability',
+    // محلي / تحويل
+    'شركة تطوير ويب في القاهرة', 'web agency cairo', 'hire web developer egypt', 'اطلب استشارة مجانية', 'احصل على عرض سعر',
+    // long-tail & صفحات مهمة
+    'كم تكلفة تصميم موقع في مصر', 'بناء متجر الكتروني مع Fawry', 'كيفية تحسين سرعة متجر الكتروني', 'MVP development egypt',
+    // تسويق / SEO
+    'technical SEO', 'seo for ecommerce', 'local seo cairo', 'content strategy for startups'
+  ],
+
+  authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
+
+  alternates: {
+    canonical: `${SITE_DOMAIN}/` // canonical للصفحة الرئيسية
+  },
+
+  // Open Graph — لما حد يشارك الرابط في فيسبوك/واتساب/تويتر الخ.
+  openGraph: {
+    title: `${COMPANY_NAME} | شركة تطوير ويب في القاهرة`,
+    description:
+      'شاهد خدماتنا ونماذج أعمالنا: تطوير مواقع، متاجر إلكترونية، منصات SaaS، تحسين الأداء، وأمن التطبيقات — تنفيذ احترافي ودعم مستمر.',
+    url: `${SITE_DOMAIN}/`,
+    siteName: COMPANY_NAME,
+    images: [
+      {
+        url: `${SITE_DOMAIN}/og-home.jpg`, // ضع الصورة في public/
+        width: 1200,
+        height: 630,
+        alt: `${COMPANY_NAME} — تطوير ويب وSaaS`
+      }
+    ],
+    locale: 'ar_EG',
+    type: 'website'
+  },
+
+  // Twitter card
+  twitter: {
+    card: 'summary_large_image',
+    title: `${COMPANY_NAME} — تطوير ويب ومتاجر إلكترونية`,
+    description: 'شركاؤك في بناء تطبيقات الويب السريعة والقابلة للتوسع. احصل على استشارة مجانية الآن.',
+    images: [`${SITE_DOMAIN}/twitter-home.jpg`]
+  },
+
+  // أيقونات خاصة (favicon etc.)
+  icons: {
+    icon: '/icons/code.svg', // ضع public/icons/code.svg
+    shortcut: '/icons/favicon-16x16.png',
+    apple: '/icons/apple-touch-icon.png',
+    other: [{ rel: 'manifest', url: '/site.webmanifest' }]
+  },
+
+  // توجيهات لعناكب البحث
+  robots: 'index, follow',
+
+  // theme color للمتصفح/Android
+  themeColor: '#0ea5a4',
+
+  // التحقق (ضع التوكين الحقيقي لو لديك)
+  verification: {
+    google: 'GOOGLE_SITE_VERIFICATION_TOKEN'
+  }
+};
+
+// ========== JSON-LD للـ Home (Structured Data) ==========
+// ضع هذا داخل <head> كـ:
+// <script type="application/ld+json">{JSON.stringify(homeJsonLd)}</script>
+export const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_DOMAIN}#organization`,
+      'name': COMPANY_NAME,
+      'url': SITE_DOMAIN,
+      'logo': `${SITE_DOMAIN}/logo.png`, // ضع لوجو في public/
+      'sameAs': [
+        `${SITE_DOMAIN}/facebook`,
+        `${SITE_DOMAIN}/twitter`,
+        `${SITE_DOMAIN}/linkedin`
+      ],
+      'contactPoint': [
+        {
+          '@type': 'ContactPoint',
+          'telephone': '+20-100-000-0000', // عدّل رقم التواصل
+          'contactType': 'customer support',
+          'areaServed': 'EG',
+          'availableLanguage': ['Arabic', 'English']
+        }
+      ]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_DOMAIN}#website`,
+      'url': SITE_DOMAIN,
+      'name': COMPANY_NAME,
+      'publisher': { '@id': `${SITE_DOMAIN}#organization` },
+      'potentialAction': [
+        {
+          '@type': 'SearchAction',
+          'target': `${SITE_DOMAIN}/search?q={search_term_string}`,
+          'query-input': 'required name=search_term_string'
+        }
+      ]
+    },
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_DOMAIN}#localbusiness`,
+      'name': COMPANY_NAME,
+      'url': SITE_DOMAIN,
+      'telephone': '+20-100-000-0000', // عدّل إن لزم
+      'address': {
+        '@type': 'PostalAddress',
+        'addressLocality': 'Cairo',
+        'addressCountry': 'EG'
+      },
+      'openingHours': 'Mo,Tu,We,Th,Fr 09:00-18:00'
+    }
+  ]
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 // بيانات الخدمات - Server-side data
 const services = [
   {

@@ -2,6 +2,213 @@
 import React from 'react';
 import ServicesPageClient from './_client';
 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// file: app/lastprojects/metadata.js
+// ضع هذا الملف في: app/lastprojects/metadata.js
+// أو انسخ المحتوى داخل صفحة LastProjects: app/lastprojects/page.jsx كـ export const metadata = {...}
+// غيّر COMPANY_NAME و SITE_DOMAIN و مسارات الصور/الروابط حسب مشروعك.
+
+export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة إذا احتجت
+export const SITE_DOMAIN = 'https://code-origins.vercel.app'; // غيّر للدومين الحقيقي (بدون سلاش في النهاية)
+
+// ======================
+// Metadata لصفحة "خدماتنا"
+// ضع هذا الملف في: app/services/metadata.js
+// أو انسخ المحتوى داخل app/services/page.jsx كـ export const metadata = {...}
+// ======================
+export const metadata = {
+  title: `خدماتنا`, // عنوان الصفحة
+  description:
+    'خدماتنا تتضمن تصميم وتطوير مواقع ومتاجر إلكترونية، تطوير تطبيقات SaaS، خدمات DevOps والسحابة، تحسين الأداء وSEO التقني، تصميم UX/UI، صياغة استراتيجيات المنتج، وصيانة ودعم فني كامل.',
+
+  // كلمات مفتاحية مركّزة وكبيرة لصفحة الخدمات (عربي + إنجليزي)
+  keywords: [
+    // عام - خدمات
+    'خدمات تطوير ويب', 'خدمات برمجيات', 'خدمات تطوير مواقع', 'خدمات تصميم مواقع', 'خدمات SaaS', 'خدمات تطوير تطبيقات',
+    // تطوير تكنولوجي
+    'Next.js development', 'تطوير بـ Next.js', 'React development', 'Node.js development', 'TypeScript development', 'PWA development',
+    'Progressive Web App', 'headless ecommerce', 'headless CMS', 'graphql api', 'REST API development',
+    // تصميم وتجربة مستخدم
+    'تصميم واجهات', 'UI design', 'UX design', 'تصميم تجربة مستخدم', 'design system implementation', 'prototyping', 'Figma to code',
+    // تجارة إلكترونية ودمج بوابات دفع
+    'تطوير متجر الكتروني', 'ecommerce development', 'WooCommerce development', 'Shopify development', 'payment gateway integration', 'دمج بوابة دفع', 'Fawry integration',
+    // سحابة وبنية تحتية
+    'cloud migration', 'AWS migration', 'GCP migration', 'Azure migration', 'serverless architecture', 'Docker', 'Kubernetes', 'containerization',
+    // عمليات وتضمين
+    'DevOps services', 'CI/CD pipeline', 'continuous integration', 'monitoring and observability', 'site reliability engineering', 'SRE services',
+    // أداء وأمن
+    'performance optimization', 'core web vitals optimization', 'تحسين LCP', 'web application security', 'penetration testing', 'اختبار اختراق',
+    // تكاملات وAPIs
+    'integration with third party APIs', 'API integration services', 'websocket real-time', 'socket.io development',
+    // صيانة ودعم
+    'صيانة مواقع', 'support and maintenance', 'technical support', 'managed hosting', 'site health checks',
+    // أعمال تجارية / منتج
+    'MVP development', 'product strategy', 'startup product development', 'scalable architecture', 'enterprise web apps',
+    // SEO & تسويق تقني
+    'technical SEO', 'seo for ecommerce', 'local seo egypt', 'content strategy for saas',
+    // تعيين / عقد
+    'hire web developer egypt', 'outsourced development', 'contract development services',
+    // long-tail عملية (صفحات فرعية/خدمات متخصصة)
+    'خدمة تصميم واجهة متجر الكتروني في القاهرة', 'تطوير تطبيق SaaS قابل للتوسع', 'خدمة ترحيل موقع إلى headless cms', 'خدمة تحسين سرعة موقع ووردبريس',
+    'خدمة إعداد CI/CD ونشر آمن', 'خدمة فحص أمان تطبيقات الويب',
+    // نداء للعمل (CTA)
+    'اطلب عرض سعر خدمة', 'احصل على استشارة فنية', 'طلب خدمة تطوير ويب'
+  ],
+
+  authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
+  alternates: {
+    canonical: `${SITE_DOMAIN}/services` // غيّر المسار لو مختلف
+  },
+
+  openGraph: {
+    title: `خدماتنا — ${COMPANY_NAME}`,
+    description:
+      'مجموعة خدمات متكاملة: تطوير مواقع ومتاجر، حلول SaaS، تحسين الأداء، الأمن، DevOps والسحابة. استشارة، تنفيذ، ودعم متواصل.',
+    url: `${SITE_DOMAIN}/services`,
+    siteName: COMPANY_NAME,
+    images: [
+      {
+        url: `${SITE_DOMAIN}/og-services.jpg`, // ضع صورة OG فعلية في public/
+        width: 1200,
+        height: 630,
+        alt: `${COMPANY_NAME} — خدمات تطوير ويب`
+      }
+    ],
+    locale: 'ar_EG',
+    type: 'website'
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: `خدماتنا — ${COMPANY_NAME}`,
+    description: 'تعرّف على خدماتنا: تصميم، تطوير، سحابة، أداء، أمن، وصيانة. استشارات وحلول تقنية مخصّصة.',
+    images: [`${SITE_DOMAIN}/twitter-services.jpg`]
+  },
+
+  icons: {
+    icon: '/icons/code.svg', // غيّر لو تريد أيقونة مخصصة لهذه الصفحة
+  },
+
+  robots: 'index, follow'
+};
+
+// ======================
+// Structured data (JSON-LD) — قائمة خدمات (Service / ItemList)
+// ضع هذا داخل <head> صفحتك كـ:
+// <script type="application/ld+json">{JSON.stringify(servicesItemListJsonLd)}</script>
+// عدّل التفاصيل (name, description, url) حسب خدماتك الحقيقية
+// ======================
+export const servicesItemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  'name': `${COMPANY_NAME} — خدمات تطوير الويب`,
+  'description': 'قائمة الخدمات التقنية المقدّمة من CodeLegacy: تصميم، تطوير، سحابة، أمن، وصيانة.',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'url': `${SITE_DOMAIN}/services/web-development`,
+      'item': {
+        '@type': 'Service',
+        'name': 'تطوير مواقع وتطبيقات ويب',
+        'description': 'تطوير مواقع احترافية وتطبيقات ويب باستخدام Next.js, React, Node.js، مع تركيز على الأداء وقابلية التوسع.',
+        'serviceType': ['Web Development', 'Next.js Development'],
+        'provider': {
+          '@type': 'Organization',
+          'name': COMPANY_NAME,
+          'url': SITE_DOMAIN
+        }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'url': `${SITE_DOMAIN}/services/ecommerce-development`,
+      'item': {
+        '@type': 'Service',
+        'name': 'تطوير متاجر إلكترونية',
+        'description': 'بناء متاجر إلكترونية قابلة للتوسيع (WooCommerce, Shopify, Headless) مع تكامل بوابات دفع محلية وعالمية.',
+        'serviceType': ['Ecommerce Development', 'Headless Commerce'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'url': `${SITE_DOMAIN}/services/saas-development`,
+      'item': {
+        '@type': 'Service',
+        'name': 'تطوير منصات SaaS وMVP',
+        'description': 'تصميم وبناء حلول SaaS متعددة المستخدمين، تدفق تسجيل محسّن، ونماذج تسعير قابلة للتوسع.',
+        'serviceType': ['SaaS Development', 'MVP Development'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'url': `${SITE_DOMAIN}/services/ux-ui-design`,
+      'item': {
+        '@type': 'Service',
+        'name': 'تصميم UX / UI وDesign Systems',
+        'description': 'خدمات تصميم تجربة المستخدم وواجهات أنيقة مع إنشاء نظم تصميم قابلة لإعادة الاستخدام (Design Systems).',
+        'serviceType': ['UX Design', 'UI Design', 'Design Systems'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 5,
+      'url': `${SITE_DOMAIN}/services/devops-cloud`,
+      'item': {
+        '@type': 'Service',
+        'name': 'DevOps وCloud & CI/CD',
+        'description': 'إعداد CI/CD ، حاويات (Docker)، orchestration (Kubernetes)، ونشر آمن على AWS / GCP / Azure.',
+        'serviceType': ['DevOps', 'Cloud Migration', 'CI/CD'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 6,
+      'url': `${SITE_DOMAIN}/services/performance-security`,
+      'item': {
+        '@type': 'Service',
+        'name': 'أمن التطبيقات وتحسين الأداء',
+        'description': 'اختبارات أمان، تدقيقات أداء، وتحسين مؤشرات Core Web Vitals لرفع سرعة الصفحات ومعدلات التحويل.',
+        'serviceType': ['Security', 'Performance Optimization', 'Technical SEO'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    },
+    {
+      '@type': 'ListItem',
+      'position': 7,
+      'url': `${SITE_DOMAIN}/services/maintenance-support`,
+      'item': {
+        '@type': 'Service',
+        'name': 'صيانة ودعم فني مُدار',
+        'description': 'حزم صيانة دورية، مراقبة، تحديثات أمنية، ودعم فني لاستقرار الأعمال عبر الإنترنت.',
+        'serviceType': ['Maintenance', 'Managed Support'],
+        'provider': { '@type': 'Organization', 'name': COMPANY_NAME, 'url': SITE_DOMAIN }
+      }
+    }
+    // أضف خدمات إضافية هنا حسب الحاجة
+  ]
+};
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 // البيانات الثابتة التي يمكن جلبها من الخادم
 const services = [
   {

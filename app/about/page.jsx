@@ -25,6 +25,7 @@ import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails'
 
 import Tech from '../(components)/(realComponents)/tech';
 
+
 const AboutPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
