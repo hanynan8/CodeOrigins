@@ -420,26 +420,6 @@ const ServicesPage = () => {
                 زور اعمالنا السابقة
               </button>
             </Link>
-
-          </div>
-
-          <div className="mt-12 grid md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">50+</div>
-              <div className="text-blue-100">موقع تم تطويره</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">5+</div>
-              <div className="text-blue-100">سنوات خبرة</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">100%</div>
-              <div className="text-blue-100">رضا العملاء</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">24/7</div>
-              <div className="text-blue-100">دعم فني</div>
-            </div>
           </div>
         </div>
         

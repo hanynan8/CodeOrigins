@@ -1,4 +1,6 @@
 // components/ContactSection.jsx
+'use client'
+  
 import React, { useState } from "react";
 import Link from "next/link"; // لو React فقط: غيّر أو احذف هذا السطر
 import {

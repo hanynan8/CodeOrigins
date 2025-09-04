@@ -13,7 +13,6 @@ import {
 
 import SendEmail from '../(components)/(realComponents)/SendEmail'
 
-
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -29,41 +28,38 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here (e.g., send to API)
     console.log('Form submitted:', formData);
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section
-        className="relative h-[80vh] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden"
-      >
+      <section className="relative min-h-screen sm:h-[100vh] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden">
         {/* Floating Elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute w-20 h-20 bg-white/10 rounded-full top-[20%] left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute w-16 h-16 bg-white/10 rounded-full top-[60%] right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute w-24 h-24 bg-white/10 rounded-full top-[40%] left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white/10 rounded-full top-[15%] left-[5%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 rounded-full top-[65%] right-[10%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 rounded-full top-[45%] left-[75%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl sm:text-4xl md:text-7xl font-bold mb-4">
-            تواصل مع <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">CodeLegacy</span>
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
+            تواصل مع <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
           </h1>
-          <p className="text-xl text-gray-300 mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-3xl mx-auto">
-            نحن هنا لنساعدك في تحقيق أفكارك التقنية. أخبرنا بتفاصيل مشروعك وسنرد عليك في أقرب وقت.
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto px-2 leading-relaxed">
+            نحن هنا لنساعدك في تحقيق أفكارك التقنية. أخبرنا بتفاصيل مشروعك وسنرد عليك في أقرب وقت ممكن.
           </p>
-          <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-8 py-4 rounded-full text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 flex items-center gap-2 shadow-2xl mx-auto">
+          <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-2xl mx-auto touch-manipulation">
             ابدأ التواصل
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
-        {/* Animated Waves */}
+        {/* Animated Waves - Mobile Optimized */}
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
           <svg
-            className="relative block w-[calc(100%+1.3px)] h-[120px]"
+            className="relative block w-[calc(100%+1.3px)] h-[60px] sm:h-[80px] md:h-[120px]"
             viewBox="0 24 150 28"
             preserveAspectRatio="none"
           >
@@ -112,31 +108,52 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Information Section */}
-      <SendEmail />
+      {/* Contact Information Section - Mobile Optimized */}
+      <div className="w-full">
+        <SendEmail />
+      </div>
 
-      {/* Social Media Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
+      {/* Social Media Section - Mobile Responsive */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">
+          <div className="text-center mb-8 sm:mb-12 md:mb-14">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white leading-tight px-2">
               تابعنا على وسائل التواصل
             </h2>
-            <p className="text-xl text-white max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-white max-w-4xl mx-auto px-4 leading-relaxed">
               كن على اطلاع بأحدث أعمالنا ونصائحنا التقنية من خلال متابعتنا على المنصات الاجتماعية.
             </p>
           </div>
 
-          <div className="flex justify-center space-x-6 rtl:space-x-reverse">
+          {/* Social Media Icons - Mobile Optimized */}
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 rtl:space-x-reverse px-4">
             {[
-              { name: 'Facebook', icon: <Facebook className="w-8 h-8" />, color: 'bg-blue-600', link: 'https://www.facebook.com/hany.nan.752/' },
-              { name: 'Instagram', icon: <Instagram className="w-8 h-8" />, color: 'bg-pink-500', link: 'https://www.instagram.com/hany._younan/?__pwa=1' },
-              { name: 'LinkedIn', icon: <Linkedin className="w-8 h-8" />, color: 'bg-blue-700', link: 'https://www.linkedin.com/in/hany-younan-5b7466372' },
+              { 
+                name: 'Facebook', 
+                icon: <Facebook className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-blue-600 hover:bg-blue-700', 
+                link: 'https://www.facebook.com/hany.nan.752/' 
+              },
+              { 
+                name: 'Instagram', 
+                icon: <Instagram className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-pink-500 hover:bg-pink-600', 
+                link: 'https://www.instagram.com/hany._younan/?__pwa=1' 
+              },
+              { 
+                name: 'LinkedIn', 
+                icon: <Linkedin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-blue-700 hover:bg-blue-800', 
+                link: 'https://www.linkedin.com/in/hany-younan-5b7466372' 
+              },
             ].map((social, index) => (
               <a
                 key={index}
                 href={social.link}
-                className={`${social.color} text-white p-4 rounded-full hover:opacity-90 transition-opacity transform hover:scale-105`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${social.color} text-white p-3 sm:p-4 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl touch-manipulation`}
+                aria-label={`تابعنا على ${social.name}`}
               >
                 {social.icon}
               </a>
@@ -155,7 +172,7 @@ const ContactPage = () => {
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(40px);
           }
           to {
             opacity: 1;
@@ -177,15 +194,37 @@ const ContactPage = () => {
             transform: translateY(0px) rotate(0deg);
           }
           50% {
-            transform: translateY(-20px) rotate(180deg);
+            transform: translateY(-15px) rotate(180deg);
           }
+        }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 480px) {
+          .animate-float {
+            animation-duration: 4s;
+          }
+        }
+
+        /* Touch-friendly interactions */
+        .touch-manipulation {
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Prevent text selection on interactive elements */
+        button, a {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
         }
       `}</style>
     </div>
   );
 };
 
-// Social Media Icons (same as original)
+// Social Media Icons - Optimized for Mobile
 const Twitter = ({ className }) => (
   <svg className={className} fill="currentColor" viewBox="0 0 24 24">
     <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />

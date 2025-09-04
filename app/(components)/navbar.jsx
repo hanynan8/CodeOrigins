@@ -18,6 +18,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Function to close the sidebar
+  const closeSidebar = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       {/* Hidden SVG for gradient definition */}
@@ -55,11 +60,11 @@ const Navbar = () => {
           {isOpen && (
             <div className="md:hidden pb-4">
               <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الرئيسية</Link>
-              <Link href="/services" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الخدمات</Link>
-              <Link href="/lastprojects" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">اعمالنا السابقة</Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">من نحن</Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">تواصل معنا</Link>
+                <Link href="/" onClick={closeSidebar} className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الرئيسية</Link>
+                <Link href="/services" onClick={closeSidebar} className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الخدمات</Link>
+                <Link href="/lastprojects" onClick={closeSidebar} className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">اعمالنا السابقة</Link>
+                <Link href="/about" onClick={closeSidebar} className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">من نحن</Link>
+                <Link href="/contact" onClick={closeSidebar} className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">تواصل معنا</Link>
               </div>
             </div>
           )}
