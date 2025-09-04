@@ -40,6 +40,8 @@ import {
   Users as SupportIcon,
   Check as CompatibilityIcon,
 } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const CodeLegacyPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,7 +57,6 @@ const CodeLegacyPortfolio = () => {
 
   return (
     <div className="min-h-screen">
-      
       {/* Portfolio Hero */}
       <section
         id="portfolio-hero"
@@ -71,10 +72,14 @@ const CodeLegacyPortfolio = () => {
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4">
-            أعمالنا <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">السابقة</span>
+            أعمالنا{' '}
+            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              السابقة
+            </span>
           </h1>
           <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed opacity-90">
-            نفخر بعرض مجموعة من مشاريع تطوير مواقع الويب السابقة التي أنجزناها بنجاح، والتي تعكس خبرتنا في تقديم حلول ويب مبتكرة وفعالة.
+            نفخر بعرض مجموعة من مشاريع تطوير مواقع الويب السابقة التي أنجزناها
+            بنجاح، والتي تعكس خبرتنا في تقديم حلول ويب مبتكرة وفعالة.
           </p>
         </div>
 
@@ -131,97 +136,182 @@ const CodeLegacyPortfolio = () => {
       </section>
 
       {/* Portfolio Items Section */}
-      <section id="portfolio" className="py-20 bg-white">
+      <section id="portfolio" className="pt-20 pb-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
               مشاريع <span className="text-blue-600">تطوير مواقع الويب</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نقدم هنا مجموعة مختارة من أعمالنا في تطوير مواقع الويب، حيث ركزنا على تقديم حلول ويب متقدمة، سريعة، وآمنة تلبي احتياجات عملائنا المتنوعة.
+              نقدم هنا مجموعة مختارة من أعمالنا في تطوير مواقع الويب، حيث ركزنا
+              على تقديم حلول ويب متقدمة، سريعة، وآمنة تلبي احتياجات عملائنا
+              المتنوعة.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               {
-                title: 'منصة التجارة الإلكترونية الذكية',
+                title:
+                  'متجر الكتروني لشركة بيع جميع انواع الإلكترونيات - LapTech',
+                link: 'https://lap-tech-five.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'منصة تجارة إلكترونية متكاملة بذكاء اصطناعي لتحسين تجربة التسوق عبر الويب، مع دعم للدفع الآمن وإدارة المخزون.',
+                  'متجر إلكتروني متكامل لعرض وبيع الأجهزة والإكسسوارات التقنية (قدرة عرض 5000+ منتج). مزود بنظام فلاتر متقدم، بحث دقيق، وأداء سريع. يتضمن لوحة تحكم مجانية للمالك لإدارة المنتجات (إضافة، تعديل، حذف) والمخزون بسهولة.',
                 image:
-                  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-                link: '#',
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
+              },
+
+              {
+                title: 'متجر ملابس إلكتروني متكامل',
+                link: 'https://e-commerce-vert-xi-96.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'منصة تجارة إلكترونية لعرض الملابس بأسلوب عصري. تتيح فلترة المنتجات حسب المقاس، اللون، السعر، مع لوحة تحكم احترافية لإدارة المخزون والطلبات وتسهيـل تجربة الشراء.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
+              },
+
+              {
+                title: 'موقع مطعمك الإلكتروني — نظام عرض وحجز وطلب أونلاين',
+                link: 'https://restaurant-ten-sage.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'موقع مطعم عصري يعرض القوائم والأطباق بطريقة جذابة، مع نظام للطلبات والحجوزات أونلاين وفلاتر للوصول السريع إلى الأطباق. يتضمن لوحة تحكم لإدارة القوائم والعروض.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(806).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
+              },
+
+              {
+                title:
+                  'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
+                link: 'https://code-origins.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+              },
+
+              {
+                title: 'موقع لشركة MF Group للواجهات المعمارية',
+                link: 'https://hanynan8.github.io/test-MFGroup/',
+                category: 'موقع ويب',
+                description:
+                  'موقع عرض محافظ أعمال (portfolio) وخدمات تصميم واجهات معمارية، يحتوي معرض صور للمشروعات، وصف للخدمات، ونموذج تواصل لطلبات الاستشارة والمشاريع.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
+                tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
               },
               {
-                title: 'موقع إدارة المشاريع التعاونية',
+                title: 'Kremora — متجر حلويات إلكتروني',
+                link: 'https://hanynan8.github.io/test-Sweety/',
                 category: 'موقع ويب',
                 description:
-                  'موقع ويب لإدارة المشاريع والفرق مع أدوات تعاونية متقدمة، دعم للمهام والتقارير في الوقت الفعلي.',
+                  'متجر حلويات إلكتروني يعرض أصناف متعددة من الحلويات مع صفحات منتجات مفصّلة، سلة مشتريات، ونموذج طلب/حجز. تصميم لطيف يركّز على الصور والمنتجات الموسمية.',
                 image:
-                  'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['Vue.js', 'Express', 'PostgreSQL', 'Socket.io'],
-                link: '#',
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
+                tech: [
+                  'React',
+                  'Django (API-ready)',
+                  'PostgreSQL',
+                  'OAuth (اختياري)',
+                ],
+              },
+
+              {
+                title: 'Newton — موقع تصميم معماري وديكور',
+                link: 'https://hanywebdev.github.io/Architecture-Interior-Design-Landing-Page--Publi/',
+                category: 'موقع ويب',
+                description:
+                  'موقع عرض خدمات التصميم الداخلي والمعماري مع معرض مشاريع، وصف الخدمات (تصميم داخلي، تخطيط المساحات، استشارات المواد)، ونموذج لحجز استشارة.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(522).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+              },
+
+              {
+                title: 'InvSmart — منصة استشارات مالية واستثمارية',
+                link: 'https://hanynan8.github.io/Financial-Consulting-Landing-Page/',
+                category: 'موقع ويب',
+                description:
+                  'موقع خدمات مالية واستشارية يدعم وصف المنتجات الاستثمارية، ملفات العملاء، تقارير مالية مبسطة، وتكامل مبدئي مع واجهات بنكية عبر API (نماذج وتقارير). مناسب للشركات الصغيرة والمتوسطة.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(529).png?raw=true',
+                tech: ['React', 'Django (نماذج API)', 'PostgreSQL', 'OAuth'],
+              },
+
+              {
+                title: 'WaVer — تطبيق ويب لإدارة المهام والمشاريع (SaaS)',
+                link: 'https://saa-s-seven-kappa.vercel.app',
+                category: 'موقع ويب',
+                description:
+                  'منصة SaaS لإدارة المشاريع والمهام: لوحات كانبان، فرق عمل، تتبع الوقت، وإشعارات. مناسبة للفرق الصغيرة والمتوسطة مع خصائص تعاون ومشاركة الملفات.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(502).png?raw=true',
+                tech: ['WordPress (واجهة محتوى)', 'PHP', 'MySQL', 'SEO Tools'],
+              },
+
+              {
+                title: 'Portfolio شخصي — عرض المهارات والأعمال',
+                link: 'https://my-portfolio-tau-six-33.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'محفظة أعمال شخصية لعرض المشاريع، المهارات، السيرة الذاتية وروابط التواصل. تصميم بسيط وسريع للزوار وأرباب العمل لعرض الخبرات والأمثلة العملية.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
+                tech: ['React', 'Django (نماذج/Blog)', 'PostgreSQL', 'OAuth'],
+              },
+
+              {
+                title: 'حبارة برنت — طلب خدمات الطباعة أونلاين',
+                link: 'https://print-your-paper.vercel.app/',
+                category: 'موقع ويب',
+                description:
+                  'منصة طلب خدمات الطباعة: رفع ملفات، اختيار خيارات الطباعة (ورق، قياس، تشطيب)، وتتبع الطلبات. تستهدف المطابع الصغيرة والمتوسطة لتلقي طلبات بسهولة عبر الويب.',
+                image:
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(802).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
               },
               {
-                title: 'منصة تعليمية عبر الإنترنت',
+                title: 'صفحة وصفي لوظيفة مدير الموارد البشرية - CodeCraft',
+                link: 'https://hr-design.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'موقع ويب للتعلم عبر الإنترنت يدعم الدورات التفاعلية، الفيديوهات، والاختبارات مع نظام إدارة المحتوى.',
+                  'صفحة وصف وظيفي احترافية تعرض متطلبات وظيفة مدير الموارد البشرية، المسؤوليات، المزايا، وطريقة التقديم عبر استمارة اتصال موجهة لمرشحي الشركة.',
                 image:
-                  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['Angular', 'Firebase', 'TypeScript', 'Bootstrap'],
-                link: '#',
-              },
-              {
-                title: 'موقع حجوزات الفنادق',
-                category: 'موقع ويب',
-                description:
-                  'موقع ويب لإدارة حجوزات الفنادق مع خرائط تفاعلية، نظام دفع آمن، وتقييمات المستخدمين.',
-                image:
-                  'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['Next.js', 'GraphQL', 'MongoDB', 'Mapbox'],
-                link: '#',
-              },
-              {
-                title: 'مدونة أخبار تقنية',
-                category: 'موقع ويب',
-                description:
-                  'موقع ويب للمدونات التقنية مع نظام نشر المحتوى، تعليقات المستخدمين، وتحسين محركات البحث.',
-                image:
-                  'https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['WordPress', 'PHP', 'MySQL', 'SEO Tools'],
-                link: '#',
-              },
-              {
-                title: 'موقع خدمات مالية',
-                category: 'موقع ويب',
-                description:
-                  'موقع ويب للخدمات المالية يدعم الحسابات الشخصية، التقارير، والتكامل مع البنوك عبر API.',
-                image:
-                  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['React', 'Django', 'PostgreSQL', 'OAuth'],
-                link: '#',
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(803).png?raw=true',
+                tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
               },
             ].map((project, index) => (
               <div
                 key={index}
                 className="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300"
               >
-                <div className="relative overflow-hidden h-48">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                      <Eye className="w-4 h-4" />
-                      عرض المشروع
-                    </button>
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="relative overflow-hidden h-64">
+                    <Image
+                      src={project.image}
+                      alt={project.title || 'صورة المشروع'}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110 bg-black/40"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <button className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                        <Eye className="w-4 h-4" />
+                        عرض المشروع
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div className="p-6">
                   <div className="text-sm text-blue-600 font-semibold mb-2">
                     {project.category}
@@ -242,40 +332,40 @@ const CodeLegacyPortfolio = () => {
                       </span>
                     ))}
                   </div>
-                  <a
+                  <Link
                     href={project.link}
                     className="flex items-center gap-2 text-blue-600 font-medium group-hover:text-blue-700 transition-colors"
                   >
                     <Eye className="w-4 h-4" />
-                    عرض تفاصيل المشروع
-                  </a>
+                    عرض الموقع
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mb-16">
-            <a
+            <Link
               href="#contact"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
             >
               تواصل معنا لمشروعك التالي
               <ExternalLink className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
 
-
-
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50" id="tech">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              التقنيات <span className="text-blue-600">المتطورة</span> التي نستخدمها
+              التقنيات <span className="text-blue-600">المتطورة</span> التي
+              نستخدمها
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية وقوية
+              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
+              وقوية
             </p>
           </div>
 
@@ -286,13 +376,28 @@ const CodeLegacyPortfolio = () => {
               { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
               { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
               { name: 'Laravel', iconClass: 'devicon-laravel-plain colored' },
+              {
+                name: 'CSS3',
+                iconClass: 'devicon-css3-plain colored',
+              },
               { name: 'Python', iconClass: 'devicon-python-plain colored' },
               { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
-              { name: 'PostgreSQL', iconClass: 'devicon-postgresql-plain colored' },
-              { name: 'AWS', iconClass: 'devicon-amazonwebservices-plain-wordmark colored' },
-              { name: 'Docker', iconClass: 'devicon-docker-plain colored' },
-              { name: 'Kubernetes', iconClass: 'devicon-kubernetes-plain colored' },
-              { name: 'TypeScript', iconClass: 'devicon-typescript-plain colored' },
+              {
+                name: 'JavaScript',
+                iconClass: 'devicon-javascript-plain colored',
+              },
+              {
+                name: 'HTML5',
+                iconClass: 'devicon-html5-plain colored',
+              },
+              {
+                name: 'Express.js',
+                iconClass: 'devicon-express-original',
+              },
+              {
+                name: 'TypeScript',
+                iconClass: 'devicon-typescript-plain colored',
+              },
             ].map((tech, index) => (
               <div
                 key={index}
@@ -310,17 +415,18 @@ const CodeLegacyPortfolio = () => {
         </div>
       </section>
 
-
-
       {/* Advantages Section */}
-      <section id="advantages" className="py-20 bg-gray-50">
+      <section id="advantages" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-              لماذا تختارنا في  <span className="text-blue-600">تطوير مواقع الويب</span>؟
+              لماذا تختارنا في{' '}
+              <span className="text-blue-600">تطوير مواقع الويب</span>؟
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نركز في خدماتنا على تطوير مواقع الويب بأعلى معايير الجودة، مع التركيز على المميزات التي تجعل موقعك متميزًا وفعالًا في سوق الإنترنت التنافسي.
+              نركز في خدماتنا على تطوير مواقع الويب بأعلى معايير الجودة، مع
+              التركيز على المميزات التي تجعل موقعك متميزًا وفعالًا في سوق
+              الإنترنت التنافسي.
             </p>
           </div>
 
@@ -328,47 +434,56 @@ const CodeLegacyPortfolio = () => {
             {[
               {
                 title: 'تصميم متجاوب',
-                description: 'نضمن أن يعمل موقعك بشكل مثالي على جميع الأجهزة، من الهواتف المحمولة إلى الحواسيب المكتبية.',
+                description:
+                  'نضمن أن يعمل موقعك بشكل مثالي على جميع الأجهزة، من الهواتف المحمولة إلى الحواسيب المكتبية.',
                 icon: <Smartphone className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'سرعة أداء عالية',
-                description: 'نحسن من أداء الموقع ليتم تحميله في ثوانٍ معدودة، مما يحسن تجربة المستخدم ويقلل من معدل الارتداد.',
+                description:
+                  'نحسن من أداء الموقع ليتم تحميله في ثوانٍ معدودة، مما يحسن تجربة المستخدم ويقلل من معدل الارتداد.',
                 icon: <PerformanceIcon className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'تحسين محركات البحث (SEO)',
-                description: 'ننظم هيكل الموقع ومحتواه ليظهر في أعلى نتائج بحث جوجل، مما يزيد من الزيارات العضوية.',
+                description:
+                  'ننظم هيكل الموقع ومحتواه ليظهر في أعلى نتائج بحث جوجل، مما يزيد من الزيارات العضوية.',
                 icon: <Search className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'أمان متقدم',
-                description: 'نطبق أحدث معايير الأمان لحماية الموقع من الهجمات الإلكترونية وضمان خصوصية البيانات.',
+                description:
+                  'نطبق أحدث معايير الأمان لحماية الموقع من الهجمات الإلكترونية وضمان خصوصية البيانات.',
                 icon: <Lock className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'تكامل مع أنظمة خارجية',
-                description: 'ندمج الموقع مع خدمات خارجية مثل الدفع الإلكتروني، الخرائط، والأنظمة السحابية لتعزيز الوظائف.',
+                description:
+                  'ندمج الموقع مع خدمات خارجية مثل الدفع الإلكتروني، الخرائط، والأنظمة السحابية لتعزيز الوظائف.',
                 icon: <WorldIcon className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'دعم فني مستمر',
-                description: 'نقدم دعمًا فنيًا بعد الإطلاق لضمان استمرارية عمل الموقع وتحديثات منتظمة.',
+                description:
+                  'نقدم دعمًا فنيًا بعد الإطلاق لضمان استمرارية عمل الموقع وتحديثات منتظمة.',
                 icon: <SupportIcon className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'تصميم جذاب وسهل الاستخدام',
-                description: 'نركز على واجهات مستخدم جذابة وبديهية لتحسين تفاعل الزوار مع الموقع.',
+                description:
+                  'نركز على واجهات مستخدم جذابة وبديهية لتحسين تفاعل الزوار مع الموقع.',
                 icon: <DesignIcon className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'توافق مع جميع المتصفحات',
-                description: 'نختبر الموقع على مختلف المتصفحات لضمان تجربة متسقة لجميع المستخدمين.',
+                description:
+                  'نختبر الموقع على مختلف المتصفحات لضمان تجربة متسقة لجميع المستخدمين.',
                 icon: <CompatibilityIcon className="w-10 h-10 text-blue-600" />,
               },
               {
                 title: 'تحليلات وبيانات متقدمة',
-                description: 'ندمج أدوات التحليل لتتبع أداء الموقع وفهم سلوك الزوار لتحسينات مستمرة.',
+                description:
+                  'ندمج أدوات التحليل لتتبع أداء الموقع وفهم سلوك الزوار لتحسينات مستمرة.',
                 icon: <BarChart className="w-10 h-10 text-blue-600" />,
               },
             ].map((advantage, index) => (
@@ -397,12 +512,12 @@ const CodeLegacyPortfolio = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
               {
-                number: '150+',
+                number: '50+',
                 label: 'مشروع مكتمل',
                 icon: <CheckCircle className="w-6 h-6 mx-auto mb-2" />,
               },
               {
-                number: '80+',
+                number: '50+',
                 label: 'عميل سعيد',
                 icon: <ThumbsUp className="w-6 h-6 mx-auto mb-2" />,
               },
@@ -412,7 +527,7 @@ const CodeLegacyPortfolio = () => {
                 icon: <Clock className="w-6 h-6 mx-auto mb-2" />,
               },
               {
-                number: '99%',
+                number: '100%',
                 label: 'رضا العملاء',
                 icon: <Star className="w-6 h-6 mx-auto mb-2" />,
               },
@@ -432,14 +547,14 @@ const CodeLegacyPortfolio = () => {
       </div>
 
       {/* Contact Section - Similar to Home for consistency */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="mail" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
               هل أنت جاهز لبدء <span className="text-blue-600">مشروعك</span>؟
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              تواصل معنا اليوم ودعنا نحول فكرتك إلى واقع رقمي مبهر يحقق أهدافك
+              تواصل معنا اليوم ودعنا نحول فكرتك إلى موقع ويب مبهر يحقق أهدافك
               ويتجاوز توقعاتك
             </p>
           </div>
@@ -458,8 +573,7 @@ const CodeLegacyPortfolio = () => {
                     <h4 className="font-semibold text-gray-800">
                       البريد الإلكتروني
                     </h4>
-                    <p className="text-gray-600">info@codelegacy.com</p>
-                    <p className="text-gray-600">support@codelegacy.com</p>
+                    <p className="text-gray-600">codeorigins1@gmail.com</p>
                   </div>
                 </div>
 
@@ -469,8 +583,7 @@ const CodeLegacyPortfolio = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">الهاتف</h4>
-                    <p className="text-gray-600">+20 123 456 7890</p>
-                    <p className="text-gray-600">+20 987 654 3210</p>
+                    <p className="text-gray-600">+20 01201061216</p>
                   </div>
                 </div>
 
@@ -491,12 +604,7 @@ const CodeLegacyPortfolio = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">ساعات العمل</h4>
-                    <p className="text-gray-600">
-                      الأحد - الخميس: 9:00 - 18:00
-                    </p>
-                    <p className="text-gray-600">
-                      الجمعة - السبت: 10:00 - 16:00
-                    </p>
+                    <p className="text-gray-600">كل الاسبوع</p>
                   </div>
                 </div>
               </div>
@@ -508,33 +616,33 @@ const CodeLegacyPortfolio = () => {
                 <div className="flex space-x-4 rtl:space-x-reverse">
                   {[
                     {
-                      name: 'Twitter',
-                      icon: <Twitter className="w-6 h-6" />,
-                      color: 'bg-blue-400',
-                    },
-                    {
                       name: 'Facebook',
                       icon: <Facebook className="w-6 h-6" />,
                       color: 'bg-blue-600',
+                      href: 'https://www.facebook.com/hany.nan.752/',
                     },
                     {
                       name: 'Instagram',
                       icon: <Instagram className="w-6 h-6" />,
                       color: 'bg-pink-500',
+                      href: 'https://www.instagram.com/hany._younan/?__pwa=1',
                     },
                     {
                       name: 'LinkedIn',
                       icon: <Linkedin className="w-6 h-6" />,
                       color: 'bg-blue-700',
+                      href: 'https://www.linkedin.com/in/hany-younan-5b7466372',
                     },
                   ].map((social, index) => (
-                    <a
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
                       key={index}
-                      href="#"
+                      href={social.href}
                       className={`${social.color} text-white p-3 rounded-full hover:opacity-90 transition-opacity`}
                     >
                       {social.icon}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -598,11 +706,12 @@ const CodeLegacyPortfolio = () => {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   >
                     <option>اختر نوع الخدمة</option>
+                    <option>تطوير مواقع الويب</option>
+                    <option>تطوير مواقع التجارة الإلكترونية</option>
                     <option>تطوير تطبيقات الويب</option>
-                    <option>تطوير تطبيقات الموبايل</option>
-                    <option>الحلول السحابية</option>
-                    <option>الأمان السيبراني</option>
-                    <option>استشارات تقنية</option>
+                    <option>أمان مواقع الويب</option>
+                    <option>دمج الذكاء الاصطناعي في الويب</option>
+                    <option>تصميم واجهات المستخدم للويب</option>
                     <option>أخرى</option>
                   </select>
                 </div>
@@ -631,12 +740,17 @@ const CodeLegacyPortfolio = () => {
           </div>
         </div>
       </section>
-
       <style jsx>{`
         @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
 
         @keyframes fadeInUp {
@@ -652,15 +766,16 @@ const CodeLegacyPortfolio = () => {
 
         @keyframes wave-move-left {
           0% {
-            transform: translate3d(-90px,0,0);
+            transform: translate3d(-90px, 0, 0);
           }
-          100% { 
-            transform: translate3d(85px,0,0);
+          100% {
+            transform: translate3d(85px, 0, 0);
           }
         }
 
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) rotate(0deg);
           }
           50% {
@@ -668,7 +783,10 @@ const CodeLegacyPortfolio = () => {
           }
         }
       `}</style>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+      />
     </div>
   );
 };

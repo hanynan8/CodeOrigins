@@ -27,8 +27,11 @@ import {
   Clock,
   CheckCircle,
   Smartphone,
-  Search
+  Search,
 } from 'lucide-react';
+
+import Image from 'next/image';
+import Link from 'next/link';
 
 const CodeLegacyHomepage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,17 +61,17 @@ const CodeLegacyHomepage = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span className="text-5xl sm:text-4xl md:text-7xl block mb-4">
-              CodeLegacy
-            </span>
-            <span className='text-3xl sm:text-2xl md:text-4xl block mb-4'>
+          <span className="text-5xl sm:text-4xl md:text-7xl block mb-4">
+            CodeLegacy
+          </span>
+          <span className="text-3xl sm:text-2xl md:text-4xl block mb-4">
             نبني{' '}
             <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
               المستقبل
             </span>
             <br />
             بالكود
-            </span>
+          </span>
           <p className=" text-gray-300 sm:text-xl md:text-1xl mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-3xl mx-auto">
             في CodeLegacy، نحول أفكارك إلى مواقع ويب متطورة تترك بصمة دائمة في
             عالم التكنولوجيا
@@ -136,15 +139,15 @@ const CodeLegacyHomepage = () => {
         </div>
       </section>
 
-     {/* About Section */}
+      {/* About Section */}
       <section id="about" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
+              اكتشف{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 CodeLegacy
               </span>
-              {' '}اكتشف
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               رحلتنا في بناء المستقبل الرقمي، حيث نجمع بين الإبداع والتكنولوجيا
@@ -165,10 +168,10 @@ const CodeLegacyHomepage = () => {
                   الأداء، والاستدامة.
                 </p>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  مهمتنا هي تمكين الشركات من تحقيق طموحاتها الرقمية من خلال مواقع
-                  ويب مخصصة تدعم النمو وتعزز التنافسية في عالم الويب المتسارع.
-                  سواء كنت شركة ناشئة أو مؤسسة كبرى، نحن هنا لنكون شريكك في
-                  النجاح.
+                  مهمتنا هي تمكين الشركات من تحقيق طموحاتها الرقمية من خلال
+                  مواقع ويب مخصصة تدعم النمو وتعزز التنافسية في عالم الويب
+                  المتسارع. سواء كنت شركة ناشئة أو مؤسسة كبرى، نحن هنا لنكون
+                  شريكك في النجاح.
                 </p>
                 <a
                   href="/about"
@@ -188,11 +191,15 @@ const CodeLegacyHomepage = () => {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    'خبرة تزيد عن 5 سنوات في تطوير مواقع الويب المبتكرة',
+                    'وجود لوحة تحكم خاصة بمالك الموقع للتحكم بكل بيانات الموقع بكل سلاسة',
                     'فريق معتمد من أفضل المؤسسات العالمية',
                     'التزام بالجودة والتسليم في المواعيد المحددة',
+                    'موقع سلس وسريع وسهل التعديل عليه بكل سهولة',
                     'شراكات طويلة الأمد مع عملائنا مدعومة بدعم فني مستمر',
+                    'تحسين SEO الموقع مع تصدر الموقع لنتائج بحث جوجل',
                     'استخدام أحدث تقنيات الويب لضمان الأداء والكفاءة',
+                    'دعم فني بعد تسليم الموقع لمدة تصل الي 12 اشهر',
+                    'خبرة تزيد عن 5 سنوات في تطوير مواقع الويب المبتكرة',
                   ].map((item, index) => (
                     <div
                       key={index}
@@ -206,10 +213,10 @@ const CodeLegacyHomepage = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { number: '150+', label: 'مشروع ويب مكتمل' },
-                  { number: '80+', label: 'عميل راضٍ' },
+                  { number: '50+', label: 'مشروع ويب مكتمل' },
+                  { number: '50+', label: 'عميل راضٍ' },
                   { number: '24/7', label: 'دعم فني' },
-                  { number: '99%', label: 'رضا العملاء' },
+                  { number: '100%', label: 'رضا العملاء' },
                 ].map((stat, index) => (
                   <div
                     key={index}
@@ -227,47 +234,7 @@ const CodeLegacyHomepage = () => {
         </div>
       </section>
 
-            {/* Stats Bar */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-6 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {[
-              {
-                number: '150+',
-                label: 'مشروع ويب مكتمل',
-                icon: <CheckCircle className="w-6 h-6 mx-auto mb-2" />,
-              },
-              {
-                number: '80+',
-                label: 'عميل سعيد',
-                icon: <ThumbsUp className="w-6 h-6 mx-auto mb-2" />,
-              },
-              {
-                number: '5+',
-                label: 'سنوات خبرة',
-                icon: <Clock className="w-6 h-6 mx-auto mb-2" />,
-              },
-              {
-                number: '99%',
-                label: 'رضا العملاء',
-                icon: <Star className="w-6 h-6 mx-auto mb-2" />,
-              },
-            ].map((stat, index) => (
-              <div key={index} className="p-4">
-                {stat.icon}
-                <div className="text-2xl md:text-3xl font-bold">
-                  {stat.number}
-                </div>
-                <div className="text-sm md:text-base opacity-90">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-{/* Services Section */}
+      {/* Services Section */}
       <section id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -275,8 +242,8 @@ const CodeLegacyHomepage = () => {
               خدماتنا <span className="text-blue-600">في تطوير الويب</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نقدم حلول ويب شاملة تلبي احتياجات عملك وتحقق أهدافك التقنية
-              بأحدث الممارسات والتقنيات العالمية
+              نقدم حلول ويب شاملة تلبي احتياجات عملك وتحقق أهدافك التقنية بأحدث
+              الممارسات والتقنيات العالمية
             </p>
           </div>
 
@@ -298,7 +265,11 @@ const CodeLegacyHomepage = () => {
                 title: 'مواقع تعليمية',
                 description:
                   'منصات تعليمية تفاعلية تدعم التعلم عن بعد مع أدوات إدارة المحتوى التعليمي',
-                features: ['دروس تفاعلية', 'إدارة الطلاب', 'اختبارات عبر الإنترنت'],
+                features: [
+                  'دروس تفاعلية',
+                  'إدارة الطلاب',
+                  'اختبارات عبر الإنترنت',
+                ],
               },
               {
                 icon: <Database className="w-12 h-12" />,
@@ -309,7 +280,7 @@ const CodeLegacyHomepage = () => {
               },
               {
                 icon: <Shield className="w-12 h-12" />,
-                title: 'مواقع لاندنج بيج',
+                title: 'مواقع Landing Page',
                 description:
                   'صفحات هبوط جذابة مصممة لتحويل الزوار إلى عملاء باستخدام تصاميم مبتكرة',
                 features: ['تصميم جذاب', 'تحسين التحويل', 'تحليلات دقيقة'],
@@ -323,7 +294,7 @@ const CodeLegacyHomepage = () => {
               },
               {
                 icon: <Palette className="w-12 h-12" />,
-                title: 'مواقع بورتفوليو',
+                title: 'مواقع Portfolio',
                 description:
                   'مواقع عرض أعمال احترافية لعرض المشاريع والإنجازات بتصميم عصري',
                 features: ['عرض مشاريع مميزة', 'تصميم متجاوب', 'سهولة التخصيص'],
@@ -369,70 +340,6 @@ const CodeLegacyHomepage = () => {
         </div>
       </section>
 
-   {/* Web Services Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
-                من مميزات <span className="text-blue-600">التعامل معنا</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نقدم خدمات شاملة في تطوير الويب لضمان حصولك على موقع مثالي يلبي احتياجاتك.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Globe className="w-8 h-8" />,
-                title: 'تطوير المواقع',
-                description: 'تطوير مواقع ويب متجاوبة وسريعة باستخدام أحدث التقنيات مثل React و Next.js.',
-              },
-              {
-                icon: <Smartphone className="w-8 h-8" />,
-                title: 'التصميم المتجاوب',
-                description: 'تصميم مواقع تعمل بشكل مثالي على جميع الأجهزة من الهواتف إلى أجهزة الكمبيوتر.',
-              },
-              {
-                icon: <Palette className="w-8 h-8" />,
-                title: 'تصميم UI/UX',
-                description: 'تصميم واجهات جذابة وتجربة مستخدم استثنائية تزيد من معدلات التحويل.',
-              },
-              {
-                icon: <Search className="w-8 h-8" />,
-                title: 'تحسين SEO',
-                description: 'تحسين محركات البحث لضمان ظهور موقعك في المراتب الأولى في نتائج البحث.',
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: 'الأمان والحماية',
-                description: 'تنفيذ أعلى معايير الأمان لحماية موقعك وبيانات عملائك.',
-              },
-              {
-                icon: <Users className="w-8 h-8" />,
-                title: 'الدعم والصيانة',
-                description: ' دعم فني مستمر وصيانة دورية لضمان عمل موقعك بكفاءة عالية بعد تسليم المشروع.',
-              },
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="group bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-all duration-300 text-center"
-              >
-                <div className="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-blue-700 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Portfolio Section */}
       <section id="portfolio" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -441,61 +348,70 @@ const CodeLegacyHomepage = () => {
               بعض من <span className="text-blue-600">أعمالنا السابقة</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نفخر بالمواقع الويب المتنوعة التي أنجزناها بنجاح، والتي تعكس خبرتنا
-              وقدرتنا على تحقيق رؤية عملائنا
+              نفخر بالمواقع الويب المتنوعة التي أنجزناها بنجاح، والتي تعكس
+              خبرتنا وقدرتنا على تحقيق رؤية عملائنا
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               {
-                title: 'منصة التجارة الإلكترونية الذكية',
+                title:
+                  'متجر الكتروني لشركة بيع جميع انواع الاكترونيات متكامل مزود بنظام فلاتر متقدم ولوحة تحكم ذكية',
+                link: 'https://lap-tech-five.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'منصة تجارة إلكترونية متكاملة بذكاء اصطناعي لتحسين تجربة التسوق',
+                  'موقع يعرض كل المنتجات التقنية يستطيع عرض حتي 5000+ منتج باداء سريع جدا مع نظام فلاتر وبحث عن المنتجات المطلوبة بدقة, مصحوب بلوحة تحكم جاهزة مجانا لمالك الموقع لامكانية (اضافة, تعديل, حذف) المنتجات بكل سهولة وفي اي وقت',
                 image:
-                  'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-                link: '#',
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
               },
               {
-                title: 'موقع إدارة المشاريع التعاونية',
+                title: 'موقع مطعمك الإلكتروني بتصميم عصري وتجربة حجز سهلة',
+                link: 'https://restaurant-ten-sage.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'موقع ويب لإدارة المشاريع والفرق مع أدوات تعاونية متقدمة',
+                  'استمتع بعرض قوائم الطعام بطريقة جذابة، واستقبل طلبات وحجوزات عملائك أونلاين بسهولة بنظام فلاتر جاهز للوصول للمنتج وطلبه بدقة, مصحوب بلوحة تحكم مجانا لمالك الموقع لامكانية (اضافة, تعديل, حذف) المنتجات بكل سهولة وفي اي وقت',
                 image:
-                  'https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['Vue.js', 'Express', 'PostgreSQL', 'Socket.io'],
-                link: '#',
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(730).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDb', 'React'],
               },
               {
-                title: 'موقع نظام إدارة المحتوى للمستشفيات',
+                title:
+                  'متجر ملابس إلكتروني متكامل مع فلاتر متقدمة ولوحة تحكم ذكية',
+                link: 'https://e-commerce-vert-xi-96.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'موقع ويب متكامل لإدارة المحتوى والمرضى مع تقنيات الأمان المتقدمة',
+                  'منصة تجارة إلكترونية لعرض الملابس بأسلوب عصري، تتيح للزوار تصفية المنتجات بسهولة حسب المقاس، اللون، والسعر، مع لوحة تحكم احترافية لإدارة المخزون والطلبات بكل مرونة.',
                 image:
-                  'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                tech: ['Angular', 'PHP', 'MySQL', 'Docker'],
-                link: '#',
-              }
+                  'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
+                tech: ['Tailwind', 'Node.js', 'MongoDb', 'Next'],
+              },
             ].map((project, index) => (
               <div
                 key={index}
                 className="group bg-gray-50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300"
               >
-                <div className="relative overflow-hidden h-48">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
-                      <Eye className="w-4 h-4" />
-                      عرض المشروع
-                    </button>
+                <Link
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="relative overflow-hidden h-64">
+                    <Image
+                      src={project.image}
+                      alt={project.title || 'صورة المشروع'}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110 bg-black/40"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <button className="bg-white text-blue-600 px-4 py-2 rounded-full font-semibold flex items-center gap-2">
+                        <Eye className="w-4 h-4" />
+                        عرض المشروع
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </Link>
                 <div className="p-6">
                   <div className="text-sm text-blue-600 font-semibold mb-2">
                     {project.category}
@@ -521,7 +437,7 @@ const CodeLegacyHomepage = () => {
                     className="flex items-center gap-2 text-blue-600 font-medium group-hover:text-blue-700 transition-colors"
                   >
                     <Eye className="w-4 h-4" />
-                    عرض تفاصيل المشروع
+                    عرض الموقع
                   </a>
                 </div>
               </div>
@@ -540,14 +456,87 @@ const CodeLegacyHomepage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Web Services Section */}
+      <section className="py-20 bg-white" id="feat">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
+              من مميزات <span className="text-blue-600">التعامل معنا</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              نقدم خدمات شاملة في تطوير الويب لضمان حصولك على موقع مثالي يلبي
+              احتياجاتك.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Globe className="w-8 h-8" />,
+                title: 'تطوير المواقع',
+                description:
+                  'تطوير مواقع ويب متجاوبة وسريعة باستخدام أحدث التقنيات مثل React و Next.js.',
+              },
+              {
+                icon: <Smartphone className="w-8 h-8" />,
+                title: 'التصميم المتجاوب',
+                description:
+                  'تصميم مواقع تعمل بشكل مثالي على جميع الأجهزة من الهواتف إلى أجهزة الكمبيوتر.',
+              },
+              {
+                icon: <Palette className="w-8 h-8" />,
+                title: 'تصميم UI/UX',
+                description:
+                  'تصميم واجهات جذابة وتجربة مستخدم استثنائية تزيد من معدلات التحويل.',
+              },
+              {
+                icon: <Search className="w-8 h-8" />,
+                title: 'تحسين SEO',
+                description:
+                  'تحسين محركات البحث لضمان ظهور موقعك في المراتب الأولى في نتائج البحث.',
+              },
+              {
+                icon: <Shield className="w-8 h-8" />,
+                title: 'الأمان والحماية',
+                description:
+                  'تنفيذ أعلى معايير الأمان لحماية موقعك وبيانات عملائك.',
+              },
+              {
+                icon: <Users className="w-8 h-8" />,
+                title: 'الدعم والصيانة',
+                description:
+                  ' دعم فني مستمر وصيانة دورية لضمان عمل موقعك بكفاءة عالية بعد تسليم المشروع.',
+              },
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="group bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-all duration-300 text-center"
+              >
+                <div className="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                  {service.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800 group-hover:text-blue-700 transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white" id="tech">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              التقنيات <span className="text-blue-600">المتطورة</span> التي نستخدمها
+              التقنيات <span className="text-blue-600">المتطورة</span> التي
+              نستخدمها
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية وقوية
+              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
+              وقوية
             </p>
           </div>
 
@@ -558,13 +547,28 @@ const CodeLegacyHomepage = () => {
               { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
               { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
               { name: 'Laravel', iconClass: 'devicon-laravel-plain colored' },
+              {
+                name: 'CSS3',
+                iconClass: 'devicon-css3-plain colored',
+              },
               { name: 'Python', iconClass: 'devicon-python-plain colored' },
               { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
-              { name: 'PostgreSQL', iconClass: 'devicon-postgresql-plain colored' },
-              { name: 'AWS', iconClass: 'devicon-amazonwebservices-plain-wordmark colored' },
-              { name: 'Docker', iconClass: 'devicon-docker-plain colored' },
-              { name: 'Kubernetes', iconClass: 'devicon-kubernetes-plain colored' },
-              { name: 'TypeScript', iconClass: 'devicon-typescript-plain colored' },
+              {
+                name: 'JavaScript',
+                iconClass: 'devicon-javascript-plain colored',
+              },
+              {
+                name: 'HTML5',
+                iconClass: 'devicon-html5-plain colored',
+              },
+              {
+                name: 'Express.js',
+                iconClass: 'devicon-express-original',
+              },
+              {
+                name: 'TypeScript',
+                iconClass: 'devicon-typescript-plain colored',
+              },
             ].map((tech, index) => (
               <div
                 key={index}
@@ -583,7 +587,7 @@ const CodeLegacyHomepage = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50" id="clients">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-800">
@@ -662,7 +666,7 @@ const CodeLegacyHomepage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="mail" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
@@ -688,8 +692,7 @@ const CodeLegacyHomepage = () => {
                     <h4 className="font-semibold text-gray-800">
                       البريد الإلكتروني
                     </h4>
-                    <p className="text-gray-600">info@codelegacy.com</p>
-                    <p className="text-gray-600">support@codelegacy.com</p>
+                    <p className="text-gray-600">codeorigins1@gmail.com</p>
                   </div>
                 </div>
 
@@ -699,8 +702,7 @@ const CodeLegacyHomepage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">الهاتف</h4>
-                    <p className="text-gray-600">+20 123 456 7890</p>
-                    <p className="text-gray-600">+20 987 654 3210</p>
+                    <p className="text-gray-600">+20 01201061216</p>
                   </div>
                 </div>
 
@@ -721,12 +723,7 @@ const CodeLegacyHomepage = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800">ساعات العمل</h4>
-                    <p className="text-gray-600">
-                      الأحد - الخميس: 9:00 - 18:00
-                    </p>
-                    <p className="text-gray-600">
-                      الجمعة - السبت: 10:00 - 16:00
-                    </p>
+                    <p className="text-gray-600">كل الاسبوع</p>
                   </div>
                 </div>
               </div>
@@ -738,33 +735,33 @@ const CodeLegacyHomepage = () => {
                 <div className="flex space-x-4 rtl:space-x-reverse">
                   {[
                     {
-                      name: 'Twitter',
-                      icon: <Twitter className="w-6 h-6" />,
-                      color: 'bg-blue-400',
-                    },
-                    {
                       name: 'Facebook',
                       icon: <Facebook className="w-6 h-6" />,
                       color: 'bg-blue-600',
+                      href: 'https://www.facebook.com/hany.nan.752/',
                     },
                     {
                       name: 'Instagram',
                       icon: <Instagram className="w-6 h-6" />,
                       color: 'bg-pink-500',
+                      href: 'https://www.instagram.com/hany._younan/?__pwa=1',
                     },
                     {
                       name: 'LinkedIn',
                       icon: <Linkedin className="w-6 h-6" />,
                       color: 'bg-blue-700',
+                      href: 'https://www.linkedin.com/in/hany-younan-5b7466372',
                     },
                   ].map((social, index) => (
-                    <a
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
                       key={index}
-                      href="#"
+                      href={social.href}
                       className={`${social.color} text-white p-3 rounded-full hover:opacity-90 transition-opacity`}
                     >
                       {social.icon}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -865,7 +862,8 @@ const CodeLegacyHomepage = () => {
 
       <style jsx>{`
         @keyframes pulse {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
             opacity: 0.5;
           }
@@ -876,9 +874,15 @@ const CodeLegacyHomepage = () => {
         }
 
         @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
         }
 
         @keyframes fadeInUp {
@@ -894,15 +898,16 @@ const CodeLegacyHomepage = () => {
 
         @keyframes wave-move-left {
           0% {
-            transform: translate3d(-90px,0,0);
+            transform: translate3d(-90px, 0, 0);
           }
-          100% { 
-            transform: translate3d(85px,0,0);
+          100% {
+            transform: translate3d(85px, 0, 0);
           }
         }
 
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0px) rotate(0deg);
           }
           50% {
@@ -910,7 +915,10 @@ const CodeLegacyHomepage = () => {
           }
         }
       `}</style>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+      />
     </div>
   );
 };

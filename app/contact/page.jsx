@@ -127,8 +127,7 @@ const ContactPage = () => {
                 <Mail className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">البريد الإلكتروني</h3>
-              <p className="text-gray-600">info@codelegacy.com</p>
-              <p className="text-gray-600">support@codelegacy.com</p>
+              <p className="text-gray-600">CodeOrigins1@gmail.com</p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
@@ -136,8 +135,7 @@ const ContactPage = () => {
                 <Phone className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">الهاتف</h3>
-              <p className="text-gray-600">+20 123 456 7890</p>
-              <p className="text-gray-600">+20 987 654 3210</p>
+              <p className="text-gray-600">+20 1201061216</p>
             </div>
 
             <div className="bg-white p-6 rounded-2xl shadow-md border border-blue-200/50 hover:shadow-xl transition-shadow duration-300 text-center">
@@ -154,8 +152,7 @@ const ContactPage = () => {
                 <Calendar className="w-8 h-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-semibold mb-2 text-gray-800">ساعات العمل</h3>
-              <p className="text-gray-600">الأحد - الخميس: 9:00 - 18:00</p>
-              <p className="text-gray-600">الجمعة - السبت: 10:00 - 16:00</p>
+              <p className="text-gray-600">كل ايام الاسبوع</p>
             </div>
           </div>
         </div>
@@ -282,10 +279,9 @@ const ContactPage = () => {
 
           <div className="flex justify-center space-x-6 rtl:space-x-reverse">
             {[
-              { name: 'Twitter', icon: <Twitter className="w-8 h-8" />, color: 'bg-blue-400', link: '#' },
-              { name: 'Facebook', icon: <Facebook className="w-8 h-8" />, color: 'bg-blue-600', link: '#' },
-              { name: 'Instagram', icon: <Instagram className="w-8 h-8" />, color: 'bg-pink-500', link: '#' },
-              { name: 'LinkedIn', icon: <Linkedin className="w-8 h-8" />, color: 'bg-blue-700', link: '#' },
+              { name: 'Facebook', icon: <Facebook className="w-8 h-8" />, color: 'bg-blue-600', link: 'https://www.facebook.com/hany.nan.752/' },
+              { name: 'Instagram', icon: <Instagram className="w-8 h-8" />, color: 'bg-pink-500', link: 'https://www.instagram.com/hany._younan/?__pwa=1' },
+              { name: 'LinkedIn', icon: <Linkedin className="w-8 h-8" />, color: 'bg-blue-700', link: 'https://www.linkedin.com/in/hany-younan-5b7466372' },
             ].map((social, index) => (
               <a
                 key={index}

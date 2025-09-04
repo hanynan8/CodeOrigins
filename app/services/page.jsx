@@ -86,8 +86,7 @@ const ServicesPage = () => {
         'نظام كوبونات ونقاط ولاء العملاء',
         'دعم اللغة العربية والإنجليزية'
       ],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'PayPal'],
-      deliveryTime: '4-8 أسابيع',
+      technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'PayPal'],
       color: 'from-green-500 to-emerald-500'
     },
     {
@@ -106,8 +105,7 @@ const ServicesPage = () => {
         'نظام دفع للكورسات المدفوعة',
         'تطبيق موبايل للتعلم أثناء التنقل'
       ],
-      technologies: ['Next.js', 'PostgreSQL', 'Redis', 'AWS S3', 'Socket.io'],
-      deliveryTime: '6-12 أسبوع',
+      technologies: ['Next.js', 'MongoDB', 'Node.js', 'AWS S3', 'Socket.io'],
       color: 'from-blue-500 to-cyan-500'
     },
     {
@@ -126,8 +124,7 @@ const ServicesPage = () => {
         'أمان متقدم وحماية البيانات',
         'قابلية التوسع السحابي'
       ],
-      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'AWS'],
-      deliveryTime: '8-16 أسبوع',
+      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -147,7 +144,6 @@ const ServicesPage = () => {
         'تصميم متجاوب لجميع الأجهزة'
       ],
       technologies: ['Next.js', 'Tailwind CSS', 'Google Analytics', 'Hotjar'],
-      deliveryTime: '1-3 أسابيع',
       color: 'from-orange-500 to-red-500'
     },
     {
@@ -167,7 +163,6 @@ const ServicesPage = () => {
         'تكامل مع وسائل التواصل الاجتماعي'
       ],
       technologies: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
-      deliveryTime: '3-6 أسابيع',
       color: 'from-blue-600 to-purple-600'
     },
     {
@@ -186,8 +181,7 @@ const ServicesPage = () => {
         'تقارير طبية وإحصائيات',
         'حماية عالية لخصوصية البيانات'
       ],
-      technologies: ['Next.js', 'PostgreSQL', 'Socket.io', 'HIPAA Compliance'],
-      deliveryTime: '6-10 أسابيع',
+      technologies: ['Next.js', 'MongoDB', 'Tailwind CSS', 'HIPAA Compliance'],
       color: 'from-teal-500 to-green-500'
     },
     {
@@ -206,8 +200,7 @@ const ServicesPage = () => {
         'معرض أعمال ومشاريع سابقة',
         'تحسين محركات البحث المتقدم'
       ],
-      technologies: ['Next.js', 'Strapi CMS', 'PostgreSQL', 'AWS'],
-      deliveryTime: '4-8 أسابيع',
+      technologies: ['Next.js', 'Node.js', 'MongoDB', 'AWS'],
       color: 'from-indigo-500 to-purple-500'
     },
     {
@@ -226,8 +219,7 @@ const ServicesPage = () => {
         'قسم الخبرات والمهارات',
         'تحسين للظهور في محركات البحث'
       ],
-      technologies: ['React', 'Gatsby', 'GraphQL', 'Netlify'],
-      deliveryTime: '2-5 أسابيع',
+      technologies: ['React', 'Tailwind', 'MongoDB', 'Netlify'],
       color: 'from-pink-500 to-rose-500'
     },
     {
@@ -247,7 +239,6 @@ const ServicesPage = () => {
         'تحليلات قراءة مفصلة'
       ],
       technologies: ['Next.js', 'Sanity CMS', 'MongoDB', 'Algolia Search'],
-      deliveryTime: '5-10 أسابيع',
       color: 'from-slate-500 to-gray-600'
     },
     {
@@ -267,7 +258,6 @@ const ServicesPage = () => {
         'نظام إلغاء وإعادة جدولة مرن'
       ],
       technologies: ['React', 'Node.js', 'PostgreSQL', 'Calendar APIs'],
-      deliveryTime: '6-12 أسبوع',
       color: 'from-emerald-500 to-teal-500'
     },
     {
@@ -287,7 +277,6 @@ const ServicesPage = () => {
         'تطبيق موبايل للمتابعة'
       ],
       technologies: ['Next.js', 'Socket.io', 'MongoDB', 'Redis'],
-      deliveryTime: '8-14 أسبوع',
       color: 'from-violet-500 to-purple-500'
     },
     {
@@ -307,7 +296,6 @@ const ServicesPage = () => {
         'شبكة تواصل بين الحضور'
       ],
       technologies: ['React', 'Node.js', 'Stripe', 'WebRTC', 'Socket.io'],
-      deliveryTime: '4-8 أسابيع',
       color: 'from-amber-500 to-yellow-500'
     }
   ];
@@ -428,7 +416,7 @@ const ServicesPage = () => {
 
           <div className="mt-12 grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">200+</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">50+</div>
               <div className="text-blue-100">موقع تم تطويره</div>
             </div>
             <div>
@@ -436,7 +424,7 @@ const ServicesPage = () => {
               <div className="text-blue-100">سنوات خبرة</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-yellow-400 mb-2">98%</div>
+              <div className="text-3xl font-bold text-yellow-400 mb-2">100%</div>
               <div className="text-blue-100">رضا العملاء</div>
             </div>
             <div>
@@ -502,8 +490,8 @@ const ServicesPage = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-              خدمات <span className="text-blue-600">تطوير الويب</span> المتخصصة
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              خدمات <span className="text-blue-600">تطوير الويب</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
               نقدم حلول ويب شاملة لجميع أنواع المواقع والمنصات الرقمية بأحدث التقنيات ومعايير الجودة العالمية
@@ -556,19 +544,10 @@ const ServicesPage = () => {
                   )}
                 </div>
 
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center text-sm text-gray-600">
-                    <Clock className="w-4 h-4 ml-1" />
-                    {service.deliveryTime}
-                  </div>
-                </div>
 
                 <div className="flex gap-3">
                   <button className={`flex-1 py-3 px-4 rounded-lg bg-gradient-to-r ${service.color} text-white font-semibold hover:opacity-90 transition-all transform hover:scale-105`}>
                     طلب الخدمة
-                  </button>
-                  <button className="px-4 py-3 rounded-lg border-2 border-blue-200 text-blue-600 hover:bg-blue-50 transition-all">
-                    <Eye className="w-5 h-5" />
                   </button>
                 </div>
               </div>
@@ -634,9 +613,6 @@ const ServicesPage = () => {
                   <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-sm font-bold text-gray-800">
                     {step.step}
                   </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-blue-300 to-purple-300 transform -translate-x-10"></div>
-                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800 group-hover:text-blue-700 transition-colors">
                   {step.title}
@@ -651,14 +627,16 @@ const ServicesPage = () => {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-20 bg-white">
+     <section className="py-20 bg-white" id='tech'>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              التقنيات <span className="text-blue-600">المتطورة</span> التي نستخدمها
+              التقنيات <span className="text-blue-600">المتطورة</span> التي
+              نستخدمها
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية وقوية
+              نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
+              وقوية
             </p>
           </div>
 
@@ -669,13 +647,28 @@ const ServicesPage = () => {
               { name: 'Vue.js', iconClass: 'devicon-vuejs-plain colored' },
               { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
               { name: 'Laravel', iconClass: 'devicon-laravel-plain colored' },
+              {
+                name: 'CSS3',
+                iconClass: 'devicon-css3-plain colored',
+              },
               { name: 'Python', iconClass: 'devicon-python-plain colored' },
               { name: 'MongoDB', iconClass: 'devicon-mongodb-plain colored' },
-              { name: 'PostgreSQL', iconClass: 'devicon-postgresql-plain colored' },
-              { name: 'AWS', iconClass: 'devicon-amazonwebservices-plain-wordmark colored' },
-              { name: 'Docker', iconClass: 'devicon-docker-plain colored' },
-              { name: 'Kubernetes', iconClass: 'devicon-kubernetes-plain colored' },
-              { name: 'TypeScript', iconClass: 'devicon-typescript-plain colored' },
+              {
+                name: 'JavaScript',
+                iconClass: 'devicon-javascript-plain colored',
+              },
+              {
+                name: 'HTML5',
+                iconClass: 'devicon-html5-plain colored',
+              },
+              {
+                name: 'Express.js',
+                iconClass: 'devicon-express-original',
+              },
+              {
+                name: 'TypeScript',
+                iconClass: 'devicon-typescript-plain colored',
+              },
             ].map((tech, index) => (
               <div
                 key={index}
@@ -694,7 +687,7 @@ const ServicesPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50" id='faq'>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -722,10 +715,6 @@ const ServicesPage = () => {
               {
                 question: 'هل يمكنني إدارة محتوى الموقع بنفسي بعد التسليم؟',
                 answer: 'نعم، نطور نظام إدارة محتوى سهل الاستخدام يمكنك من تحديث المحتوى بسهولة. كما نقدم تدريب شامل وأدلة مفصلة لاستخدام النظام.'
-              },
-              {
-                question: 'ما هي تكلفة استضافة وصيانة الموقع؟',
-                answer: 'نقدم خطط استضافة مرنة تبدأ من 1000 جنيه شهرياً تشمل الاستضافة، النسخ الاحتياطي، والمراقبة. تختلف التكلفة حسب حجم الموقع ومتطلبات الأداء.'
               },
               {
                 question: 'هل تطورون مواقع متجاوبة تعمل على الهواتف؟',
