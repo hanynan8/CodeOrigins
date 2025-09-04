@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 // SEO / Keywords bundle
 // ---------------------------
 // غيّر COMPANY_NAME و SITE_DOMAIN حسب مشروعك
-export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة هنا
+export const COMPANY_NAME = 'CodeOrigins'; // غيّر اسم الشركة هنا
 export const SITE_DOMAIN = 'https://code-origins.vercel.app/'; // غيّر إلى الدومين الفعلي
 
 export const seoKeywords = {
@@ -101,7 +101,7 @@ export const metadata = {
     type: 'website'
   },
   icons: {
-    icon: '/coding.png', // ضع public/icons/code.svg (SVG favicon)
+    icon: '/coding.png',
     shortcut: '/icons/favicon-16x16.png',
     apple: '/icons/apple-touch-icon.png',
     other: [{ rel: 'manifest', url: '/site.webmanifest' }]
@@ -143,6 +143,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
+    <head>
+      <link rel="icon" href="/coding.png" />
+
+    </head>
       <body className={`${rubik.className} ${geistMono.variable} antialiased`}>
         <Navbar />
 
