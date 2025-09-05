@@ -76,7 +76,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800">البريد الإلكتروني</h4>
-                  <p className="text-gray-600">hanynan8@gmail.com</p>
+                  <p className="text-gray-600">codeorigins1@gmail.com</p>
                 </div>
               </div>
 
