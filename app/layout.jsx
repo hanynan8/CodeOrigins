@@ -145,6 +145,7 @@ export default function RootLayout({ children }) {
     <html lang="ar" dir="rtl">
     <head>
       <link rel="icon" href="/coding.png" />
+      <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
 
     </head>
       <body className={`${rubik.className} ${geistMono.variable} antialiased`}>
