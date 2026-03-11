@@ -18,9 +18,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ---------------------------
 // SEO / Keywords bundle
@@ -71,10 +68,17 @@ seoKeywords.all = [
 ];
 
 // ---------------------------
+// Viewport configuration
+// ---------------------------
+export const viewport = {
+  themeColor: '#0ea5a4',
+};
+
+// ---------------------------
 // Next.js metadata export (app dir)
 // ---------------------------
 export const metadata = {
-    title: {
+  title: {
     default: `${COMPANY_NAME} | حلول تطوير ويب وبرمجيات متكاملة`,
     template: `%s | ${COMPANY_NAME}`,
   },
@@ -90,7 +94,7 @@ export const metadata = {
     siteName: COMPANY_NAME,
     images: [
       {
-        url: `https://raw.githubusercontent.com/hanynan8/forImages/refs/heads/main/Screenshot%20(791).png`, // ضع صورة OG فعلية في public
+        url: 'https://raw.githubusercontent.com/hanynan8/forImages/refs/heads/main/Screenshot%20(791).png',
         width: 1200,
         height: 630,
         alt: `${COMPANY_NAME} — Web & Software Development`
@@ -107,12 +111,9 @@ export const metadata = {
   },
   manifest: '/site.webmanifest',
   robots: 'index, follow',
-  themeColor: '#0ea5a4',
   verification: {
-    google: 'GOOGLE_SITE_VERIFICATION_TOKEN' // غيّر لو عندك التوكين
+    google: 'GOOGLE_SITE_VERIFICATION_TOKEN'
   },
-  // structured data: (Next metadata doesn't automatically inject JSON-LD; add script tag in head if needed)
-  // هنا نحتفظ ببيانات منظمة لاستخدامها لاحقًا داخل عنصر <script type="application/ld+json"> إذا رغبت
   jsonLd: {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -134,6 +135,7 @@ export const metadata = {
     ]
   }
 };
+
 const FB_PIXEL_ID = '891356743903601';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -143,11 +145,10 @@ const FB_PIXEL_ID = '891356743903601';
 export default function RootLayout({ children }) {
   return (
     <html lang="ar" dir="rtl">
-    <head>
-      <link rel="icon" href="/coding.png" />
-      <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
+      <head>
+        <link rel="icon" href="/coding.png" />
+        <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
 
-        {/* --------------------------- */}
         {/* Meta Pixel Script */}
         <Script id="fb-pixel" strategy="afterInteractive">
           {`
@@ -163,27 +164,7 @@ export default function RootLayout({ children }) {
             fbq('track', 'PageView');
           `}
         </Script>
-        
-<Script>
-          {`
 
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '891356743903601');
-fbq('track', 'PageView');
-          `}
-
-</Script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=891356743903601&ev=PageView&noscript=1"
-/>
-</noscript>
         {/* Meta Pixel noscript fallback (for users with JavaScript disabled) */}
         <noscript>
           <img 
@@ -191,16 +172,14 @@ src="https://www.facebook.com/tr?id=891356743903601&ev=PageView&noscript=1"
             width="1" 
             style={{ display: 'none' }}
             src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
-            alt=""
+            alt="facebook pixel"
           />
         </noscript>
+      </head>
 
-    </head>
       <body className={`${rubik.className} ${geistMono.variable} antialiased`}>
         <Navbar />
-
         {children}
-
         <Footer />
       </body>
     </html>
@@ -211,5 +190,5 @@ src="https://www.facebook.com/tr?id=891356743903601&ev=PageView&noscript=1"
 // TODO / Notes:
 // - ضع أيقونة الكود (SVG) في: public/icons/code.svg
 // - ضع صور OG/twitter في public (og-image.jpg, twitter-card.jpg)
-// - لو تريدني أفصل seoKeywords إلى ملف مستقل (app/sefsfsfsfsfo/keywords.js) قول إن شاء الله
-// - إذا تستخدم TypeScript أو تريد تقسيم metadata لكل صdfdomgdngdngndkgdngdigndiفحة أخبرني أعملّهولكfffيبسباهايسبايعهسهعباعهيسعباعيساعهباهيساهباياسعبس
+// - لو تريدني أفصل seoKeywords إلى ملف مستقل قول إن شاء الله
+// - إذا تستخدم TypeScript أخبرني أعملّهولك
