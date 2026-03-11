@@ -211,5 +211,5 @@ src="https://www.facebook.com/tr?id=891356743903601&ev=PageView&noscript=1"
 // TODO / Notes:
 // - ضع أيقونة الكود (SVG) في: public/icons/code.svg
 // - ضع صور OG/twitter في public (og-image.jpg, twitter-card.jpg)
-// - لو تريدني أفصل seoKeywords إلى ملف مستقل (app/seo/keywords.js) قول إن شاء الله
+// - لو تريدني أفصل seoKeywords إلى ملف مستقل (app/sefsfsfsfsfo/keywords.js) قول إن شاء الله
 // - إذا تستخدم TypeScript أو تريد تقسيم metadata لكل صdfdomgdngdngndkgdngdigndiفحة أخبرني أعملّهولكfffيبسباهايسبايعهسهعباعهيسعباعيساعهباهيساهباياسعبس
