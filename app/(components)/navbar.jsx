@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Code, Menu } from 'lucide-react';
+import { Code, Menu, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -21,6 +21,16 @@ const Navbar = () => {
   // Function to close the sidebar
   const closeSidebar = () => {
     setIsOpen(false);
+  };
+
+  // WhatsApp link - الطريقة الموثوقة
+  const whatsappPhone = '201213819102';
+  const whatsappMessage = `السلام عليكم ورحمة الله وبركاته 👋\n\nانا اريد تطوير موقع الكتروني خاص بي\n\nهل يمكنكم تزويدي بمعلومات عن الأسعار والحزم المتاحة؟`;
+  const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+  
+  const handleWhatsAppClick = (e) => {
+    e.preventDefault();
+    window.open(whatsappURL, '_blank');
   };
 
   return (
@@ -44,14 +54,28 @@ const Navbar = () => {
                 CodeOrigins
               </span>
             </div>
-            <div className="hidden md:flex space-x-8 rtl:space-x-reverse">
+            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
               <Link href="/" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الرئيسية</Link>
               <Link href="/services" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">الخدمات</Link>
               <Link href="/lastprojects" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">اعمالنا السابقة</Link>
               <Link href="/about" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">من نحن</Link>
               <Link href="/contact" className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200">تواصل معنا</Link>
+              <button
+                onClick={handleWhatsAppClick}
+                className="flex items-center space-x-2 rtl:space-x-reverse bg-green-500 hover:bg-green-600 active:bg-green-700 text-white rounded-md px-4 py-2 transition-all duration-200 font-semibold cursor-pointer"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>واتس</span>
+              </button>
             </div>
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center space-x-4 rtl:space-x-reverse">
+              <button
+                onClick={handleWhatsAppClick}
+                className="flex items-center space-x-1.5 rtl:space-x-reverse bg-green-500 hover:bg-green-600 active:bg-green-700 text-white rounded-md px-3 py-2 transition-all duration-200 font-semibold cursor-pointer"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span className="text-sm">واتس</span>
+              </button>
               <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 hover:text-blue-400">
                 <Menu className="w-6 h-6" />
               </button>

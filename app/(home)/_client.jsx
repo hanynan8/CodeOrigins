@@ -11,6 +11,7 @@ import {
   Star,
   Menu,
   X,
+  MessageCircle,
 } from 'lucide-react';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 
@@ -25,6 +26,16 @@ const CodeOriginsClient = ({ services, projects, testimonials, webServices }) =>
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // WhatsApp handler
+  const whatsappPhone = '201213819102';
+  const whatsappMessage = `السلام عليكم ورحمة الله وبركاته 👋\n\nانا اريد تطوير موقع الكتروني خاص بي\n\nهل يمكنكم تزويدي بمعلومات عن الأسعار والحزم المتاحة؟`;
+  const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  const handleWhatsAppClick = (e) => {
+    e.preventDefault();
+    window.open(whatsappURL, '_blank');
+  };
 
   return (
     <>
@@ -64,6 +75,13 @@ const CodeOriginsClient = ({ services, projects, testimonials, webServices }) =>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
+            <button
+              onClick={handleWhatsAppClick}
+              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 active:bg-green-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105 shadow-2xl"
+            >
+              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span>تواصل عبر الواتس</span>
+            </button>
             <Link href="/lastprojects/#portfolio" className="w-full sm:w-auto">
               <button className="border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm w-full sm:w-auto">
                 اكتشف أعمالنا السابقة
