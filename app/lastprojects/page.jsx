@@ -42,7 +42,7 @@ import {
 } from 'lucide-react';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 
-const CodeOriginsPortfolio = () => {
+const CodeLegacyPortfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -188,11 +188,11 @@ const CodeOriginsPortfolio = () => {
 
               {
                 title:
-                  'موقع لشركتنا الخاصة CodeOrigins — صفحة تعريفية وشبكة خدمات',
+                  'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
                 link: 'https://code-origins.vercel.app/',
                 category: 'موقع ويب',
                 description:
-                  'الصفحة الرسمية لشركة CodeOrigins: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+                  'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
                 image:
                   'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
                 tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
@@ -502,7 +502,7 @@ const CodeOriginsPortfolio = () => {
               <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               <div className="text-right">
                 <div className="text-xs sm:text-sm text-gray-500">البريد الإلكتروني</div>
-                <div className="text-sm sm:text-base font-semibold text-gray-800">codeorigins1@gmail.com</div>
+                <div className="text-sm sm:text-base font-semibold text-gray-800">CodeLegacy1@gmail.com</div>
               </div>
             </div>
             
@@ -623,4 +623,4 @@ const CodeOriginsPortfolio = () => {
   );
 };
 
-export default CodeOriginsPortfolio;
+export default CodeLegacyPortfolio;

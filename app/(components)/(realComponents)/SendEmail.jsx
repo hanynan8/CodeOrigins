@@ -76,7 +76,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800">البريد الإلكتروني</h4>
-                  <p className="text-gray-600">codeorigins1@gmail.com</p>
+                  <p className="text-gray-600">CodeLegacy1@gmail.com</p>
                 </div>
               </div>
 
@@ -157,7 +157,7 @@ export default function ContactSection() {
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {/* حقول خفيّة مفيدة */}
-              <input type="hidden" name="_subject" value="رسالة جديدة من موقع CodeOrigins" />
+              <input type="hidden" name="_subject" value="رسالة جديدة من موقع CodeLegacy" />
               <input type="hidden" name="_language" value="ar" />
 
               <div className="grid md:grid-cols-2 gap-4">

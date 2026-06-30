@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 // SEO / Keywords bundle
 // ---------------------------
 // غيّر COMPANY_NAME و SITE_DOMAIN حسب مشروعك
-export const COMPANY_NAME = 'CodeOrigins'; // غيّر اسم الشركة هنا
+export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة هنا
 export const SITE_DOMAIN = 'https://code-origins.vercel.app/'; // غيّر إلى الدومين الفعلي
 
 export const seoKeywords = {

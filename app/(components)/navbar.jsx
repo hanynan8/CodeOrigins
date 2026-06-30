@@ -51,7 +51,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
               <Code className="w-8 h-8 gradient-icon text-purple-600" />
               <span className="text-xl font-bold bg-gradient-to-r to-purple-600 from-blue-600 bg-clip-text text-transparent">
-                CodeOrigins
+                CodeLegacys
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">

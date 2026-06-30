@@ -55,7 +55,7 @@ import {
 import SendEmail from '../(components)/(realComponents)/SendEmail';
 import Tech from '../(components)/(realComponents)/tech';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
-import CodeOriginsClient from './_client';
+import CodeLegacyClient from './_client';
 
 
 
@@ -69,7 +69,7 @@ import CodeOriginsClient from './_client';
 // استبدل هذا الملف بمحتوى صفحة الـ Home (الرئيسية)
 // تأكد أن لديك الصور (og-home.jpg, twitter-home.jpg, logo.png) داخل public/
 
-export const COMPANY_NAME = 'CodeOrigins'; // غيّر اسم الشركة لو حابب
+export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة لو حابب
 export const SITE_DOMAIN = 'https://code-origins.vercel.app'; // غيّر للدومين الحقيقي (بدون سلاش في النهاية)
 
 // ========== Metadata لـ Home (الرئيسية) ==========
@@ -79,12 +79,12 @@ export const metadata = {
 
   // وصف قصير يظهر في نتائج البحث
   description:
-    'CodeOrigins — شريكك في بناء مواقع سريعة وآمنة، متاجر إلكترونية قابلة للتوسعة، ومنصات SaaS. خدمات تصميم UX/UI، تحسين أداء، أمن، ونشر سحابي احترافي.',
+    'CodeLegacy — شريكك في بناء مواقع سريعة وآمنة، متاجر إلكترونية قابلة للتوسعة، ومنصات SaaS. خدمات تصميم UX/UI، تحسين أداء، أمن، ونشر سحابي احترافي.',
 
   // مجموعة كلمات مفتاحية واسعة ومركزة للـ Home (استعمل منها 8-20 لكل صفحة فرعية)
   keywords: [
     // عام - براند وخدمات رئيسية
-    'شركة تطوير ويب', 'CodeOrigins', 'تطوير مواقع في القاهرة', 'web development company egypt', 'تصميم مواقع',
+    'شركة تطوير ويب', 'CodeLegacy', 'تطوير مواقع في القاهرة', 'web development company egypt', 'تصميم مواقع',
     'تطوير متجر الكتروني', 'ecommerce development', 'saas development', 'UX UI design', 'تصميم واجهات',
     // تكنولوجي
     'Next.js', 'Next.js development', 'React', 'Node.js', 'TypeScript', 'PWA development', 'headless ecommerce',
@@ -476,11 +476,11 @@ const projects = [
   },
   {
     title:
-      'موقع لشركتنا الخاصة CodeOrigins — صفحة تعريفية وشبكة خدمات',
+      'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
     link: 'https://code-origins.vercel.app/',
     category: 'موقع ويب',
     description:
-      'الصفحة الرسمية لشركة CodeOrigins: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+      'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
@@ -578,7 +578,7 @@ const testimonials = [
     name: 'أحمد السيد',
     company: 'مدير تسويق، شركة التقنية',
     content:
-      'تعاملنا مع CodeOrigins كان تجربة رائعة، فريق محترف ومبدع قدم لنا حلولاً تتجاوز توقعاتنا وساعدنا في تحقيق أهدافنا الرقمية بنجاح.',
+      'تعاملنا مع CodeLegacy كان تجربة رائعة، فريق محترف ومبدع قدم لنا حلولاً تتجاوز توقعاتنا وساعدنا في تحقيق أهدافنا الرقمية بنجاح.',
     avatar:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
     rating: 5,
@@ -587,7 +587,7 @@ const testimonials = [
     name: 'سارة محمد',
     company: 'مالكة متجر إلكتروني',
     content:
-      'منصة التجارة الإلكترونية التي طورها فريق CodeOrigins ساعدت في مضاعفة مبيعاتي وتحسين تجربة العملاء، أشكرهم على العمل الرائع.',
+      'منصة التجارة الإلكترونية التي طورها فريق CodeLegacy ساعدت في مضاعفة مبيعاتي وتحسين تجربة العملاء، أشكرهم على العمل الرائع.',
     avatar:
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
     rating: 5,
@@ -596,7 +596,7 @@ const testimonials = [
     name: 'خالد عبدالله',
     company: 'مدير تقنية المعلومات، مؤسسة التعلم',
     content:
-      'نظام إدارة التعلم الذي طوره CodeOrigins كان حلماً تحقق، سهل الاستخدام ويوفر كل ما نحتاجه لإدارة عملية التعلم عن بعد بكفاءة.',
+      'نظام إدارة التعلم الذي طوره CodeLegacy كان حلماً تحقق، سهل الاستخدام ويوفر كل ما نحتاجه لإدارة عملية التعلم عن بعد بكفاءة.',
     avatar:
       'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
     rating: 5,
@@ -643,10 +643,10 @@ const webServices = [
   },
 ];
 
-const CodeOriginsHomepage = () => {
+const CodeLegacyHomepage = () => {
   return (
     <div className="min-h-screen">
-      <CodeOriginsClient 
+      <CodeLegacyClient 
         services={services}
         projects={projects}
         testimonials={testimonials}
@@ -662,4 +662,4 @@ const CodeOriginsHomepage = () => {
   );
 };
 
-export default CodeOriginsHomepage;
+export default CodeLegacyHomepage;
