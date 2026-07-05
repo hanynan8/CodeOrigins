@@ -1,43 +1,40 @@
 // components/WhatsAppButton.jsx
-'use client'; // Mark this as a Client Component
+'use client';
 
 import React from 'react';
 
-function goToWhatsApp(service = null, phoneNumber = '2001201061216') {
-  let message = 'السلام عليكم ورحمة الله وبركاته\n';
+function goToWhatsApp(service = null, phoneNumber = '2001213819102') {
+  let message = 'السلام عليكم ورحمة الله وبركاته 🌟\n\n';
 
   if (service && service.title) {
-    message += `أريد الاستفسار عن هذه الخدمة:\n\n`;
-    message += `🌟 *${service.title}*\n\n`;
+    message += `عندي استفسار عن الخدمة دي:\n\n`;
+    message += `✨ *${service.title}*\n\n`;
 
-    // إضافة الوصف المختصر
     if (service.shortDescription) {
-      message += `📝 *الوصف:*\n${service.shortDescription}\n\n`;
+      message += `📝 *تفاصيل الخدمة:*\n${service.shortDescription}\n\n`;
     }
 
-    // إضافة التقنيات المستخدمة
     if (service.technologies && service.technologies.length > 0) {
       message += `⚡ *التقنيات المستخدمة:*\n`;
       message += service.technologies.join(' • ') + '\n\n';
     }
 
-    message += `💼 أرغب في الحصول على:\n`;
-    message += `• عرض سعر مفصل\n`;
-    message += `• خطة العمل والمدة الزمنية\n`;
+    message += `💼 محتاج منكم:\n`;
+    message += `• عرض سعر تفصيلي\n`;
+    message += `• خطة الشغل والمدة الزمنية\n`;
     message += `• أمثلة لأعمال مشابهة\n`;
     message += `• استشارة مجانية\n\n`;
-    message += `📞 يرجى التواصل معي في أقرب وقت ممكن\n`;
-    message += `🚀 شكراً لكم`;
+    message += `📞 يارب تتواصلوا معايا في أقرب وقت\n`;
+    message += `🚀 شكراً جزيلاً لكم`;
   } else {
-    message += 'أريد الاستفسار عن خدماتكم في تطوير المواقع والتطبيقات\n';
-    message +=
-      'يرجى التواصل معي للمساعدة في اختيار الخدمة المناسبة لمشروعي\n\n';
-    message += '📋 المتاحة الخدمات:\n';
-    message += '• متاجر إلكترونية، منصات تعليمية وSaaS.\n';
-    message += '• صفحات هبوط ومواقع مطاعم وكافيهات.\n';
-    message += '• مواقع عيادات ومستشفيات وشركات أعمال.\n';
-    message += '• مواقع شخصية، معارض، أخبار ومجلات.\n\n';
-    message += '💡 أتطلع لسماع تفاصيل مشروعكم';
+    message += 'عايز أستفسر عن خدماتكم في تطوير المواقع والتطبيقات\n\n';
+    message += 'لو تقدروا تساعدوني في اختيار الخدمة المناسبة لمشروعي هيبقى تمام\n\n';
+    message += '📋 الخدمات اللي بتقدموها:\n';
+    message += '• متاجر إلكترونية، منصات تعليمية وSaaS\n';
+    message += '• لاندينج بيج ومواقع مطاعم وكافيهات\n';
+    message += '• مواقع عيادات ومستشفيات وشركات\n';
+    message += '• مواقع شخصية، معارض، أخبار ومجلات\n\n';
+    message += '💡 في انتظار سماع تفاصيل مشروعكم 🙏';
   }
 
   const encodedMessage = encodeURIComponent(message);
@@ -48,7 +45,7 @@ export default function WhatsAppButton({
   service,
   className = 'bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors',
   children = 'تواصل عبر واتساب',
-  phoneNumber = '2001201061216',
+  phoneNumber = '2001213819102',
 }) {
   return (
     <button
