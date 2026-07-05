@@ -270,15 +270,15 @@ const sliderProjects = [
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
     images: [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(817).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(816).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(818).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(820).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(822).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(825).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(827).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(828).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(829).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(817).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(816).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(818).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(820).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(822).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(825).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(827).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(828).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(829).png?raw=true',
     ],
   },
   {
@@ -288,15 +288,15 @@ const sliderProjects = [
       'موقع مطعم عصري يعرض القوائم والأطباق بطريقة جذابة، مع نظام للطلبات والحجوزات أونلاين وفلاتر للوصول السريع إلى الأطباق. يتضمن لوحة تحكم لإدارة القوائم والعروض.',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
     images: [
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(729).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(730).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(731).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(736).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(737).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(735).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(732).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(734).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(733).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(729).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(730).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(731).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(736).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(737).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(735).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(732).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(734).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(733).png?raw=true',
     ],
   },
 ];
@@ -312,7 +312,7 @@ const regularProjects = [
     description:
       'منصة تعليمية حديثة تتيح عرض الكورسات والدروس بشكل ديناميكي مع نظام تسجيل دخول آمن للمستخدمين. يمكن للطلاب متابعة المحتوى بسهولة، بينما توفر لوحة التحكم للمدير إمكانية إضافة الكورسات، إدارة المستخدمين، وتحديث المحتوى في أي وقت. تم تطوير النظام ليقدم أداء عالي وتجربة استخدام احترافية.',
     image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(1912).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1912).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
@@ -322,7 +322,7 @@ const regularProjects = [
     description:
       'موقع مطعم احترافي يعرض قائمة الطعام بشكل ديناميكي مع إمكانية تصنيف الوجبات والبحث السريع، ويدعم استقبال الطلبات أونلاين بسهولة. مزود بلوحة تحكم متكاملة تتيح لصاحب المطعم إدارة المنيو (إضافة، تعديل، حذف)، تحديث الأسعار، وإدارة الطلبات بشكل لحظي مع أداء سريع وتجربة مستخدم سلسة.',
     image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(1432).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1432).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
@@ -332,7 +332,7 @@ const regularProjects = [
     description:
       'متجر إلكتروني متكامل لبيع الملابس يعرض المنتجات بشكل ديناميكي مع نظام تصفية وبحث متقدم لتسهيل تجربة التسوق. يدعم إدارة عدد كبير من المنتجات بكفاءة عالية، ومزود بلوحة تحكم قوية تتيح إضافة وتعديل وحذف المنتجات بسهولة، مع تصميم عصري وأداء سريع يلائم جميع الأجهزة.',
     image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/Screenshot%20(1972).png?raw=true',
+      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1972).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
