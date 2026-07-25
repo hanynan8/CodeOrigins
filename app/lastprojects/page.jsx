@@ -56,14 +56,15 @@ const CodeLegacyPortfolio = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center min-h-screen">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 leading-tight">
-              أعمالنا{' '}
+              Our{' '}
               <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent sm:inline">
-                السابقة
+                Previous Work
               </span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed opacity-90 px-2">
-              نفخر بعرض مجموعة من مشاريع تطوير مواقع الويب السابقة التي أنجزناها
-              بنجاح، والتي تعكس خبرتنا في تقديم حلول ويب مبتكرة وفعالة.
+              We are proud to showcase a collection of previous web development
+              projects we have successfully completed, reflecting our expertise
+              in delivering innovative and effective web solutions.
             </p>
           </div>
         </div>
@@ -96,7 +97,7 @@ const CodeLegacyPortfolio = () => {
         </div>
       </section>
 
-      {/* Portfolio Items Section — كومبوننت مشترك مع الصفحة الرئيسية */}
+      {/* Portfolio Items Section — shared component with the homepage */}
       <PortfolioSection />
 
       {/* Advantages Section */}
@@ -104,61 +105,61 @@ const CodeLegacyPortfolio = () => {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-gray-800 px-2">
-              لماذا تختارنا في{' '}
-              <span className="text-blue-600 block sm:inline">تطوير مواقع الويب</span>؟
+              Why Choose Us for{' '}
+              <span className="text-blue-600 block sm:inline">Web Development</span>?
             </h2>
             <p className="text-sm sm:text-base lg:text-xl text-gray-600 max-w-4xl mx-auto px-4">
-              نركز في خدماتنا على تطوير مواقع الويب بأعلى معايير الجودة، مع
-              التركيز على المميزات التي تجعل موقعك متميزًا وفعالًا في سوق
-              الإنترنت التنافسي.
+              In our services, we focus on developing websites with the highest
+              quality standards, emphasizing the features that make your site
+              stand out and perform effectively in a competitive online market.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
               {
-                title: 'تصميم متجاوب',
-                description: 'نضمن أن يعمل موقعك بشكل مثالي على جميع الأجهزة، من الهواتف المحمولة إلى الحواسيب المكتبية.',
+                title: 'Responsive Design',
+                description: 'We ensure your website works perfectly on all devices, from mobile phones to desktop computers.',
                 icon: <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'سرعة أداء عالية',
-                description: 'نحسن من أداء الموقع ليتم تحميله في ثوانٍ معدودة، مما يحسن تجربة المستخدم ويقلل من معدل الارتداد.',
+                title: 'High Performance Speed',
+                description: 'We optimize site performance so it loads in seconds, improving user experience and reducing bounce rate.',
                 icon: <PerformanceIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'تحسين محركات البحث (SEO)',
-                description: 'ننظم هيكل الموقع ومحتواه ليظهر في أعلى نتائج بحث جوجل، مما يزيد من الزيارات العضوية.',
+                title: 'Search Engine Optimization (SEO)',
+                description: 'We structure the site and its content to rank at the top of Google search results, increasing organic traffic.',
                 icon: <Search className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'أمان متقدم',
-                description: 'نطبق أحدث معايير الأمان لحماية الموقع من الهجمات الإلكترونية وضمان خصوصية البيانات.',
+                title: 'Advanced Security',
+                description: 'We apply the latest security standards to protect the site from cyberattacks and ensure data privacy.',
                 icon: <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'تكامل مع أنظمة خارجية',
-                description: 'ندمج الموقع مع خدمات خارجية مثل الدفع الإلكتروني، الخرائط، والأنظمة السحابية لتعزيز الوظائف.',
+                title: 'Integration with External Systems',
+                description: 'We integrate the site with external services like online payment, maps, and cloud systems to enhance functionality.',
                 icon: <WorldIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'دعم فني مستمر',
-                description: 'نقدم دعمًا فنيًا بعد الإطلاق لضمان استمرارية عمل الموقع وتحديثات منتظمة.',
+                title: 'Ongoing Technical Support',
+                description: 'We provide technical support after launch to ensure the site continues running smoothly with regular updates.',
                 icon: <SupportIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'تصميم جذاب وسهل الاستخدام',
-                description: 'نركز على واجهات مستخدم جذابة وبديهية لتحسين تفاعل الزوار مع الموقع.',
+                title: 'Attractive, Easy-to-Use Design',
+                description: 'We focus on attractive, intuitive user interfaces to improve visitor engagement with the site.',
                 icon: <DesignIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'توافق مع جميع المتصفحات',
-                description: 'نختبر الموقع على مختلف المتصفحات لضمان تجربة متسقة لجميع المستخدمين.',
+                title: 'Cross-Browser Compatibility',
+                description: 'We test the site on different browsers to ensure a consistent experience for all users.',
                 icon: <CompatibilityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
               {
-                title: 'تحليلات وبيانات متقدمة',
-                description: 'ندمج أدوات التحليل لتتبع أداء الموقع وفهم سلوك الزوار لتحسينات مستمرة.',
+                title: 'Advanced Analytics & Data',
+                description: 'We integrate analytics tools to track site performance and understand visitor behavior for continuous improvement.',
                 icon: <BarChart className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
               },
             ].map((advantage, index) => (
@@ -186,10 +187,10 @@ const CodeLegacyPortfolio = () => {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
             {[
-              { number: '50+', label: 'مشروع مكتمل', icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '50+', label: 'عميل سعيد', icon: <ThumbsUp className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '5+', label: 'سنوات خبرة', icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '100%', label: 'رضا العملاء', icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
+              { number: '50+', label: 'Completed Projects', icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
+              { number: '50+', label: 'Happy Clients', icon: <ThumbsUp className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
+              { number: '5+', label: 'Years of Experience', icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
+              { number: '100%', label: 'Client Satisfaction', icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
             ].map((stat, index) => (
               <div key={index} className="p-2 sm:p-4">
                 {stat.icon}
@@ -205,38 +206,38 @@ const CodeLegacyPortfolio = () => {
       <section className="py-8 sm:py-12 lg:py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-            ابدأ مشروعك معنا اليوم
+            Start Your Project With Us Today
           </h2>
           <p className="text-sm sm:text-base lg:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
-            تواصل معنا الآن واحصل على استشارة مجانية لمشروعك القادم
+            Contact us now and get a free consultation for your next project
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm">
               <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-              <div className="text-right">
-                <div className="text-xs sm:text-sm text-gray-500">البريد الإلكتروني</div>
+              <div className="text-left">
+                <div className="text-xs sm:text-sm text-gray-500">Email</div>
                 <div className="text-sm sm:text-base font-semibold text-gray-800">CodeLegacy1@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm">
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-              <div className="text-right">
-                <div className="text-xs sm:text-sm text-gray-500">رقم الهاتف</div>
+              <div className="text-left">
+                <div className="text-xs sm:text-sm text-gray-500">Phone Number</div>
                 <div className="text-sm sm:text-base font-semibold text-gray-800">01201061216</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm sm:col-span-2 lg:col-span-1">
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-              <div className="text-right">
-                <div className="text-xs sm:text-sm text-gray-500">الموقع</div>
-                <div className="text-sm sm:text-base font-semibold text-gray-800">القاهرة، مصر</div>
+              <div className="text-left">
+                <div className="text-xs sm:text-sm text-gray-500">Location</div>
+                <div className="text-sm sm:text-base font-semibold text-gray-800">Cairo, Egypt</div>
               </div>
             </div>
           </div>
 
           <WhatsAppButton className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 text-sm sm:text-base">
-            تواصل معنا الآن
+            Contact Us Now
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </WhatsAppButton>
         </div>

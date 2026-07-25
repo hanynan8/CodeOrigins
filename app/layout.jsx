@@ -22,35 +22,35 @@ const geistMono = Geist_Mono({
 // ---------------------------
 // SEO / Keywords bundle
 // ---------------------------
-// غيّر COMPANY_NAME و SITE_DOMAIN حسب مشروعك
-export const COMPANY_NAME = 'CodeLegacy'; // غيّر اسم الشركة هنا
-export const SITE_DOMAIN = 'https://codelegacy.tech'; // غيّر إلى الدومين الفعلي
+// Change COMPANY_NAME and SITE_DOMAIN according to your project
+export const COMPANY_NAME = 'CodeLegacy'; // Change company name here
+export const SITE_DOMAIN = 'https://codelegacy.tech'; // Change to the actual domain
 
 export const seoKeywords = {
   primary: [
-    'شركة تطوير ويب', 'تطوير مواقع', 'تصميم مواقع', 'شركة برمجيات مصر', 'خدمات تطوير ويب', 'تطوير تطبيقات ويب', 'تصميم واجهات مستخدم', 'UI UX تصميم', 'متجر الكتروني', 'تطوير متجر الكتروني',
+    'web development company', 'website development', 'website design', 'software company egypt', 'web development services', 'web app development', 'user interface design', 'UI UX design', 'online store', 'ecommerce store development',
     'web development company', 'web app development', 'website design company', 'software company', 'saas development company'
   ],
   technical: [
-    'Next.js development','تطوير بـ Next.js','React developer','مبرمج React','Node.js development','TypeScript developer','typescript development','Headless CMS','headless ecommerce','PWA development','Progressive Web App','serverless architecture','Docker deployment','Kubernetes deployment','microservices architecture','graphql api','REST API development','websocket real-time','socket.io development','performance optimization','core web vitals optimization','technical seo'
+    'Next.js development', 'Next.js development', 'React developer', 'React developer', 'Node.js development', 'TypeScript developer', 'typescript development', 'Headless CMS', 'headless ecommerce', 'PWA development', 'Progressive Web App', 'serverless architecture', 'Docker deployment', 'Kubernetes deployment', 'microservices architecture', 'graphql api', 'REST API development', 'websocket real-time', 'socket.io development', 'performance optimization', 'core web vitals optimization', 'technical seo'
   ],
   commercial: [
-    'اسعار تصميم موقع','تكلفة تصميم موقع في مصر','تكلفة متجر الكتروني 2025','hire web developer egypt','hire next.js developer','best web development company egypt','affordable ecommerce development','web development cost estimate','استشارة تطوير ويب','خطة تطوير موقع'
+    'website design pricing', 'website design cost in egypt', 'ecommerce store cost 2025', 'hire web developer egypt', 'hire next.js developer', 'best web development company egypt', 'affordable ecommerce development', 'web development cost estimate', 'web development consultation', 'website development plan'
   ],
   local: [
-    'شركة تطوير ويب في القاهرة','شركة تطوير ويب في مصر','web development cairo','web developer cairo','مطور مواقع القاهرة','تصميم مواقع في القاهرة','خدمات SEO مصر','digital agency cairo','وكالة تصميم مواقع مصر'
+    'web development company in cairo', 'web development company in egypt', 'web development cairo', 'web developer cairo', 'website developer cairo', 'website design in cairo', 'seo services egypt', 'digital agency cairo', 'web design agency egypt'
   ],
   longTail: [
-    'كم تكلفة تصميم متجر الكتروني في مصر 2025','كيفية اختيار شركة تطوير ويب في القاهرة','دليل بناء متجر WooCommerce مع بوابة دفع محلية','بناء MVP لتطبيق SaaS خطوة بخطوة','Next.js vs React للمواقع الديناميكية','كيفية تحسين LCP في موقع ووردبريس','دمج بوابة دفع Fawry مع WooCommerce','كيفية اختيار استضافة سريعة لموقعك','كيفية تحسين تجربة المستخدم لمتجر الكتروني','security audit لتطبيقات الويب للشركات الصغيرة','best practices for SEO on Next.js','how to migrate to headless cms','how to build pwa for ecommerce','guide to scaling web apps on aws','cost to build saas in egypt'
+    'how much does an ecommerce store cost in egypt 2025', 'how to choose a web development company in cairo', 'guide to building a woocommerce store with a local payment gateway', 'building a saas mvp step by step', 'Next.js vs React for dynamic websites', 'how to improve LCP on a wordpress site', 'integrating fawry payment gateway with woocommerce', 'how to choose fast hosting for your website', 'how to improve ux for an ecommerce store', 'security audit for small business web applications', 'best practices for SEO on Next.js', 'how to migrate to headless cms', 'how to build pwa for ecommerce', 'guide to scaling web apps on aws', 'cost to build saas in egypt'
   ],
   industry: [
-    'تطوير مواقع عقارات مصر','نظام حجز للفنادق','منصة تعليمية lms development','حلول تجارة إلكترونية للماركات','custom crm development','enterprise web app development','hospitality software solutions','ecommerce for fashion brands','marketplace development'
+    'real estate website development egypt', 'hotel booking system', 'lms development platform', 'ecommerce solutions for brands', 'custom crm development', 'enterprise web app development', 'hospitality software solutions', 'ecommerce for fashion brands', 'marketplace development'
   ],
   securityInfra: [
-    'web application security','penetration testing','اختبار اختراق تطبيقات الويب','sre site reliability engineering','cloud migration aws','gcp cloud migration','azure devops services','ci cd pipeline','continuous integration','monitoring and observability'
+    'web application security', 'penetration testing', 'web application penetration testing', 'sre site reliability engineering', 'cloud migration aws', 'gcp cloud migration', 'azure devops services', 'ci cd pipeline', 'continuous integration', 'monitoring and observability'
   ],
   marketingContent: [
-    'content marketing for saas','seo for ecommerce egypt','local seo services cairo','social media for startups','growth hacking for startups','product-led growth','conversion rate optimization','email marketing for ecommerce'
+    'content marketing for saas', 'seo for ecommerce egypt', 'local seo services cairo', 'social media for startups', 'growth hacking for startups', 'product-led growth', 'conversion rate optimization', 'email marketing for ecommerce'
   ],
   all: [] // will be filled below by concatenation
 };
@@ -79,17 +79,17 @@ export const viewport = {
 // ---------------------------
 export const metadata = {
   title: {
-    default: `${COMPANY_NAME} | حلول تطوير ويب وبرمجيات متكاملة`,
+    default: `${COMPANY_NAME} | Integrated Web Development & Software Solutions`,
     template: `%s | ${COMPANY_NAME}`,
   },
   description:
-    'شركة متخصصة في تطوير مواقع وتطبيقات ويب، SaaS، متاجر إلكترونية، واجهات مستخدم جذابة، وتحسين الأداء وتجهيز البنية التحتية للسحابة.',
+    'A company specialized in developing websites and web applications, SaaS, ecommerce stores, attractive user interfaces, performance optimization, and cloud infrastructure setup.',
   keywords: seoKeywords.all,
   authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
   metadataBase: new URL(SITE_DOMAIN),
   openGraph: {
-    title: `${COMPANY_NAME} — حلول تطوير ويب وبرمجيات متكاملة`,
-    description: 'تطوير مواقع، متاجر إلكترونية، تطبيقات SaaS، حلول سحابية.',
+    title: `${COMPANY_NAME} — Integrated Web Development & Software Solutions`,
+    description: 'Website development, ecommerce stores, SaaS applications, cloud solutions.',
     url: SITE_DOMAIN,
     siteName: COMPANY_NAME,
     images: [
@@ -100,7 +100,7 @@ export const metadata = {
         alt: `${COMPANY_NAME} — Web & Software Development`
       }
     ],
-    locale: 'ar_EG',
+    locale: 'en_US',
     type: 'website'
   },
   icons: {
@@ -144,7 +144,7 @@ const FB_PIXEL_ID = '891356743903601';
 // ---------------------------
 export default function RootLayout({ children }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="en" dir="ltr">
       <head>
         <link rel="icon" href="/coding.png" />
         <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
@@ -187,7 +187,7 @@ export default function RootLayout({ children }) {
           href="https://wa.me/201213819102"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 left-2 md:left-6 z-50 flex items-center justify-center rounded-full shadow-lg bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
+            className="fixed bottom-6 right-2 md:right-6 z-50 flex items-center justify-center rounded-full shadow-lg bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
             aria-label="WhatsApp"
           >
           <svg viewBox="0 0 32 32" className="w-9 h-9 md:w-14 md:h-14 fill-white">
@@ -201,7 +201,7 @@ export default function RootLayout({ children }) {
 
 // ---------------------------
 // TODO / Notes:
-// - ضع أيقونة الكود (SVG) في: public/icons/code.svg
-// - ضع صور OG/twitter في public (og-image.jpg, twitter-card.jpg)
-// - لو تريدني أفصل seoKeywords إلى ملف مستقل قول إن شاء الله
-// - إذا تستخدم TypeScript أخبرني أعملّهولك
+// - Place the code icon (SVG) at: public/icons/code.svg
+// - Place OG/twitter images in public (og-image.jpg, twitter-card.jpg)
+// - If you want me to split seoKeywords into a separate file, let me know
+// - If you use TypeScript, let me know and I'll set it up

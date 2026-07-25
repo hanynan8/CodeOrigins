@@ -63,7 +63,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-50 border-b border-gray-200">
-          <h3 className="text-xs sm:text-base font-semibold text-gray-800 truncate max-w-[75%] text-right">
+          <h3 className="text-xs sm:text-base font-semibold text-gray-800 truncate max-w-[75%] text-left">
             {title}
           </h3>
           <button
@@ -83,7 +83,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
             <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin" />
-                <span className="text-gray-400 text-xs sm:text-sm">جاري التحميل...</span>
+                <span className="text-gray-400 text-xs sm:text-sm">Loading...</span>
               </div>
             </div>
           )}
@@ -94,18 +94,18 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
             onLoad={() => setIsLoading(false)}
           />
 
-          {/* الأسهم فوق الصورة */}
+          {/* Arrows over the image */}
           <button
             onClick={goLeft}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 hover:text-blue-600 rounded-full p-1.5 sm:p-3 shadow-xl transition-colors"
-          >
-            <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
-          </button>
-          <button
-            onClick={goRight}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 hover:text-blue-600 rounded-full p-1.5 sm:p-3 shadow-xl transition-colors"
           >
             <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
+          </button>
+          <button
+            onClick={goRight}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white text-gray-800 hover:text-blue-600 rounded-full p-1.5 sm:p-3 shadow-xl transition-colors"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
 
           {/* Counter */}
@@ -146,7 +146,7 @@ const SliderProjectCard = ({ project }) => {
         >
           <img
             src={project.images[0]}
-            alt={project.title || 'صورة المشروع'}
+            alt={project.title || 'Project image'}
             className="w-full h-full object-cover object-top sm:object-center"
             style={{
               transform: 'scaleX(1.05)',
@@ -156,7 +156,7 @@ const SliderProjectCard = ({ project }) => {
           />
           <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <span>📷</span>
-            <span>{project.images.length} صور</span>
+            <span>{project.images.length} photos</span>
           </div>
         </div>
 
@@ -185,7 +185,7 @@ const SliderProjectCard = ({ project }) => {
             className="flex items-center gap-1.5 sm:gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors text-xs sm:text-sm"
           >
             <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            عرض الصور
+            View Photos
           </button>
         </div>
       </div>
@@ -214,7 +214,7 @@ const RegularProjectCard = ({ project }) => (
       <div className="relative overflow-hidden h-44 sm:h-52 lg:h-64 bg-white">
         <img
           src={project.image}
-          alt={project.title || 'صورة المشروع'}
+          alt={project.title || 'Project image'}
           className="w-full h-full object-cover object-top sm:object-center"
           style={{
             transform: 'scaleX(1.05)',
@@ -252,7 +252,7 @@ const RegularProjectCard = ({ project }) => (
         className="flex items-center gap-1.5 sm:gap-2 text-blue-600 font-medium group-hover:text-blue-700 transition-colors text-xs sm:text-sm"
       >
         <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-        عرض الموقع
+        View Website
       </a>
     </div>
   </div>
@@ -263,10 +263,10 @@ const RegularProjectCard = ({ project }) => (
 ─────────────────────────────────────────────── */
 const sliderProjects = [
   {
-    title: 'متجر الكتروني لشركة بيع جميع انواع الإلكترونيات - LapTech',
-    category: 'موقع ويب',
+    title: 'Ecommerce Store for an Electronics Retailer — LapTech',
+    category: 'Website',
     description:
-      'متجر إلكتروني متكامل لعرض وبيع الأجهزة والإكسسوارات التقنية (قدرة عرض 5000+ منتج). مزود بنظام فلاتر متقدم، بحث دقيق، وأداء سريع. يتضمن لوحة تحكم مجانية للمالك لإدارة المنتجات (إضافة، تعديل، حذف) والمخزون بسهولة.',
+      'A fully integrated ecommerce store for showcasing and selling tech devices and accessories (capacity for 5,000+ products). Equipped with an advanced filtering system, precise search, and fast performance. Includes a free admin dashboard for the owner to easily manage products (add, edit, delete) and inventory.',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
     images: [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
@@ -282,10 +282,10 @@ const sliderProjects = [
     ],
   },
   {
-    title: 'موقع مطعمك الإلكتروني — نظام عرض وحجز وطلب أونلاين',
-    category: 'موقع ويب',
+    title: 'Your Restaurant Website — Online Menu, Booking & Ordering System',
+    category: 'Website',
     description:
-      'موقع مطعم عصري يعرض القوائم والأطباق بطريقة جذابة، مع نظام للطلبات والحجوزات أونلاين وفلاتر للوصول السريع إلى الأطباق. يتضمن لوحة تحكم لإدارة القوائم والعروض.',
+      'A modern restaurant website that showcases menus and dishes in an attractive way, with an online ordering and booking system and filters for quick access to dishes. Includes a dashboard for managing menus and offers.',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
     images: [
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(729).png?raw=true',
@@ -306,131 +306,131 @@ const sliderProjects = [
 ─────────────────────────────────────────────── */
 const regularProjects = [
   {
-    title: 'الموقع الإلكتروني الرسمي لشركة EduMaster التعليمية في مدريد، إسبانيا.',
+    title: 'Official website for EduMaster, an educational company in Madrid, Spain.',
     link: 'https://edumaster365.com',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'منصة تعليمية حديثة تتيح عرض الكورسات والدروس بشكل ديناميكي مع نظام تسجيل دخول آمن للمستخدمين. يمكن للطلاب متابعة المحتوى بسهولة، بينما توفر لوحة التحكم للمدير إمكانية إضافة الكورسات، إدارة المستخدمين، وتحديث المحتوى في أي وقت. تم تطوير النظام ليقدم أداء عالي وتجربة استخدام احترافية.',
+      'A modern educational platform that dynamically displays courses and lessons with a secure login system for users. Students can easily follow the content, while the admin dashboard lets the manager add courses, manage users, and update content at any time. The system was built to deliver high performance and a professional user experience.',
     image:
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1912).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
-    title: 'المطعم الإلكتروني الرسمي لمطعم UmKhater Kitchen في دبي، الإمارات.',
+    title: 'Official website for UmKhater Kitchen restaurant in Dubai, UAE.',
     link: 'https://umkhater.com',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'موقع مطعم احترافي يعرض قائمة الطعام بشكل ديناميكي مع إمكانية تصنيف الوجبات والبحث السريع، ويدعم استقبال الطلبات أونلاين بسهولة. مزود بلوحة تحكم متكاملة تتيح لصاحب المطعم إدارة المنيو (إضافة، تعديل، حذف)، تحديث الأسعار، وإدارة الطلبات بشكل لحظي مع أداء سريع وتجربة مستخدم سلسة.',
+      'A professional restaurant website that dynamically displays the menu with the ability to categorize meals and search quickly, and supports receiving orders online with ease. Equipped with a full dashboard that lets the restaurant owner manage the menu (add, edit, delete), update prices, and manage orders in real time with fast performance and a smooth user experience.',
     image:
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1432).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
-    title: 'المتجر الإلكتروني الرسمي لـ DOHA Bazaar لبيع الإكسسوارات',
+    title: 'Official ecommerce store for DOHA Bazaar accessories retailer',
     link: 'https://bazardoha.vercel.app/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'متجر إلكتروني متكامل لبيع الملابس يعرض المنتجات بشكل ديناميكي مع نظام تصفية وبحث متقدم لتسهيل تجربة التسوق. يدعم إدارة عدد كبير من المنتجات بكفاءة عالية، ومزود بلوحة تحكم قوية تتيح إضافة وتعديل وحذف المنتجات بسهولة، مع تصميم عصري وأداء سريع يلائم جميع الأجهزة.',
+      'A fully integrated ecommerce store for selling clothing that dynamically displays products with an advanced filtering and search system to make shopping easier. Supports efficient management of a large number of products, and is equipped with a powerful dashboard that makes it easy to add, edit, and delete products, with a modern design and fast performance that suits all devices.',
     image:
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1972).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
-    title: 'متجر ملابس إلكتروني متكامل',
+    title: 'Fully Integrated Clothing Ecommerce Store',
     link: 'https://e-commerce-vert-xi-96.vercel.app/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'منصة تجارة إلكترونية لعرض الملابس بأسلوب عصري. تتيح فلترة المنتجات حسب المقاس، اللون، السعر، مع لوحة تحكم احترافية لإدارة المخزون والطلبات وتسهيـل تجربة الشراء.',
+      'An ecommerce platform for showcasing clothing in a modern style. Allows filtering products by size, color, and price, with a professional dashboard for managing inventory and orders and streamlining the buying experience.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
-    title: 'موقع لشركتنا الخاصة CodeLegacy — صفحة تعريفية وشبكة خدمات',
+    title: 'Our Own Company Website, CodeLegacy — About Page & Services Network',
     link: 'https://codelegacy.tech',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'الصفحة الرسمية لشركة CodeLegacy: عرض للخدمات، مشاريعنا، فريق العمل، وتواصل سريع. تصميم نظيف لعرض الهوية والشهادات وعروض الخدمات التقنية.',
+      "CodeLegacy's official website: showcasing services, our projects, our team, and quick contact. A clean design to present the brand identity, testimonials, and technical service offerings.",
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
   },
   {
-    title: 'موقع لشركة MF Group للواجهات المعمارية',
+    title: 'Website for MF Group Architectural Facades Company',
     link: 'https://hanynan8.github.io/test-MFGroup/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'موقع عرض محافظ أعمال (portfolio) وخدمات تصميم واجهات معمارية، يحتوي معرض صور للمشروعات، وصف للخدمات، ونموذج تواصل لطلبات الاستشارة والمشاريع.',
+      'A portfolio and services showcase website for architectural facade design, featuring a project photo gallery, service descriptions, and a contact form for consultation and project requests.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
     tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
   },
   {
-    title: 'Kremora — متجر حلويات إلكتروني',
+    title: 'Kremora — Online Sweets Store',
     link: 'https://hanynan8.github.io/test-Sweety/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'متجر حلويات إلكتروني يعرض أصناف متعددة من الحلويات مع صفحات منتجات مفصّلة، سلة مشتريات، ونموذج طلب/حجز. تصميم لطيف يركّز على الصور والمنتجات الموسمية.',
+      'An online sweets store showcasing multiple categories of sweets with detailed product pages, a shopping cart, and an order/booking form. A lovely design focused on photos and seasonal products.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
-    tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (اختياري)'],
+    tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
   },
   {
-    title: 'Newton — موقع تصميم معماري وديكور',
+    title: 'Newton — Architectural & Interior Design Website',
     link: 'https://hanywebdev.github.io/Architecture-Interior-Design-Landing-Page--Publi/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'موقع عرض خدمات التصميم الداخلي والمعماري مع معرض مشاريع، وصف الخدمات (تصميم داخلي، تخطيط المساحات، استشارات المواد)، ونموذج لحجز استشارة.',
+      'A website showcasing interior and architectural design services with a project gallery, service descriptions (interior design, space planning, material consulting), and a form for booking a consultation.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(522).png?raw=true',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
   },
   {
-    title: 'InvSmart — منصة استشارات مالية واستثمارية',
+    title: 'InvSmart — Financial & Investment Consulting Platform',
     link: 'https://hanynan8.github.io/Financial-Consulting-Landing-Page/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'موقع خدمات مالية واستشارية يدعم وصف المنتجات الاستثمارية، ملفات العملاء، تقارير مالية مبسطة، وتكامل مبدئي مع واجهات بنكية عبر API (نماذج وتقارير). مناسب للشركات الصغيرة والمتوسطة.',
+      'A financial and consulting services website that supports investment product descriptions, client profiles, simplified financial reports, and initial integration with banking interfaces via API (forms and reports). Suitable for small and medium businesses.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(529).png?raw=true',
-    tech: ['React', 'Django (نماذج API)', 'PostgreSQL', 'OAuth'],
+    tech: ['React', 'Django (API forms)', 'PostgreSQL', 'OAuth'],
   },
   {
-    title: 'WaVer — تطبيق ويب لإدارة المهام والمشاريع (SaaS)',
+    title: 'WaVer — Task & Project Management Web App (SaaS)',
     link: 'https://saa-s-seven-kappa.vercel.app',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'منصة SaaS لإدارة المشاريع والمهام: لوحات كانبان، فرق عمل، تتبع الوقت، وإشعارات. مناسبة للفرق الصغيرة والمتوسطة مع خصائص تعاون ومشاركة الملفات.',
+      'A SaaS platform for managing projects and tasks: kanban boards, teams, time tracking, and notifications. Suitable for small and medium teams with collaboration and file-sharing features.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(502).png?raw=true',
-    tech: ['WordPress (واجهة محتوى)', 'PHP', 'MySQL', 'SEO Tools'],
+    tech: ['WordPress (content layer)', 'PHP', 'MySQL', 'SEO Tools'],
   },
   {
-    title: 'Portfolio شخصي — عرض المهارات والأعمال',
+    title: 'Personal Portfolio — Showcasing Skills and Work',
     link: 'https://my-portfolio-tau-six-33.vercel.app/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'محفظة أعمال شخصية لعرض المشاريع، المهارات، السيرة الذاتية وروابط التواصل. تصميم بسيط وسريع للزوار وأرباب العمل لعرض الخبرات والأمثلة العملية.',
+      'A personal portfolio for showcasing projects, skills, resume, and contact links. A simple, fast design for visitors and employers to view experience and practical examples.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
-    tech: ['React', 'Django (نماذج/Blog)', 'PostgreSQL', 'OAuth'],
+    tech: ['React', 'Django (forms/blog)', 'PostgreSQL', 'OAuth'],
   },
   {
-    title: 'حبارة برنت — طلب خدمات الطباعة أونلاين',
+    title: 'Habara Print — Order Printing Services Online',
     link: 'https://print-your-paper.vercel.app/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'منصة طلب خدمات الطباعة: رفع ملفات، اختيار خيارات الطباعة (ورق، قياس، تشطيب)، وتتبع الطلبات. تستهدف المطابع الصغيرة والمتوسطة لتلقي طلبات بسهولة عبر الويب.',
+      'A platform for ordering printing services: file uploads, choosing print options (paper, size, finish), and order tracking. Targets small and medium print shops to receive orders easily through the web.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(802).png?raw=true',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
   },
   {
-    title: 'صفحة وصفي لوظيفة مدير الموارد البشرية - CodeCraft',
+    title: 'HR Manager Job Description Page - CodeCraft',
     link: 'https://hr-design.vercel.app/',
-    category: 'موقع ويب',
+    category: 'Website',
     description:
-      'صفحة وصف وظيفي احترافية تعرض متطلبات وظيفة مدير الموارد البشرية، المسؤوليات، المزايا، وطريقة التقديم عبر استمارة اتصال موجهة لمرشحي الشركة.',
+      'A professional job description page presenting the requirements for an HR Manager position, responsibilities, benefits, and how to apply through a contact form directed to company candidates.',
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(803).png?raw=true',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
@@ -441,7 +441,7 @@ const regularProjects = [
    Main Portfolio Section
 ─────────────────────────────────────────────── */
 const PortfolioSection = ({
-  title = 'مشاريع تطوير مواقع الويب',
+  title = 'Web Development Projects',
   showCtaButton = true,
 }) => {
   return (
@@ -449,17 +449,18 @@ const PortfolioSection = ({
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-gray-800 px-2">
-            {title.includes('تطوير مواقع الويب') ? (
+            {title.includes('Web Development Projects') ? (
               <>
-                بعض <span className="text-blue-600">اعمالنا السابقة</span>
+                Some of <span className="text-blue-600">Our Previous Work</span>
               </>
             ) : (
               title
             )}
           </h2>
           <p className="text-xs sm:text-base lg:text-xl text-gray-600 max-w-4xl mx-auto px-4">
-            نقدم هنا مجموعة أعمالنا في تطوير مواقع الويب، حيث ركزنا على تقديم
-            حلول ويب متقدمة، سريعة، وآمنة تلبي احتياجات عملائنا المتنوعة.
+            Here we present a collection of our web development work, where we
+            focused on delivering advanced, fast, and secure web solutions
+            that meet our clients' diverse needs.
           </p>
         </div>
 
@@ -478,12 +479,12 @@ const PortfolioSection = ({
         {showCtaButton && (
           <div className="text-center mb-8 sm:mb-16 px-4">
             <a
-              href="https://wa.me/201213819102?text=مرحبًا، عايز اطور موقع معكم, عايز استفسر علي التفاصيل كاملة"
+              href="https://wa.me/201213819102?text=Hi, I'd like to develop a website with you and get the full details"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 text-sm sm:text-base"
             >
-              تواصل معنا لمشروعك التالي
+              Contact Us for Your Next Project
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           </div>

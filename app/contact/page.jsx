@@ -45,13 +45,13 @@ const ContactPage = () => {
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 leading-tight">
-            تواصل مع <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
+            Get in Touch with <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto px-2 leading-relaxed">
-            نحن هنا لنساعدك في تحقيق أفكارك التقنية. أخبرنا بتفاصيل مشروعك وسنرد عليك في أقرب وقت ممكن.
+            We're here to help you bring your tech ideas to life. Tell us about your project and we'll get back to you as soon as possible.
           </p>
           <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-2xl mx-auto touch-manipulation">
-            ابدأ التواصل
+            Start the Conversation
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -118,15 +118,15 @@ const ContactPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-14">
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white leading-tight px-2">
-              تابعنا على وسائل التواصل
+              Follow Us on Social Media
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white max-w-4xl mx-auto px-4 leading-relaxed">
-              كن على اطلاع بأحدث أعمالنا ونصائحنا التقنية من خلال متابعتنا على المنصات الاجتماعية.
+              Stay up to date with our latest work and technical tips by following us on social platforms.
             </p>
           </div>
 
           {/* Social Media Icons - Mobile Optimized */}
-          <div className="flex justify-center items-center space-x-4 sm:space-x-6 rtl:space-x-reverse px-4">
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 px-4">
             {[
               { 
                 name: 'Facebook', 
@@ -153,7 +153,7 @@ const ContactPage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${social.color} text-white p-3 sm:p-4 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl touch-manipulation`}
-                aria-label={`تابعنا على ${social.name}`}
+                aria-label={`Follow us on ${social.name}`}
               >
                 {social.icon}
               </a>

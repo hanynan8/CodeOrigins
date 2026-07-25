@@ -18,17 +18,18 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-10 lg:mb-12">
           {/* Logo and Company Intro */}
           <div className="lg:col-span-1 flex flex-col items-center sm:items-start">
-            <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+            <div className="flex items-center space-x-2 mb-4">
               <Code className="w-7 h-7 sm:w-8 sm:h-8 text-blue-400" />
               <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                 CodeLegacy
               </span>
             </div>
-            <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base text-center sm:text-start max-w-xs sm:max-w-none">
-              شركة متخصصة في تصميم وتطوير مواقع الويب العصرية، نقدم حلول تقنية
-              متكاملة لمختلف أنواع الأعمال لضمان حضور قوي على الإنترنت.
+            <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base text-center sm:text-left max-w-xs sm:max-w-none">
+              A company specialized in designing and developing modern
+              websites, providing comprehensive technical solutions for
+              various types of businesses to ensure a strong online presence.
             </p>
-            <div className="flex space-x-3 rtl:space-x-reverse">
+            <div className="flex space-x-3">
               <Link
                 href="https://www.facebook.com/hany.nan.752/"
                 target="_blank"
@@ -56,18 +57,18 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Web Types */}
+          {/* Website Types */}
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
-              مواقع الويب
+              Website Types
             </h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
+            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  منصات SaaS
+                  SaaS Platforms
                 </Link>
               </li>
               <li>
@@ -75,7 +76,7 @@ const Footer = () => {
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  صفحات هبوط
+                  Landing Pages
                 </Link>
               </li>
               <li>
@@ -83,7 +84,7 @@ const Footer = () => {
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  متاجر إلكترونية
+                  E-commerce Stores
                 </Link>
               </li>
               <li>
@@ -91,7 +92,7 @@ const Footer = () => {
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  مواقع مطاعم
+                  Restaurant Websites
                 </Link>
               </li>
               <li>
@@ -99,7 +100,7 @@ const Footer = () => {
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  مواقع عيادات
+                  Clinic Websites
                 </Link>
               </li>
               <li>
@@ -107,7 +108,7 @@ const Footer = () => {
                   href="/lastprojects/#portfolio"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  بورتفوليو شخصي
+                  Personal Portfolios
                 </Link>
               </li>
             </ul>
@@ -116,15 +117,15 @@ const Footer = () => {
           {/* Company */}
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
-              الشركة
+              Company
             </h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
+            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">
               <li>
                 <Link
                   href="/about"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  من نحن
+                  About Us
                 </Link>
               </li>
               <li>
@@ -132,7 +133,7 @@ const Footer = () => {
                   href="/services"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  خدماتنا
+                  Our Services
                 </Link>
               </li>
               <li>
@@ -140,7 +141,7 @@ const Footer = () => {
                   href="/lastprojects"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  اعمالنا السابقة
+                  Our Previous Work
                 </Link>
               </li>
               <li>
@@ -148,7 +149,7 @@ const Footer = () => {
                   href="/contact"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  تواصل معنا
+                  Contact Us
                 </Link>
               </li>
               <li>
@@ -156,24 +157,24 @@ const Footer = () => {
                   href="/services#faq"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  الأسئلة الشائعة
+                  FAQ
                 </Link>
               </li>
             </ul>
           </div>
-          
-          {/* Web Types */}
+
+          {/* Support */}
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
-              الدعم
+              Support
             </h4>
-            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-start">
+            <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">
               <li>
                 <Link
                   href="/lastprojects//#tech"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  التقنيات المستخدمة
+                  Technologies Used
                 </Link>
               </li>
               <li>
@@ -181,7 +182,7 @@ const Footer = () => {
                   href="//#clients"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  تقييمات العملاء
+                  Client Reviews
                 </Link>
               </li>
               <li>
@@ -189,7 +190,7 @@ const Footer = () => {
                   href="//#feat"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  مميزات CodeLegacy
+                  CodeLegacy Features
                 </Link>
               </li>
               <li>
@@ -197,7 +198,7 @@ const Footer = () => {
                   href="/contact/#mail"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  ارسل رسالة لنا
+                  Send Us a Message
                 </Link>
               </li>
             </ul>
@@ -210,19 +211,19 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-4 sm:pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex flex-wrap justify-center sm:justify-start space-x-4 sm:space-x-6 rtl:space-x-reverse gap-y-3 sm:gap-y-4">
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
+            <div className="flex flex-wrap justify-center sm:justify-start space-x-4 sm:space-x-6 gap-y-3 sm:gap-y-4">
+              <div className="flex items-center space-x-2">
                 <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                <span className="text-gray-300 text-sm">أمان متقدم</span>
+                <span className="text-gray-300 text-sm">Advanced Security</span>
               </div>
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
+              <div className="flex items-center space-x-2">
                 <Star className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
-                <span className="text-gray-300 text-sm">5 نجوم تقييم</span>
+                <span className="text-gray-300 text-sm">5 Star Rating</span>
               </div>
             </div>
 
             <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
-              &copy; 2025 CodeLegacy. جميع الحقوق محفوظة.  
+              &copy; 2025 CodeLegacy. All rights reserved.
             </p>
           </div>
         </div>

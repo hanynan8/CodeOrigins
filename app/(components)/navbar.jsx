@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   const whatsappPhone = '201213819102';
-  const whatsappMessage = `السلام عليكم ورحمة الله وبركاته 👋\n\nانا اريد تطوير موقع الكتروني خاص بي\n\nهل يمكنكم تزويدي بمعلومات عن الأسعار والحزم المتاحة؟`;
+  const whatsappMessage = `Hello! 👋\n\nI would like to develop my own website.\n\nCould you provide me with information about pricing and available packages?`;
   const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
 
   const handleWhatsAppClick = (e) => {
@@ -55,15 +55,14 @@ const Navbar = () => {
       </svg>
 
       <nav
-        dir="rtl"
         className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled ? 'border-b border-gray-200 shadow-md' : ''}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className={`flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-2' : 'py-2'}`}
           >
-            {/* الاسم + أيقونة </> في مكانها الأصلي - يمين */}
-            <div className="flex items-center space-x-2 rtl:space-x-reverse">
+            {/* Logo + name */}
+            <div className="flex items-center space-x-2">
               <Code className="w-8 h-8 gradient-icon text-purple-600" />
               <span className="text-xl font-bold bg-gradient-to-r to-purple-600 from-blue-600 bg-clip-text text-transparent">
                 CodeLegacy
@@ -71,42 +70,40 @@ const Navbar = () => {
             </div>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+            <div className="hidden md:flex items-center space-x-8">
               <Link
                 href="/"
                 className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
               >
-                الرئيسية
+                Home
               </Link>
               <Link
                 href="/services"
                 className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
               >
-                الخدمات
+                Services
               </Link>
               <Link
                 href="/lastprojects"
                 className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
               >
-                اعمالنا السابقة
+                Our Work
               </Link>
               <Link
                 href="/about"
                 className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
               >
-                من نحن
+                About Us
               </Link>
               <Link
                 href="/contact"
                 className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
               >
-                تواصل معنا
+                Contact Us
               </Link>
-              {/* اللوجو جمب الواتس */}
 
-              {/* Desktop - الواتس الأول، اللوجو بعده */}
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                {/* Desktop */}
+              {/* Desktop - logo */}
+              <div className="flex items-center space-x-2">
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-purple-600 shadow-sm">
                   <img
                     src={logoURL}
@@ -117,9 +114,8 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile: اللوجو + الواتس + الهمبرجر */}
-            <div className="md:hidden flex items-center space-x-3 rtl:space-x-reverse">
-              {/* Mobile */}
+            {/* Mobile: logo + hamburger */}
+            <div className="md:hidden flex items-center space-x-3">
               <img
                 src={logoURL}
                 alt="CodeOrigins Logo"
@@ -137,35 +133,35 @@ const Navbar = () => {
                   onClick={closeSidebar}
                   className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
                 >
-                  الرئيسية
+                  Home
                 </Link>
                 <Link
                   href="/services"
                   onClick={closeSidebar}
                   className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
                 >
-                  الخدمات
+                  Services
                 </Link>
                 <Link
                   href="/lastprojects"
                   onClick={closeSidebar}
                   className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
                 >
-                  اعمالنا السابقة
+                  Our Work
                 </Link>
                 <Link
                   href="/about"
                   onClick={closeSidebar}
                   className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
                 >
-                  من نحن
+                  About Us
                 </Link>
                 <Link
                   href="/contact"
                   onClick={closeSidebar}
                   className="text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md px-3 py-2 transition-all duration-200"
                 >
-                  تواصل معنا
+                  Contact Us
                 </Link>
               </div>
             </div>

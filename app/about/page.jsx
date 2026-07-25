@@ -56,12 +56,13 @@ const AboutPage = () => {
             </span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-5xl mx-auto px-1 xs:px-2 leading-relaxed xs:leading-relaxed sm:leading-loose">
-            رحلتنا في بناء مواقع الويب الاستثنائية، حيث نجمع بين التصميم الجميل
-            والتكنولوجيا المتطورة لتقديم تجارب رقمية تحدث فرقًا حقيقياً.
+            Our journey in building exceptional websites, combining beautiful
+            design with cutting-edge technology to deliver digital experiences
+            that make a real difference.
           </p>
           <Link href={'#story'}>
             <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-2xl mx-auto touch-manipulation min-h-[44px]">
-              اكتشف قصتنا
+              Discover Our Story
               <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
           </Link>
@@ -124,14 +125,15 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-gray-800 leading-tight px-2">
-              قصتنا في{' '}
+              Our Story in{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block xs:block sm:inline mt-1 xs:mt-2 sm:mt-0">
-                تطوير الويب
+                Web Development
               </span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed xs:leading-relaxed sm:leading-loose px-2">
-              تأسست CodeLegacy برؤية لتحويل الأفكار إلى مواقع ويب وتطبيقات رقمية
-              مبتكرة، مع التركيز على الجودة والأداء الاستثنائي.
+              CodeLegacy was founded with a vision to turn ideas into innovative
+              websites and digital applications, with a focus on quality and
+              outstanding performance.
             </p>
           </div>
 
@@ -139,18 +141,20 @@ const AboutPage = () => {
             <div className="relative order-2 lg:order-1">
               <div className="bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-lg border border-blue-200/50 hover:shadow-xl transition-shadow duration-300">
                 <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-800 mb-3 xs:mb-4 leading-tight">
-                  بدايتنا في عالم الويب
+                  Our Start in the World of the Web
                 </h3>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-600 mb-4 xs:mb-6 leading-relaxed">
-                  بدأت CodeLegacy كفكرة بسيطة, عندما جمع مجموعة من مطوري الويب
-                  الشغوفين قواهم لتقديم مواقع ويب عالية الجودة. منذ ذلك الحين،
-                  نمت الشركة لتصبح رائدة في تطوير الويب، مع التركيز على التقنيات
-                  الحديثة والتصميم الجذاب.
+                  CodeLegacy began as a simple idea, when a group of passionate
+                  web developers joined forces to deliver high-quality websites.
+                  Since then, the company has grown to become a leader in web
+                  development, focusing on modern technologies and attractive
+                  design.
                 </p>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-600 mb-4 xs:mb-6 sm:mb-8 leading-relaxed">
-                  اليوم، نحن فخورون بفريقنا المتخصص في تطوير الويب الذي يجمع
-                  خبرات من Frontend و Backend و UX/UI، مما يمكننا من تقديم حلول
-                  ويب شاملة تلبي احتياجات عملائنا في جميع القطاعات.
+                  Today, we're proud of our specialized team in web development
+                  that brings together expertise from Frontend, Backend, and
+                  UX/UI, enabling us to deliver comprehensive web solutions that
+                  meet our clients' needs across all sectors.
                 </p>
               </div>
               <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-8 h-8 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-blue-600/10 rounded-full animate-pulse"></div>
@@ -160,21 +164,21 @@ const AboutPage = () => {
             <div className="space-y-4 xs:space-y-6 order-1 lg:order-2">
               <div className="bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 shadow-md border border-blue-200/50">
                 <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-800 mb-3 xs:mb-4 leading-tight">
-                  ما يميزنا في تطوير الويب
+                  What Sets Us Apart in Web Development
                 </h3>
                 <div className="space-y-3 xs:space-y-4">
                   {[
-                    'لوحة تحكم مخصّصة لمالك الموقع لإدارة المحتوى والبيانات بسهولة',
-                    'تحسين محركات البحث (SEO) لزيادة الظهور وترتيب جوجل',
-                    'مواقع سريعة، متجاوبة وآمنة تعمل على جميع الأجهزة',
-                    'بناء باستخدام تقنيات حديثة وقابلة للتوسع (مثل React و Next.js)',
-                    'تصميم واجهات مستخدم جذابة وسهلة الاستخدام (UX/UI احترافي)',
-                    'فريق ذو خبرة والتزام بالجودة والتسليم في المواعيد',
-                    'دعم فني وصيانة دورية بعد التسليم (شراكات طويلة الأمد، ودعم حتى 12 شهر حسب الاتفاق)',
+                    'A dedicated admin dashboard for the site owner to easily manage content and data',
+                    'Search engine optimization (SEO) to increase visibility and Google rankings',
+                    'Fast, responsive, and secure websites that work on all devices',
+                    'Built with modern, scalable technologies (such as React and Next.js)',
+                    'Attractive, easy-to-use interface design (professional UX/UI)',
+                    'An experienced team committed to quality and on-time delivery',
+                    'Technical support and regular maintenance after delivery (long-term partnerships, with support up to 12 months depending on agreement)',
                   ].map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-start space-x-2 xs:space-x-3 rtl:space-x-reverse"
+                      className="flex items-start space-x-2 xs:space-x-3"
                     >
                       <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 text-blue-600 flex-shrink-0 mt-0.5 xs:mt-1" />
                       <span className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed">{item}</span>
@@ -194,22 +198,22 @@ const AboutPage = () => {
             {[
               {
                 number: '50+',
-                label: 'موقع ويب مطور',
+                label: 'Websites Developed',
                 icon: <Globe className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
                 number: '50+',
-                label: 'عميل سعيد',
+                label: 'Happy Clients',
                 icon: <ThumbsUp className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
                 number: '5+',
-                label: 'سنوات في الويب',
+                label: 'Years in Web Development',
                 icon: <Clock className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
                 number: '100%',
-                label: 'رضا العملاء',
+                label: 'Client Satisfaction',
                 icon: <Star className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
             ].map((stat, index) => (
@@ -232,11 +236,12 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-gray-800 leading-tight px-2">
-              رؤيتنا و <span className="text-blue-600">رسالتنا</span>
+              Our Vision & <span className="text-blue-600">Mission</span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
-              نعمل على بناء عالم رقمي أفضل من خلال تطوير مواقع ويب استثنائية
-              تخدم احتياجات عملائنا بأفضل المعايير العالمية.
+              We work to build a better digital world by developing exceptional
+              websites that serve our clients' needs to the highest global
+              standards.
             </p>
           </div>
 
@@ -245,26 +250,27 @@ const AboutPage = () => {
               <div className="text-blue-600 mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Globe className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-right">
-                رؤيتنا
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-left">
+                Our Vision
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-right">
-                أن نكون الشريك الأول في تطوير الويب للشركات العربية والعالمية،
-                من خلال تقديم مواقع ويب متطورة تعزز الحضور الرقمي وتحقق أهداف
-                الأعمال بأعلى معايير الجودة.
+              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-left">
+                To be the leading partner in web development for Arab and
+                global companies, by delivering advanced websites that enhance
+                digital presence and achieve business goals with the highest
+                quality standards.
               </p>
             </div>
             <div className="group bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-md border border-blue-200/50 hover:shadow-xl transition-all duration-300">
               <div className="text-blue-600 mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Code className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-right">
-                رسالتنا
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-left">
+                Our Mission
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-right">
-                تطوير مواقع ويب عالية الجودة، سريعة الأداء، وآمنة، مع التركيز
-                على تجربة المستخدم الاستثنائية والتصميم الجذاب لتحقيق أقصى
-                استفادة من الحضور الرقمي وتعزيز النمو التجاري.
+              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-left">
+                Developing high-quality, fast-performing, and secure websites,
+                with a focus on exceptional user experience and attractive
+                design to maximize digital presence and drive business growth.
               </p>
             </div>
           </div>
@@ -280,16 +286,17 @@ const AboutPage = () => {
       <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 xs:mb-6 sm:mb-8 text-white leading-tight px-2">
-            ابدأ مشروع موقعك الإلكتروني معنا
+            Start Your Website Project With Us
           </h2>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2">
-            إذا كنت تبحث عن شريك موثوق في تطوير الويب، فإن CodeLegacy هي الخيار
-            الأمثل لتحقيق رؤيتك الرقمية وتطوير موقعك المثالي.
+            If you're looking for a trusted web development partner, CodeLegacy
+            is the perfect choice to achieve your digital vision and build your
+            ideal website.
           </p>
           <WhatsAppButton
             className="inline-flex items-center gap-2 bg-white text-blue-600 px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl touch-manipulation min-h-[44px]"
           >
-            ابدأ مشروعك الآن
+            Start Your Project Now
             <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
           </WhatsAppButton>
         </div>

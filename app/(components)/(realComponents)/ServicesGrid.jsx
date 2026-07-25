@@ -113,12 +113,12 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-1 sm:px-4"
       onClick={onClose}
     >
-      {/* سهم يسار */}
+      {/* Left arrow */}
       <button
         onClick={goLeft}
         className="flex-shrink-0 bg-white hover:bg-blue-50 text-gray-800 hover:text-blue-600 rounded-full p-1.5 sm:p-3 shadow-xl transition-colors z-10 mx-0.5 sm:mx-3"
       >
-        <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
+        <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
       </button>
 
       {/* Modal Card */}
@@ -128,7 +128,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-gray-50 border-b border-gray-200">
-          <h3 className="text-xs sm:text-base font-semibold text-gray-800 truncate max-w-[75%] text-right">
+          <h3 className="text-xs sm:text-base font-semibold text-gray-800 truncate max-w-[75%] text-left">
             {title}
           </h3>
           <button
@@ -139,7 +139,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* منطقة الصورة */}
+        {/* Image area */}
         <div
           className="relative bg-gray-900 flex items-center justify-center"
           style={{ height: 'clamp(200px, 50vw, 520px)' }}
@@ -148,13 +148,13 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
             <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin" />
-                <span className="text-gray-400 text-xs sm:text-sm">جاري التحميل...</span>
+                <span className="text-gray-400 text-xs sm:text-sm">Loading...</span>
               </div>
             </div>
           )}
           <img
             src={images[currentIndex]}
-            alt={`صورة ${currentIndex + 1}`}
+            alt={`Image ${currentIndex + 1}`}
             className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoad={() => setIsLoading(false)}
           />
@@ -163,7 +163,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* نقاط التنقل */}
+        {/* Navigation dots */}
         <div className="flex justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 bg-gray-50 flex-wrap px-4">
           {reversedImages.map((_, i) => (
             <button
@@ -177,12 +177,12 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
         </div>
       </div>
 
-      {/* سهم يمين */}
+      {/* Right arrow */}
       <button
         onClick={goRight}
         className="flex-shrink-0 bg-white hover:bg-blue-50 text-gray-800 hover:text-blue-600 rounded-full p-1.5 sm:p-3 shadow-xl transition-colors z-10 mx-0.5 sm:mx-3"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
+        <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
       </button>
     </div>
   );
@@ -208,7 +208,7 @@ export const ServiceCard = ({ service }) => {
     <>
       <div className="group bg-gray-50 rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-blue-300 hover:scale-105 flex flex-col">
 
-        {/* ── منطقة الصورة ── */}
+        {/* ── Image area ── */}
         {hasImages ? (
           <div
             className={`relative overflow-hidden h-44 sm:h-52 lg:h-64 bg-white ${hasMultiple ? 'cursor-pointer' : ''}`}
@@ -227,13 +227,13 @@ export const ServiceCard = ({ service }) => {
             {hasMultiple && (
               <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-blue-600 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                 <span>📷</span>
-                <span>{images.length} صور</span>
+                <span>{images.length} photos</span>
               </div>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
           </div>
         ) : (
-          /* Fallback: أيقونة */
+          /* Fallback: icon */
           <div className={`flex items-center justify-center h-44 sm:h-52 lg:h-64 bg-gradient-to-br ${service.color} bg-opacity-10`}>
             <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${service.color} text-white group-hover:scale-110 transition-transform duration-300`}>
               {IconComponent && <IconComponent className="w-12 h-12 md:w-14 md:h-14" />}
@@ -241,10 +241,10 @@ export const ServiceCard = ({ service }) => {
           </div>
         )}
 
-        {/* ── محتوى البطاقة ── */}
+        {/* ── Card content ── */}
         <div className="flex flex-col flex-1 p-3 sm:p-4 lg:p-6">
 
-          {/* نقطة اللون + العنوان */}
+          {/* Color dot + title */}
           <div className="flex items-start gap-3 mb-2">
             <span className={`mt-1.5 w-3 h-3 rounded-full flex-shrink-0 bg-gradient-to-br ${service.color}`} />
             <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-800 group-hover:text-blue-700 transition-colors leading-snug">
@@ -252,25 +252,25 @@ export const ServiceCard = ({ service }) => {
             </h3>
           </div>
 
-          {/* وصف مختصر */}
+          {/* Short description */}
           <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
             {service.shortDescription}
           </p>
 
-          {/* أهم المميزات */}
+          {/* Key features */}
           <div className="mb-3 sm:mb-4">
-            <h4 className="font-semibold text-xs sm:text-sm text-gray-800 mb-2">أهم المميزات:</h4>
+            <h4 className="font-semibold text-xs sm:text-sm text-gray-800 mb-2">Key Features:</h4>
             <ul className="space-y-1.5">
               {service.features.slice(0, 4).map((feature, index) => (
                 <li key={index} className="flex items-start text-xs sm:text-sm text-gray-600">
-                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 ml-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed">{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* التقنيات */}
+          {/* Technologies */}
           <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
             {service.technologies.slice(0, 3).map((tech, index) => (
               <span key={index} className="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 sm:py-1 rounded">
@@ -284,7 +284,7 @@ export const ServiceCard = ({ service }) => {
             )}
           </div>
 
-          {/* الأزرار */}
+          {/* Buttons */}
           <div className="mt-auto flex flex-col gap-2">
             {hasMultiple && (
               <button
@@ -292,7 +292,7 @@ export const ServiceCard = ({ service }) => {
                 className="flex items-center gap-1.5 sm:gap-2 text-blue-600 font-medium hover:text-blue-700 transition-colors text-xs sm:text-sm"
               >
                 <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                عرض الصور ({images.length})
+                View Images ({images.length})
               </button>
             )}
 
@@ -300,7 +300,7 @@ export const ServiceCard = ({ service }) => {
               service={service}
               className={`w-full py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r ${service.color} text-white text-sm sm:text-base font-semibold hover:opacity-90 transition-all transform hover:scale-105 text-center block`}
             >
-              طلب الخدمة
+              Request Service
             </WhatsAppButton>
           </div>
 
@@ -324,8 +324,8 @@ export const ServiceCard = ({ service }) => {
 // ─────────────────────────────────────────────
 const ServicesGrid = ({
   services,
-  title = 'خدمات تطوير الويب',
-  subtitle = 'نقدم حلول ويب شاملة لجميع أنواع المواقع والمنصات الرقمية بأحدث التقنيات ومعايير الجودة العالمية',
+  title = 'Web Development Services',
+  subtitle = 'We provide comprehensive web solutions for all types of websites and digital platforms, using the latest technologies and global quality standards',
   showViewAll = false,
   sectionId = 'services',
   className = '',
@@ -337,7 +337,7 @@ const ServicesGrid = ({
     >
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
 
-        {/* رأس القسم */}
+        {/* Section header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">
             <span className="text-blue-600">{title}</span>
@@ -347,21 +347,21 @@ const ServicesGrid = ({
           </p>
         </div>
 
-        {/* الشبكة */}
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
 
-        {/* زر استكشف جميع الخدمات */}
+        {/* Explore all services button */}
         {showViewAll && (
           <div className="text-center mt-8 sm:mt-12">
             <Link
               href="/services"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 text-sm sm:text-base"
             >
-              استكشف جميع خدماتنا
+              Explore All Our Services
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
           </div>

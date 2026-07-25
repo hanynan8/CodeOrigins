@@ -1,5 +1,5 @@
 // TechSection.jsx
-// React component (Tailwind) for the "التقنيات المتطورة" section.
+// React component (Tailwind) for the "Advanced Technologies" section.
 // NOTE: add Devicon stylesheet in your _app.js / index.html for the icons to show:
 // <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
 
@@ -26,11 +26,11 @@ export default function TechSection({ techs = defaultTechs, id = 'tech', classNa
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            التقنيات <span className="text-blue-600">المتطورة</span> التي نستخدمها
+            The <span className="text-blue-600">Advanced Technologies</span> We Use
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            نعتمد على أحدث التقنيات والأدوات البرمجية لضمان تطوير مواقع عصرية
-            وقوية
+            We rely on the latest technologies and software tools to ensure
+            the development of modern, powerful websites
           </p>
         </div>
 
@@ -53,4 +53,4 @@ export default function TechSection({ techs = defaultTechs, id = 'tech', classNa
       </div>
     </section>
   );
-}
+} 

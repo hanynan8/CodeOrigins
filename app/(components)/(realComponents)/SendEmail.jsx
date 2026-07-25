@@ -1,8 +1,8 @@
 // components/ContactSection.jsx
 'use client'
-  
+
 import React, { useState } from "react";
-import Link from "next/link"; // لو React فقط: غيّر أو احذف هذا السطر
+import Link from "next/link"; // React only: change or remove this line
 import {
   Mail,
   Phone,
@@ -14,7 +14,7 @@ import {
   Linkedin,
 } from "lucide-react";
 
-const FORM_ID = "xldwojwb"; // <-- تم تحديثه بالـ Formspree ID اللي اديتهولي
+const FORM_ID = "xldwojwb"; // <-- Formspree ID
 
 export default function ContactSection() {
   const [status, setStatus] = useState(""); // "", "sending", "success", "error"
@@ -54,19 +54,19 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
-            هل أنت جاهز لبدء <span className="text-blue-600">مشروعك</span>؟
+            Ready to Start <span className="text-blue-600">Your Project</span>?
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            تواصل معنا اليوم ودعنا نحول فكرتك إلى موقع ويب مبهر يحقق أهدافك
-            ويتجاوز توقعاتك
+            Contact us today and let's turn your idea into a stunning website
+            that achieves your goals and exceeds your expectations
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* جهة معلومات التواصل */}
+          {/* Contact info side */}
           <div>
             <h3 className="text-2xl font-bold text-gray-800 mb-6">
-              تواصل معنا مباشرة
+              Contact Us Directly
             </h3>
 
             <div className="space-y-6">
@@ -75,7 +75,7 @@ export default function ContactSection() {
                   <Mail className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">البريد الإلكتروني</h4>
+                  <h4 className="font-semibold text-gray-800">Email</h4>
                   <p className="text-gray-600">CodeLegacy1@gmail.com</p>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">الهاتف</h4>
+                  <h4 className="font-semibold text-gray-800">Phone</h4>
                   <p className="text-gray-600">+20 01201061216</p>
                 </div>
               </div>
@@ -95,9 +95,9 @@ export default function ContactSection() {
                   <MapPin className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">العنوان</h4>
-                  <p className="text-gray-600">شارع التحرير، وسط البلد</p>
-                  <p className="text-gray-600">القاهرة، مصر</p>
+                  <h4 className="font-semibold text-gray-800">Address</h4>
+                  <p className="text-gray-600">Tahrir Street, Downtown</p>
+                  <p className="text-gray-600">Cairo, Egypt</p>
                 </div>
               </div>
 
@@ -106,17 +106,17 @@ export default function ContactSection() {
                   <Calendar className="w-6 h-6 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">ساعات العمل</h4>
-                  <p className="text-gray-600">كل الأسبوع</p>
+                  <h4 className="font-semibold text-gray-800">Working Hours</h4>
+                  <p className="text-gray-600">Every day</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
               <h4 className="font-semibold text-gray-800 mb-4">
-                تابعنا على وسائل التواصل
+                Follow Us on Social Media
               </h4>
-              <div className="flex space-x-4 rtl:space-x-reverse">
+              <div className="flex space-x-4">
                 {[
                   {
                     name: "Facebook",
@@ -151,19 +151,19 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* جهة الفورم */}
+          {/* Form side */}
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">أرسل لنا رسالة</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-              {/* حقول خفيّة مفيدة */}
-              <input type="hidden" name="_subject" value="رسالة جديدة من موقع CodeLegacy" />
-              <input type="hidden" name="_language" value="ar" />
+              {/* Hidden helper fields */}
+              <input type="hidden" name="_subject" value="New message from CodeLegacy website" />
+              <input type="hidden" name="_language" value="en" />
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    الاسم الكامل
+                    Full Name
                   </label>
                   <input
                     id="name"
@@ -171,13 +171,13 @@ export default function ContactSection() {
                     type="text"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                    placeholder="اسمك الكامل"
+                    placeholder="Your full name"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    البريد الإلكتروني
+                    Email
                   </label>
                   <input
                     id="email"
@@ -192,7 +192,7 @@ export default function ContactSection() {
 
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  رقم الهاتف
+                  Phone Number
                 </label>
                 <input
                   id="phone"
@@ -205,27 +205,27 @@ export default function ContactSection() {
 
               <div>
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                  نوع الخدمة
+                  Service Type
                 </label>
                 <select
                   id="service"
                   name="service"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 >
-                  <option>اختر نوع الخدمة</option>
-                  <option>تطوير مواقع الويب</option>
-                  <option>تطوير مواقع التجارة الإلكترونية</option>
-                  <option>تطوير تطبيقات الويب</option>
-                  <option>أمان مواقع الويب</option>
-                  <option>دمج الذكاء الاصطناعي في الويب</option>
-                  <option>تصميم واجهات المستخدم للويب</option>
-                  <option>أخرى</option>
+                  <option>Select service type</option>
+                  <option>Website Development</option>
+                  <option>E-commerce Website Development</option>
+                  <option>Web App Development</option>
+                  <option>Website Security</option>
+                  <option>AI Integration for Websites</option>
+                  <option>Web UI/UX Design</option>
+                  <option>Other</option>
                 </select>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  رسالتك
+                  Your Message
                 </label>
                 <textarea
                   id="message"
@@ -233,17 +233,17 @@ export default function ContactSection() {
                   rows="4"
                   required
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
-                  placeholder="اكتب هنا تفاصيل مشروعك أو استفسارك..."
+                  placeholder="Write your project details or inquiry here..."
                 />
               </div>
 
-              {/* حالة الإرسال */}
+              {/* Submission status */}
               {status === "success" && (
-                <div className="text-green-600 font-medium">تم إرسال رسالتك بنجاح ✅</div>
+                <div className="text-green-600 font-medium">Your message has been sent successfully ✅</div>
               )}
               {status === "error" && (
                 <div className="text-red-600 font-medium">
-                  حدث خطأ أثناء الإرسال، حاول مرة أخرى أو تواصل عبر البريد الإلكتروني مباشرة.
+                  An error occurred while sending. Please try again or contact us directly via email.
                 </div>
               )}
 
@@ -253,7 +253,7 @@ export default function ContactSection() {
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <MessageCircle className="w-5 h-5" />
-                {status === "sending" ? "جاري الإرسال..." : "إرسال الرسالة"}
+                {status === "sending" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

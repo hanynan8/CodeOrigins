@@ -10,33 +10,33 @@ export const COMPANY_NAME = 'CodeLegacy';
 export const SITE_DOMAIN = 'https://code-origins.vercel.app';
 
 export const metadata = {
-  title: `خدماتنا`,
+  title: `Our Services`,
   description:
-    'خدماتنا تتضمن تصميم وتطوير مواقع ومتاجر إلكترونية، تطوير تطبيقات SaaS، خدمات DevOps والسحابة، تحسين الأداء وSEO التقني، تصميم UX/UI، صياغة استراتيجيات المنتج، وصيانة ودعم فني كامل.',
+    'Our services include website and ecommerce store design & development, SaaS application development, DevOps and cloud services, performance optimization and technical SEO, UX/UI design, product strategy, and full maintenance & technical support.',
   keywords: [
-    'خدمات تطوير ويب', 'خدمات برمجيات', 'خدمات تطوير مواقع', 'خدمات تصميم مواقع', 'خدمات SaaS',
-    'Next.js development', 'تطوير بـ Next.js', 'React development', 'Node.js development',
+    'web development services', 'software services', 'website development services', 'website design services', 'SaaS services',
+    'Next.js development', 'Next.js development', 'React development', 'Node.js development',
     'TypeScript development', 'PWA development', 'Progressive Web App', 'headless ecommerce',
-    'تطوير متجر الكتروني', 'ecommerce development', 'WooCommerce development', 'Shopify development',
+    'ecommerce store development', 'ecommerce development', 'WooCommerce development', 'Shopify development',
     'payment gateway integration', 'cloud migration', 'AWS migration', 'DevOps services',
     'CI/CD pipeline', 'performance optimization', 'core web vitals optimization',
-    'technical SEO', 'hire web developer egypt', 'اطلب عرض سعر خدمة',
+    'technical SEO', 'hire web developer egypt', 'request a service quote',
   ],
   authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
   alternates: { canonical: `${SITE_DOMAIN}/services` },
   openGraph: {
-    title: `خدماتنا — ${COMPANY_NAME}`,
-    description: 'مجموعة خدمات متكاملة: تطوير مواقع ومتاجر، حلول SaaS، تحسين الأداء، الأمن، DevOps والسحابة.',
+    title: `Our Services — ${COMPANY_NAME}`,
+    description: 'A complete set of services: website and store development, SaaS solutions, performance optimization, security, DevOps and cloud.',
     url: `${SITE_DOMAIN}/services`,
     siteName: COMPANY_NAME,
-    images: [{ url: `${SITE_DOMAIN}/og-services.jpg`, width: 1200, height: 630, alt: `${COMPANY_NAME} — خدمات تطوير ويب` }],
-    locale: 'ar_EG',
+    images: [{ url: `${SITE_DOMAIN}/og-services.jpg`, width: 1200, height: 630, alt: `${COMPANY_NAME} — Web Development Services` }],
+    locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `خدماتنا — ${COMPANY_NAME}`,
-    description: 'تعرّف على خدماتنا: تصميم، تطوير، سحابة، أداء، أمن، وصيانة.',
+    title: `Our Services — ${COMPANY_NAME}`,
+    description: 'Learn about our services: design, development, cloud, performance, security, and maintenance.',
     images: [`${SITE_DOMAIN}/twitter-services.jpg`],
   },
   icons: { icon: '/icons/code.svg' },
@@ -49,43 +49,43 @@ export const metadata = {
 export const servicesItemListJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: `${COMPANY_NAME} — خدمات تطوير الويب`,
-  description: 'قائمة الخدمات التقنية المقدّمة من CodeLegacy.',
+  name: `${COMPANY_NAME} — Web Development Services`,
+  description: 'List of technical services offered by CodeLegacy.',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${SITE_DOMAIN}/services/web-development`, item: { '@type': 'Service', name: 'تطوير مواقع وتطبيقات ويب', description: 'تطوير مواقع احترافية باستخدام Next.js, React, Node.js.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
-    { '@type': 'ListItem', position: 2, url: `${SITE_DOMAIN}/services/ecommerce-development`, item: { '@type': 'Service', name: 'تطوير متاجر إلكترونية', description: 'بناء متاجر إلكترونية قابلة للتوسيع مع تكامل بوابات دفع محلية وعالمية.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
-    { '@type': 'ListItem', position: 3, url: `${SITE_DOMAIN}/services/saas-development`, item: { '@type': 'Service', name: 'تطوير منصات SaaS وMVP', description: 'تصميم وبناء حلول SaaS متعددة المستخدمين.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
+    { '@type': 'ListItem', position: 1, url: `${SITE_DOMAIN}/services/web-development`, item: { '@type': 'Service', name: 'Website & Web App Development', description: 'Professional website development using Next.js, React, Node.js.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
+    { '@type': 'ListItem', position: 2, url: `${SITE_DOMAIN}/services/ecommerce-development`, item: { '@type': 'Service', name: 'Ecommerce Store Development', description: 'Building scalable ecommerce stores with local and global payment gateway integration.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
+    { '@type': 'ListItem', position: 3, url: `${SITE_DOMAIN}/services/saas-development`, item: { '@type': 'Service', name: 'SaaS & MVP Development', description: 'Designing and building multi-tenant SaaS solutions.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
   ],
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// البيانات الخاصة بصفحة الخدمات فقط
+// Data specific to the services page only
 // ─────────────────────────────────────────────────────────────────────────────
 const processSteps = [
-  { step: '01', title: 'التشاور والتخطيط', description: 'نبدأ بفهم متطلباتك وأهدافك لوضع استراتيجية مناسبة للموقع', icon: 'MessageCircle' },
-  { step: '02', title: 'التصميم والتطوير', description: 'فريق المطورين يعمل على برمجة الموقع من الصفر بأحدث التقنيات', icon: 'Code' },
-  { step: '03', title: 'الاختبار والتحسين', description: 'نختبر الموقع بدقة ونحسن الأداء والسرعة لضمان أفضل تجربة', icon: 'CheckCircle' },
-  { step: '04', title: 'التسليم والدعم', description: 'نسلم الموقع مع دعم فني مستمر وتدريب على الاستخدام', icon: 'Rocket' },
+  { step: '01', title: 'Consultation & Planning', description: 'We start by understanding your requirements and goals to build the right strategy for your website', icon: 'MessageCircle' },
+  { step: '02', title: 'Design & Development', description: 'Our development team builds your site from scratch using the latest technologies', icon: 'Code' },
+  { step: '03', title: 'Testing & Optimization', description: 'We thoroughly test the site and optimize performance and speed to ensure the best experience', icon: 'CheckCircle' },
+  { step: '04', title: 'Delivery & Support', description: 'We deliver the site with ongoing technical support and usage training', icon: 'Rocket' },
 ];
 
 const whyChooseUs = [
-  { icon: 'Zap',         title: 'سرعة في التسليم',       description: 'نلتزم بالمواعيد المحددة ونسلم مشروعك في الوقت المتفق عليه مع الحفاظ على أعلى معايير الجودة.', color: 'from-blue-600 to-purple-600' },
-  { icon: 'Gauge',       title: 'مواقع فائقة السرعة',    description: 'نطور مواقع محسنة للأداء مع سرعات تحميل استثنائية تضمن تجربة مستخدم ممتازة.', color: 'from-green-500 to-emerald-500' },
-  { icon: 'Search',      title: 'SEO عالي ومتقدم',       description: 'مواقعنا محسنة بالكامل لمحركات البحث لضمان ظهورك في المراتب الأولى وجذب المزيد من العملاء.', color: 'from-blue-500 to-cyan-500' },
-  { icon: 'TrendingUp',  title: 'أداء عالي ومتميز',      description: 'نضمن أداء استثنائي لموقعك مع تحميل سريع وتجاوب ممتاز على جميع الأجهزة والشبكات.', color: 'from-purple-500 to-pink-500' },
-  { icon: 'Code',        title: 'برمجة من الصفر',         description: 'لا نستخدم قوالب جاهزة. كل موقع يتم برمجته من الصفر خصيصاً لتلبية احتياجاتك الفريدة.', color: 'from-indigo-500 to-blue-500' },
-  { icon: 'Shield',      title: 'أمان وحماية متقدمة',    description: 'نطبق أعلى معايير الأمان السيبراني لحماية موقعك وبيانات عملائك من أي تهديدات.', color: 'from-red-500 to-rose-500' },
-  { icon: 'Monitor',     title: 'تصميم متجاوب',           description: 'مواقعنا تعمل بشكل مثالي على جميع الأجهزة من الهواتف المحمولة إلى أجهزة سطح المكتب.', color: 'from-teal-500 to-green-500' },
-  { icon: 'Sparkles',    title: 'تقنيات حديثة ومتطورة', description: 'نستخدم أحدث التقنيات والإطارات البرمجية لضمان حصولك على موقع عصري وقابل للنمو.', color: 'from-pink-500 to-purple-500' },
-  { icon: 'Headphones',  title: 'دعم فني مستمر',          description: 'فريق دعم فني متاح 24/7 لمساعدتك وحل أي مشكلة قد تواجهها مع الموقع.', color: 'from-orange-500 to-red-500' },
+  { icon: 'Zap',         title: 'Fast Delivery',            description: 'We commit to agreed deadlines and deliver your project on time while maintaining the highest quality standards.', color: 'from-blue-600 to-purple-600' },
+  { icon: 'Gauge',       title: 'Lightning-Fast Websites',  description: 'We build performance-optimized websites with exceptional load speeds that guarantee a great user experience.', color: 'from-green-500 to-emerald-500' },
+  { icon: 'Search',      title: 'Advanced SEO',              description: 'Our sites are fully optimized for search engines to ensure top rankings and attract more customers.', color: 'from-blue-500 to-cyan-500' },
+  { icon: 'TrendingUp',  title: 'Outstanding Performance',   description: 'We guarantee exceptional performance for your site with fast loading and excellent responsiveness on all devices and networks.', color: 'from-purple-500 to-pink-500' },
+  { icon: 'Code',        title: 'Built From Scratch',        description: 'We don\'t use pre-made templates. Every site is coded from scratch specifically to meet your unique needs.', color: 'from-indigo-500 to-blue-500' },
+  { icon: 'Shield',      title: 'Advanced Security',         description: 'We apply the highest cybersecurity standards to protect your website and your customers\' data from any threats.', color: 'from-red-500 to-rose-500' },
+  { icon: 'Monitor',     title: 'Responsive Design',         description: 'Our websites work perfectly on all devices, from mobile phones to desktop computers.', color: 'from-teal-500 to-green-500' },
+  { icon: 'Sparkles',    title: 'Modern Technologies',       description: 'We use the latest technologies and frameworks to ensure you get a modern, scalable website.', color: 'from-pink-500 to-purple-500' },
+  { icon: 'Headphones',  title: 'Ongoing Technical Support', description: 'Our support team is available 24/7 to help you and resolve any issue you may encounter with your site.', color: 'from-orange-500 to-red-500' },
 ];
 
 const faqData = [
-  { question: 'كم يستغرق تطوير موقع ويب احترافي؟', answer: 'يختلف الوقت حسب تعقيد المشروع ومتطلباته. المواقع البسيطة تستغرق 2-4 أسابيع، بينما المنصات المعقدة قد تحتاج 8-16 أسبوع. نقدم جدول زمني مفصل قبل بداية كل مشروع.' },
-  { question: 'هل تقدمون ضمان على جودة المواقع المطورة؟', answer: 'نعم، نقدم ضمان جودة شامل لمدة 6 أشهر يشمل إصلاح أي أخطاء برمجية، بالإضافة إلى 3 أشهر دعم فني مجاني كامل مع إمكانية التمديد.' },
-  { question: 'هل المواقع التي تطورونها محسنة لمحركات البحث؟', answer: 'بالطبع! جميع مواقعنا مطورة وفقاً لأفضل ممارسات SEO مع تحسين شامل للكود والمحتوى والسرعة لضمان ظهور متميز في نتائج البحث.' },
-  { question: 'هل يمكنني إدارة محتوى الموقع بنفسي بعد التسليم؟', answer: 'نعم، نطور نظام إدارة محتوى سهل الاستخدام يمكنك من تحديث المحتوى بسهولة. كما نقدم تدريب شامل وأدلة مفصلة لاستخدام النظام.' },
-  { question: 'هل تطورون مواقع متجاوبة تعمل على الهواتف؟', answer: 'جميع مواقعنا متجاوبة بالكامل ومحسنة للعمل على جميع الأجهزة من الهواتف الذكية إلى أجهزة سطح المكتب مع تجربة مستخدم متسقة ومتميزة.' },
+  { question: 'How long does it take to develop a professional website?', answer: 'The timeline varies depending on the project\'s complexity and requirements. Simple websites take 2-4 weeks, while complex platforms may need 8-16 weeks. We provide a detailed timeline before starting each project.' },
+  { question: 'Do you offer a quality guarantee on the websites you develop?', answer: 'Yes, we provide a comprehensive quality guarantee for 6 months that covers fixing any bugs, in addition to 3 months of free full technical support with the option to extend.' },
+  { question: 'Are the websites you develop optimized for search engines?', answer: 'Of course! All our sites are developed according to SEO best practices with comprehensive optimization of code, content, and speed to ensure a strong presence in search results.' },
+  { question: 'Can I manage the website content myself after delivery?', answer: 'Yes, we build an easy-to-use content management system that lets you update content easily. We also provide comprehensive training and detailed guides for using the system.' },
+  { question: 'Do you build responsive websites that work on phones?', answer: 'All our websites are fully responsive and optimized to work on all devices, from smartphones to desktop computers, with a consistent and excellent user experience.' },
 ];
 
 const technologiesData = [
@@ -109,7 +109,7 @@ const technologiesData = [
 const ServicesPage = () => {
   return (
     <ServicesPageClient
-      services={servicesData}          // ← من الملف المشترك
+      services={servicesData}          // ← from the shared data file
       processSteps={processSteps}
       whyChooseUs={whyChooseUs}
       faqData={faqData}
