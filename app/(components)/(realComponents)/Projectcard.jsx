@@ -399,6 +399,16 @@ const regularProjects = [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
+  // {
+  //   title: 'Our Own Company Website, CodeLegacy — About Page & Services Network',
+  //   link: 'https://codelegacy.tech',
+  //   category: 'Website',
+  //   description:
+  //     "CodeLegacy's official website: showcasing services, our projects, our team, and quick contact. A clean design to present the brand identity, testimonials, and technical service offerings.",
+  //   image:
+  //     'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
+  //   tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
+  // },
   {
     title: 'Website for MF Group Architectural Facades Company',
     link: 'https://hanynan8.github.io/test-MFGroup/',
@@ -409,6 +419,16 @@ const regularProjects = [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
     tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
   },
+  // {
+  //   title: 'Kremora — Online Sweets Store',
+  //   link: 'https://hanynan8.github.io/test-Sweety/',
+  //   category: 'Website',
+  //   description:
+  //     'An online sweets store showcasing multiple categories of sweets with detailed product pages, a shopping cart, and an order/booking form. A lovely design focused on photos and seasonal products.',
+  //   image:
+  //     'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
+  //   tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
+  // },
   {
     title: 'Newton — Architectural & Interior Design Website',
     link: 'https://hanywebdev.github.io/Architecture-Interior-Design-Landing-Page--Publi/',
@@ -449,6 +469,7 @@ const regularProjects = [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
     tech: ['React', 'Django (forms/blog)', 'PostgreSQL', 'OAuth'],
   },
+
 
 ];
 /* ───────────────────────────────────────────────
