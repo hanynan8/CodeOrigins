@@ -400,16 +400,6 @@ const regularProjects = [
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
-    title: 'Our Own Company Website, CodeLegacy — About Page & Services Network',
-    link: 'https://codelegacy.tech',
-    category: 'Website',
-    description:
-      "CodeLegacy's official website: showcasing services, our projects, our team, and quick contact. A clean design to present the brand identity, testimonials, and technical service offerings.",
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
-  },
-  {
     title: 'Website for MF Group Architectural Facades Company',
     link: 'https://hanynan8.github.io/test-MFGroup/',
     category: 'Website',
@@ -418,16 +408,6 @@ const regularProjects = [
     image:
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
     tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-  },
-  {
-    title: 'Kremora — Online Sweets Store',
-    link: 'https://hanynan8.github.io/test-Sweety/',
-    category: 'Website',
-    description:
-      'An online sweets store showcasing multiple categories of sweets with detailed product pages, a shopping cart, and an order/booking form. A lovely design focused on photos and seasonal products.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
-    tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
   },
   {
     title: 'Newton — Architectural & Interior Design Website',
@@ -469,26 +449,7 @@ const regularProjects = [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
     tech: ['React', 'Django (forms/blog)', 'PostgreSQL', 'OAuth'],
   },
-  {
-    title: 'Habara Print — Order Printing Services Online',
-    link: 'https://print-your-paper.vercel.app/',
-    category: 'Website',
-    description:
-      'A platform for ordering printing services: file uploads, choosing print options (paper, size, finish), and order tracking. Targets small and medium print shops to receive orders easily through the web.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(802).png?raw=true',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
-  },
-  {
-    title: 'HR Manager Job Description Page - CodeCraft',
-    link: 'https://hr-design.vercel.app/',
-    category: 'Website',
-    description:
-      'A professional job description page presenting the requirements for an HR Manager position, responsibilities, benefits, and how to apply through a contact form directed to company candidates.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(803).png?raw=true',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
-  },
+
 ];
 /* ───────────────────────────────────────────────
    Main Portfolio Section
