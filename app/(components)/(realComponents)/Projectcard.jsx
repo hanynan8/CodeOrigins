@@ -306,6 +306,60 @@ const sliderProjects = [
 ─────────────────────────────────────────────── */
 const regularProjects = [
   {
+    title: 'Website for Dada Projects, a female-led 3D motion design studio in London, UK.',
+    link: 'https://dada-projects.com',
+    category: 'Website',
+    description:
+      'A bold one-page portfolio for an award-winning, female-led 3D motion and CGI studio. The site is built around immersive hover-reveal project thumbnails, playful animated 3D shapes representing each case study, and smooth border-transition effects that give the whole experience a distinctly experimental, design-forward feel. It showcases campaign work for major brands such as Adidas, Nike, and Calvin Klein, with a fully responsive layout that keeps the animations fluid across desktop and mobile.',
+    image: '/1 (1).png',
+    tech: ['Next.js', 'Three.js', 'Framer Motion', 'Tailwind'],
+  },
+  {
+    title: 'Website for Rumfoords, an AI and Web3 strategic consultancy in New York.',
+    link: 'https://rumfoords.com',
+    category: 'Website',
+    description:
+      'A sleek consultancy website presenting Rumfoords\' dual offering in Artificial Intelligence and Web3/Metaverse strategy. The site walks visitors through the studio\'s process with cinematic full-bleed video sections, and highlights flagship case studies (including campaigns for adidas, Ralph Lauren, and JD Sports) in a clean, editorial-style work section. Built with a headless CMS to let the team update case studies and client logos without touching code.',
+    image: '/1 (2).png',
+    tech: ['Next.js', 'Prismic CMS', 'Node.js', 'Framer Motion'],
+  },
+  {
+    title: 'Official ecommerce store for Sarah Eisman Studio, a fine jewelry brand in New York.',
+    link: 'https://saraheismanstudio.com',
+    category: 'Website',
+    description:
+      'A refined ecommerce experience for a fine jewelry label crafted from gold and precious gemstones. Collections are organized around the human body (ear, hand, neck, wrist) instead of typical product categories, paired with striking black-and-white photography and 3D product renders. The store supports full catalog browsing, collection filtering, a smooth checkout flow, and a custom-branded shopping experience that matches the studio\'s minimalist, engineered aesthetic.',
+    image: '/1.png',
+    tech: ['Shopify', 'React', 'Tailwind', 'Framer Motion'],
+  },
+  {
+    title: 'Official website for Matcha Ren, a matcha dessert and beverage shop in California, USA.',
+    link: 'https://matcharen.com',
+    category: 'Website',
+    description:
+      'A vibrant, green-and-white branded website for a matcha-focused dessert and drinks shop with multiple California locations. The site presents the full menu, brand story, and store locations in a playful, modern layout, with smooth scroll-triggered animations that keep the browsing experience light and appetizing. Built to convert casual visitors into in-store customers with clear calls to action for directions and ordering.',
+    image: '/1 (3).png',
+    tech: ['Next.js', 'Tailwind', 'Framer Motion'],
+  },
+  {
+    title: 'Official website for Alter Geneva, a bespoke luxury watchmaking studio in Geneva, Switzerland.',
+    link: 'https://altergeneva.com',
+    category: 'Website',
+    description:
+      'An ultra-minimalist landing page for a Swiss bespoke watch customization studio, built around a restrained palette of Swiss-snow white and deep black. The design leans on generous whitespace, a bold sans-serif wordmark, and a numbered project gallery (Project 001, 002, 003...) to communicate exclusivity without ever feeling cluttered. Sections walk clients through the customization process, past projects, and warranty details in a calm, editorial rhythm that mirrors the precision of the watches themselves.',
+    image: '/1 (4).png',
+    tech: ['Webflow', 'GSAP', 'Framer Motion'],
+  },
+  {
+    title: 'Official website for Revitin, a prebiotic oral care brand in New York, USA.',
+    link: 'https://revitin.com',
+    category: 'Website',
+    description:
+      'An ecommerce storefront for a prebiotic, fluoride-free and SLS-free toothpaste brand focused on supporting a healthy oral microbiome. The site presents the product line (toothpaste, sonic toothbrushes, water flossers) with clean, health-forward visuals, subscription options for recurring deliveries, and educational content on oral microbiome health, all wrapped in a smooth, conversion-focused shopping experience.',
+    image: '/1 (5).png',
+    tech: ['Shopify', 'React', 'Tailwind'],
+  },
+  {
     title: 'Official website for EduMaster, an educational company in Madrid, Spain.',
     link: 'https://edumaster365.com',
     category: 'Website',
@@ -436,7 +490,6 @@ const regularProjects = [
     tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
   },
 ];
-
 /* ───────────────────────────────────────────────
    Main Portfolio Section
 ─────────────────────────────────────────────── */
@@ -465,13 +518,13 @@ const PortfolioSection = ({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-          {regularProjects.slice(0, 3).map((project, index) => (
+          {regularProjects.slice(0, 7).map((project, index) => (
             <RegularProjectCard key={`regular-first-${index}`} project={project} />
           ))}
           {sliderProjects.map((project, index) => (
             <SliderProjectCard key={`slider-${index}`} project={project} />
           ))}
-          {regularProjects.slice(3).map((project, index) => (
+          {regularProjects.slice(7).map((project, index) => (
             <RegularProjectCard key={`regular-rest-${index}`} project={project} />
           ))}
         </div>
