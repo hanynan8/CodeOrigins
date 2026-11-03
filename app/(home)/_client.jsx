@@ -100,7 +100,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       {/* ═══════════════════════════════════════
           Portfolio Section
       ═══════════════════════════════════════ */}
-      <PortfolioSection title="Some of Our Previous Work" showCtaButton={false} />
+      <PortfolioSection title="Some of Our Previous Work" showCtaButton={false} showFilter />
       <div className="text-center pb-12 sm:pb-16 lg:pb-20 bg-white -mt-8 sm:-mt-12">
         <Link
           href="/lastprojects/#portfolio"

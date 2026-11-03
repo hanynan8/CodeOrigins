@@ -98,7 +98,7 @@ const CodeLegacyPortfolio = () => {
       </section>
 
       {/* Portfolio Items Section — shared component with the homepage */}
-      <PortfolioSection />
+      <PortfolioSection showFilter />
 
       {/* Advantages Section */}
       <section id="advantages" className="py-8 sm:py-12 lg:py-20 bg-white">
