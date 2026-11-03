@@ -24,11 +24,18 @@ const educationProjects = [
       'An educational platform presenting training programs and courses in a clean, professional layout, with clear course browsing and easy registration and contact options.',
   }),
   make({
-    title: 'Daresni — Online Learning Platform',
-    link: 'https://daresni.net',
-    image: 'v1793727748/Screenshot_3042.png',
+    title: 'EduMaster — Educational Company Website in Madrid, Spain',
+    link: 'https://edumaster365.com',
+    image: 'v1793727754/Screenshot_3047.png',
     description:
-      'An online learning platform that connects students with lessons and courses, designed for easy navigation and a smooth experience on mobile and desktop.',
+      'A modern educational platform that dynamically displays courses and lessons with a secure login system for users. Students can easily follow the content, while the admin dashboard lets the manager add courses, manage users, and update content at any time. The system was built to deliver high performance and a professional user experience.',
+  }),
+  make({
+    title: 'Suited — Education & Training Website',
+    link: 'https://www.suited.ae/',
+    image: 'v1793727758/Screenshot_3050.png',
+    description:
+      'A professional education and training website with a refined look, structured content, and simple contact options for prospective learners.',
   }),
   make({
     title: 'Learn.sa — Educational Platform',
@@ -36,6 +43,13 @@ const educationProjects = [
     image: 'v1793727747/Screenshot_3043.png',
     description:
       'An educational website for presenting learning content and programs, with a modern responsive design and a clear path for learners to get started.',
+  }),
+  make({
+    title: 'Atqen — Courses & Skills Platform',
+    link: 'https://atqen.co/',
+    image: 'v1793727755/Screenshot_3048.png',
+    description:
+      'An educational platform for courses and skill development, featuring a polished landing experience and clear calls to action for enrollment.',
   }),
   make({
     title: 'Nanmo — Learning & Development Platform',
@@ -52,11 +66,11 @@ const educationProjects = [
       'A student-focused learning platform with a simple, intuitive design that helps learners find courses and content quickly.',
   }),
   make({
-    title: 'Atqen — Courses & Skills Platform',
-    link: 'https://atqen.co/',
-    image: 'v1793727755/Screenshot_3048.png',
+    title: 'Daresni — Online Learning Platform',
+    link: 'https://daresni.net',
+    image: 'v1793727748/Screenshot_3042.png',
     description:
-      'An educational platform for courses and skill development, featuring a polished landing experience and clear calls to action for enrollment.',
+      'An online learning platform that connects students with lessons and courses, designed for easy navigation and a smooth experience on mobile and desktop.',
   }),
   make({
     title: 'BrainBash — Interactive Learning Website',
@@ -64,13 +78,6 @@ const educationProjects = [
     image: 'v1793727755/Screenshot_3049.png',
     description:
       'An engaging learning website with a lively, modern design that makes educational content approachable and easy to explore.',
-  }),
-  make({
-    title: 'Suited — Education & Training Website',
-    link: 'https://www.suited.ae/',
-    image: 'v1793727758/Screenshot_3050.png',
-    description:
-      'A professional education and training website with a refined look, structured content, and simple contact options for prospective learners.',
   }),
   make({
     title: 'Legatos — Educational Platform',

@@ -5,6 +5,7 @@ import { ChevronRight, ChevronLeft, X, Eye, ExternalLink } from 'lucide-react';
 import tourismProjects from './tourismProjects';
 import educationProjects from './educationProjects';
 import storeProjects from './storeProjects';
+import restaurantProjects from './restaurantProjects';
 
 /* ───────────────────────────────────────────────
    Image Slider Modal Component
@@ -214,7 +215,11 @@ const RegularProjectCard = ({ project }) => (
       rel="noopener noreferrer"
       className="block"
     >
-      {project.fullImage ? (
+      {!project.image ? (
+        <div className="flex items-center justify-center aspect-video bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 text-white text-center px-4 text-lg font-bold">
+          {project.title}
+        </div>
+      ) : project.fullImage ? (
         <div className="relative overflow-hidden bg-white">
           <img
             src={project.image}
@@ -382,29 +387,6 @@ const regularProjects = [
     tech: ['Shopify', 'React', 'Tailwind'],
   },
   {
-    title: 'Official website for EduMaster, an educational company in Madrid, Spain.',
-    link: 'https://edumaster365.com',
-    category: 'Website',
-    filter: 'education',
-    fullImage: true,
-    description:
-      'A modern educational platform that dynamically displays courses and lessons with a secure login system for users. Students can easily follow the content, while the admin dashboard lets the manager add courses, manage users, and update content at any time. The system was built to deliver high performance and a professional user experience.',
-    image:
-      'https://res.cloudinary.com/t9lxvplw/image/upload/v1793727754/Screenshot_3047.png',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
-  },
-  {
-    title: 'Official website for UmKhater Kitchen restaurant in Dubai, UAE.',
-    link: 'https://umkhater.com',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'A professional restaurant website that dynamically displays the menu with the ability to categorize meals and search quickly, and supports receiving orders online with ease. Equipped with a full dashboard that lets the restaurant owner manage the menu (add, edit, delete), update prices, and manage orders in real time with fast performance and a smooth user experience.',
-    image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1432).png?raw=true',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
-  },
-  {
     title: 'Official ecommerce store for DOHA Bazaar accessories retailer',
     link: 'https://bazardoha.vercel.app/',
     category: 'Website',
@@ -536,6 +518,7 @@ const PortfolioSection = ({
     ...tourismProjects.map((project) => ({ type: 'regular', project })),
     ...educationProjects.map((project) => ({ type: 'regular', project })),
     ...storeProjects.map((project) => ({ type: 'regular', project })),
+    ...restaurantProjects.map((project) => ({ type: 'regular', project })),
   ];
 
   const visibleProjects =

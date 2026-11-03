@@ -19,11 +19,18 @@ const make = ({ title, link, image, description, tech }) => ({
 
 const tourismProjects = [
   make({
-    title: 'Nomad Arabia Travels — Private Expeditions Across Saudi Arabia',
-    link: 'https://nomadsarabia.com',
-    image: `${CLOUD}/v1793723138/Screenshot_3083.png`,
+    title: 'Overcoast Tourism — Tours & Travel Experiences Website',
+    link: 'https://overcoasttourism.com/',
+    image: `${CLOUD}/v1793727359/Screenshot_3094.png`,
     description:
-      'A premium website for a Riyadh-based private tour operator. It presents desert escapes, heritage villages and regional journeys with filtering by region, detailed itinerary pages with pricing, traveller stories, and a bespoke enquiry flow with direct WhatsApp contact.',
+      'A modern travel website showcasing tours and experiences with attractive visuals, easy browsing of packages, and quick contact options to turn visitors into bookings.',
+  }),
+  make({
+    title: 'Noble Tourism Qatar — Tours & Travel Services Website',
+    link: 'https://nobletourismqatar.com/',
+    image: `${CLOUD}/v1793723146/Screenshot_3089.png`,
+    description:
+      'A professional tourism website for a Qatar-based company presenting its tours and travel services with a refined design and easy contact and booking options.',
   }),
   make({
     title: 'Sand Dunes Tours — Desert Safari & Adventure Booking Website',
@@ -33,11 +40,11 @@ const tourismProjects = [
       'A tourism website for a desert tours company, built around a striking hero section, clear tour listings, and a fast enquiry and booking experience that works smoothly on mobile and desktop.',
   }),
   make({
-    title: 'Overcoast Tourism — Tours & Travel Experiences Website',
-    link: 'https://overcoasttourism.com/',
-    image: `${CLOUD}/v1793727359/Screenshot_3094.png`,
+    title: 'POV Tourism — Tours & Experiences Website',
+    link: 'https://povtourism.com/',
+    image: `${CLOUD}/v1793723131/Screenshot_3092.png`,
     description:
-      'A modern travel website showcasing tours and experiences with attractive visuals, easy browsing of packages, and quick contact options to turn visitors into bookings.',
+      'A tourism website showcasing curated tours and experiences with a visual-first design and simple, conversion-focused enquiry paths.',
   }),
   make({
     title: 'Qawafil Tourism — Travel Packages & Trip Planning Website',
@@ -45,6 +52,13 @@ const tourismProjects = [
     image: `${CLOUD}/v1793723134/Screenshot_3086.png`,
     description:
       'A tourism company website presenting travel packages and destinations in a clean, responsive layout, with clear calls to action for inquiries and trip planning.',
+  }),
+  make({
+    title: 'Nomad Arabia Travels — Private Expeditions Across Saudi Arabia',
+    link: 'https://nomadsarabia.com',
+    image: `${CLOUD}/v1793723138/Screenshot_3083.png`,
+    description:
+      'A premium website for a Riyadh-based private tour operator. It presents desert escapes, heritage villages and regional journeys with filtering by region, detailed itinerary pages with pricing, traveller stories, and a bespoke enquiry flow with direct WhatsApp contact.',
   }),
   make({
     title: 'Zahrat Muscat Tours — Oman Tours & Excursions Website',
@@ -61,13 +75,6 @@ const tourismProjects = [
       'A tourism website for sea and coastal experiences in Oman, with an immersive hero section, clear trip details, and fast, mobile-friendly booking enquiries.',
   }),
   make({
-    title: 'Noble Tourism Qatar — Tours & Travel Services Website',
-    link: 'https://nobletourismqatar.com/',
-    image: `${CLOUD}/v1793723146/Screenshot_3089.png`,
-    description:
-      'A professional tourism website for a Qatar-based company presenting its tours and travel services with a refined design and easy contact and booking options.',
-  }),
-  make({
     title: 'Canyon Adventures Tours — Adventure Trips Website',
     link: 'https://canyonadventurestours.com/',
     image: `${CLOUD}/v1793723152/Screenshot_3090.png`,
@@ -80,13 +87,6 @@ const tourismProjects = [
     image: `${CLOUD}/v1793723143/Screenshot_3091.png`,
     description:
       'A travel services website designed to present tours and travel offers clearly, with a responsive layout and quick contact options.',
-  }),
-  make({
-    title: 'POV Tourism — Tours & Experiences Website',
-    link: 'https://povtourism.com/',
-    image: `${CLOUD}/v1793723131/Screenshot_3092.png`,
-    description:
-      'A tourism website showcasing curated tours and experiences with a visual-first design and simple, conversion-focused enquiry paths.',
   }),
 ];
 
