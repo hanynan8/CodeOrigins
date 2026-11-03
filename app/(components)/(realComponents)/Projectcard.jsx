@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronRight, ChevronLeft, X, Eye, ExternalLink } from 'lucide-react';
+import tourismProjects from './tourismProjects';
+import educationProjects from './educationProjects';
+import storeProjects from './storeProjects';
 
 /* ───────────────────────────────────────────────
    Image Slider Modal Component
@@ -211,18 +214,29 @@ const RegularProjectCard = ({ project }) => (
       rel="noopener noreferrer"
       className="block"
     >
-      <div className="relative overflow-hidden h-44 sm:h-52 lg:h-64 bg-white">
-        <img
-          src={project.image}
-          alt={project.title || 'Project image'}
-          className="w-full h-full object-cover object-top sm:object-center"
-          style={{
-            transform: 'scaleX(1.05)',
-            transformOrigin: 'top',
-            clipPath: 'inset(0 2.5% 0 2.5%)',
-          }}
-        />
-      </div>
+      {project.fullImage ? (
+        <div className="relative overflow-hidden bg-white">
+          <img
+            src={project.image}
+            alt={project.title || 'Project image'}
+            className="block w-full h-auto"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div className="relative overflow-hidden h-44 sm:h-52 lg:h-64 bg-white">
+          <img
+            src={project.image}
+            alt={project.title || 'Project image'}
+            className="w-full h-full object-cover object-top sm:object-center"
+            style={{
+              transform: 'scaleX(1.05)',
+              transformOrigin: 'top',
+              clipPath: 'inset(0 2.5% 0 2.5%)',
+            }}
+          />
+        </div>
+      )}
     </a>
 
     <div className="p-3 sm:p-4 lg:p-6">
@@ -371,11 +385,12 @@ const regularProjects = [
     title: 'Official website for EduMaster, an educational company in Madrid, Spain.',
     link: 'https://edumaster365.com',
     category: 'Website',
-    filter: 'other',
+    filter: 'education',
+    fullImage: true,
     description:
       'A modern educational platform that dynamically displays courses and lessons with a secure login system for users. Students can easily follow the content, while the admin dashboard lets the manager add courses, manage users, and update content at any time. The system was built to deliver high performance and a professional user experience.',
     image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1912).png?raw=true',
+      'https://res.cloudinary.com/t9lxvplw/image/upload/v1793727754/Screenshot_3047.png',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
   },
   {
@@ -518,6 +533,9 @@ const PortfolioSection = ({
     ...regularProjects.slice(0, 7).map((project) => ({ type: 'regular', project })),
     ...sliderProjects.map((project) => ({ type: 'slider', project })),
     ...regularProjects.slice(7).map((project) => ({ type: 'regular', project })),
+    ...tourismProjects.map((project) => ({ type: 'regular', project })),
+    ...educationProjects.map((project) => ({ type: 'regular', project })),
+    ...storeProjects.map((project) => ({ type: 'regular', project })),
   ];
 
   const visibleProjects =
