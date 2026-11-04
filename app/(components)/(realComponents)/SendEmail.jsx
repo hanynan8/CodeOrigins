@@ -50,13 +50,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="mail" className="py-20 bg-white">
+    <section id="mail" className="py-20 bg-brand-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-800">
-            Ready to Start <span className="text-blue-600">Your Project</span>?
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            Ready to Start <span className="text-brand-cyan">Your Project</span>?
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
             Contact us today and let's turn your idea into a stunning website
             that achieves your goals and exceeds your expectations
           </p>
@@ -65,55 +65,55 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact info side */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6">
               Contact Us Directly
             </h3>
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                <div className="bg-brand-blue/20 p-3 rounded-full">
+                  <Mail className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Email</h4>
-                  <p className="text-gray-600">CodeLegacy1@gmail.com</p>
+                  <h4 className="font-semibold text-white">Email</h4>
+                  <p className="text-gray-300">CodeLegacy1@gmail.com</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Phone className="w-6 h-6 text-blue-600" />
+                <div className="bg-brand-blue/20 p-3 rounded-full">
+                  <Phone className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Phone</h4>
-                  <p className="text-gray-600">+20 01201061216</p>
+                  <h4 className="font-semibold text-white">Phone</h4>
+                  <p className="text-gray-300">+20 01201061216</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <MapPin className="w-6 h-6 text-blue-600" />
+                <div className="bg-brand-blue/20 p-3 rounded-full">
+                  <MapPin className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Address</h4>
-                  <p className="text-gray-600">Tahrir Street, Downtown</p>
-                  <p className="text-gray-600">Cairo, Egypt</p>
+                  <h4 className="font-semibold text-white">Address</h4>
+                  <p className="text-gray-300">Tahrir Street, Downtown</p>
+                  <p className="text-gray-300">Cairo, Egypt</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Calendar className="w-6 h-6 text-blue-600" />
+                <div className="bg-brand-blue/20 p-3 rounded-full">
+                  <Calendar className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800">Working Hours</h4>
-                  <p className="text-gray-600">Every day</p>
+                  <h4 className="font-semibold text-white">Working Hours</h4>
+                  <p className="text-gray-300">Every day</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
-              <h4 className="font-semibold text-gray-800 mb-4">
+              <h4 className="font-semibold text-white mb-4">
                 Follow Us on Social Media
               </h4>
               <div className="flex space-x-4">
@@ -121,7 +121,7 @@ export default function ContactSection() {
                   {
                     name: "Facebook",
                     icon: <Facebook className="w-6 h-6" />,
-                    color: "bg-blue-600",
+                    color: "bg-brand-blue",
                     href: "https://www.facebook.com/hany.nan.752/",
                   },
                   {
@@ -133,7 +133,7 @@ export default function ContactSection() {
                   {
                     name: "LinkedIn",
                     icon: <Linkedin className="w-6 h-6" />,
-                    color: "bg-blue-700",
+                    color: "bg-brand-blue",
                     href: "https://www.linkedin.com/in/hany-younan-5b7466372",
                   },
                 ].map((social, index) => (
@@ -152,8 +152,8 @@ export default function ContactSection() {
           </div>
 
           {/* Form side */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
+          <div className="bg-brand-card rounded-2xl p-8 shadow-glow border border-brand-line/70">
+            <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {/* Hidden helper fields */}
@@ -162,7 +162,7 @@ export default function ContactSection() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">
                     Full Name
                   </label>
                   <input
@@ -170,13 +170,13 @@ export default function ContactSection() {
                     name="name"
                     type="text"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                     placeholder="Your full name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">
                     Email
                   </label>
                   <input
@@ -184,33 +184,33 @@ export default function ContactSection() {
                     name="email"
                     type="email"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                     placeholder="name@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-1">
                   Phone Number
                 </label>
                 <input
                   id="phone"
                   name="phone"
                   type="tel"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                  className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                   placeholder="+20 1XXXXXXXXX"
                 />
               </div>
 
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="service" className="block text-sm font-medium text-gray-200 mb-1">
                   Service Type
                 </label>
                 <select
                   id="service"
                   name="service"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                  className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                 >
                   <option>Select service type</option>
                   <option>Website Development</option>
@@ -224,7 +224,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-1">
                   Your Message
                 </label>
                 <textarea
@@ -232,7 +232,7 @@ export default function ContactSection() {
                   name="message"
                   rows="4"
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all resize-none"
                   placeholder="Write your project details or inquiry here..."
                 />
               </div>
@@ -250,7 +250,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white py-4 rounded-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <MessageCircle className="w-5 h-5" />
                 {status === "sending" ? "Sending..." : "Send Message"}

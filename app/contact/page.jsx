@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 
 import SendEmail from '../(components)/(realComponents)/SendEmail'
+import CircuitBolts from '../(components)/CircuitBolts';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -32,25 +33,26 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-bg">
       {/* Hero Section */}
-      <section className="relative min-h-screen sm:h-[100vh] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative min-h-screen sm:h-[100vh] circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+        <CircuitBolts />
         {/* Floating Elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white/10 rounded-full top-[15%] left-[5%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/10 rounded-full top-[65%] right-[10%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 rounded-full top-[45%] left-[75%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-brand-blue/10 rounded-full top-[15%] left-[5%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-brand-blue/10 rounded-full top-[65%] right-[10%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-brand-blue/10 rounded-full top-[45%] left-[75%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
           <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 leading-tight">
-            Get in Touch with <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
+            Get in Touch with <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto px-2 leading-relaxed">
             We're here to help you bring your tech ideas to life. Tell us about your project and we'll get back to you as soon as possible.
           </p>
-          <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-2xl mx-auto touch-manipulation">
+          <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-glow mx-auto touch-manipulation">
             Start the Conversation
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </button>
@@ -69,9 +71,9 @@ const ContactPage = () => {
                 d="m-160,44c30,0 58,-18 88,-18s 58,18 88,18 58,-18 88,-18 58,18 88,18 v44h-352z"
               />
               <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0.4)" />
+                <stop offset="0%" stopColor="rgba(30,91,255,0.55)" />
+                <stop offset="50%" stopColor="rgba(30,91,255,0.4)" />
+                <stop offset="100%" stopColor="rgba(48,216,248,0.3)" />
               </linearGradient>
             </defs>
             <g>
@@ -86,21 +88,21 @@ const ContactPage = () => {
                 href="#gentle-wave"
                 x="48"
                 y="3"
-                fill="rgba(255,255,255,0.4)"
+                fill="rgba(30,91,255,0.3)"
                 className="animate-[wave-move-left_10s_linear_infinite]"
               />
               <use
                 href="#gentle-wave"
                 x="48"
                 y="5"
-                fill="rgba(255,255,255,0.2)"
+                fill="rgba(30,91,255,0.18)"
                 className="animate-[wave-move-left_13s_linear_infinite]"
               />
               <use
                 href="#gentle-wave"
                 x="48"
                 y="7"
-                fill="#fff"
+                fill="#01061a"
                 className="animate-[wave-move-left_20s_linear_infinite]"
               />
             </g>
@@ -114,8 +116,9 @@ const ContactPage = () => {
       </div>
 
       {/* Social Media Section - Mobile Responsive */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-14">
             <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white leading-tight px-2">
               Follow Us on Social Media
@@ -131,7 +134,7 @@ const ContactPage = () => {
               { 
                 name: 'Facebook', 
                 icon: <Facebook className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
-                color: 'bg-blue-600 hover:bg-blue-700', 
+                color: 'bg-brand-blue hover:bg-brand-sky', 
                 link: 'https://www.facebook.com/hany.nan.752/' 
               },
               { 
@@ -143,7 +146,7 @@ const ContactPage = () => {
               { 
                 name: 'LinkedIn', 
                 icon: <Linkedin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
-                color: 'bg-blue-700 hover:bg-blue-800', 
+                color: 'bg-brand-blue hover:bg-blue-800', 
                 link: 'https://www.linkedin.com/in/hany-younan-5b7466372' 
               },
             ].map((social, index) => (
@@ -152,7 +155,7 @@ const ContactPage = () => {
                 href={social.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${social.color} text-white p-3 sm:p-4 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl touch-manipulation`}
+                className={`${social.color} text-white p-3 sm:p-4 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-glow hover:shadow-glow touch-manipulation`}
                 aria-label={`Follow us on ${social.name}`}
               >
                 {social.icon}

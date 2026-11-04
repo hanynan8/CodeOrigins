@@ -49,7 +49,7 @@ export const servicesData = [
       'Responsive design for all devices',
     ],
     technologies: ['Next.js', 'Tailwind CSS', 'Google Analytics', 'Hotjar'],
-    color: 'from-orange-500 to-red-500',
+    color: 'from-brand-blue to-brand-cyan',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1447).png?raw=true',
   },
@@ -73,7 +73,7 @@ export const servicesData = [
       'Social media integration',
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
-    color: 'from-blue-600 to-purple-600',
+    color: 'from-brand-blue to-brand-cyan',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1475).png?raw=true',
   },
@@ -120,7 +120,7 @@ export const servicesData = [
       'Cloud scalability',
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
-    color: 'from-purple-500 to-pink-500',
+    color: 'from-brand-sky to-brand-cyan',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1582).png?raw=true',
   },
@@ -143,7 +143,7 @@ export const servicesData = [
       'Mobile app for learning on the go',
     ],
     technologies: ['Next.js', 'MongoDB', 'Node.js', 'AWS S3', 'Socket.io'],
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-brand-blue to-cyan-500',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1912).png?raw=true',
   },
@@ -167,7 +167,7 @@ export const servicesData = [
       'Advanced search engine optimization',
     ],
     technologies: ['Next.js', 'Node.js', 'MongoDB', 'AWS'],
-    color: 'from-indigo-500 to-purple-500',
+    color: 'from-brand-blue to-brand-sky',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1461).png?raw=true',
   },
@@ -234,7 +234,7 @@ export const servicesData = [
       'Networking platform for attendees',
     ],
     technologies: ['React', 'Node.js', 'Stripe', 'WebRTC', 'Socket.io'],
-    color: 'from-amber-500 to-yellow-500',
+    color: 'from-brand-cyan to-brand-blue',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1452).png?raw=true',
   },
@@ -257,7 +257,7 @@ export const servicesData = [
       'Detailed reading analytics',
     ],
     technologies: ['Next.js', 'Sanity CMS', 'MongoDB', 'Algolia Search'],
-    color: 'from-slate-500 to-gray-600',
+    color: 'from-brand-sky to-brand-blue',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1578).png?raw=true',
   },
@@ -280,7 +280,7 @@ export const servicesData = [
       'Mobile app for staying connected',
     ],
     technologies: ['Next.js', 'Socket.io', 'MongoDB', 'Redis'],
-    color: 'from-violet-500 to-purple-500',
+    color: 'from-violet-500 to-brand-cyan',
     image:
       'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1575).png?raw=true',
   },

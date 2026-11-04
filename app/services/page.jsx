@@ -69,14 +69,14 @@ const processSteps = [
 ];
 
 const whyChooseUs = [
-  { icon: 'Zap',         title: 'Fast Delivery',            description: 'We commit to agreed deadlines and deliver your project on time while maintaining the highest quality standards.', color: 'from-blue-600 to-purple-600' },
+  { icon: 'Zap',         title: 'Fast Delivery',            description: 'We commit to agreed deadlines and deliver your project on time while maintaining the highest quality standards.', color: 'from-brand-blue to-brand-cyan' },
   { icon: 'Gauge',       title: 'Lightning-Fast Websites',  description: 'We build performance-optimized websites with exceptional load speeds that guarantee a great user experience.', color: 'from-green-500 to-emerald-500' },
-  { icon: 'Search',      title: 'Advanced SEO',              description: 'Our sites are fully optimized for search engines to ensure top rankings and attract more customers.', color: 'from-blue-500 to-cyan-500' },
+  { icon: 'Search',      title: 'Advanced SEO',              description: 'Our sites are fully optimized for search engines to ensure top rankings and attract more customers.', color: 'from-brand-blue to-cyan-500' },
   { icon: 'TrendingUp',  title: 'Outstanding Performance',   description: 'We guarantee exceptional performance for your site with fast loading and excellent responsiveness on all devices and networks.', color: 'from-purple-500 to-pink-500' },
   { icon: 'Code',        title: 'Built From Scratch',        description: 'We don\'t use pre-made templates. Every site is coded from scratch specifically to meet your unique needs.', color: 'from-indigo-500 to-blue-500' },
   { icon: 'Shield',      title: 'Advanced Security',         description: 'We apply the highest cybersecurity standards to protect your website and your customers\' data from any threats.', color: 'from-red-500 to-rose-500' },
   { icon: 'Monitor',     title: 'Responsive Design',         description: 'Our websites work perfectly on all devices, from mobile phones to desktop computers.', color: 'from-teal-500 to-green-500' },
-  { icon: 'Sparkles',    title: 'Modern Technologies',       description: 'We use the latest technologies and frameworks to ensure you get a modern, scalable website.', color: 'from-pink-500 to-purple-500' },
+  { icon: 'Sparkles',    title: 'Modern Technologies',       description: 'We use the latest technologies and frameworks to ensure you get a modern, scalable website.', color: 'from-pink-500 to-brand-cyan' },
   { icon: 'Headphones',  title: 'Ongoing Technical Support', description: 'Our support team is available 24/7 to help you and resolve any issue you may encounter with your site.', color: 'from-orange-500 to-red-500' },
 ];
 

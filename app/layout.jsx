@@ -71,7 +71,7 @@ seoKeywords.all = [
 // Viewport configuration
 // ---------------------------
 export const viewport = {
-  themeColor: '#0ea5a4',
+  themeColor: '#01061a',
 };
 
 // ---------------------------
@@ -177,7 +177,7 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
 
-      <body className={`${rubik.className} ${geistMono.variable} antialiased`}>
+      <body className={`${rubik.className} ${geistMono.variable} antialiased bg-brand-bg text-white`}>
         <Navbar />
         {children}
         <Footer />
@@ -187,7 +187,7 @@ export default function RootLayout({ children }) {
           href="https://wa.me/201213819102"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-2 md:right-6 z-50 flex items-center justify-center rounded-full shadow-lg bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
+            className="fixed bottom-6 right-2 md:right-6 z-50 flex items-center justify-center rounded-full shadow-glow bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
             aria-label="WhatsApp"
           >
           <svg viewBox="0 0 32 32" className="w-9 h-9 md:w-14 md:h-14 fill-white">

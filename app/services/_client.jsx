@@ -12,6 +12,7 @@ import Link from 'next/link';
 
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import ServicesGrid, { iconMap } from '../(components)/(realComponents)/ServicesGrid';
+import CircuitBolts from '../(components)/CircuitBolts';
 
 const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, technologiesData }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,17 +29,18 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           Hero Section
       ═══════════════════════════════════════ */}
-      <section className="relative min-h-[100vh] sm:min-h-[90vh] md:h-[80vh] bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative min-h-[100vh] sm:min-h-[90vh] md:h-[80vh] circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+        <CircuitBolts />
         {/* Animated background elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white/10 rounded-full top-[20%] left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white/10 rounded-full top-[60%] right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 rounded-full top-[40%] left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-brand-blue/10 rounded-full top-[20%] left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-brand-blue/10 rounded-full top-[60%] right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-brand-blue/10 rounded-full top-[40%] left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center text-white">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            Web <span className="text-yellow-400">Development Services</span>
+            Web <span className="text-neon">Development Services</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
             We develop all types of websites with the latest technologies and the highest quality standards - from ecommerce stores to educational platforms and custom solutions
@@ -46,7 +48,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <Link href="#services">
-              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white w-full sm:w-auto justify-center">
+              <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white w-full sm:w-auto justify-center">
                 Explore Our Services
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -69,16 +71,16 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
             <defs>
               <path id="gentle-wave" d="m-160,44c30,0 58,-18 88,-18s 58,18 88,18 58,-18 88,-18 58,18 88,18 v44h-352z" />
               <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0.4)" />
+                <stop offset="0%" stopColor="rgba(30,91,255,0.55)" />
+                <stop offset="50%" stopColor="rgba(30,91,255,0.4)" />
+                <stop offset="100%" stopColor="rgba(48,216,248,0.3)" />
               </linearGradient>
             </defs>
             <g>
               <use href="#gentle-wave" x="48" y="0" fill="url(#gradient1)" className="animate-[wave-move-left_7s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" className="animate-[wave-move-left_10s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" className="animate-[wave-move-left_13s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="7" fill="#fff" className="animate-[wave-move-left_20s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="3" fill="rgba(30,91,255,0.3)" className="animate-[wave-move-left_10s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="5" fill="rgba(30,91,255,0.18)" className="animate-[wave-move-left_13s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="7" fill="#01061a" className="animate-[wave-move-left_20s_linear_infinite]" />
             </g>
           </svg>
         </div>
@@ -98,13 +100,13 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           Why Choose Us
       ═══════════════════════════════════════ */}
-      <section className="py-10 sm:py-16 md:py-20 bg-gray-50">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-alt">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-              Why Choose <span className="text-blue-600">Our Services</span>?
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+              Why Choose <span className="text-brand-cyan">Our Services</span>?
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               We stand out with high quality standards and professional services that guarantee you an outstanding and distinguished website
             </p>
           </div>
@@ -115,15 +117,15 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
               return (
                 <div
                   key={index}
-                  className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 sm:hover:-translate-y-2 border border-gray-100"
+                  className="bg-gradient-to-br from-brand-card to-brand-alt p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-glow hover:shadow-glow transition-all duration-300 group hover:-translate-y-1 sm:hover:-translate-y-2 border border-brand-line/60"
                 >
                   <div className={`inline-flex p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {IconComponent && <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12" />}
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-gray-800 group-hover:text-blue-700 transition-colors leading-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white group-hover:text-brand-cyan transition-colors leading-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -136,13 +138,13 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           Process Steps
       ═══════════════════════════════════════ */}
-      <section id="process" className="py-10 sm:py-16 md:py-20 bg-gradient-to-r from-blue-50 to-purple-50">
+      <section id="process" className="py-10 sm:py-16 md:py-20 bg-gradient-to-r from-brand-alt to-brand-card">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-              How Do We <span className="text-blue-600">Develop</span> Your Site?
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+              How Do We <span className="text-brand-cyan">Develop</span> Your Site?
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               A carefully structured process that ensures your website meets your goals and exceeds your expectations
             </p>
           </div>
@@ -153,19 +155,19 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
               return (
                 <div key={index} className="text-center group">
                   <div className="relative mb-4 sm:mb-6 md:mb-8">
-                    <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-gradient-to-r from-brand-blue to-brand-cyan rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300">
                       <div className="text-white">
                         {IconComponent && <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />}
                       </div>
                     </div>
-                    <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-gray-800">
+                    <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-white">
                       {step.step}
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-gray-800 group-hover:text-blue-700 transition-colors leading-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white group-hover:text-brand-cyan transition-colors leading-tight">
                     {step.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -178,13 +180,13 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           Technologies
       ═══════════════════════════════════════ */}
-      <section className="py-10 sm:py-16 md:py-20 bg-white" id="tech">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-bg" id="tech">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-              The <span className="text-blue-600">Advanced Technologies</span> We Use
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+              The <span className="text-brand-cyan">Advanced Technologies</span> We Use
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto px-2">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
               We rely on the latest technologies and programming tools to ensure the development of modern, powerful websites
             </p>
           </div>
@@ -193,12 +195,12 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
             {technologiesData.map((tech, index) => (
               <div
                 key={index}
-                className="group bg-white p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 text-center"
+                className="group bg-brand-card p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/60 hover:border-brand-cyan text-center"
               >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl mx-auto mb-2 sm:mb-3 md:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <i className={`${tech.iconClass} text-3xl sm:text-4xl md:text-5xl lg:text-6xl`}></i>
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm md:text-base text-gray-800 group-hover:text-blue-700 transition-colors leading-tight">
+                <h3 className="font-semibold text-xs sm:text-sm md:text-base text-white group-hover:text-brand-cyan transition-colors leading-tight">
                   {tech.name}
                 </h3>
               </div>
@@ -210,27 +212,27 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           FAQ
       ═══════════════════════════════════════ */}
-      <section className="py-10 sm:py-16 md:py-20 bg-gray-50" id="faq">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-alt" id="faq">
         <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
-              Frequently Asked <span className="text-blue-600">Questions</span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+              Frequently Asked <span className="text-brand-cyan">Questions</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 px-2">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 px-2">
               Answers to the most common questions about our web development services
             </p>
           </div>
 
           <div className="space-y-4 sm:space-y-6">
             {faqData.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3 leading-tight">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div key={index} className="bg-brand-card rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/60">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3 leading-tight">
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs sm:text-sm font-bold">?</span>
                   </div>
                   <span>{faq.question}</span>
                 </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-600 leading-relaxed pl-6 sm:pl-7 md:pl-9">
+                <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed pl-6 sm:pl-7 md:pl-9">
                   {faq.answer}
                 </p>
               </div>
@@ -242,8 +244,9 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           CTA Section
       ═══════════════════════════════════════ */}
-      <section className="py-10 sm:py-16 md:py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
-        <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
+      <section className="relative overflow-hidden py-10 sm:py-16 md:py-20 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
             Ready to Launch Your New Website?
           </h2>
@@ -253,7 +256,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-10 md:mb-12 px-4">
             <Link href="/lastprojects/#portfolio">
-              <button className="group bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 w-full sm:w-auto justify-center">
+              <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 w-full sm:w-auto justify-center">
                 View All Our Previous Work
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
               </button>
@@ -272,7 +275,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
               { title: 'Quality Guarantee', desc: 'Full commitment to quality and deadlines' },
             ].map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-400 mb-2">{item.title}</div>
+                <div className="text-lg sm:text-xl md:text-2xl font-bold text-brand-cyan mb-2">{item.title}</div>
                 <div className="text-xs sm:text-sm md:text-base text-blue-100 leading-relaxed">{item.desc}</div>
               </div>
             ))}

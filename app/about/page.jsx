@@ -24,6 +24,7 @@ import Link from 'next/link';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails'
 
 import Tech from '../(components)/(realComponents)/tech';
+import CircuitBolts from '../(components)/CircuitBolts';
 
 
 const AboutPage = () => {
@@ -38,20 +39,21 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-brand-bg">
       {/* Hero Section - Perfectly Responsive */}
-      <section className="relative h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+        <CircuitBolts />
         {/* Floating Elements - Ultra Responsive */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute w-8 h-8 xs:w-10 xs:h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-white/10 rounded-full top-[15%] left-[8%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute w-6 h-6 xs:w-8 xs:h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-white/10 rounded-full top-[70%] right-[12%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-white/10 rounded-full top-[50%] left-[78%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+          <div className="absolute w-8 h-8 xs:w-10 xs:h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-brand-blue/10 rounded-full top-[15%] left-[8%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-6 h-6 xs:w-8 xs:h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-brand-blue/10 rounded-full top-[70%] right-[12%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-brand-blue/10 rounded-full top-[50%] left-[78%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
         {/* Hero Content - Mobile-First Design */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <h1 className="text-4xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 leading-[1.1] xs:leading-[1.2] sm:leading-tight">
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent">
               CodeLegacy
             </span>
           </h1>
@@ -61,7 +63,7 @@ const AboutPage = () => {
             that make a real difference.
           </p>
           <Link href={'#story'}>
-            <button className="group bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-2xl mx-auto touch-manipulation min-h-[44px]">
+            <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-glow mx-auto touch-manipulation min-h-[44px]">
               Discover Our Story
               <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
@@ -112,7 +114,7 @@ const AboutPage = () => {
                 href="#gentle-wave"
                 x="48"
                 y="7"
-                fill="#fff"
+                fill="#01061a"
                 className="animate-[wave-move-left_20s_linear_infinite]"
               />
             </g>
@@ -121,16 +123,16 @@ const AboutPage = () => {
       </section>
 
       {/* Company Story Section - Mobile Optimized */}
-      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-white" id="story">
+      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-brand-bg" id="story">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-gray-800 leading-tight px-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-white leading-tight px-2">
               Our Story in{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block xs:block sm:inline mt-1 xs:mt-2 sm:mt-0">
+              <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent block xs:block sm:inline mt-1 xs:mt-2 sm:mt-0">
                 Web Development
               </span>
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed xs:leading-relaxed sm:leading-loose px-2">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed xs:leading-relaxed sm:leading-loose px-2">
               CodeLegacy was founded with a vision to turn ideas into innovative
               websites and digital applications, with a focus on quality and
               outstanding performance.
@@ -139,31 +141,31 @@ const AboutPage = () => {
 
           <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12 items-center">
             <div className="relative order-2 lg:order-1">
-              <div className="bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-lg border border-blue-200/50 hover:shadow-xl transition-shadow duration-300">
-                <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-gray-800 mb-3 xs:mb-4 leading-tight">
+              <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-shadow duration-300">
+                <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-white mb-3 xs:mb-4 leading-tight">
                   Our Start in the World of the Web
                 </h3>
-                <p className="text-sm xs:text-base sm:text-lg text-gray-600 mb-4 xs:mb-6 leading-relaxed">
+                <p className="text-sm xs:text-base sm:text-lg text-gray-300 mb-4 xs:mb-6 leading-relaxed">
                   CodeLegacy began as a simple idea, when a group of passionate
                   web developers joined forces to deliver high-quality websites.
                   Since then, the company has grown to become a leader in web
                   development, focusing on modern technologies and attractive
                   design.
                 </p>
-                <p className="text-sm xs:text-base sm:text-lg text-gray-600 mb-4 xs:mb-6 sm:mb-8 leading-relaxed">
+                <p className="text-sm xs:text-base sm:text-lg text-gray-300 mb-4 xs:mb-6 sm:mb-8 leading-relaxed">
                   Today, we're proud of our specialized team in web development
                   that brings together expertise from Frontend, Backend, and
                   UX/UI, enabling us to deliver comprehensive web solutions that
                   meet our clients' needs across all sectors.
                 </p>
               </div>
-              <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-8 h-8 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-blue-600/10 rounded-full animate-pulse"></div>
-              <div className="absolute -bottom-2 xs:-bottom-4 -left-2 xs:-left-4 w-6 h-6 xs:w-8 xs:h-8 sm:w-12 sm:h-12 bg-purple-600/10 rounded-full animate-pulse delay-300"></div>
+              <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-8 h-8 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-brand-blue/10 rounded-full animate-pulse"></div>
+              <div className="absolute -bottom-2 xs:-bottom-4 -left-2 xs:-left-4 w-6 h-6 xs:w-8 xs:h-8 sm:w-12 sm:h-12 bg-brand-blue/10 rounded-full animate-pulse delay-300"></div>
             </div>
             
             <div className="space-y-4 xs:space-y-6 order-1 lg:order-2">
-              <div className="bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 shadow-md border border-blue-200/50">
-                <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-gray-800 mb-3 xs:mb-4 leading-tight">
+              <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 shadow-glow border border-brand-blue/40">
+                <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white mb-3 xs:mb-4 leading-tight">
                   What Sets Us Apart in Web Development
                 </h3>
                 <div className="space-y-3 xs:space-y-4">
@@ -180,8 +182,8 @@ const AboutPage = () => {
                       key={index}
                       className="flex items-start space-x-2 xs:space-x-3"
                     >
-                      <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 text-blue-600 flex-shrink-0 mt-0.5 xs:mt-1" />
-                      <span className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed">{item}</span>
+                      <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 text-brand-cyan flex-shrink-0 mt-0.5 xs:mt-1" />
+                      <span className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -192,8 +194,9 @@ const AboutPage = () => {
       </section>
 
       {/* Stats Section - Ultra Responsive */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-8 xs:py-10 sm:py-12 lg:py-16 text-white">
-        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40 py-8 xs:py-10 sm:py-12 lg:py-16 text-white">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6 sm:gap-8 text-center">
             {[
               {
@@ -232,13 +235,13 @@ const AboutPage = () => {
       </div>
 
       {/* Mission and Vision Section - Mobile Optimized */}
-      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gray-50">
+      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-brand-alt">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-gray-800 leading-tight px-2">
-              Our Vision & <span className="text-blue-600">Mission</span>
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-white leading-tight px-2">
+              Our Vision & <span className="text-brand-cyan">Mission</span>
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-2">
               We work to build a better digital world by developing exceptional
               websites that serve our clients' needs to the highest global
               standards.
@@ -246,28 +249,28 @@ const AboutPage = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 xs:gap-6 sm:gap-8">
-            <div className="group bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-md border border-blue-200/50 hover:shadow-xl transition-all duration-300">
-              <div className="text-blue-600 mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
+            <div className="group bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-all duration-300">
+              <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Globe className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-left">
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-white group-hover:text-brand-cyan transition-colors text-center md:text-left">
                 Our Vision
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-left">
+              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
                 To be the leading partner in web development for Arab and
                 global companies, by delivering advanced websites that enhance
                 digital presence and achieve business goals with the highest
                 quality standards.
               </p>
             </div>
-            <div className="group bg-white rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-md border border-blue-200/50 hover:shadow-xl transition-all duration-300">
-              <div className="text-blue-600 mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
+            <div className="group bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-all duration-300">
+              <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Code className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-gray-800 group-hover:text-blue-700 transition-colors text-center md:text-left">
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-white group-hover:text-brand-cyan transition-colors text-center md:text-left">
                 Our Mission
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-600 leading-relaxed text-center md:text-left">
+              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
                 Developing high-quality, fast-performing, and secure websites,
                 with a focus on exceptional user experience and attractive
                 design to maximize digital presence and drive business growth.
@@ -283,8 +286,9 @@ const AboutPage = () => {
       </div>
 
       {/* CTA Section - Perfect Mobile */}
-      <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700">
-        <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative overflow-hidden py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 xs:mb-6 sm:mb-8 text-white leading-tight px-2">
             Start Your Website Project With Us
           </h2>
@@ -294,7 +298,7 @@ const AboutPage = () => {
             ideal website.
           </p>
           <WhatsAppButton
-            className="inline-flex items-center gap-2 bg-white text-blue-600 px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl touch-manipulation min-h-[44px]"
+            className="inline-flex items-center gap-2 bg-brand-card text-brand-cyan px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:bg-brand-card2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-glow touch-manipulation min-h-[44px]"
           >
             Start Your Project Now
             <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />

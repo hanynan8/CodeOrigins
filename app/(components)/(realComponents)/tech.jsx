@@ -22,13 +22,13 @@ const defaultTechs = [
 
 export default function TechSection({ techs = defaultTechs, id = 'tech', className = '' }) {
   return (
-    <section className={`py-20 bg-white ${className}`} id={id}>
+    <section className={`py-20 bg-brand-bg ${className}`} id={id}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-            The <span className="text-blue-600">Advanced Technologies</span> We Use
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            The <span className="text-brand-cyan">Advanced Technologies</span> We Use
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             We rely on the latest technologies and software tools to ensure
             the development of modern, powerful websites
           </p>
@@ -38,13 +38,13 @@ export default function TechSection({ techs = defaultTechs, id = 'tech', classNa
           {techs.map((tech, index) => (
             <div
               key={tech.name + index}
-              className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 text-center"
+              className="group bg-brand-card p-6 rounded-2xl shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/60 hover:border-brand-cyan text-center"
             >
               <div className="w-16 h-16 rounded-xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 {/* Using <i> with devicon classes (requires Devicon CSS) */}
                 <i className={`${tech.iconClass} text-6xl`} aria-hidden="true"></i>
               </div>
-              <h3 className="font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">
+              <h3 className="font-semibold text-white group-hover:text-brand-cyan transition-colors">
                 {tech.name}
               </h3>
             </div>

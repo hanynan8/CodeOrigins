@@ -10,18 +10,21 @@ import {
   Star,
 } from 'lucide-react';
 import Link from 'next/link';
+import CircuitBolts from './CircuitBolts';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 py-6 sm:py-10 md:py-12 lg:py-16 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative overflow-hidden bg-[#00020f] py-6 sm:py-10 md:py-12 lg:py-16 border-t border-brand-line">
+      <CircuitBolts intensity="soft" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-10 lg:mb-12">
           {/* Logo and Company Intro */}
           <div className="lg:col-span-1 flex flex-col items-center sm:items-start">
             <div className="flex items-center space-x-2 mb-4">
-              <Code className="w-7 h-7 sm:w-8 sm:h-8 text-blue-400" />
-              <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                CodeLegacy
+              <Code className="w-7 h-7 sm:w-8 sm:h-8 text-brand-cyan" />
+              <span className="text-lg sm:text-xl font-bold">
+                <span className="text-white">Code</span>
+                <span className="text-neon">Legacy</span>
               </span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base text-center sm:text-left max-w-xs sm:max-w-none">
@@ -34,7 +37,7 @@ const Footer = () => {
                 href="https://www.facebook.com/hany.nan.752/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 p-2 sm:p-3 rounded-full transition-colors"
+                className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </Link>
@@ -42,7 +45,7 @@ const Footer = () => {
                 href="https://www.instagram.com/hany._younan/?__pwa=1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 p-2 sm:p-3 rounded-full transition-colors"
+                className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </Link>
@@ -50,7 +53,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/hany-younan-5b7466372"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-700 p-2 sm:p-3 rounded-full transition-colors"
+                className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
                 <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </Link>
@@ -66,7 +69,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   SaaS Platforms
                 </Link>
@@ -74,7 +77,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Landing Pages
                 </Link>
@@ -82,7 +85,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   E-commerce Stores
                 </Link>
@@ -90,7 +93,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Restaurant Websites
                 </Link>
@@ -98,7 +101,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Clinic Websites
                 </Link>
@@ -106,7 +109,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects/#portfolio"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Personal Portfolios
                 </Link>
@@ -123,7 +126,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   About Us
                 </Link>
@@ -131,7 +134,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/services"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Our Services
                 </Link>
@@ -139,7 +142,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Our Previous Work
                 </Link>
@@ -147,7 +150,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -155,7 +158,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/services#faq"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   FAQ
                 </Link>
@@ -172,7 +175,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/lastprojects//#tech"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Technologies Used
                 </Link>
@@ -180,7 +183,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="//#clients"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Client Reviews
                 </Link>
@@ -188,7 +191,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="//#feat"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   CodeLegacy Features
                 </Link>
@@ -196,7 +199,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact/#mail"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-brand-cyan transition-colors"
                 >
                   Send Us a Message
                 </Link>
@@ -213,11 +216,11 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <div className="flex flex-wrap justify-center sm:justify-start space-x-4 sm:space-x-6 gap-y-3 sm:gap-y-4">
               <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-brand-cyan" />
                 <span className="text-gray-300 text-sm">Advanced Security</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-brand-cyan" />
                 <span className="text-gray-300 text-sm">5 Star Rating</span>
               </div>
             </div>

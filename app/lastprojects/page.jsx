@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import PortfolioSection from '../(components)/(realComponents)/Projectcard';
+import CircuitBolts from '../(components)/CircuitBolts';
 
 /* ───────────────────────────────────────────────
    Main Portfolio Page
@@ -43,13 +44,14 @@ const CodeLegacyPortfolio = () => {
       {/* Portfolio Hero - Full Screen */}
       <section
         id="portfolio-hero"
-        className="relative min-h-screen h-screen bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 bg-[length:400%_400%] animate-[gradientShift_8s_ease_infinite] flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden"
       >
+        <CircuitBolts />
         {/* Floating Elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-white/10 rounded-full top-[15%] sm:top-[20%] left-[5%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
-          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/10 rounded-full top-[65%] sm:top-[60%] right-[10%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
-          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-white/10 rounded-full top-[35%] sm:top-[40%] left-[75%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-brand-blue/10 rounded-full top-[15%] sm:top-[20%] left-[5%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-brand-blue/10 rounded-full top-[65%] sm:top-[60%] right-[10%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-brand-blue/10 rounded-full top-[35%] sm:top-[40%] left-[75%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
         {/* Hero Content */}
@@ -57,7 +59,7 @@ const CodeLegacyPortfolio = () => {
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 leading-tight">
               Our{' '}
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent sm:inline">
+              <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent sm:inline">
                 Previous Work
               </span>
             </h1>
@@ -82,16 +84,16 @@ const CodeLegacyPortfolio = () => {
                 d="m-160,44c30,0 58,-18 88,-18s 58,18 88,18 58,-18 88,-18 58,18 88,18 v44h-352z"
               />
               <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.8)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.6)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0.4)" />
+                <stop offset="0%" stopColor="rgba(30,91,255,0.55)" />
+                <stop offset="50%" stopColor="rgba(30,91,255,0.4)" />
+                <stop offset="100%" stopColor="rgba(48,216,248,0.3)" />
               </linearGradient>
             </defs>
             <g>
               <use href="#gentle-wave" x="48" y="0" fill="url(#gradient1)" className="animate-[wave-move-left_7s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.4)" className="animate-[wave-move-left_10s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)" className="animate-[wave-move-left_13s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="7" fill="#fff" className="animate-[wave-move-left_20s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="3" fill="rgba(30,91,255,0.3)" className="animate-[wave-move-left_10s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="5" fill="rgba(30,91,255,0.18)" className="animate-[wave-move-left_13s_linear_infinite]" />
+              <use href="#gentle-wave" x="48" y="7" fill="#01061a" className="animate-[wave-move-left_20s_linear_infinite]" />
             </g>
           </svg>
         </div>
@@ -101,14 +103,14 @@ const CodeLegacyPortfolio = () => {
       <PortfolioSection showFilter />
 
       {/* Advantages Section */}
-      <section id="advantages" className="py-8 sm:py-12 lg:py-20 bg-white">
+      <section id="advantages" className="py-8 sm:py-12 lg:py-20 bg-brand-bg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-gray-800 px-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-white px-2">
               Why Choose Us for{' '}
-              <span className="text-blue-600 block sm:inline">Web Development</span>?
+              <span className="text-brand-cyan block sm:inline">Web Development</span>?
             </h2>
-            <p className="text-sm sm:text-base lg:text-xl text-gray-600 max-w-4xl mx-auto px-4">
+            <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-4xl mx-auto px-4">
               In our services, we focus on developing websites with the highest
               quality standards, emphasizing the features that make your site
               stand out and perform effectively in a competitive online market.
@@ -120,60 +122,60 @@ const CodeLegacyPortfolio = () => {
               {
                 title: 'Responsive Design',
                 description: 'We ensure your website works perfectly on all devices, from mobile phones to desktop computers.',
-                icon: <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'High Performance Speed',
                 description: 'We optimize site performance so it loads in seconds, improving user experience and reducing bounce rate.',
-                icon: <PerformanceIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <PerformanceIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Search Engine Optimization (SEO)',
                 description: 'We structure the site and its content to rank at the top of Google search results, increasing organic traffic.',
-                icon: <Search className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <Search className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Advanced Security',
                 description: 'We apply the latest security standards to protect the site from cyberattacks and ensure data privacy.',
-                icon: <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Integration with External Systems',
                 description: 'We integrate the site with external services like online payment, maps, and cloud systems to enhance functionality.',
-                icon: <WorldIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <WorldIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Ongoing Technical Support',
                 description: 'We provide technical support after launch to ensure the site continues running smoothly with regular updates.',
-                icon: <SupportIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <SupportIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Attractive, Easy-to-Use Design',
                 description: 'We focus on attractive, intuitive user interfaces to improve visitor engagement with the site.',
-                icon: <DesignIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <DesignIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Cross-Browser Compatibility',
                 description: 'We test the site on different browsers to ensure a consistent experience for all users.',
-                icon: <CompatibilityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <CompatibilityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
               {
                 title: 'Advanced Analytics & Data',
                 description: 'We integrate analytics tools to track site performance and understand visitor behavior for continuous improvement.',
-                icon: <BarChart className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600" />,
+                icon: <BarChart className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
               },
             ].map((advantage, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-blue-300 text-center"
+                className="bg-brand-card rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan text-center"
               >
                 <div className="mx-auto mb-3 sm:mb-4 flex justify-center">
                   {advantage.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-800">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white">
                   {advantage.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-300 text-sm leading-relaxed">
                   {advantage.description}
                 </p>
               </div>
@@ -183,8 +185,9 @@ const CodeLegacyPortfolio = () => {
       </section>
 
       {/* Stats Bar */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-4 sm:py-6 text-white">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40 py-4 sm:py-6 text-white">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
             {[
               { number: '50+', label: 'Completed Projects', icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
@@ -203,40 +206,40 @@ const CodeLegacyPortfolio = () => {
       </div>
 
       {/* Contact Section */}
-      <section className="py-8 sm:py-12 lg:py-20 bg-gray-50">
+      <section className="py-8 sm:py-12 lg:py-20 bg-brand-alt">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-800">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
             Start Your Project With Us Today
           </h2>
-          <p className="text-sm sm:text-base lg:text-xl text-gray-600 mb-6 sm:mb-8 px-4">
+          <p className="text-sm sm:text-base lg:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
             Contact us now and get a free consultation for your next project
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm">
-              <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm">
+              <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-500">Email</div>
-                <div className="text-sm sm:text-base font-semibold text-gray-800">CodeLegacy1@gmail.com</div>
+                <div className="text-xs sm:text-sm text-gray-400">Email</div>
+                <div className="text-sm sm:text-base font-semibold text-white">CodeLegacy1@gmail.com</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm">
-              <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm">
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-500">Phone Number</div>
-                <div className="text-sm sm:text-base font-semibold text-gray-800">01201061216</div>
+                <div className="text-xs sm:text-sm text-gray-400">Phone Number</div>
+                <div className="text-sm sm:text-base font-semibold text-white">01201061216</div>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm sm:col-span-2 lg:col-span-1">
-              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
+            <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm sm:col-span-2 lg:col-span-1">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-500">Location</div>
-                <div className="text-sm sm:text-base font-semibold text-gray-800">Cairo, Egypt</div>
+                <div className="text-xs sm:text-sm text-gray-400">Location</div>
+                <div className="text-sm sm:text-base font-semibold text-white">Cairo, Egypt</div>
               </div>
             </div>
           </div>
 
-          <WhatsAppButton className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 text-sm sm:text-base">
+          <WhatsAppButton className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base">
             Contact Us Now
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </WhatsAppButton>

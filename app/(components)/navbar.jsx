@@ -38,14 +38,14 @@ const Navbar = () => {
   const linkClass = (href) =>
     `rounded-md px-3 py-2 transition-all duration-200 ${
       isActive(href)
-        ? 'text-blue-600 bg-blue-50 font-medium'
-        : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+        ? 'text-brand-cyan bg-brand-blue/15 font-medium shadow-[inset_0_0_0_1px_rgba(30,91,255,.5)]'
+        : 'text-gray-200 hover:text-brand-cyan hover:bg-brand-card2'
     }`;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        isScrolled ? 'border-b border-gray-200 shadow-md' : ''
+      className={`fixed top-0 left-0 right-0 z-50 bg-brand-bg/90 backdrop-blur-md transition-all duration-300 ${
+        isScrolled ? 'border-b border-brand-blue/40 shadow-glow' : 'border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,15 +57,16 @@ const Navbar = () => {
             className="flex items-center gap-3 shrink-0"
             aria-label="CodeLegacy home"
           >
-            <span className="relative block w-14 h-14 rounded-full overflow-hidden border-2 border-purple-600 shadow-sm">
+            <span className="relative block w-14 h-14 rounded-full overflow-hidden border-2 border-brand-cyan shadow-glow-cyan">
               <img
                 src={logoURL}
                 alt="CodeLegacy logo"
                 className="w-full h-full object-cover scale-125"
               />
             </span>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              CodeLegacy
+            <span className="text-xl font-bold tracking-wide">
+              <span className="text-white">Code</span>
+              <span className="text-neon">Legacy</span>
             </span>
           </Link>
           </div>
@@ -89,7 +90,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={() => setIsOpen((v) => !v)}
-              className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+              className="md:hidden p-2 rounded-md text-gray-200 hover:bg-brand-card2 transition-colors"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
             >
