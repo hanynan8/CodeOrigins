@@ -71,32 +71,6 @@ const CodeLegacyPortfolio = () => {
           </div>
         </div>
 
-        {/* Animated Waves */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            className="relative block w-[calc(100%+1.3px)] h-[60px] sm:h-[80px] md:h-[100px] lg:h-[120px]"
-            viewBox="0 24 150 28"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <path
-                id="gentle-wave"
-                d="m-160,44c30,0 58,-18 88,-18s 58,18 88,18 58,-18 88,-18 58,18 88,18 v44h-352z"
-              />
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(30,91,255,0.55)" />
-                <stop offset="50%" stopColor="rgba(30,91,255,0.4)" />
-                <stop offset="100%" stopColor="rgba(48,216,248,0.3)" />
-              </linearGradient>
-            </defs>
-            <g>
-              <use href="#gentle-wave" x="48" y="0" fill="url(#gradient1)" className="animate-[wave-move-left_7s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="3" fill="rgba(30,91,255,0.3)" className="animate-[wave-move-left_10s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="5" fill="rgba(30,91,255,0.18)" className="animate-[wave-move-left_13s_linear_infinite]" />
-              <use href="#gentle-wave" x="48" y="7" fill="#01061a" className="animate-[wave-move-left_20s_linear_infinite]" />
-            </g>
-          </svg>
-        </div>
       </section>
 
       {/* Portfolio Items Section — shared component with the homepage */}

@@ -70,56 +70,6 @@ const AboutPage = () => {
           </Link>
         </div>
 
-        {/* Animated Waves - Fully Responsive */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            className="relative block w-[calc(100%+1.3px)] h-[40px] xs:h-[50px] sm:h-[70px] md:h-[90px] lg:h-[120px]"
-            viewBox="0 24 150 28"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <path
-                id="gentle-wave"
-                d="m-160,44c30,0 58,-18 88,-18s 58,18 88,18 58,-18 88,-18 58,18 88,18 v44h-352z"
-              />
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.9)" />
-                <stop offset="50%" stopColor="rgba(255,255,255,0.7)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0.5)" />
-              </linearGradient>
-            </defs>
-            <g>
-              <use
-                href="#gentle-wave"
-                x="48"
-                y="0"
-                fill="url(#gradient1)"
-                className="animate-[wave-move-left_7s_linear_infinite]"
-              />
-              <use
-                href="#gentle-wave"
-                x="48"
-                y="3"
-                fill="rgba(255,255,255,0.5)"
-                className="animate-[wave-move-left_10s_linear_infinite]"
-              />
-              <use
-                href="#gentle-wave"
-                x="48"
-                y="5"
-                fill="rgba(255,255,255,0.3)"
-                className="animate-[wave-move-left_13s_linear_infinite]"
-              />
-              <use
-                href="#gentle-wave"
-                x="48"
-                y="7"
-                fill="#01061a"
-                className="animate-[wave-move-left_20s_linear_infinite]"
-              />
-            </g>
-          </svg>
-        </div>
       </section>
 
       {/* Company Story Section - Mobile Optimized */}

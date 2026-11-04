@@ -12,7 +12,7 @@ const make = ({ title, link, image, description, tech }) => ({
   fullImage: true, // show the whole hero screenshot, no cropping
   description,
   image: `${CLOUD}/${image}`,
-  tech: tech || ['Next.js', 'Tailwind', 'Node.js', 'MongoDB'],
+  tech: tech || [],
 });
 
 const educationProjects = [

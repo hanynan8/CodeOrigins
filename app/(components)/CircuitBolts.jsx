@@ -11,8 +11,10 @@ import React, { useEffect, useState } from 'react';
  *   <CircuitBolts />                  both edges
  *   <CircuitBolts side="left" />      one edge
  *   <CircuitBolts intensity="soft" /> dimmer, SVG only (CTA bands / footer)
+ *   <CircuitBolts speed={0.5} />      slower pulses (1 = default)
+ *   <CircuitBolts scale={0.6} />      smaller artwork (1 = default)
  */
-export default function CircuitBolts({ side = 'both', intensity = 'full', className = '' }) {
+export default function CircuitBolts({ side = 'both', intensity = 'full', speed = 1, scale = 1, className = '' }) {
   const [Live, setLive] = useState(null);
   const [ready, setReady] = useState(false);
 
@@ -35,7 +37,7 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', classN
           Soft bands (CTA / footer) keep the light SVG. */}
       {intensity !== 'full' && (side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
       {intensity !== 'full' && (side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
-      {Live && <Live side={side} onReady={() => setReady(true)} />}
+      {Live && <Live side={side} speed={speed} scale={scale} onReady={() => setReady(true)} />}
     </div>
   );
 }

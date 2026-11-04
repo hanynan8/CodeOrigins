@@ -28,7 +28,7 @@ function canvasTex(Texture, size, paint) {
   paint(c.getContext('2d'), size); return Texture.from(c);
 }
 
-export default function CircuitCanvas({ side = 'both', onReady }) {
+export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, scale: sizeScale = 1, onReady }) {
   const host = useRef(null);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function CircuitCanvas({ side = 'both', onReady }) {
         app.stage.removeChildren().forEach((c) => c.destroy({ children: true }));
         sides.length = 0;
         const W = app.screen.width, H = app.screen.height;
-        const s = Math.max(0.5, Math.min(H / 1024, 1.15, (W * 0.34) / 300));
+        const s = Math.max(0.5, Math.min(H / 1024, 1.15, (W * 0.34) / 300)) * sizeScale;
         const oy = (H - 1024 * s) / 2;
 
         for (const k of wanted) {
@@ -113,7 +113,7 @@ export default function CircuitCanvas({ side = 'both', onReady }) {
       function fire(S, extra = false) {
         let gi; do { gi = Math.floor(Math.random() * S.groups.length); } while (gi === S.last && S.groups.length > 1);
         S.last = gi;
-        const dir = Math.random() < 0.78 ? 1 : -1, v = rnd(...CFG.speed) * S.s;
+        const dir = 1 /* traces start at the screen edge: dir=1 always travels inward */, v = rnd(...CFG.speed) * S.s * speedScale;
         S.groups[gi].forEach((li, n) => launch(S.lines[li], { delay: n * 0.03 + rnd(0, 0.05), v: v * rnd(0.92, 1.08), dir }));
         if (extra) fire(S);
       }
@@ -179,6 +179,6 @@ export default function CircuitCanvas({ side = 'both', onReady }) {
       disposed = true; off();
       if (app) { try { app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
     };
-  }, [side]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [side, speedScale, sizeScale]); // eslint-disable-line react-hooks/exhaustive-deps
   return <div ref={host} className="circuit-bolts__canvas" />;
 }

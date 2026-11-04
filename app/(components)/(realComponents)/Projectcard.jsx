@@ -1,11 +1,26 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronRight, ChevronLeft, X, Eye, ExternalLink } from 'lucide-react';
 import tourismProjects from './tourismProjects';
 import educationProjects from './educationProjects';
 import storeProjects from './storeProjects';
 import restaurantProjects from './restaurantProjects';
+import CircuitBolts from '../CircuitBolts';
+
+// Label shown above each card title: the type of website (instead of the generic "Website")
+const TYPE_LABELS = {
+  ecommerce: 'E-commerce Store',
+  restaurants: 'Restaurant',
+  tourism: 'Tourism Website',
+  education: 'Educational Platform',
+  '3d': '3D Website',
+  portfolio: 'Portfolio',
+};
+const typeLabel = (project) => TYPE_LABELS[project.filter] || project.category;
+
+const INITIAL_COUNT = 9; // projects shown first
+const LOAD_STEP = 6;     // projects added by each "Show More" click
 
 /* ───────────────────────────────────────────────
    Image Slider Modal Component
@@ -136,6 +151,54 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
 };
 
 /* ───────────────────────────────────────────────
+   Scroll-on-hover image
+   Fixed-height frame; the screenshot keeps its natural proportions and, on hover,
+   scrolls inside the frame until its full length has been shown (and back on leave).
+─────────────────────────────────────────────── */
+const FRAME_HEIGHT = 'h-52 sm:h-60 lg:h-80'; // taller than before (was h-44 sm:h-52 lg:h-64)
+const SCROLL_PX_PER_SEC = 160;               // scroll speed on hover
+
+const ScrollImage = ({ src, alt, onClick, className = '', children }) => {
+  const frame = useRef(null);
+  const img = useRef(null);
+  const [anim, setAnim] = useState({ shift: 0, seconds: 0.6 });
+
+  const start = () => {
+    if (!frame.current || !img.current) return;
+    const distance = img.current.offsetHeight - frame.current.clientHeight;
+    if (distance > 8) {
+      setAnim({ shift: distance, seconds: Math.min(8, Math.max(1.5, distance / SCROLL_PX_PER_SEC)) });
+    }
+  };
+  const stop = () => setAnim({ shift: 0, seconds: 0.6 });
+
+  return (
+    <div
+      ref={frame}
+      onClick={onClick}
+      onMouseEnter={start}
+      onMouseLeave={stop}
+      className={`relative overflow-hidden ${FRAME_HEIGHT} bg-brand-bg ${className}`}
+    >
+      <img
+        ref={img}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="block w-full h-auto min-h-full object-cover object-top"
+        style={{
+          transform: `scaleX(1.05) translateY(-${anim.shift}px)`,
+          transformOrigin: 'top',
+          clipPath: 'inset(0 2.5% 0 2.5%)',
+          transition: `transform ${anim.seconds}s ${anim.shift ? 'linear' : 'ease-out'}`,
+        }}
+      />
+      {children}
+    </div>
+  );
+};
+
+/* ───────────────────────────────────────────────
    Slider Project Card Component
 ─────────────────────────────────────────────── */
 const SliderProjectCard = ({ project }) => {
@@ -144,29 +207,21 @@ const SliderProjectCard = ({ project }) => {
   return (
     <>
       <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105">
-        <div
-          className="relative overflow-hidden h-44 sm:h-52 lg:h-64 cursor-pointer bg-brand-bg"
+        <ScrollImage
+          src={project.images[0]}
+          alt={project.title || 'Project image'}
+          className="cursor-pointer"
           onClick={() => setModalOpen(true)}
         >
-          <img
-            src={project.images[0]}
-            alt={project.title || 'Project image'}
-            className="w-full h-full object-cover object-top sm:object-center"
-            style={{
-              transform: 'scaleX(1.05)',
-              transformOrigin: 'top',
-              clipPath: 'inset(0 2.5% 0 2.5%)',
-            }}
-          />
           <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <span>📷</span>
             <span>{project.images.length} photos</span>
           </div>
-        </div>
+        </ScrollImage>
 
         <div className="p-3 sm:p-4 lg:p-6">
           <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
-            {project.category}
+            {typeLabel(project)}
           </div>
           <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug">
             {project.title}
@@ -174,16 +229,18 @@ const SliderProjectCard = ({ project }) => {
           <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-            {project.tech.map((tech, techIndex) => (
-              <span
-                key={techIndex}
-                className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+          {project.tech?.length > 0 && (
+            <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+              {project.tech.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
           <button
             onClick={() => setModalOpen(true)}
             className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm"
@@ -229,24 +286,13 @@ const RegularProjectCard = ({ project }) => (
           />
         </div>
       ) : (
-        <div className="relative overflow-hidden h-44 sm:h-52 lg:h-64 bg-brand-bg">
-          <img
-            src={project.image}
-            alt={project.title || 'Project image'}
-            className="w-full h-full object-cover object-top sm:object-center"
-            style={{
-              transform: 'scaleX(1.05)',
-              transformOrigin: 'top',
-              clipPath: 'inset(0 2.5% 0 2.5%)',
-            }}
-          />
-        </div>
+        <ScrollImage src={project.image} alt={project.title || 'Project image'} />
       )}
     </a>
 
     <div className="p-3 sm:p-4 lg:p-6">
       <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
-        {project.category}
+        {typeLabel(project)}
       </div>
       <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug">
         {project.title}
@@ -254,16 +300,18 @@ const RegularProjectCard = ({ project }) => (
       <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
         {project.description}
       </p>
-      <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-        {project.tech.map((tech, techIndex) => (
-          <span
-            key={techIndex}
-            className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+      {project.tech?.length > 0 && (
+        <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+          {project.tech.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
       <a
         href={project.link}
         target="_blank"
@@ -284,10 +332,10 @@ const sliderProjects = [
   {
     title: 'Ecommerce Store for an Electronics Retailer — LapTech',
     category: 'Website',
-    filter: 'other',
+    filter: 'ecommerce',
     description:
       'A fully integrated ecommerce store for showcasing and selling tech devices and accessories (capacity for 5,000+ products). Equipped with an advanced filtering system, precise search, and fast performance. Includes a free admin dashboard for the owner to easily manage products (add, edit, delete) and inventory.',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
+    tech: [],
     images: [
       'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(817).png?raw=true',
@@ -304,7 +352,7 @@ const sliderProjects = [
   {
     title: 'Your Restaurant Website — Online Menu, Booking & Ordering System',
     category: 'Website',
-    filter: 'other',
+    filter: 'restaurants',
     description:
       'A modern restaurant website that showcases menus and dishes in an attractive way, with an online ordering and booking system and filters for quick access to dishes. Includes a dashboard for managing menus and offers.',
     tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
@@ -330,7 +378,7 @@ const regularProjects = [
     title: 'Website for Dada Projects, a female-led 3D motion design studio in London, UK.',
     link: 'https://dada-projects.com',
     category: 'Website',
-    filter: 'other',
+    filter: '3d',
     description:
       'A bold one-page portfolio for an award-winning, female-led 3D motion and CGI studio. The site is built around immersive hover-reveal project thumbnails, playful animated 3D shapes representing each case study, and smooth border-transition effects that give the whole experience a distinctly experimental, design-forward feel. It showcases campaign work for major brands such as Adidas, Nike, and Calvin Klein, with a fully responsive layout that keeps the animations fluid across desktop and mobile.',
     image: '/1 (1).png',
@@ -340,7 +388,7 @@ const regularProjects = [
     title: 'Website for Rumfoords, an AI and Web3 strategic consultancy in New York.',
     link: 'https://rumfoords.com',
     category: 'Website',
-    filter: 'other',
+    filter: '3d',
     description:
       'A sleek consultancy website presenting Rumfoords\' dual offering in Artificial Intelligence and Web3/Metaverse strategy. The site walks visitors through the studio\'s process with cinematic full-bleed video sections, and highlights flagship case studies (including campaigns for adidas, Ralph Lauren, and JD Sports) in a clean, editorial-style work section. Built with a headless CMS to let the team update case studies and client logos without touching code.',
     image: '/1 (2).png',
@@ -350,7 +398,7 @@ const regularProjects = [
     title: 'Official ecommerce store for Sarah Eisman Studio, a fine jewelry brand in New York.',
     link: 'https://saraheismanstudio.com',
     category: 'Website',
-    filter: 'other',
+    filter: 'ecommerce',
     description:
       'A refined ecommerce experience for a fine jewelry label crafted from gold and precious gemstones. Collections are organized around the human body (ear, hand, neck, wrist) instead of typical product categories, paired with striking black-and-white photography and 3D product renders. The store supports full catalog browsing, collection filtering, a smooth checkout flow, and a custom-branded shopping experience that matches the studio\'s minimalist, engineered aesthetic.',
     image: '/1.png',
@@ -360,7 +408,7 @@ const regularProjects = [
     title: 'Official website for Matcha Ren, a matcha dessert and beverage shop in California, USA.',
     link: 'https://matcharen.com',
     category: 'Website',
-    filter: 'other',
+    filter: 'restaurants',
     description:
       'A vibrant, green-and-white branded website for a matcha-focused dessert and drinks shop with multiple California locations. The site presents the full menu, brand story, and store locations in a playful, modern layout, with smooth scroll-triggered animations that keep the browsing experience light and appetizing. Built to convert casual visitors into in-store customers with clear calls to action for directions and ordering.',
     image: '/1 (3).png',
@@ -370,7 +418,7 @@ const regularProjects = [
     title: 'Official website for Alter Geneva, a bespoke luxury watchmaking studio in Geneva, Switzerland.',
     link: 'https://altergeneva.com',
     category: 'Website',
-    filter: 'other',
+    filter: 'ecommerce',
     description:
       'An ultra-minimalist landing page for a Swiss bespoke watch customization studio, built around a restrained palette of Swiss-snow white and deep black. The design leans on generous whitespace, a bold sans-serif wordmark, and a numbered project gallery (Project 001, 002, 003...) to communicate exclusivity without ever feeling cluttered. Sections walk clients through the customization process, past projects, and warranty details in a calm, editorial rhythm that mirrors the precision of the watches themselves.',
     image: '/1 (4).png',
@@ -380,7 +428,7 @@ const regularProjects = [
     title: 'Official website for Revitin, a prebiotic oral care brand in New York, USA.',
     link: 'https://revitin.com',
     category: 'Website',
-    filter: 'other',
+    filter: 'ecommerce',
     description:
       'An ecommerce storefront for a prebiotic, fluoride-free and SLS-free toothpaste brand focused on supporting a healthy oral microbiome. The site presents the product line (toothpaste, sonic toothbrushes, water flossers) with clean, health-forward visuals, subscription options for recurring deliveries, and educational content on oral microbiome health, all wrapped in a smooth, conversion-focused shopping experience.',
     image: '/1 (5).png',
@@ -390,23 +438,12 @@ const regularProjects = [
     title: 'Official ecommerce store for DOHA Bazaar accessories retailer',
     link: 'https://bazardoha.vercel.app/',
     category: 'Website',
-    filter: 'other',
+    filter: 'ecommerce',
     description:
       'A fully integrated ecommerce store for selling clothing that dynamically displays products with an advanced filtering and search system to make shopping easier. Supports efficient management of a large number of products, and is equipped with a powerful dashboard that makes it easy to add, edit, and delete products, with a modern design and fast performance that suits all devices.',
     image:
       'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1972).png?raw=true',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
-  },
-  {
-    title: 'Fully Integrated Clothing Ecommerce Store',
-    link: 'https://e-commerce-vert-xi-96.vercel.app/',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'An ecommerce platform for showcasing clothing in a modern style. Allows filtering products by size, color, and price, with a professional dashboard for managing inventory and orders and streamlining the buying experience.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(612).png?raw=true',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'Next.js'],
+    tech: [],
   },
   // {
   //   title: 'Our Own Company Website, CodeLegacy — About Page & Services Network',
@@ -418,17 +455,6 @@ const regularProjects = [
   //     'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
   //   tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
   // },
-  {
-    title: 'Website for MF Group Architectural Facades Company',
-    link: 'https://hanynan8.github.io/test-MFGroup/',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'A portfolio and services showcase website for architectural facade design, featuring a project photo gallery, service descriptions, and a contact form for consultation and project requests.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(795).png?raw=true',
-    tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-  },
   // {
   //   title: 'Kremora — Online Sweets Store',
   //   link: 'https://hanynan8.github.io/test-Sweety/',
@@ -440,43 +466,10 @@ const regularProjects = [
   //   tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
   // },
   {
-    title: 'Newton — Architectural & Interior Design Website',
-    link: 'https://hanywebdev.github.io/Architecture-Interior-Design-Landing-Page--Publi/',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'A website showcasing interior and architectural design services with a project gallery, service descriptions (interior design, space planning, material consulting), and a form for booking a consultation.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(522).png?raw=true',
-    tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
-  },
-  {
-    title: 'InvSmart — Financial & Investment Consulting Platform',
-    link: 'https://hanynan8.github.io/Financial-Consulting-Landing-Page/',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'A financial and consulting services website that supports investment product descriptions, client profiles, simplified financial reports, and initial integration with banking interfaces via API (forms and reports). Suitable for small and medium businesses.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(529).png?raw=true',
-    tech: ['React', 'Django (API forms)', 'PostgreSQL', 'OAuth'],
-  },
-  {
-    title: 'WaVer — Task & Project Management Web App (SaaS)',
-    link: 'https://saa-s-seven-kappa.vercel.app',
-    category: 'Website',
-    filter: 'other',
-    description:
-      'A SaaS platform for managing projects and tasks: kanban boards, teams, time tracking, and notifications. Suitable for small and medium teams with collaboration and file-sharing features.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(502).png?raw=true',
-    tech: ['WordPress (content layer)', 'PHP', 'MySQL', 'SEO Tools'],
-  },
-  {
     title: 'Personal Portfolio — Showcasing Skills and Work',
     link: 'https://my-portfolio-tau-six-33.vercel.app/',
     category: 'Website',
-    filter: 'other',
+    filter: 'portfolio',
     description:
       'A personal portfolio for showcasing projects, skills, resume, and contact links. A simple, fast design for visitors and employers to view experience and practical examples.',
     image:
@@ -497,8 +490,58 @@ const FILTERS = [
   { id: 'restaurants', label: 'Restaurants' },
   { id: 'tourism', label: 'Tourism Websites' },
   { id: 'education', label: 'Educational Platforms' },
-  { id: 'other', label: 'Other Websites' },
+  { id: '3d', label: '3D Websites' },
+  { id: 'portfolio', label: 'Portfolio' },
 ];
+
+/* ───────────────────────────────────────────────
+   Combined list, shuffled once with a fixed seed.
+   A seeded shuffle gives a mixed order that is identical on the server and the
+   client (no hydration mismatch) and stays the same between visits.
+   Change SHUFFLE_SEED to get a different mix.
+─────────────────────────────────────────────── */
+const SHUFFLE_SEED = 20261105;
+
+const seededShuffle = (items, seed) => {
+  const arr = [...items];
+  let a = seed >>> 0;
+  const rand = () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+
+// the recently re-categorised projects (original relative order)
+const addedProjects = [
+  ...regularProjects.slice(0, 7).map((project) => ({ type: 'regular', project })),
+  ...sliderProjects.map((project) => ({ type: 'slider', project })),
+  ...regularProjects.slice(7).map((project) => ({ type: 'regular', project })),
+];
+// the rest, in their original order
+const baseProjects = [
+  ...tourismProjects.map((project) => ({ type: 'regular', project })),
+  ...educationProjects.map((project) => ({ type: 'regular', project })),
+  ...storeProjects.map((project) => ({ type: 'regular', project })),
+  ...restaurantProjects.map((project) => ({ type: 'regular', project })),
+];
+
+// "All": everything mixed (seeded shuffle)
+const LAST_IN_ALL = 'https://bazardoha.vercel.app/'; // DOHA Bazaar: always the very last one in "All"
+const shuffled = seededShuffle([...addedProjects, ...baseProjects], SHUFFLE_SEED);
+const allProjects = [
+  ...shuffled.filter(({ project }) => project.link !== LAST_IN_ALL),
+  ...shuffled.filter(({ project }) => project.link === LAST_IN_ALL),
+];
+// A specific filter: the original projects first (original order), the added ones at the very end
+const orderedProjects = [...baseProjects, ...addedProjects];
 
 /* ───────────────────────────────────────────────
    Main Portfolio Section
@@ -509,28 +552,22 @@ const PortfolioSection = ({
   showFilter = false,
 }) => {
   const [activeFilter, setActiveFilter] = useState('all');
-
-  // One combined list, keeping the original display order
-  const allProjects = [
-    ...regularProjects.slice(0, 7).map((project) => ({ type: 'regular', project })),
-    ...sliderProjects.map((project) => ({ type: 'slider', project })),
-    ...regularProjects.slice(7).map((project) => ({ type: 'regular', project })),
-    ...tourismProjects.map((project) => ({ type: 'regular', project })),
-    ...educationProjects.map((project) => ({ type: 'regular', project })),
-    ...storeProjects.map((project) => ({ type: 'regular', project })),
-    ...restaurantProjects.map((project) => ({ type: 'regular', project })),
-  ];
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
   const visibleProjects =
     showFilter && activeFilter !== 'all'
-      ? allProjects.filter(({ project }) => project.filter === activeFilter)
+      ? orderedProjects.filter(({ project }) => project.filter === activeFilter)
       : allProjects;
+
+  const shownProjects = visibleProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < visibleProjects.length;
 
   const activeLabel = FILTERS.find((f) => f.id === activeFilter)?.label;
 
   return (
-    <section id="portfolio" className="py-8 sm:py-12 lg:py-20 bg-brand-bg">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+    <section id="portfolio" className="relative overflow-hidden py-8 sm:py-12 lg:py-20 bg-brand-bg">
+      <CircuitBolts speed={0.5} scale={0.6} />
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-white px-2">
             {title.includes('Web Development Projects') ? (
@@ -563,7 +600,7 @@ const PortfolioSection = ({
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  onClick={() => setActiveFilter(id)}
+                  onClick={() => { setActiveFilter(id); setVisibleCount(INITIAL_COUNT); }}
                   className={`whitespace-nowrap shrink-0 rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium border transition-all duration-200 ${
                     isActive
                       ? 'bg-gradient-to-r from-brand-blue to-brand-cyan text-white border-transparent shadow-glow'
@@ -579,7 +616,7 @@ const PortfolioSection = ({
 
         {visibleProjects.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-            {visibleProjects.map(({ type, project }, index) =>
+            {shownProjects.map(({ type, project }, index) =>
               type === 'slider' ? (
                 <SliderProjectCard key={`slider-${project.title}`} project={project} />
               ) : (
@@ -595,6 +632,18 @@ const PortfolioSection = ({
             <p className="text-xs sm:text-sm text-gray-400">
               New projects in this category are coming soon.
             </p>
+          </div>
+        )}
+
+        {hasMore && (
+          <div className="text-center mb-8 sm:mb-12 px-4">
+            <button
+              type="button"
+              onClick={() => setVisibleCount((c) => c + LOAD_STEP)}
+              className="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/10 hover:shadow-glow px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all text-sm sm:text-base"
+            >
+              Show More
+            </button>
           </div>
         )}
 

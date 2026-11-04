@@ -19,9 +19,7 @@ const CFG = {
   B: 12,                 // brightness levels drawn per frame
   growthPerFrame: 14,    // DBM steps computed per frame (a strike is built while idle)
   gap: [0.5, 2.2],       // quiet time after a strike, per bolt (s)
-  perSide: 2,            // independent bolts per side (x2 = double the lightning)
-  edgeMinWidth: 1024,    // >= this width (large screens): bolts enter from the left/right edges inward;
-                         // narrower screens keep the original top-to-bottom bolts
+  perSide: 1,            // independent bolts per side
   lightCell: 14,         // light-map resolution (px)
   lightRadius: 8,        // light-map spread (cells)
   segPx: 8,
@@ -125,7 +123,6 @@ export default function LightningCanvas({ side = 'both', onReady }) {
         fxLayers = { glowLayer };
 
         const mobile = W < 768;
-        const horiz = W >= CFG.edgeMinWidth;
         const bandW = mobile ? W * 0.55 : Math.min(W * 0.36, 560);
         const cs = clamp(H / 110, 6, 9);
         const y0 = -cs;
@@ -157,12 +154,8 @@ export default function LightningCanvas({ side = 'both', onReady }) {
           const cols = Math.floor(bandW / cs), rows = Math.ceil((H - y0) / cs);
           sides.push({
             k, bolt, haze, flash, gFlash, tFlash, nodes, lines, bandW,
-            horiz,
-            // large screens: grow the bolt in a frame rotated 90deg (cloud = screen edge, ground = inwards),
-            // then orient() maps it onto the screen. Small screens: original top-to-bottom domain.
-            dom: horiz
-              ? { x0: 0, y0, cs, cols: Math.ceil(H / cs), rows: Math.max(8, Math.floor(bandW / cs)) }
-              : { x0: k === 'L' ? 0 : W - cols * cs, y0, cs, cols, rows },
+            // bolts always fall from the top of the screen downwards (cloud = top edge, ground = bottom)
+            dom: { x0: k === 'L' ? 0 : W - cols * cs, y0, cs, cols, rows },
             growth: null, ready: null, strike: null, st: 0,
             next: (k === 'L' ? rnd(0.5, 0.9) : rnd(1.9, 2.5)) + copy * rnd(0.6, 1.3),
           });
@@ -170,20 +163,12 @@ export default function LightningCanvas({ side = 'both', onReady }) {
       }
 
       const startGrowth = (S) => {
-        S.growth = createGrowth({ cols: S.dom.cols, rows: S.dom.rows, rootX: S.dom.cols * rnd(0.2, 0.8), eta: rnd(2, 3) });
-      };
-      // maps a bolt grown in the rotated frame (px = along the edge, py = depth from the edge)
-      // onto the screen: depth -> x (from the left or right edge inwards), along-edge -> y
-      const orient = (K, S) => {
-        const X = (d) => (S.k === 'L' ? d : W - d);
-        for (let i = 0; i < K.N; i++) { const u = K.px[i], v = K.py[i]; K.px[i] = X(v); K.py[i] = u; }
-        for (let o = 0; o < K.seg.length; o += 2) { const u = K.seg[o], v = K.seg[o + 1]; K.seg[o] = X(v); K.seg[o + 1] = u; }
-        K.root = { x: X(K.root.y), y: K.root.x };
-        K.ground = { x: X(K.ground.y), y: K.ground.x };
+        // random length: each strike reaches a random depth (50%..100% of the hero height: from the middle down to the very bottom), not always the bottom
+        const rows = Math.max(8, Math.round(S.dom.rows * rnd(0.5, 1)));
+        S.growth = createGrowth({ cols: S.dom.cols, rows, rootX: S.dom.cols * rnd(0.2, 0.8), eta: rnd(2, 3) });
       };
       const finishGrowth = (S) => {
         const K = buildStrike(S.growth, { x0: S.dom.x0, y0: S.dom.y0, cs: S.dom.cs });
-        if (S.horiz) orient(K, S);
         K.heat = new Float32Array(K.N);
         K.sp = K.lights.map((i) => {
           const sp = new Sprite(halo); sp.anchor.set(0.5); sp.blendMode = 'add'; sp.position.set(K.px[i], K.py[i]); sp.alpha = 0;
@@ -242,10 +227,10 @@ export default function LightningCanvas({ side = 'both', onReady }) {
           // ambient light from the whole channel + flashes at the cloud end and at the strike point
           const g = groundFlash(K, S.st);
           S.haze.alpha = 0.3 * E;
-          S.flash.position.set((K.root.x + K.ground.x) / 2, S.horiz ? (K.root.y + K.ground.y) / 2 : H * 0.5);
-          S.flash.width = S.bandW * 3.4; S.flash.height = S.horiz ? H * 0.8 : H * 1.5; S.flash.alpha = 0.3 * Math.pow(E, 1.3);
+          S.flash.position.set((K.root.x + K.ground.x) / 2, H * 0.5);
+          S.flash.width = S.bandW * 3.4; S.flash.height = H * 1.5; S.flash.alpha = 0.3 * Math.pow(E, 1.3);
           S.gFlash.position.set(K.ground.x, K.ground.y); S.gFlash.width = S.gFlash.height = 220 * unit * (0.6 + g); S.gFlash.alpha = Math.min(1, g * 0.9);
-          S.tFlash.position.set(S.horiz ? K.root.x + (S.k === 'L' ? 10 : -10) : K.root.x, S.horiz ? K.root.y : K.root.y + 10); S.tFlash.width = S.tFlash.height = 170 * unit; S.tFlash.alpha = Math.min(1, E * 0.8);
+          S.tFlash.position.set(K.root.x, K.root.y + 10); S.tFlash.width = S.tFlash.height = 170 * unit; S.tFlash.alpha = Math.min(1, E * 0.8);
         }
       };
 
