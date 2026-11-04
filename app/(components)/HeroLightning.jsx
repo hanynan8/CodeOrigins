@@ -34,10 +34,8 @@ export default function HeroLightning({ side = 'both', className = '' }) {
   return (
     <div
       aria-hidden="true"
-      className={`circuit-bolts circuit-bolts--still ${ready ? 'circuit-bolts--live' : ''} ${className}`}
+      className={`circuit-bolts ${ready ? 'circuit-bolts--live' : ''} ${className}`}
     >
-      {(side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
-      {(side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
       {Live && <Live side={side} onReady={() => setReady(true)} />}
     </div>
   );

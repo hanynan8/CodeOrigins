@@ -18,7 +18,10 @@ const CFG = {
   deep: 0x0a3a8f, blue: 0x1c6cf0, glow: 0x2a8cff, hero: 0x5fd0ff,
   B: 12,                 // brightness levels drawn per frame
   growthPerFrame: 14,    // DBM steps computed per frame (a strike is built while idle)
-  gap: [0.5, 2.2],       // quiet time after a strike, per side (s)
+  gap: [0.5, 2.2],       // quiet time after a strike, per bolt (s)
+  perSide: 2,            // independent bolts per side (x2 = double the lightning)
+  edgeMinWidth: 1024,    // >= this width (large screens): bolts enter from the left/right edges inward;
+                         // narrower screens keep the original top-to-bottom bolts
   lightCell: 14,         // light-map resolution (px)
   lightRadius: 8,        // light-map spread (cells)
   segPx: 8,
@@ -122,38 +125,18 @@ export default function LightningCanvas({ side = 'both', onReady }) {
         fxLayers = { glowLayer };
 
         const mobile = W < 768;
+        const horiz = W >= CFG.edgeMinWidth;
         const bandW = mobile ? W * 0.55 : Math.min(W * 0.36, 560);
         const cs = clamp(H / 110, 6, 9);
         const y0 = -cs;
 
-        for (const k of wanted) {
+        for (const [k, copy] of wanted.flatMap((w) => Array.from({ length: CFG.perSide }, (_, c) => [w, c]))) {
           const m = model[k];
           const mapX = k === 'L' ? (x) => x * s : (x) => W - (300 - x) * s;
           const mapY = (y) => oy + y * s;
           const tr = (pts) => pts.map(([x, y]) => [mapX(x), mapY(y)]);
 
-          // dormant circuit traces (brand art). Lightning is what makes them light up.
-          const dim = (g, lines, w, color, alpha) => {
-            for (const pts of lines) {
-              const p = tr(pts); g.moveTo(p[0][0], p[0][1]);
-              for (let i = 1; i < p.length; i++) g.lineTo(p[i][0], p[i][1]);
-              g.stroke({ width: Math.max(0.7, w * s), color, alpha, join: 'round', cap: 'round' });
-            }
-          };
-          const far = new Container(), mid = new Container(), hero = new Container();
-          const farG = new Graphics(); dim(farG, m.far, 1.2, CFG.deep, 0.6); far.addChild(farG);
-          far.filters = [new BlurFilter({ strength: 1.1, quality: 2 })];
-          const midG = new Graphics(); dim(midG, m.mid, 1.1, CFG.blue, 0.6); mid.addChild(midG);
-          const heroGlow = new Graphics(); dim(heroGlow, m.hero, 6, 0x087cff, 0.09); hero.addChild(heroGlow);
-          const heroG = new Graphics(); dim(heroG, m.hero, 1.4, CFG.hero, 0.7); hero.addChild(heroG);
-          const chipG = new Graphics();
-          for (const [cx, cy] of m.chips) for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++)
-            chipG.rect(mapX(cx + i * 7), mapY(cy + j * 7), Math.max(2, 3 * s), Math.max(2, 3 * s)).fill({ color: CFG.blue, alpha: (i + j) % 2 ? 0.3 : 0.7 });
-          mid.addChild(chipG);
-          const dots = new Graphics();
-          m.nodes.forEach(([x, y]) => dots.circle(mapX(x), mapY(y), 2 * s + 0.6).fill({ color: 0xbfeaff, alpha: 0.55 }));
-          hero.addChild(dots);
-          base.addChild(far, mid, hero);
+          // (no static/dormant circuit art: only the lightning itself is visible)
 
           const nodes = m.nodes.map(([x, y], i) => {
             const sp = new Sprite(halo); sp.anchor.set(0.5); sp.blendMode = 'add'; sp.position.set(mapX(x), mapY(y));
@@ -163,7 +146,7 @@ export default function LightningCanvas({ side = 'both', onReady }) {
           const lines = m.lines.map((src) => makeLine({ ...src, pts: tr(src.pts) }, CFG.segPx * s));
 
           const haze = new Sprite(halo); haze.anchor.set(0.5); haze.blendMode = 'add'; haze.tint = 0x087cff;
-          haze.position.set(k === 'L' ? 0 : W, H * 0.5); haze.width = W * 0.5; haze.height = H * 1.15; haze.alpha = 0.06;
+          haze.position.set(k === 'L' ? 0 : W, H * 0.5); haze.width = W * 0.5; haze.height = H * 1.15; haze.alpha = 0;
           const flash = new Sprite(halo); flash.anchor.set(0.5); flash.blendMode = 'add'; flash.tint = 0x1c6cf0; flash.alpha = 0;
           const gFlash = new Sprite(halo); gFlash.anchor.set(0.5); gFlash.blendMode = 'add'; gFlash.alpha = 0;
           const tFlash = new Sprite(halo); tFlash.anchor.set(0.5); tFlash.blendMode = 'add'; tFlash.alpha = 0;
@@ -174,9 +157,14 @@ export default function LightningCanvas({ side = 'both', onReady }) {
           const cols = Math.floor(bandW / cs), rows = Math.ceil((H - y0) / cs);
           sides.push({
             k, bolt, haze, flash, gFlash, tFlash, nodes, lines, bandW,
-            dom: { x0: k === 'L' ? 0 : W - cols * cs, y0, cs, cols, rows },
+            horiz,
+            // large screens: grow the bolt in a frame rotated 90deg (cloud = screen edge, ground = inwards),
+            // then orient() maps it onto the screen. Small screens: original top-to-bottom domain.
+            dom: horiz
+              ? { x0: 0, y0, cs, cols: Math.ceil(H / cs), rows: Math.max(8, Math.floor(bandW / cs)) }
+              : { x0: k === 'L' ? 0 : W - cols * cs, y0, cs, cols, rows },
             growth: null, ready: null, strike: null, st: 0,
-            next: k === 'L' ? rnd(0.5, 0.9) : rnd(1.9, 2.5),
+            next: (k === 'L' ? rnd(0.5, 0.9) : rnd(1.9, 2.5)) + copy * rnd(0.6, 1.3),
           });
         }
       }
@@ -184,8 +172,18 @@ export default function LightningCanvas({ side = 'both', onReady }) {
       const startGrowth = (S) => {
         S.growth = createGrowth({ cols: S.dom.cols, rows: S.dom.rows, rootX: S.dom.cols * rnd(0.2, 0.8), eta: rnd(2, 3) });
       };
+      // maps a bolt grown in the rotated frame (px = along the edge, py = depth from the edge)
+      // onto the screen: depth -> x (from the left or right edge inwards), along-edge -> y
+      const orient = (K, S) => {
+        const X = (d) => (S.k === 'L' ? d : W - d);
+        for (let i = 0; i < K.N; i++) { const u = K.px[i], v = K.py[i]; K.px[i] = X(v); K.py[i] = u; }
+        for (let o = 0; o < K.seg.length; o += 2) { const u = K.seg[o], v = K.seg[o + 1]; K.seg[o] = X(v); K.seg[o + 1] = u; }
+        K.root = { x: X(K.root.y), y: K.root.x };
+        K.ground = { x: X(K.ground.y), y: K.ground.x };
+      };
       const finishGrowth = (S) => {
         const K = buildStrike(S.growth, { x0: S.dom.x0, y0: S.dom.y0, cs: S.dom.cs });
+        if (S.horiz) orient(K, S);
         K.heat = new Float32Array(K.N);
         K.sp = K.lights.map((i) => {
           const sp = new Sprite(halo); sp.anchor.set(0.5); sp.blendMode = 'add'; sp.position.set(K.px[i], K.py[i]); sp.alpha = 0;
@@ -212,7 +210,7 @@ export default function LightningCanvas({ side = 'both', onReady }) {
             S.next = S.strike.duration + rnd(...CFG.gap);
           }
           S.bolt.clear();
-          if (!S.strike) { S.haze.alpha += (0.06 - S.haze.alpha) * 0.1; continue; }
+          if (!S.strike) { S.haze.alpha += (0 - S.haze.alpha) * 0.1; continue; }
           const K = S.strike;
           S.st += dt;
           if (S.st > K.duration) { disposeStrike(S); continue; }
@@ -239,42 +237,15 @@ export default function LightningCanvas({ side = 'both', onReady }) {
             const w = K.lw[j];
             sp.alpha = Math.min(1, h * 0.24 * w);
             sp.width = sp.height = (70 + 90 * K.In[i]) * unit * (0.75 + 0.5 * h);
-            splat(K.px[i], K.py[i], h * w);
           }
 
           // ambient light from the whole channel + flashes at the cloud end and at the strike point
           const g = groundFlash(K, S.st);
-          S.haze.alpha = 0.06 + 0.3 * E;
-          S.flash.position.set((K.root.x + K.ground.x) / 2, H * 0.5);
-          S.flash.width = S.bandW * 3.4; S.flash.height = H * 1.5; S.flash.alpha = 0.3 * Math.pow(E, 1.3);
+          S.haze.alpha = 0.3 * E;
+          S.flash.position.set((K.root.x + K.ground.x) / 2, S.horiz ? (K.root.y + K.ground.y) / 2 : H * 0.5);
+          S.flash.width = S.bandW * 3.4; S.flash.height = S.horiz ? H * 0.8 : H * 1.5; S.flash.alpha = 0.3 * Math.pow(E, 1.3);
           S.gFlash.position.set(K.ground.x, K.ground.y); S.gFlash.width = S.gFlash.height = 220 * unit * (0.6 + g); S.gFlash.alpha = Math.min(1, g * 0.9);
-          S.tFlash.position.set(K.root.x, K.root.y + 10); S.tFlash.width = S.tFlash.height = 170 * unit; S.tFlash.alpha = Math.min(1, E * 0.8);
-        }
-
-        // circuit traces + their nodes pick up light from the strike
-        if (any || circDirty) {
-          circLit.clear(); circDirty = any;
-          if (any) {
-            for (const S of sides) {
-              for (const ln of S.lines) {
-                const sg = ln.seg;
-                for (let i = 0; i < ln.n; i++) {
-                  const o = i * 4;
-                  const cx = Math.floor(((sg[o] + sg[o + 2]) * 0.5) / LC), cy = Math.floor(((sg[o + 1] + sg[o + 3]) * 0.5) / LC);
-                  if (cx < 0 || cy < 0 || cx >= LW || cy >= LH) continue;
-                  const v = lm[cy * LW + cx]; if (v < 0.03) continue;
-                  const b = Math.min(B, Math.ceil((1 - Math.exp(-v * 0.55)) * ln.gain * B));
-                  if (b >= 1) circBk[b].push(sg[o], sg[o + 1], sg[o + 2], sg[o + 3]);
-                }
-              }
-              for (const n of S.nodes) {
-                const cx = Math.floor(n.x / LC), cy = Math.floor(n.y / LC);
-                const v = cx >= 0 && cy >= 0 && cx < LW && cy < LH ? lm[cy * LW + cx] : 0;
-                n.sp.alpha = Math.min(1, 1 - Math.exp(-v * 0.6));
-              }
-            }
-            for (let b = 1; b <= B; b++) flush(circLit, circBk[b], b / B, 1, unit * 0.8, false);
-          } else for (const S of sides) for (const n of S.nodes) n.sp.alpha = 0;
+          S.tFlash.position.set(S.horiz ? K.root.x + (S.k === 'L' ? 10 : -10) : K.root.x, S.horiz ? K.root.y : K.root.y + 10); S.tFlash.width = S.tFlash.height = 170 * unit; S.tFlash.alpha = Math.min(1, E * 0.8);
         }
       };
 

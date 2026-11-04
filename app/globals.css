@@ -112,11 +112,6 @@ input:-webkit-autofill {
 }
 
 
-/* Static circuit art (no animation) — used by <HeroLightning /> until the WebGL
-   lightning is ready, and as its fallback */
-.circuit-bolts--still .circuit-bolts__side--left  { background-image: url('/brand/circuit-left-still.svg'); }
-.circuit-bolts--still .circuit-bolts__side--right { background-image: url('/brand/circuit-right-still.svg'); }
-
 /* ── Live (PixiJS) circuit canvas: fades in over the SVG fallback ───────── */
 .circuit-bolts__canvas { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
 .circuit-bolts__canvas canvas { display: block; width: 100%; height: 100%; }
