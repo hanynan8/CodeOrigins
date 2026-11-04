@@ -31,8 +31,10 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', classN
       aria-hidden="true"
       className={`circuit-bolts ${intensity === 'soft' ? 'circuit-bolts--soft' : ''} ${ready ? 'circuit-bolts--live' : ''} ${className}`}
     >
-      {(side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
-      {(side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
+      {/* Static SVG edge art removed from hero ("full") – only the live physical canvas remains there.
+          Soft bands (CTA / footer) keep the light SVG. */}
+      {intensity !== 'full' && (side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
+      {intensity !== 'full' && (side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
       {Live && <Live side={side} onReady={() => setReady(true)} />}
     </div>
   );

@@ -81,22 +81,19 @@ export default function CircuitCanvas({ side = 'both', onReady }) {
             }
           };
           const root = new Container(), far = new Container(), mid = new Container(), hero = new Container();
-          const farG = new Graphics(); dim(farG, m.far, 1.2, CFG.deep, 0.5); far.addChild(farG);
+          const farG = new Graphics(); far.addChild(farG); // no dormant traces: only live discharges are visible
           far.filters = [new BlurFilter({ strength: 1.3, quality: 2 })];
-          const midG = new Graphics(); dim(midG, m.mid, 1.1, CFG.blue, 0.5); mid.addChild(midG);
-          const heroG = new Graphics(); dim(heroG, m.hero, 1.4, CFG.hero, 0.55); hero.addChild(heroG);
+          const midG = new Graphics(); mid.addChild(midG);
+          const heroG = new Graphics(); hero.addChild(heroG);
 
-          const chipG = new Graphics();
-          for (const [cx, cy] of m.chips) for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++)
-            chipG.rect(mapX(cx + i * 7), mapY(cy + j * 7), Math.max(2, 3 * s), Math.max(2, 3 * s)).fill({ color: CFG.blue, alpha: (i + j) % 2 ? 0.3 : 0.7 });
-          mid.addChild(chipG);
+          // static chip squares removed
 
           const haze = new Sprite(halo); haze.anchor.set(0.5); haze.blendMode = 'add'; haze.tint = 0x087cff;
-          haze.position.set(k === 'L' ? 0 : W, H * (k === 'L' ? 0.42 : 0.58)); haze.width = W * 0.5; haze.height = H * 1.15; haze.alpha = 0.08;
+          haze.position.set(k === 'L' ? 0 : W, H * (k === 'L' ? 0.42 : 0.58)); haze.width = W * 0.5; haze.height = H * 1.15; haze.alpha = 0;
 
           const nodes = m.nodes.map(([x, y], i) => {
             const sp = new Sprite(halo); sp.anchor.set(0.5); sp.blendMode = 'add'; sp.position.set(mapX(x), mapY(y));
-            const base = (i % 2 ? 20 : 14) * s; sp.width = sp.height = base; sp.alpha = 0.45; hero.addChild(sp);
+            const base = (i % 2 ? 20 : 14) * s; sp.width = sp.height = base; sp.alpha = 0; hero.addChild(sp);
             return { sp, base, flash: 0 };
           });
 
@@ -160,10 +157,10 @@ export default function CircuitCanvas({ side = 'both', onReady }) {
             S.lit.stroke({ width: (3 + 5 * h) * S.s, color: CFG.glowBlue, alpha: 0.18 * h, join: 'round', cap: 'round' });
             S.lit.stroke({ width: (1 + 1.1 * h) * S.s, color: heatColor(h), alpha: Math.min(1, 0.35 + h), join: 'round', cap: 'round' });
           }
-          for (const n of S.nodes) { n.flash *= Math.exp(-dt / 0.45); const k = 1 + n.flash * 1.4; n.sp.width = n.sp.height = n.base * k; n.sp.alpha = 0.4 + 0.6 * Math.min(1, n.flash); }
+          for (const n of S.nodes) { n.flash *= Math.exp(-dt / 0.45); const k = 1 + n.flash * 1.4; n.sp.width = n.sp.height = n.base * k; n.sp.alpha = Math.min(1, n.flash); }
           // the surroundings pick up some of the light
           const surge = Math.exp(-(t - surgeAt) / 0.18) * 0.25;
-          S.haze.alpha = 0.07 + 0.2 * Math.min(1, litCount / 220) + surge * 0.3;
+          S.haze.alpha = 0.2 * Math.min(1, litCount / 220) + surge * 0.3;
           S.hero.alpha = Math.min(1, 0.92 + surge);
         }
       };

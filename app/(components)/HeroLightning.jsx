@@ -1,31 +1,44 @@
-// Angular electric bolts rising from the bottom of the hero, with a travelling
-// pulse + irregular flicker (CSS only, no JS). Decorative, pointer-events none.
-const BOLTS = [
-  { d: 'M200 420L215 360L190 320L230 270L205 220L250 170L240 120', b: 'M230 270L290 250L310 205' },
-  { d: 'M520 420L500 370L535 330L515 285L560 240L545 190', b: 'M535 330L585 345L600 305' },
-  { d: 'M760 420L780 365L750 325L790 280L770 230L815 185L800 140L840 100', b: 'M790 280L850 265L870 225' },
-  { d: 'M1040 420L1060 370L1030 330L1075 290L1055 240L1095 195', b: 'M1075 290L1125 310L1140 270' },
-  { d: 'M1290 420L1270 365L1305 325L1285 275L1330 235L1318 185', b: 'M1305 325L1360 300L1375 255' },
-];
+'use client';
+import React, { useEffect, useState } from 'react';
 
-export default function HeroLightning() {
+/**
+ * Hero lightning.
+ *
+ * Replaces the old pulses that slid along the circuit traces (a rigid white dash at a
+ * constant speed) with physically-based lightning: fractal branching channels grown
+ * with the dielectric breakdown model, played back as stepped leader -> return stroke
+ * -> afterglow, with real light spill onto the surroundings (see LightningCanvas.jsx).
+ *
+ *  - Needs WebGL and normal motion preferences; loaded lazily after idle so it never
+ *    blocks first paint.
+ *  - Until it is ready (or when it can't run) the static circuit art is shown, with no
+ *    animation at all.
+ *
+ *   <HeroLightning />                both edges
+ *   <HeroLightning side="left" />    one edge
+ */
+export default function HeroLightning({ side = 'both', className = '' }) {
+  const [Live, setLive] = useState(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let gl = false;
+    try { const c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch {}
+    if (!gl) return;
+    const run = () => import('./LightningCanvas').then((m) => setLive(() => m.default)).catch(() => {});
+    const id = 'requestIdleCallback' in window ? requestIdleCallback(run, { timeout: 1500 }) : setTimeout(run, 600);
+    return () => ('cancelIdleCallback' in window ? cancelIdleCallback(id) : clearTimeout(id));
+  }, []);
+
   return (
-    <div className="cl-bolts" aria-hidden="true">
-      <div className="cl-bolt-flash" />
-      <svg viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice">
-        {BOLTS.map(({ d, b }, i) => (
-          <g key={i} className="cl-bolt-g">
-            {[d, b].map((p, k) => (
-              <g key={k} className="cl-bolt">
-                <path className="glow" d={p} pathLength="1" />
-                <path className="core" d={p} pathLength="1" />
-                <path className="flow" d={p} pathLength="1" style={{ animationDelay: `${i * 0.7 + k * 0.35}s` }} />
-              </g>
-            ))}
-            <circle className="tip" cx={d.split('L').pop().split(/\s/)[0]} cy={d.split(/\s/).pop()} r="3" />
-          </g>
-        ))}
-      </svg>
+    <div
+      aria-hidden="true"
+      className={`circuit-bolts circuit-bolts--still ${ready ? 'circuit-bolts--live' : ''} ${className}`}
+    >
+      {(side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
+      {(side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
+      {Live && <Live side={side} onReady={() => setReady(true)} />}
     </div>
   );
 }

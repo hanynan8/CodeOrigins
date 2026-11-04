@@ -9,7 +9,7 @@ import { ArrowRight, ExternalLink, CheckCircle, Star, MessageCircle } from 'luci
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import PortfolioSection from '../(components)/(realComponents)/Projectcard';
 import ServicesGrid from '../(components)/(realComponents)/ServicesGrid';  // ← shared component
-import CircuitBolts from '../(components)/CircuitBolts';
+import HeroLightning from '../(components)/HeroLightning';
 
 const CodeLegacyClient = ({ services, testimonials, webServices }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +34,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
         id="home"
         className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden"
       >
-        <CircuitBolts />
+        <HeroLightning />
         {/* Floating background elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-brand-blue/10 rounded-full top-[20%] left-[5%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
