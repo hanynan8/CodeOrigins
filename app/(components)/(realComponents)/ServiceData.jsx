@@ -6,7 +6,7 @@
 export const servicesData = [
   {
     id: 13,
-    title: 'Clothing & Accessories Ecommerce Stores',
+    title: 'E-Commerce Website',
     shortDescription:
       'Fully integrated ecommerce platforms with secure payment systems and advanced inventory management',
     fullDescription:
@@ -24,15 +24,11 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'PayPal'],
     color: 'from-green-500 to-emerald-500',
-    images: [
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1635).png?raw=true',
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1631).png?raw=true',
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1635).png?raw=true',
-    ],
+    image: '/services/ecommerce.webp',
   },
   {
     id: 4,
-    title: 'Landing Pages',
+    title: 'Landing Page',
     shortDescription:
       'High-conversion landing pages designed to increase sales and leads',
     fullDescription:
@@ -50,13 +46,12 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'Tailwind CSS', 'Google Analytics', 'Hotjar'],
     color: 'from-brand-blue to-brand-cyan',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1447).png?raw=true',
+    image: '/services/landing-pages.webp',
   },
 
   {
     id: 5,
-    title: 'Restaurant & Cafe Websites',
+    title: 'Restaurant Website',
     shortDescription:
       'Interactive restaurant websites with digital menus and table booking systems',
     fullDescription:
@@ -74,13 +69,12 @@ export const servicesData = [
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Google Maps API'],
     color: 'from-brand-blue to-brand-cyan',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1475).png?raw=true',
+    image: '/services/restaurant.webp',
   },
 
   {
     id: 6,
-    title: 'Clinic & Hospital Websites',
+    title: 'Medical Website',
     shortDescription: 'Digital medical solutions with appointment booking and patient management systems',
     fullDescription:
       'We design specialized medical websites that make it easy for patients to book appointments and help doctors manage their clinics.',
@@ -97,13 +91,12 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'MongoDB', 'Tailwind CSS', 'HIPAA Compliance'],
     color: 'from-teal-500 to-green-500',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1470).png?raw=true',
+    image: '/services/clinic.webp',
   },
 
   {
     id: 3,
-    title: 'SaaS Platforms',
+    title: 'SaaS Platform',
     shortDescription:
       'Scalable software-as-a-service solutions with multi-tier subscriptions',
     fullDescription:
@@ -121,12 +114,11 @@ export const servicesData = [
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
     color: 'from-brand-sky to-brand-cyan',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1582).png?raw=true',
+    image: '/services/saas.webp',
   },
   {
     id: 2,
-    title: 'Educational Platforms',
+    title: 'Educational Platform',
     shortDescription:
       'Advanced e-learning platforms with interactive tools and content management',
     fullDescription:
@@ -144,13 +136,12 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'MongoDB', 'Node.js', 'AWS S3', 'Socket.io'],
     color: 'from-brand-blue to-cyan-500',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1912).png?raw=true',
+    image: '/services/education.webp',
   },
 
   {
     id: 7,
-    title: 'Corporate & Business Websites',
+    title: 'Business Website',
     shortDescription:
       'Professional company websites that reflect brand identity and build trust',
     fullDescription:
@@ -168,12 +159,11 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'Node.js', 'MongoDB', 'AWS'],
     color: 'from-brand-blue to-brand-sky',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1461).png?raw=true',
+    image: '/services/corporate.webp',
   },
   {
     id: 8,
-    title: 'Personal & Portfolio Websites',
+    title: 'Portfolio Website',
     shortDescription: 'Professional personal websites and portfolios for creatives and specialists',
     fullDescription:
       'We design distinctive personal websites that showcase your skills and work in an attractive, professional way.',
@@ -190,13 +180,12 @@ export const servicesData = [
     ],
     technologies: ['React', 'Tailwind', 'MongoDB', 'Netlify'],
     color: 'from-pink-500 to-rose-500',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(492).png?raw=true',
+    image: '/services/portfolio.webp',
   },
 
   {
     id: 10,
-    title: 'Booking & Service Platforms',
+    title: 'Booking Platform',
     shortDescription: 'Advanced booking systems for services and appointments with customer management',
     fullDescription:
       'We develop comprehensive booking platforms that make it easy for your customers to book your services and help you manage your business.',
@@ -213,12 +202,11 @@ export const servicesData = [
     ],
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Calendar APIs'],
     color: 'from-emerald-500 to-teal-500',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1450).png?raw=true',
+    image: '/services/booking.webp',
   },
   {
     id: 12,
-    title: 'Event & Conference Websites',
+    title: 'Event Website',
     shortDescription: 'Specialized event management platforms with registration and ticketing systems',
     fullDescription:
       'We develop comprehensive event websites that cover every need for organizing conferences and events.',
@@ -235,13 +223,12 @@ export const servicesData = [
     ],
     technologies: ['React', 'Node.js', 'Stripe', 'WebRTC', 'Socket.io'],
     color: 'from-brand-cyan to-brand-blue',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1452).png?raw=true',
+    image: '/services/events.webp',
   },
 
   {
     id: 9,
-    title: 'News & Magazine Websites',
+    title: 'News Website',
     shortDescription: 'Advanced media platforms with content management and flexible publishing systems',
     fullDescription:
       'We develop comprehensive news websites with advanced publishing tools and easy content management.',
@@ -258,13 +245,12 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'Sanity CMS', 'MongoDB', 'Algolia Search'],
     color: 'from-brand-sky to-brand-blue',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1578).png?raw=true',
+    image: '/services/news.webp',
   },
 
   {
     id: 11,
-    title: 'Forums & Communities',
+    title: 'Community Platform',
     shortDescription: 'Interactive community platforms with content and member management tools',
     fullDescription:
       'We build vibrant digital communities with advanced interaction tools and smart content management.',
@@ -281,7 +267,6 @@ export const servicesData = [
     ],
     technologies: ['Next.js', 'Socket.io', 'MongoDB', 'Redis'],
     color: 'from-violet-500 to-brand-cyan',
-    image:
-      'https://github.com/hanynan8/Files/blob/main/Screenshot%20(1575).png?raw=true',
+    image: '/services/forums.webp',
   },
 ];

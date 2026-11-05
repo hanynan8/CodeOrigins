@@ -10,7 +10,7 @@ import CircuitBolts from '../CircuitBolts';
 
 // Label shown above each card title: the type of website (instead of the generic "Website")
 const TYPE_LABELS = {
-  ecommerce: 'E-commerce Store',
+  ecommerce: 'E-Commerce Store',
   restaurants: 'Restaurant',
   tourism: 'Tourism Website',
   education: 'Educational Platform',
@@ -275,7 +275,7 @@ const SliderProjectCard = ({ project }) => {
 
   return (
     <>
-      <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105">
+      <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full">
         <ScrollImage
           src={project.images[0]}
           alt={project.title || 'Project image'}
@@ -288,28 +288,16 @@ const SliderProjectCard = ({ project }) => {
           </div>
         </ScrollImage>
 
-        <div className="p-3 sm:p-4 lg:p-6">
+        <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
           <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
             {typeLabel(project)}
           </div>
-          <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
             {project.title}
           </h3>
-          <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
+          <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
             {project.description}
           </p>
-          {project.tech?.length > 0 && (
-            <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-              {project.tech.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          )}
           <button
             onClick={() => setModalOpen(true)}
             className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm"
@@ -334,7 +322,7 @@ const SliderProjectCard = ({ project }) => {
    Regular Project Card Component
 ─────────────────────────────────────────────── */
 const RegularProjectCard = ({ project }) => (
-  <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105">
+  <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full">
     <a
       href={project.link}
       target="_blank"
@@ -342,15 +330,15 @@ const RegularProjectCard = ({ project }) => (
       className="block"
     >
       {!project.image ? (
-        <div className="flex items-center justify-center aspect-video bg-gradient-to-br from-brand-blue via-brand-sky to-brand-cyan text-white text-center px-4 text-lg font-bold">
+        <div className={`flex items-center justify-center ${FRAME_HEIGHT} bg-gradient-to-br from-brand-blue via-brand-sky to-brand-cyan text-white text-center px-4 text-lg font-bold`}>
           {project.title}
         </div>
       ) : project.fullImage ? (
-        <div className="relative overflow-hidden bg-brand-bg">
+        <div className={`relative overflow-hidden bg-brand-bg ${FRAME_HEIGHT}`}>
           <img
             src={project.image}
             alt={project.title || 'Project image'}
-            className="block w-full h-auto"
+            className="block w-full h-full object-cover object-top"
             loading="lazy"
           />
         </div>
@@ -363,28 +351,16 @@ const RegularProjectCard = ({ project }) => (
       )}
     </a>
 
-    <div className="p-3 sm:p-4 lg:p-6">
+    <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
       <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
         {typeLabel(project)}
       </div>
-      <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug">
+      <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
         {project.title}
       </h3>
-      <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
+      <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
         {project.description}
       </p>
-      {project.tech?.length > 0 && (
-        <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-          {project.tech.map((tech, techIndex) => (
-            <span
-              key={techIndex}
-              className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      )}
       <a
         href={project.link}
         target="_blank"
@@ -403,7 +379,7 @@ const RegularProjectCard = ({ project }) => (
 ─────────────────────────────────────────────── */
 const sliderProjects = [
   {
-    title: 'Ecommerce Store for an Electronics Retailer — LapTech',
+    title: 'LapTech',
     category: 'Website',
     filter: 'ecommerce',
     description:
@@ -423,7 +399,7 @@ const sliderProjects = [
     ],
   },
   {
-    title: 'Your Restaurant Website — Online Menu, Booking & Ordering System',
+    title: 'Your Restaurant',
     category: 'Website',
     filter: 'restaurants',
     description:
@@ -448,7 +424,7 @@ const sliderProjects = [
 ─────────────────────────────────────────────── */
 const regularProjects = [
   {
-    title: 'Website for Dada Projects, a female-led 3D motion design studio in London, UK.',
+    title: 'Dada Projects',
     link: 'https://dada-projects.com',
     category: 'Website',
     filter: '3d',
@@ -458,7 +434,7 @@ const regularProjects = [
     tech: ['Next.js', 'Three.js', 'Framer Motion', 'Tailwind'],
   },
   {
-    title: 'Website for Rumfoords, an AI and Web3 strategic consultancy in New York.',
+    title: 'Rumfoords',
     link: 'https://rumfoords.com',
     category: 'Website',
     filter: '3d',
@@ -468,7 +444,7 @@ const regularProjects = [
     tech: ['Next.js', 'Prismic CMS', 'Node.js', 'Framer Motion'],
   },
   {
-    title: 'Official ecommerce store for Sarah Eisman Studio, a fine jewelry brand in New York.',
+    title: 'Sarah Eisman Studio',
     link: 'https://saraheismanstudio.com',
     category: 'Website',
     filter: 'ecommerce',
@@ -478,7 +454,7 @@ const regularProjects = [
     tech: ['Shopify', 'React', 'Tailwind', 'Framer Motion'],
   },
   {
-    title: 'Official website for Matcha Ren, a matcha dessert and beverage shop in California, USA.',
+    title: 'Matcha Ren',
     link: 'https://matcharen.com',
     category: 'Website',
     filter: 'restaurants',
@@ -488,7 +464,7 @@ const regularProjects = [
     tech: ['Next.js', 'Tailwind', 'Framer Motion'],
   },
   {
-    title: 'Official website for Alter Geneva, a bespoke luxury watchmaking studio in Geneva, Switzerland.',
+    title: 'Alter Geneva',
     link: 'https://altergeneva.com',
     category: 'Website',
     filter: 'ecommerce',
@@ -498,7 +474,7 @@ const regularProjects = [
     tech: ['Webflow', 'GSAP', 'Framer Motion'],
   },
   {
-    title: 'Official website for Revitin, a prebiotic oral care brand in New York, USA.',
+    title: 'Revitin',
     link: 'https://revitin.com',
     category: 'Website',
     filter: 'ecommerce',
@@ -508,7 +484,7 @@ const regularProjects = [
     tech: ['Shopify', 'React', 'Tailwind'],
   },
   {
-    title: 'Official ecommerce store for DOHA Bazaar accessories retailer',
+    title: 'DOHA Bazaar',
     link: 'https://bazardoha.vercel.app/',
     category: 'Website',
     filter: 'ecommerce',
@@ -539,7 +515,7 @@ const regularProjects = [
   //   tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
   // },
   {
-    title: 'Personal Portfolio — Showcasing Skills and Work',
+    title: 'Personal Portfolio',
     link: 'https://my-portfolio-tau-six-33.vercel.app/',
     category: 'Website',
     filter: 'portfolio',
@@ -559,7 +535,7 @@ const regularProjects = [
 ─────────────────────────────────────────────── */
 const FILTERS = [
   { id: 'all', label: 'All' },
-  { id: 'ecommerce', label: 'E-commerce Stores' },
+  { id: 'ecommerce', label: 'E-Commerce Store' },
   { id: 'restaurants', label: 'Restaurants' },
   { id: 'tourism', label: 'Tourism Websites' },
   { id: 'education', label: 'Educational Platforms' },

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * Hero lightning.
@@ -20,8 +20,20 @@ import React, { useEffect, useState } from 'react';
 export default function HeroLightning({ side = 'both', className = '' }) {
   const [Live, setLive] = useState(null);
   const [ready, setReady] = useState(false);
+  const [near, setNear] = useState(false);
+  const root = useRef(null);
+
+  // Do nothing (no download, no WebGL context) until the screen gets close to this section.
+  useEffect(() => {
+    const el = root.current;
+    if (!el || !('IntersectionObserver' in window)) { setNear(true); return; }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNear(true); io.disconnect(); } }, { rootMargin: '600px 0px 600px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!near) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let gl = false;
     try { const c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch {}
@@ -29,10 +41,11 @@ export default function HeroLightning({ side = 'both', className = '' }) {
     const run = () => import('./LightningCanvas').then((m) => setLive(() => m.default)).catch(() => {});
     const id = 'requestIdleCallback' in window ? requestIdleCallback(run, { timeout: 1500 }) : setTimeout(run, 600);
     return () => ('cancelIdleCallback' in window ? cancelIdleCallback(id) : clearTimeout(id));
-  }, []);
+  }, [near]);
 
   return (
     <div
+      ref={root}
       aria-hidden="true"
       className={`circuit-bolts ${ready ? 'circuit-bolts--live' : ''} ${className}`}
     >

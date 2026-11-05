@@ -206,7 +206,7 @@ export const ServiceCard = ({ service }) => {
 
   return (
     <>
-      <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col">
+      <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full">
 
         {/* ── Image area ── */}
         {hasImages ? (
@@ -247,13 +247,13 @@ export const ServiceCard = ({ service }) => {
           {/* Color dot + title */}
           <div className="flex items-start gap-3 mb-2">
             <span className={`mt-1.5 w-3 h-3 rounded-full flex-shrink-0 bg-gradient-to-br ${service.color}`} />
-            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white group-hover:text-brand-cyan transition-colors leading-snug">
+            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
               {service.title}
             </h3>
           </div>
 
           {/* Short description */}
-          <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
+          <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 sm:min-h-[4.875em]">
             {service.shortDescription}
           </p>
 
@@ -268,20 +268,6 @@ export const ServiceCard = ({ service }) => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
-            {service.technologies.slice(0, 3).map((tech, index) => (
-              <span key={index} className="bg-brand-blue/20 text-brand-cyan text-xs px-2 py-0.5 sm:py-1 rounded">
-                {tech}
-              </span>
-            ))}
-            {service.technologies.length > 3 && (
-              <span className="bg-brand-card2 text-gray-300 text-xs px-2 py-0.5 sm:py-1 rounded">
-                +{service.technologies.length - 3}
-              </span>
-            )}
           </div>
 
           {/* Buttons */}

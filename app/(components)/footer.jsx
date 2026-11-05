@@ -225,9 +225,26 @@ const Footer = () => {
               </div>
             </div>
 
-            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
-              &copy; 2025 CodeLegacy. All rights reserved.
-            </p>
+            <div className="flex flex-col sm:items-end items-center gap-2">
+              <div className="flex items-center gap-4 text-xs sm:text-sm text-gray-300">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-brand-cyan transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+                <span className="text-gray-600">|</span>
+                <Link
+                  href="/terms-and-conditions"
+                  className="hover:text-brand-cyan transition-colors"
+                >
+                  Terms &amp; Conditions
+                </Link>
+              </div>
+              <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
+                &copy; 2025 CodeLegacy. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>

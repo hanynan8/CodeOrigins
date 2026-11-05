@@ -16,6 +16,7 @@ const CFG = {
   parallax: 8,
   maxDpr: 1.5,
 };
+const NEAR_PX = 300; // how far off-screen (above/below) the effect keeps running
 const rnd = (a, b) => a + Math.random() * (b - a);
 // cool blue -> white-cyan as heat rises
 const heatColor = (h) => {
@@ -166,9 +167,14 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
       };
       if (reduce) { app.ticker.stop(); app.render(); } else app.ticker.add(frame);
 
-      const io = new IntersectionObserver(([e]) => { if (!reduce) e.isIntersecting ? app.ticker.start() : app.ticker.stop(); });
+      // Runs (and uses CPU/GPU) only while the screen is on the hero or within a small distance of it
+      // (NEAR_PX above/below); paused otherwise, and while the tab is hidden.
+      let inView = false;
+      app.ticker.stop(); // stays idle until the observer says the hero is near the screen
+      const sync = () => { if (reduce) return; (inView && !document.hidden) ? app.ticker.start() : app.ticker.stop(); };
+      const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { rootMargin: `${NEAR_PX}px 0px ${NEAR_PX}px 0px` });
       io.observe(el);
-      const vis = () => { if (!reduce) document.hidden ? app.ticker.stop() : app.ticker.start(); };
+      const vis = () => sync();
       document.addEventListener('visibilitychange', vis);
       off = () => { io.disconnect(); document.removeEventListener('visibilitychange', vis); window.removeEventListener('pointermove', onMove); };
 
