@@ -29,7 +29,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       {/* ═══════════════════════════════════════
           Hero Section
       ═══════════════════════════════════════ */}
-      <section className="relative min-h-[100vh] sm:min-h-[90vh] md:h-[80vh] circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative min-h-[100vh] sm:min-h-[90vh] md:h-[80vh] circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
         <CircuitBolts />
         {/* Animated background elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
@@ -38,7 +38,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
           <div className="absolute w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-brand-blue/10 rounded-full top-[40%] left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center text-white">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center text-ink">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             Web <span className="text-neon">Development Services</span>
           </h1>
@@ -80,7 +80,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       <section className="py-10 sm:py-16 md:py-20 bg-brand-alt">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
               Why Choose <span className="text-brand-cyan">Our Services</span>?
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
@@ -99,7 +99,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
                   <div className={`inline-flex p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-2xl bg-gradient-to-r ${feature.color} text-white mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     {IconComponent && <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12" />}
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white group-hover:text-brand-cyan transition-colors leading-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-ink group-hover:text-brand-cyan transition-colors leading-tight">
                     {feature.title}
                   </h3>
                   <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -118,7 +118,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       <section id="process" className="py-10 sm:py-16 md:py-20 bg-gradient-to-r from-brand-alt to-brand-card">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
               How Do We <span className="text-brand-cyan">Develop</span> Your Site?
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
@@ -141,7 +141,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
                       {step.step}
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-white group-hover:text-brand-cyan transition-colors leading-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 md:mb-4 text-ink group-hover:text-brand-cyan transition-colors leading-tight">
                     {step.title}
                   </h3>
                   <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -160,7 +160,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       <section className="py-10 sm:py-16 md:py-20 bg-brand-bg" id="tech">
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
               The <span className="text-brand-cyan">Advanced Technologies</span> We Use
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
@@ -177,7 +177,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
                 <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-xl mx-auto mb-2 sm:mb-3 md:mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <i className={`${tech.iconClass} text-3xl sm:text-4xl md:text-5xl lg:text-6xl`}></i>
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm md:text-base text-white group-hover:text-brand-cyan transition-colors leading-tight">
+                <h3 className="font-semibold text-xs sm:text-sm md:text-base text-ink group-hover:text-brand-cyan transition-colors leading-tight">
                   {tech.name}
                 </h3>
               </div>
@@ -192,7 +192,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       <section className="py-10 sm:py-16 md:py-20 bg-brand-alt" id="faq">
         <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
               Frequently Asked <span className="text-brand-cyan">Questions</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 px-2">
@@ -203,7 +203,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
           <div className="space-y-4 sm:space-y-6">
             {faqData.map((faq, index) => (
               <div key={index} className="bg-brand-card rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/60">
-                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3 leading-tight">
+                <h3 className="text-sm sm:text-base md:text-lg font-semibold text-ink mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3 leading-tight">
                   <div className="w-5 h-5 sm:w-6 sm:h-6 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                     <span className="text-white text-xs sm:text-sm font-bold">?</span>
                   </div>
@@ -224,7 +224,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       <section className="relative overflow-hidden py-10 sm:py-16 md:py-20 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-ink leading-tight">
             Ready to Launch Your New Website?
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
@@ -239,7 +239,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
               </button>
             </Link>
 
-            <WhatsAppButton className="border-2 border-white/30 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm text-white flex items-center gap-2 w-full sm:w-auto justify-center">
+            <WhatsAppButton className="border-2 border-white/30 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm text-ink flex items-center gap-2 w-full sm:w-auto justify-center">
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
               Contact Us Now
             </WhatsAppButton>

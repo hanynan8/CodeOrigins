@@ -29,7 +29,7 @@ const Footer = () => {
                 className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border-2 border-brand-cyan object-cover shadow-glow-cyan"
               />
               <span className="text-lg sm:text-xl font-bold">
-                <span className="text-white">Code</span>
+                <span className="text-ink">Code</span>
                 <span className="text-neon">Legacy</span>
               </span>
             </div>
@@ -45,7 +45,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
-                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-ink" />
               </Link>
               <Link
                 href="https://www.instagram.com/hany._younan/?__pwa=1"
@@ -53,7 +53,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
-                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-ink" />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/hany-younan-5b7466372"
@@ -61,14 +61,14 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="bg-brand-blue hover:bg-brand-sky p-2 sm:p-3 rounded-full transition-colors"
               >
-                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-ink" />
               </Link>
             </div>
           </div>
 
           {/* Website Types */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
+            <h4 className="text-ink font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
               Website Types
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">
@@ -125,7 +125,7 @@ const Footer = () => {
 
           {/* Company */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
+            <h4 className="text-ink font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
               Company
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">
@@ -174,7 +174,7 @@ const Footer = () => {
 
           {/* Support */}
           <div className="flex flex-col items-center sm:items-start">
-            <h4 className="text-white font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
+            <h4 className="text-ink font-semibold mb-4 sm:mb-6 text-base sm:text-lg">
               Support
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base text-center sm:text-left">

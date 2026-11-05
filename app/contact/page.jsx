@@ -35,7 +35,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-brand-bg">
       {/* Hero Section */}
-      <section className="relative min-h-screen sm:h-[100vh] circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative min-h-screen sm:h-[100vh] circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
         <CircuitBolts />
         {/* Floating Elements */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
@@ -70,10 +70,10 @@ const ContactPage = () => {
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-14">
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-white leading-tight px-2">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-ink leading-tight px-2">
               Follow Us on Social Media
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-white max-w-4xl mx-auto px-4 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-ink max-w-4xl mx-auto px-4 leading-relaxed">
               Stay up to date with our latest work and technical tips by following us on social platforms.
             </p>
           </div>

@@ -74,12 +74,12 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-brand-alt border-b border-brand-line/70">
-          <h3 className="text-xs sm:text-base font-semibold text-white truncate max-w-[75%] text-left">
+          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-left">
             {title}
           </h3>
           <button
             onClick={onClose}
-            className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-white flex-shrink-0"
+            className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-ink flex-shrink-0"
           >
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -108,13 +108,13 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
           {/* Arrows over the image */}
           <button
             onClick={goLeft}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-white hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
           >
             <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
           <button
             onClick={goRight}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-white hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
           >
             <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
@@ -200,7 +200,7 @@ const SliderProjectCard = ({ project }) => {
           <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
             {typeLabel(project)}
           </div>
-          <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
             <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
           </h3>
           <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
@@ -262,7 +262,7 @@ const RegularProjectCard = ({ project }) => {
         <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
           {typeLabel(project)}
         </div>
-        <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
+        <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
           <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
         </h3>
         <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
@@ -365,7 +365,7 @@ const PortfolioSection = ({
       <CircuitBolts speed={0.5} scale={0.6} />
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-white px-2">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-ink px-2">
             {title.includes('Web Development Projects') ? (
               <>
                 Some of <span className="text-brand-cyan">Our Previous Work</span>

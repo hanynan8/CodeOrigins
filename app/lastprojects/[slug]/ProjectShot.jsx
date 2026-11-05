@@ -97,7 +97,7 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
 
     {zoomed && (
       <div
-        className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm px-2 sm:px-6 py-4"
+        className="theme-dark fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm px-2 sm:px-6 py-4"
         onClick={() => setZoomed(false)}
         role="dialog"
         aria-modal="true"

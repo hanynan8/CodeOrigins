@@ -45,20 +45,20 @@ export default function ProjectGallery({ images, title }) {
 
       {open !== null && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm px-2 sm:px-6"
+          className="theme-dark fixed inset-0 z-[60] flex items-center justify-center bg-black/85 backdrop-blur-sm px-2 sm:px-6"
           onClick={() => setOpen(null)}
           role="dialog"
           aria-modal="true"
         >
-          <button type="button" onClick={() => setOpen(null)} aria-label="Close" className="absolute top-3 right-3 sm:top-5 sm:right-5 rounded-full bg-brand-card/80 p-2 text-white hover:text-brand-cyan">
+          <button type="button" onClick={() => setOpen(null)} aria-label="Close" className="absolute top-3 right-3 sm:top-5 sm:right-5 rounded-full bg-brand-card/80 p-2 text-ink hover:text-brand-cyan">
             <X className="w-5 h-5" />
           </button>
           {images.length > 1 && (
             <>
-              <button type="button" onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Previous photo" className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 rounded-full bg-brand-card/80 p-2 sm:p-3 text-white hover:text-brand-cyan">
+              <button type="button" onClick={(e) => { e.stopPropagation(); prev(); }} aria-label="Previous photo" className="absolute left-2 sm:left-5 top-1/2 -translate-y-1/2 rounded-full bg-brand-card/80 p-2 sm:p-3 text-ink hover:text-brand-cyan">
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <button type="button" onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next photo" className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 rounded-full bg-brand-card/80 p-2 sm:p-3 text-white hover:text-brand-cyan">
+              <button type="button" onClick={(e) => { e.stopPropagation(); next(); }} aria-label="Next photo" className="absolute right-2 sm:right-5 top-1/2 -translate-y-1/2 rounded-full bg-brand-card/80 p-2 sm:p-3 text-ink hover:text-brand-cyan">
                 <ChevronRight className="w-5 h-5" />
               </button>
             </>

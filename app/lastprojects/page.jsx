@@ -44,7 +44,7 @@ const CodeLegacyPortfolio = () => {
       {/* Portfolio Hero - Full Screen */}
       <section
         id="portfolio-hero"
-        className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-ink overflow-hidden"
       >
         <CircuitBolts />
         {/* Floating Elements */}
@@ -80,7 +80,7 @@ const CodeLegacyPortfolio = () => {
       <section id="advantages" className="py-8 sm:py-12 lg:py-20 bg-brand-bg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-white px-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-ink px-2">
               Why Choose Us for{' '}
               <span className="text-brand-cyan block sm:inline">Web Development</span>?
             </h2>
@@ -146,7 +146,7 @@ const CodeLegacyPortfolio = () => {
                 <div className="mx-auto mb-3 sm:mb-4 flex justify-center">
                   {advantage.icon}
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-white">
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-ink">
                   {advantage.title}
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
@@ -182,7 +182,7 @@ const CodeLegacyPortfolio = () => {
       {/* Contact Section */}
       <section className="py-8 sm:py-12 lg:py-20 bg-brand-alt">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
             Start Your Project With Us Today
           </h2>
           <p className="text-sm sm:text-base lg:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
@@ -194,21 +194,21 @@ const CodeLegacyPortfolio = () => {
               <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
                 <div className="text-xs sm:text-sm text-gray-400">Email</div>
-                <div className="text-sm sm:text-base font-semibold text-white">CodeLegacy1@gmail.com</div>
+                <div className="text-sm sm:text-base font-semibold text-ink">CodeLegacy1@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm">
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
                 <div className="text-xs sm:text-sm text-gray-400">Phone Number</div>
-                <div className="text-sm sm:text-base font-semibold text-white">01201061216</div>
+                <div className="text-sm sm:text-base font-semibold text-ink">01201061216</div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm sm:col-span-2 lg:col-span-1">
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
               <div className="text-left">
                 <div className="text-xs sm:text-sm text-gray-400">Location</div>
-                <div className="text-sm sm:text-base font-semibold text-white">Cairo, Egypt</div>
+                <div className="text-sm sm:text-base font-semibold text-ink">Cairo, Egypt</div>
               </div>
             </div>
           </div>

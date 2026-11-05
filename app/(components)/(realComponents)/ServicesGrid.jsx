@@ -116,7 +116,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       {/* Left arrow */}
       <button
         onClick={goLeft}
-        className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-white hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
+        className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
       >
         <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
       </button>
@@ -128,12 +128,12 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-brand-alt border-b border-brand-line/70">
-          <h3 className="text-xs sm:text-base font-semibold text-white truncate max-w-[75%] text-left">
+          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-left">
             {title}
           </h3>
           <button
             onClick={onClose}
-            className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-white flex-shrink-0"
+            className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-ink flex-shrink-0"
           >
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -180,7 +180,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       {/* Right arrow */}
       <button
         onClick={goRight}
-        className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-white hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
+        className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
       >
         <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
       </button>
@@ -247,7 +247,7 @@ export const ServiceCard = ({ service }) => {
           {/* Color dot + title */}
           <div className="flex items-start gap-3 mb-2">
             <span className={`mt-1.5 w-3 h-3 rounded-full flex-shrink-0 bg-gradient-to-br ${service.color}`} />
-            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
+            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
               {service.title}
             </h3>
           </div>
@@ -259,7 +259,7 @@ export const ServiceCard = ({ service }) => {
 
           {/* Key features */}
           <div className="mb-3 sm:mb-4">
-            <h4 className="font-semibold text-xs sm:text-sm text-white mb-2">Key Features:</h4>
+            <h4 className="font-semibold text-xs sm:text-sm text-ink mb-2">Key Features:</h4>
             <ul className="space-y-1.5">
               {service.features.slice(0, 4).map((feature, index) => (
                 <li key={index} className="flex items-start text-xs sm:text-sm text-gray-300">

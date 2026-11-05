@@ -64,7 +64,7 @@ export default async function ProjectDetailPage({ params }) {
   )}`;
 
   return (
-    <div className="min-h-screen bg-brand-bg text-white">
+    <div className="min-h-screen bg-brand-bg text-ink">
       {/* Preview */}
       <section className="pt-28 sm:pt-32 pb-8 sm:pb-12">
         <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -134,7 +134,7 @@ export default async function ProjectDetailPage({ params }) {
             <dl className="space-y-3 text-sm">
               <div>
                 <dt className="text-gray-400">Type</dt>
-                <dd className="font-medium text-white">{label}</dd>
+                <dd className="font-medium text-ink">{label}</dd>
               </div>
               {host && (
                 <div>
@@ -150,7 +150,7 @@ export default async function ProjectDetailPage({ params }) {
               {hasGallery && !project.link && (
                 <div>
                   <dt className="text-gray-400">Photos</dt>
-                  <dd className="font-medium text-white">{project.images.length}</dd>
+                  <dd className="font-medium text-ink">{project.images.length}</dd>
                 </div>
               )}
             </dl>

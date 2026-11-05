@@ -4,10 +4,12 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { logoUrl } from './brand';
+import ThemeToggle from './ThemeToggle';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
+  { href: '/pricing', label: 'Pricing' },
   { href: '/lastprojects', label: 'Our Work' },
   { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact Us' },
@@ -65,7 +67,7 @@ const Navbar = () => {
               />
             </span>
             <span className="text-xl font-bold tracking-wide">
-              <span className="text-white">Code</span>
+              <span className="text-ink">Code</span>
               <span className="text-neon">Legacy</span>
             </span>
           </Link>
@@ -86,7 +88,8 @@ const Navbar = () => {
           </div>
 
           {/* Right: hamburger on mobile, empty spacer on desktop to keep tabs centered */}
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-center gap-2">
+            <ThemeToggle />
             <button
               type="button"
               onClick={() => setIsOpen((v) => !v)}

@@ -7,6 +7,7 @@ import './globals.css';
 import Navbar from './(components)/navbar';
 import Script from 'next/script';
 import Footer from './(components)/footer';
+import PageTransition from './(components)/PageTransition';
 import { siteIcons, LOGO_ICON, logoUrl } from './(components)/brand';
 
 const rubik = Rubik({
@@ -143,8 +144,15 @@ const FB_PIXEL_ID = '891356743903601';
 // ---------------------------
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" data-theme="dark" suppressHydrationWarning>
       <head>
+        {/* Apply the saved theme before first paint (dark is the default) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content','#f5f8ff')}}catch(e){}",
+          }}
+        />
         <link rel="icon" type="image/png" href={LOGO_ICON} />
         <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
 
@@ -176,7 +184,8 @@ export default function RootLayout({ children }) {
         </noscript>
       </head>
 
-      <body className={`${rubik.className} ${geistMono.variable} antialiased bg-brand-bg text-white`}>
+      <body className={`${rubik.className} ${geistMono.variable} antialiased bg-brand-bg text-ink`}>
+        <PageTransition />
         <Navbar />
         {children}
         <Footer />

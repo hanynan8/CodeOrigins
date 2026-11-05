@@ -53,7 +53,7 @@ export default function ContactSection() {
     <section id="mail" className="py-20 bg-brand-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-ink">
             Ready to Start <span className="text-brand-cyan">Your Project</span>?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
@@ -65,7 +65,7 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact info side */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-ink mb-6">
               Contact Us Directly
             </h3>
 
@@ -75,7 +75,7 @@ export default function ContactSection() {
                   <Mail className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Email</h4>
+                  <h4 className="font-semibold text-ink">Email</h4>
                   <p className="text-gray-300">CodeLegacy1@gmail.com</p>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function ContactSection() {
                   <Phone className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Phone</h4>
+                  <h4 className="font-semibold text-ink">Phone</h4>
                   <p className="text-gray-300">+20 01201061216</p>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default function ContactSection() {
                   <MapPin className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Address</h4>
+                  <h4 className="font-semibold text-ink">Address</h4>
                   <p className="text-gray-300">Tahrir Street, Downtown</p>
                   <p className="text-gray-300">Cairo, Egypt</p>
                 </div>
@@ -106,14 +106,14 @@ export default function ContactSection() {
                   <Calendar className="w-6 h-6 text-brand-cyan" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white">Working Hours</h4>
+                  <h4 className="font-semibold text-ink">Working Hours</h4>
                   <p className="text-gray-300">Every day</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8">
-              <h4 className="font-semibold text-white mb-4">
+              <h4 className="font-semibold text-ink mb-4">
                 Follow Us on Social Media
               </h4>
               <div className="flex space-x-4">
@@ -153,7 +153,7 @@ export default function ContactSection() {
 
           {/* Form side */}
           <div className="bg-brand-card rounded-2xl p-8 shadow-glow border border-brand-line/70">
-            <h3 className="text-2xl font-bold text-white mb-6">Send Us a Message</h3>
+            <h3 className="text-2xl font-bold text-ink mb-6">Send Us a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               {/* Hidden helper fields */}

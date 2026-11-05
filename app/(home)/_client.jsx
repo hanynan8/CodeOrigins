@@ -32,7 +32,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       ═══════════════════════════════════════ */}
       <section
         id="home"
-        className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden"
+        className="relative min-h-screen h-screen circuit-bg flex items-center justify-center text-center text-ink overflow-hidden"
       >
         <HeroLightning />
         {/* Floating background elements */}
@@ -45,7 +45,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <span className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl block mb-2 sm:mb-4">
-            <span className="text-white font-bold">Code</span>{' '}
+            <span className="text-ink font-bold">Code</span>{' '}
             <span className="text-neon font-bold">Legacy</span>
           </span>
           <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl block mb-4 sm:mb-6">
@@ -105,7 +105,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       <section id="about" className="py-12 sm:py-16 lg:py-20 bg-brand-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
               Discover{' '}
               <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent">
                 CodeLegacy
@@ -120,7 +120,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="bg-brand-card rounded-2xl p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-shadow duration-300">
-                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3 sm:mb-4">Who We Are?</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-ink mb-3 sm:mb-4">Who We Are?</h3>
                 <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                   CodeLegacy is a leading web development company, founded with
                   a vision to turn ideas into innovative websites. We're a team
@@ -146,7 +146,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             </div>
             <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
               <div className="bg-brand-card rounded-2xl p-4 sm:p-6 shadow-glow border border-brand-blue/40">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">What Sets Us Apart</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-3 sm:mb-4">What Sets Us Apart</h3>
                 <div className="space-y-3 sm:space-y-4">
                   {[
                     'A dedicated control panel for the site owner to manage all site data seamlessly',
@@ -192,7 +192,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       <section className="py-12 sm:py-16 lg:py-20 bg-brand-bg" id="feat">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
               Benefits of <span className="text-brand-cyan">Working With Us</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
@@ -206,7 +206,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                 <div className="text-brand-cyan mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center">
                   {service.icon}
                 </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors">
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{service.description}</p>
@@ -222,7 +222,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       <section className="py-12 sm:py-16 lg:py-20 bg-brand-alt" id="clients">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
               What Our <span className="text-brand-cyan">Clients Say</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
@@ -242,7 +242,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                 <div className="flex items-center">
                   <Image src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" width={50} height={50} />
                   <div className="ml-3 sm:ml-4">
-                    <h4 className="font-semibold text-white text-sm sm:text-base">{testimonial.name}</h4>
+                    <h4 className="font-semibold text-ink text-sm sm:text-base">{testimonial.name}</h4>
                     <p className="text-xs sm:text-sm text-gray-400">{testimonial.company}</p>
                   </div>
                 </div>

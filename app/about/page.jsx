@@ -41,7 +41,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-brand-bg">
       {/* Hero Section - Perfectly Responsive */}
-      <section className="relative h-screen circuit-bg flex items-center justify-center text-center text-white overflow-hidden">
+      <section className="relative h-screen circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
         <CircuitBolts />
         {/* Floating Elements - Ultra Responsive */}
         <div className="absolute w-full h-full overflow-hidden pointer-events-none">
@@ -76,7 +76,7 @@ const AboutPage = () => {
       <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-brand-bg" id="story">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-white leading-tight px-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-ink leading-tight px-2">
               Our Story in{' '}
               <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent block xs:block sm:inline mt-1 xs:mt-2 sm:mt-0">
                 Web Development
@@ -92,7 +92,7 @@ const AboutPage = () => {
           <div className="grid lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-shadow duration-300">
-                <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-white mb-3 xs:mb-4 leading-tight">
+                <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-ink mb-3 xs:mb-4 leading-tight">
                   Our Start in the World of the Web
                 </h3>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-300 mb-4 xs:mb-6 leading-relaxed">
@@ -115,7 +115,7 @@ const AboutPage = () => {
             
             <div className="space-y-4 xs:space-y-6 order-1 lg:order-2">
               <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 shadow-glow border border-brand-blue/40">
-                <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-white mb-3 xs:mb-4 leading-tight">
+                <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-ink mb-3 xs:mb-4 leading-tight">
                   What Sets Us Apart in Web Development
                 </h3>
                 <div className="space-y-3 xs:space-y-4">
@@ -188,7 +188,7 @@ const AboutPage = () => {
       <section className="py-12 xs:py-16 sm:py-20 lg:py-24 bg-brand-alt">
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-white leading-tight px-2">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-ink leading-tight px-2">
               Our Vision & <span className="text-brand-cyan">Mission</span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-2">
@@ -203,7 +203,7 @@ const AboutPage = () => {
               <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Globe className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-white group-hover:text-brand-cyan transition-colors text-center md:text-left">
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-left">
                 Our Vision
               </h3>
               <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
@@ -217,7 +217,7 @@ const AboutPage = () => {
               <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Code className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-white group-hover:text-brand-cyan transition-colors text-center md:text-left">
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-left">
                 Our Mission
               </h3>
               <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
@@ -239,10 +239,10 @@ const AboutPage = () => {
       <section className="relative overflow-hidden py-12 xs:py-16 sm:py-20 lg:py-24 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 xs:mb-6 sm:mb-8 text-white leading-tight px-2">
+          <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 xs:mb-6 sm:mb-8 text-ink leading-tight px-2">
             Start Your Website Project With Us
           </h2>
-          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2">
+          <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-ink mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2">
             If you're looking for a trusted web development partner, CodeLegacy
             is the perfect choice to achieve your digital vision and build your
             ideal website.

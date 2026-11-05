@@ -5,7 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const LegalPage = ({ title, intro, updated, sections }) => (
-  <main className="bg-brand-bg text-white min-h-screen pt-28 sm:pt-32 pb-12 sm:pb-20">
+  <main className="bg-brand-bg text-ink min-h-screen pt-28 sm:pt-32 pb-12 sm:pb-20">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center mb-8 sm:mb-12">
@@ -25,7 +25,7 @@ const LegalPage = ({ title, intro, updated, sections }) => (
             key={section.heading}
             className="bg-brand-card rounded-xl sm:rounded-2xl border border-brand-line/70 p-4 sm:p-6"
           >
-            <h2 className="text-lg sm:text-xl font-semibold text-white mb-3">
+            <h2 className="text-lg sm:text-xl font-semibold text-ink mb-3">
               <span className="text-brand-cyan mr-2">{i + 1}.</span>
               {section.heading}
             </h2>
