@@ -1,0 +1,207 @@
+'use client';
+
+import React, { useState } from 'react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  MessageCircle,
+  ArrowRight,
+  CheckCircle,
+} from 'lucide-react';
+
+import SendEmail from '@/app/(components)/(realComponents)/SendEmail'
+import CircuitBolts from '@/app/(components)/CircuitBolts';
+import HeroWave from '@/app/(components)/HeroWave';
+
+const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+  };
+
+  return (
+    <div className="min-h-screen bg-brand-bg">
+      {/* Hero Section */}
+      <section className="relative min-h-screen sm:h-[100vh] circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
+        <CircuitBolts />
+        {/* Floating Elements */}
+        <div className="absolute w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-brand-blue/10 rounded-full top-[15%] left-[5%] sm:top-[20%] sm:left-[10%] animate-[float_6s_ease-in-out_infinite]"></div>
+          <div className="absolute w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-brand-blue/10 rounded-full top-[65%] right-[10%] sm:top-[60%] sm:right-[15%] animate-[float_6s_ease-in-out_infinite_2s]"></div>
+          <div className="absolute w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-brand-blue/10 rounded-full top-[45%] left-[75%] sm:top-[40%] sm:left-[80%] animate-[float_6s_ease-in-out_infinite_4s]"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 sm:mb-6 leading-tight">
+            Get in Touch with <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0">CodeLegacy</span>
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-4xl mx-auto px-2 leading-relaxed">
+            We're here to help you bring your tech ideas to life. Tell us about your project and we'll get back to you as soon as possible.
+          </p>
+          <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-glow mx-auto touch-manipulation">
+            Start the Conversation
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        <HeroWave />
+      </section>
+
+      {/* Contact Information Section - Mobile Optimized */}
+      <div className="w-full">
+        <SendEmail />
+      </div>
+
+      {/* Social Media Section - Mobile Responsive */}
+      <section className="relative overflow-hidden py-12 sm:py-16 md:py-20 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
+        <CircuitBolts intensity="soft" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 md:mb-14">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-ink leading-tight px-2">
+              Follow Us on Social Media
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-ink max-w-4xl mx-auto px-4 leading-relaxed">
+              Stay up to date with our latest work and technical tips by following us on social platforms.
+            </p>
+          </div>
+
+          {/* Social Media Icons - Mobile Optimized */}
+          <div className="flex justify-center items-center space-x-4 sm:space-x-6 px-4">
+            {[
+              { 
+                name: 'Facebook', 
+                icon: <Facebook className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-brand-blue hover:bg-brand-sky', 
+                link: 'https://www.facebook.com/hany.nan.752/' 
+              },
+              { 
+                name: 'Instagram', 
+                icon: <Instagram className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-pink-500 hover:bg-pink-600', 
+                link: 'https://www.instagram.com/hany._younan/?__pwa=1' 
+              },
+              { 
+                name: 'LinkedIn', 
+                icon: <Linkedin className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />, 
+                color: 'bg-brand-blue hover:bg-blue-800', 
+                link: 'https://www.linkedin.com/in/hany-younan-5b7466372' 
+              },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${social.color} text-white p-3 sm:p-4 rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-glow hover:shadow-glow touch-manipulation`}
+                aria-label={`Follow us on ${social.name}`}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes wave-move-left {
+          0% {
+            transform: translate3d(-90px,0,0);
+          }
+          100% { 
+            transform: translate3d(85px,0,0);
+          }
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(180deg);
+          }
+        }
+
+        /* Mobile-specific optimizations */
+        @media (max-width: 480px) {
+          .animate-float {
+            animation-duration: 4s;
+          }
+        }
+
+        /* Touch-friendly interactions */
+        .touch-manipulation {
+          touch-action: manipulation;
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Prevent text selection on interactive elements */
+        button, a {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+// Social Media Icons - Optimized for Mobile
+const Twitter = ({ className }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+  </svg>
+);
+
+const Facebook = ({ className }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+  </svg>
+);
+
+const Instagram = ({ className }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+  </svg>
+);
+
+const Linkedin = ({ className }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+  </svg>
+);
+
+export default ContactPage;

@@ -5,14 +5,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { logoUrl } from './brand';
 import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useI18n } from './LocaleProvider';
+import { stripLocale } from '@/lib/i18n';
 
+// href = route without the language prefix, key = entry in the dictionary (nav.*)
 const NAV_LINKS = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/lastprojects', label: 'Our Work' },
-  { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact Us' },
+  { href: '/', key: 'home' },
+  { href: '/services', key: 'services' },
+  { href: '/pricing', key: 'pricing' },
+  { href: '/lastprojects', key: 'ourWork' },
+  { href: '/about', key: 'about' },
+  { href: '/contact', key: 'contact' },
 ];
 
 const logoURL = logoUrl(320); // sharp enough for the zoomed-in crop
@@ -21,6 +25,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { t, href: localHref } = useI18n();
+  const { path } = stripLocale(pathname ?? '/'); // route without '/en' or '/ar'
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -35,7 +41,7 @@ const Navbar = () => {
   }, [pathname]);
 
   const isActive = (href) =>
-    href === '/' ? pathname === '/' : pathname?.startsWith(href);
+    href === '/' ? path === '/' : path.startsWith(href);
 
   const linkClass = (href) =>
     `rounded-md px-3 py-2 transition-all duration-200 ${
@@ -55,9 +61,9 @@ const Navbar = () => {
           {/* Left: logo + name */}
           <div className="flex-1 flex justify-start">
           <Link
-            href="/"
+            href={localHref('/')}
             className="flex items-center gap-3 shrink-0"
-            aria-label="CodeLegacy home"
+            aria-label={t('nav.homeAria')}
           >
             <span className="relative block w-[4.25rem] h-[4.25rem] rounded-full overflow-hidden border-2 border-brand-cyan shadow-glow-cyan">
               <img
@@ -75,26 +81,27 @@ const Navbar = () => {
 
           {/* Desktop links (center) */}
           <div className="hidden md:flex items-center gap-1 lg:gap-2">
-            {NAV_LINKS.map(({ href, label }) => (
+            {NAV_LINKS.map(({ href, key }) => (
               <Link
                 key={href}
-                href={href}
+                href={localHref(href)}
                 className={linkClass(href)}
                 aria-current={isActive(href) ? 'page' : undefined}
               >
-                {label}
+                {t(`nav.${key}`)}
               </Link>
             ))}
           </div>
 
           {/* Right: hamburger on mobile, empty spacer on desktop to keep tabs centered */}
           <div className="flex-1 flex justify-end items-center gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setIsOpen((v) => !v)}
               className="md:hidden p-2 rounded-md text-gray-200 hover:bg-brand-card2 transition-colors"
-              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
               aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,14 +113,14 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden pb-4">
             <div className="flex flex-col gap-1">
-              {NAV_LINKS.map(({ href, label }) => (
+              {NAV_LINKS.map(({ href, key }) => (
                 <Link
                   key={href}
-                  href={href}
+                  href={localHref(href)}
                   className={linkClass(href)}
                   aria-current={isActive(href) ? 'page' : undefined}
                 >
-                  {label}
+                  {t(`nav.${key}`)}
                 </Link>
               ))}
             </div>

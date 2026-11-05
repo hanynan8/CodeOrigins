@@ -1,0 +1,26 @@
+{
+  "meta": {
+    "title": "Integrated Web Development & Software Solutions",
+    "description": "A company specialized in developing websites and web applications, SaaS, ecommerce stores, attractive user interfaces, performance optimization, and cloud infrastructure setup."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "ourWork": "Our Work",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "homeAria": "CodeLegacy home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "language": {
+    "switchTo": "Switch language",
+    "en": "English",
+    "ar": "العربية",
+    "short": { "en": "EN", "ar": "AR" }
+  },
+  "common": {
+    "whatsapp": "WhatsApp"
+  }
+}

@@ -1,0 +1,17 @@
+احذف المسارات القديمة دي بعد ما تنسخ الملفات الجديدة (الصفحات اتنقلت لـ app/[lang]/):
+app/(home)/_client.jsx
+app/(home)/page.jsx
+app/about/page.jsx
+app/contact/page.jsx
+app/lastprojects/[slug]/ProjectGallery.jsx
+app/lastprojects/[slug]/ProjectShot.jsx
+app/lastprojects/[slug]/RelatedCard.jsx
+app/lastprojects/[slug]/page.jsx
+app/lastprojects/page.jsx
+app/layout.jsx
+app/pricing/_client.jsx
+app/pricing/page.jsx
+app/privacy-policy/page.jsx
+app/services/_client.jsx
+app/services/page.jsx
+app/terms-and-conditions/page.jsx

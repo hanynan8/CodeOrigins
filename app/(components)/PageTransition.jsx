@@ -4,6 +4,8 @@
 // sheet is pulled back up from the bottom to the top.
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import { localePath, stripLocale } from '@/lib/i18n';
+import { useLocale } from './LocaleProvider';
 
 // ── Timings (ms) — raise the numbers to make it slower ──────────────────
 const COVER = 1000;    // curtain falling
@@ -29,7 +31,9 @@ const PAGE_NAMES = [
   ['/terms-and-conditions', 'Terms & Conditions'],
 ];
 
-function nameFor(pathname) {
+// pathname may or may not carry the language prefix ('/en/pricing' or '/pricing')
+function nameFor(rawPathname) {
+  const pathname = stripLocale(rawPathname).path;
   if (pathname === '/') return 'Home';
   const hit = PAGE_NAMES.find(([p]) => pathname.startsWith(p));
   if (hit) return hit[1];
@@ -71,6 +75,7 @@ function linePath(pts) {
 export default function PageTransition() {
   const router = useRouter();
   const pathname = usePathname();
+  const { lang } = useLocale();
 
   const [active, setActive] = useState(false);
   const [label, setLabel] = useState('');
@@ -196,21 +201,24 @@ export default function PageTransition() {
         return;
       }
       if (url.origin !== window.location.origin) return;       // external link
-      if (url.pathname === window.location.pathname) return;   // same page / hash only
+      // links without a language prefix ('/pricing') get the current one, so the
+      // curtain waits for the real final route instead of a redirect
+      const target = stripLocale(url.pathname).lang ? url.pathname : localePath(lang, url.pathname);
+      if (target === window.location.pathname) return;          // same page / hash only
 
       e.preventDefault();
       if (busy.current) return;
       busy.current = true;
 
       fromPath.current = window.location.pathname;
-      pending.current = url.pathname + url.search + url.hash;
-      setLabel(nameFor(url.pathname));
+      pending.current = target + url.search + url.hash;
+      setLabel(nameFor(target));
       setActive(true);
     };
 
     document.addEventListener('click', onClick, true);
     return () => document.removeEventListener('click', onClick, true);
-  }, []);
+  }, [lang]);
 
   // New route is rendered -> let the sequence continue
   useEffect(() => {
