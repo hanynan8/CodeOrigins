@@ -19,6 +19,22 @@ const TYPE_LABELS = {
 };
 const typeLabel = (project) => TYPE_LABELS[project.filter] || project.category;
 
+/* Full-page screenshots made by scripts/fullpage-shots.mjs -> public/full/<host>.webp
+   A project with a `link` automatically uses its full-page shot, so the card can scroll
+   through the whole page on hover. If a shot file is missing (or fails to load), the card falls
+   back to the project's original image automatically (`fallbackImage`). */
+const shotSlug = (url) =>
+  new URL(url).host.replace(/^www\./, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+const withFullShot = (project) => {
+  if (!project.link) return project;
+  return {
+    ...project,
+    image: `/full/${shotSlug(project.link)}.webp`,
+    fallbackImage: project.image,
+    fullImage: false,
+  };
+};
+
 const INITIAL_COUNT = 9; // projects shown first
 const LOAD_STEP = 6;     // projects added by each "Show More" click
 
@@ -155,22 +171,67 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
    Fixed-height frame; the screenshot keeps its natural proportions and, on hover,
    scrolls inside the frame until its full length has been shown (and back on leave).
 ─────────────────────────────────────────────── */
-const FRAME_HEIGHT = 'h-52 sm:h-60 lg:h-80'; // taller than before (was h-44 sm:h-52 lg:h-64)
-const SCROLL_PX_PER_SEC = 160;               // scroll speed on hover
+const FRAME_HEIGHT = 'h-64 sm:h-72 lg:h-96'; // taller frame (was h-52 sm:h-60 lg:h-80)
+const SCROLL_PX_PER_SEC = 200; // cruising speed once the motion has picked up
+const RAMP_SECONDS = 1.4;      // slow start: time it takes to reach the cruising speed
 
-const ScrollImage = ({ src, alt, onClick, className = '', children }) => {
+// Distance travelled after t seconds: starts slowly, speeds up smoothly for RAMP_SECONDS,
+// then keeps a steady speed until the end of the screenshot.
+const travelled = (t) =>
+  t < RAMP_SECONDS
+    ? (SCROLL_PX_PER_SEC * t * t) / (2 * RAMP_SECONDS)
+    : (SCROLL_PX_PER_SEC * RAMP_SECONDS) / 2 + SCROLL_PX_PER_SEC * (t - RAMP_SECONDS);
+
+const ScrollImage = ({ src, fallback, alt, onClick, className = '', children }) => {
   const frame = useRef(null);
   const img = useRef(null);
-  const [anim, setAnim] = useState({ shift: 0, seconds: 0.6 });
+  const shadow = useRef(null);
+  const raf = useRef(0);
+  const hovering = useRef(false);
+  const [useFallback, setUseFallback] = useState(false);
+
+  // soft shadow along the bottom edge: visible while there is still more image below
+  const setShadow = (value) => {
+    if (shadow.current) shadow.current.style.opacity = value;
+  };
 
   const start = () => {
-    if (!frame.current || !img.current) return;
-    const distance = img.current.offsetHeight - frame.current.clientHeight;
-    if (distance > 8) {
-      setAnim({ shift: distance, seconds: Math.min(8, Math.max(1.5, distance / SCROLL_PX_PER_SEC)) });
-    }
+    hovering.current = true;
+    const el = img.current;
+    const fr = frame.current;
+    if (!el || !fr) return;
+    const distance = el.offsetHeight - fr.clientHeight;
+    if (distance <= 8) return; // the whole image already fits in the frame
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    cancelAnimationFrame(raf.current);
+    // continue from where the image currently is (it may still be gliding back)
+    const from = Math.min(distance, Math.max(0, -new DOMMatrix(getComputedStyle(el).transform).m42));
+    el.style.transition = 'none';
+    el.style.transform = `scaleX(1.05) translateY(-${from}px)`;
+    setShadow(1);
+
+    const t0 = performance.now();
+    const tick = (now) => {
+      const y = Math.min(distance, from + travelled((now - t0) / 1000));
+      el.style.transform = `scaleX(1.05) translateY(-${y}px)`;
+      if (y < distance) raf.current = requestAnimationFrame(tick);
+      else setShadow(0); // reached the end: nothing more below
+    };
+    raf.current = requestAnimationFrame(tick);
   };
-  const stop = () => setAnim({ shift: 0, seconds: 0.6 });
+
+  const stop = () => {
+    hovering.current = false;
+    cancelAnimationFrame(raf.current);
+    setShadow(0);
+    const el = img.current;
+    if (!el) return;
+    el.style.transition = 'transform 0.6s ease-out';
+    el.style.transform = 'scaleX(1.05) translateY(0px)';
+  };
+
+  useEffect(() => () => cancelAnimationFrame(raf.current), []);
 
   return (
     <div
@@ -182,16 +243,24 @@ const ScrollImage = ({ src, alt, onClick, className = '', children }) => {
     >
       <img
         ref={img}
-        src={src}
+        src={useFallback && fallback ? fallback : src}
         alt={alt}
         loading="lazy"
+        // if the image finishes loading while the mouse is already over it, start scrolling then
+        onLoad={() => hovering.current && start()}
+        // the full-page shot is missing: show the original image instead
+        onError={() => fallback && !useFallback && setUseFallback(true)}
         className="block w-full h-auto min-h-full object-cover object-top"
         style={{
-          transform: `scaleX(1.05) translateY(-${anim.shift}px)`,
+          transform: 'scaleX(1.05)',
           transformOrigin: 'top',
           clipPath: 'inset(0 2.5% 0 2.5%)',
-          transition: `transform ${anim.seconds}s ${anim.shift ? 'linear' : 'ease-out'}`,
         }}
+      />
+      <div
+        ref={shadow}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-t from-black/55 to-transparent opacity-0 transition-opacity duration-300"
       />
       {children}
     </div>
@@ -286,7 +355,11 @@ const RegularProjectCard = ({ project }) => (
           />
         </div>
       ) : (
-        <ScrollImage src={project.image} alt={project.title || 'Project image'} />
+        <ScrollImage
+          src={project.image}
+          fallback={project.fallbackImage}
+          alt={project.title || 'Project image'}
+        />
       )}
     </a>
 
@@ -521,16 +594,16 @@ const seededShuffle = (items, seed) => {
 
 // the recently re-categorised projects (original relative order)
 const addedProjects = [
-  ...regularProjects.slice(0, 7).map((project) => ({ type: 'regular', project })),
+  ...regularProjects.slice(0, 7).map((project) => ({ type: 'regular', project: withFullShot(project) })),
   ...sliderProjects.map((project) => ({ type: 'slider', project })),
-  ...regularProjects.slice(7).map((project) => ({ type: 'regular', project })),
+  ...regularProjects.slice(7).map((project) => ({ type: 'regular', project: withFullShot(project) })),
 ];
 // the rest, in their original order
 const baseProjects = [
-  ...tourismProjects.map((project) => ({ type: 'regular', project })),
-  ...educationProjects.map((project) => ({ type: 'regular', project })),
-  ...storeProjects.map((project) => ({ type: 'regular', project })),
-  ...restaurantProjects.map((project) => ({ type: 'regular', project })),
+  ...tourismProjects.map((project) => ({ type: 'regular', project: withFullShot(project) })),
+  ...educationProjects.map((project) => ({ type: 'regular', project: withFullShot(project) })),
+  ...storeProjects.map((project) => ({ type: 'regular', project: withFullShot(project) })),
+  ...restaurantProjects.map((project) => ({ type: 'regular', project: withFullShot(project) })),
 ];
 
 // "All": everything mixed (seeded shuffle)

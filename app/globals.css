@@ -9,6 +9,8 @@
   --line: #0b2d8a;
   --blue: #1e5bff;
   --cyan: #30d8f8;
+  --fade-color: rgba(30, 91, 255, 0.13); /* soft blue glow between sections */
+  --fade-size: clamp(70px, 10vw, 140px);  /* how far the glow reaches into a section */
 }
 
 html {
@@ -27,9 +29,25 @@ body {
   position: relative;
   background-color: var(--bg);
   background-image:
+    linear-gradient(to top, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size)), /* fade into the next section */
     radial-gradient(ellipse 60% 55% at 50% 45%, rgba(1, 6, 26, 0) 0%, rgba(1, 6, 26, 0.55) 100%),
     radial-gradient(ellipse 28% 70% at 0% 50%, rgba(30, 91, 255, 0.22), transparent 70%),
     radial-gradient(ellipse 28% 70% at 100% 50%, rgba(30, 91, 255, 0.22), transparent 70%);
+}
+
+/* ── Soft colour fade between sections ───────────────────────────────────
+   Every section with a solid brand background (bg-brand-bg / bg-brand-alt)
+   glows faintly at its top and bottom edge, so two neighbouring sections
+   blend into each other instead of meeting at a hard line.
+   Sections with their own gradient (the blue bands) are left alone.
+   Tune it with --fade-color / --fade-size in :root. */
+section[class*="bg-brand-"] {
+  background-image:
+    linear-gradient(to bottom, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size)),
+    linear-gradient(to top, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size));
+}
+footer {
+  background-image: linear-gradient(to bottom, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size));
 }
 
 /* Glowing brand text */
