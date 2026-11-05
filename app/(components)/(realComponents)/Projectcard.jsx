@@ -1,39 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { ChevronRight, ChevronLeft, X, Eye, ExternalLink } from 'lucide-react';
-import tourismProjects from './tourismProjects';
-import educationProjects from './educationProjects';
-import storeProjects from './storeProjects';
-import restaurantProjects from './restaurantProjects';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ChevronRight, ChevronLeft, X, Eye, ExternalLink, ArrowUpRight } from 'lucide-react';
+import {
+  FILTERS, typeLabel, withFullShot,
+  sliderProjects, regularProjects, tourismProjects, educationProjects, storeProjects, restaurantProjects,
+} from './projectsData';
 import CircuitBolts from '../CircuitBolts';
-
-// Label shown above each card title: the type of website (instead of the generic "Website")
-const TYPE_LABELS = {
-  ecommerce: 'E-Commerce Store',
-  restaurants: 'Restaurant',
-  tourism: 'Tourism Website',
-  education: 'Educational Platform',
-  '3d': '3D Website',
-  portfolio: 'Portfolio',
-};
-const typeLabel = (project) => TYPE_LABELS[project.filter] || project.category;
-
-/* Full-page screenshots made by scripts/fullpage-shots.mjs -> public/full/<host>.webp
-   A project with a `link` automatically uses its full-page shot, so the card can scroll
-   through the whole page on hover. If a shot file is missing (or fails to load), the card falls
-   back to the project's original image automatically (`fallbackImage`). */
-const shotSlug = (url) =>
-  new URL(url).host.replace(/^www\./, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
-const withFullShot = (project) => {
-  if (!project.link) return project;
-  return {
-    ...project,
-    image: `/full/${shotSlug(project.link)}.webp`,
-    fallbackImage: project.image,
-    fullImage: false,
-  };
-};
+import { ScrollImage, FRAME_HEIGHT } from './ScrollImage';
 
 const INITIAL_COUNT = 9; // projects shown first
 const LOAD_STEP = 6;     // projects added by each "Show More" click
@@ -167,120 +143,52 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
 };
 
 /* ───────────────────────────────────────────────
-   Scroll-on-hover image
-   Fixed-height frame; the screenshot keeps its natural proportions and, on hover,
-   scrolls inside the frame until its full length has been shown (and back on leave).
+   Card navigation + visit arrow
 ─────────────────────────────────────────────── */
-const FRAME_HEIGHT = 'h-64 sm:h-72 lg:h-96'; // taller frame (was h-52 sm:h-60 lg:h-80)
-const SCROLL_PX_PER_SEC = 200; // cruising speed once the motion has picked up
-const RAMP_SECONDS = 1.4;      // slow start: time it takes to reach the cruising speed
-
-// Distance travelled after t seconds: starts slowly, speeds up smoothly for RAMP_SECONDS,
-// then keeps a steady speed until the end of the screenshot.
-const travelled = (t) =>
-  t < RAMP_SECONDS
-    ? (SCROLL_PX_PER_SEC * t * t) / (2 * RAMP_SECONDS)
-    : (SCROLL_PX_PER_SEC * RAMP_SECONDS) / 2 + SCROLL_PX_PER_SEC * (t - RAMP_SECONDS);
-
-const ScrollImage = ({ src, fallback, alt, onClick, className = '', children }) => {
-  const frame = useRef(null);
-  const img = useRef(null);
-  const shadow = useRef(null);
-  const raf = useRef(0);
-  const hovering = useRef(false);
-  const [useFallback, setUseFallback] = useState(false);
-
-  // soft shadow along the bottom edge: visible while there is still more image below
-  const setShadow = (value) => {
-    if (shadow.current) shadow.current.style.opacity = value;
+// Clicking anywhere on a card opens that project's detail page.
+// (Inner links/buttons call stopPropagation so they keep their own action.)
+const useCardNav = (slug) => {
+  const router = useRouter();
+  const href = `/lastprojects/${slug}`;
+  const onClick = (e) => {
+    if (e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey) { window.open(href, '_blank'); return; }
+    router.push(href);
   };
-
-  const start = () => {
-    hovering.current = true;
-    const el = img.current;
-    const fr = frame.current;
-    if (!el || !fr) return;
-    const distance = el.offsetHeight - fr.clientHeight;
-    if (distance <= 8) return; // the whole image already fits in the frame
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    cancelAnimationFrame(raf.current);
-    // continue from where the image currently is (it may still be gliding back)
-    const from = Math.min(distance, Math.max(0, -new DOMMatrix(getComputedStyle(el).transform).m42));
-    el.style.transition = 'none';
-    el.style.transform = `scaleX(1.05) translateY(-${from}px)`;
-    setShadow(1);
-
-    const t0 = performance.now();
-    const tick = (now) => {
-      const y = Math.min(distance, from + travelled((now - t0) / 1000));
-      el.style.transform = `scaleX(1.05) translateY(-${y}px)`;
-      if (y < distance) raf.current = requestAnimationFrame(tick);
-      else setShadow(0); // reached the end: nothing more below
-    };
-    raf.current = requestAnimationFrame(tick);
-  };
-
-  const stop = () => {
-    hovering.current = false;
-    cancelAnimationFrame(raf.current);
-    setShadow(0);
-    const el = img.current;
-    if (!el) return;
-    el.style.transition = 'transform 0.6s ease-out';
-    el.style.transform = 'scaleX(1.05) translateY(0px)';
-  };
-
-  useEffect(() => () => cancelAnimationFrame(raf.current), []);
-
-  return (
-    <div
-      ref={frame}
-      onClick={onClick}
-      onMouseEnter={start}
-      onMouseLeave={stop}
-      className={`relative overflow-hidden ${FRAME_HEIGHT} bg-brand-bg ${className}`}
-    >
-      <img
-        ref={img}
-        src={useFallback && fallback ? fallback : src}
-        alt={alt}
-        loading="lazy"
-        // if the image finishes loading while the mouse is already over it, start scrolling then
-        onLoad={() => hovering.current && start()}
-        // the full-page shot is missing: show the original image instead
-        onError={() => fallback && !useFallback && setUseFallback(true)}
-        className="block w-full h-auto min-h-full object-cover object-top"
-        style={{
-          transform: 'scaleX(1.05)',
-          transformOrigin: 'top',
-          clipPath: 'inset(0 2.5% 0 2.5%)',
-        }}
-      />
-      <div
-        ref={shadow}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 sm:h-20 bg-gradient-to-t from-black/55 to-transparent opacity-0 transition-opacity duration-300"
-      />
-      {children}
-    </div>
-  );
+  return { href, onClick };
 };
 
+const CARD_CLASS =
+  'group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full cursor-pointer';
+
+// Small arrow in the bottom-right corner of the image: opens the live website itself.
+const VisitArrow = ({ project }) => (
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={(e) => e.stopPropagation()}
+    aria-label={`Open ${project.title} website`}
+    title="Open website"
+    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-black/60 backdrop-blur-sm border border-white/30 text-white hover:bg-brand-blue hover:border-brand-cyan hover:scale-110 transition-all"
+  >
+    <ArrowUpRight className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+  </a>
+);
+
 /* ───────────────────────────────────────────────
-   Slider Project Card Component
+   Image Slider Project Card Component
 ─────────────────────────────────────────────── */
 const SliderProjectCard = ({ project }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { href, onClick } = useCardNav(project.slug);
 
   return (
     <>
-      <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full">
+      <div onClick={onClick} className={CARD_CLASS}>
         <ScrollImage
           src={project.images[0]}
           alt={project.title || 'Project image'}
-          className="cursor-pointer"
-          onClick={() => setModalOpen(true)}
         >
           <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <span>📷</span>
@@ -293,14 +201,14 @@ const SliderProjectCard = ({ project }) => {
             {typeLabel(project)}
           </div>
           <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
-            {project.title}
+            <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
           </h3>
           <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
             {project.description}
           </p>
           <button
-            onClick={() => setModalOpen(true)}
-            className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm"
+            onClick={(e) => { e.stopPropagation(); setModalOpen(true); }}
+            className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm self-start"
           >
             <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             View Photos
@@ -321,227 +229,59 @@ const SliderProjectCard = ({ project }) => {
 /* ───────────────────────────────────────────────
    Regular Project Card Component
 ─────────────────────────────────────────────── */
-const RegularProjectCard = ({ project }) => (
-  <div className="group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full">
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block"
-    >
-      {!project.image ? (
-        <div className={`flex items-center justify-center ${FRAME_HEIGHT} bg-gradient-to-br from-brand-blue via-brand-sky to-brand-cyan text-white text-center px-4 text-lg font-bold`}>
-          {project.title}
-        </div>
-      ) : project.fullImage ? (
-        <div className={`relative overflow-hidden bg-brand-bg ${FRAME_HEIGHT}`}>
-          <img
+const RegularProjectCard = ({ project }) => {
+  const { href, onClick } = useCardNav(project.slug);
+
+  return (
+    <div onClick={onClick} className={CARD_CLASS}>
+      <div className="relative">
+        {!project.image ? (
+          <div className={`flex items-center justify-center ${FRAME_HEIGHT} bg-gradient-to-br from-brand-blue via-brand-sky to-brand-cyan text-white text-center px-4 text-lg font-bold`}>
+            {project.title}
+          </div>
+        ) : project.fullImage ? (
+          <div className={`relative overflow-hidden bg-brand-bg ${FRAME_HEIGHT}`}>
+            <img
+              src={project.image}
+              alt={project.title || 'Project image'}
+              className="block w-full h-full object-cover object-top"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <ScrollImage
             src={project.image}
+            fallback={project.fallbackImage}
             alt={project.title || 'Project image'}
-            className="block w-full h-full object-cover object-top"
-            loading="lazy"
           />
-        </div>
-      ) : (
-        <ScrollImage
-          src={project.image}
-          fallback={project.fallbackImage}
-          alt={project.title || 'Project image'}
-        />
-      )}
-    </a>
-
-    <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
-      <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
-        {typeLabel(project)}
+        )}
+        {project.link && <VisitArrow project={project} />}
       </div>
-      <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
-        {project.title}
-      </h3>
-      <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
-        {project.description}
-      </p>
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium group-hover:text-brand-cyan transition-colors text-xs sm:text-sm"
-      >
-        <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-        View Website
-      </a>
+
+      <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
+        <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
+          {typeLabel(project)}
+        </div>
+        <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-white group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
+          <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
+        </h3>
+        <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
+          {project.description}
+        </p>
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium group-hover:text-brand-cyan transition-colors text-xs sm:text-sm self-start"
+        >
+          <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          View Website
+        </a>
+      </div>
     </div>
-  </div>
-);
-
-/* ───────────────────────────────────────────────
-   Data — Projects with IMAGE SLIDER
-─────────────────────────────────────────────── */
-const sliderProjects = [
-  {
-    title: 'LapTech',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'A fully integrated ecommerce store for showcasing and selling tech devices and accessories (capacity for 5,000+ products). Equipped with an advanced filtering system, precise search, and fast performance. Includes a free admin dashboard for the owner to easily manage products (add, edit, delete) and inventory.',
-    tech: [],
-    images: [
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(817).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(816).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(818).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(820).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(822).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(825).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(827).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(828).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(829).png?raw=true',
-    ],
-  },
-  {
-    title: 'Your Restaurant',
-    category: 'Website',
-    filter: 'restaurants',
-    description:
-      'A modern restaurant website that showcases menus and dishes in an attractive way, with an online ordering and booking system and filters for quick access to dishes. Includes a dashboard for managing menus and offers.',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
-    images: [
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(729).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(730).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(731).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(736).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(737).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(735).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(732).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(734).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(733).png?raw=true',
-    ],
-  },
-];
-
-/* ───────────────────────────────────────────────
-   Data — Regular projects
-─────────────────────────────────────────────── */
-const regularProjects = [
-  {
-    title: 'Dada Projects',
-    link: 'https://dada-projects.com',
-    category: 'Website',
-    filter: '3d',
-    description:
-      'A bold one-page portfolio for an award-winning, female-led 3D motion and CGI studio. The site is built around immersive hover-reveal project thumbnails, playful animated 3D shapes representing each case study, and smooth border-transition effects that give the whole experience a distinctly experimental, design-forward feel. It showcases campaign work for major brands such as Adidas, Nike, and Calvin Klein, with a fully responsive layout that keeps the animations fluid across desktop and mobile.',
-    image: '/1 (1).png',
-    tech: ['Next.js', 'Three.js', 'Framer Motion', 'Tailwind'],
-  },
-  {
-    title: 'Rumfoords',
-    link: 'https://rumfoords.com',
-    category: 'Website',
-    filter: '3d',
-    description:
-      'A sleek consultancy website presenting Rumfoords\' dual offering in Artificial Intelligence and Web3/Metaverse strategy. The site walks visitors through the studio\'s process with cinematic full-bleed video sections, and highlights flagship case studies (including campaigns for adidas, Ralph Lauren, and JD Sports) in a clean, editorial-style work section. Built with a headless CMS to let the team update case studies and client logos without touching code.',
-    image: '/1 (2).png',
-    tech: ['Next.js', 'Prismic CMS', 'Node.js', 'Framer Motion'],
-  },
-  {
-    title: 'Sarah Eisman Studio',
-    link: 'https://saraheismanstudio.com',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'A refined ecommerce experience for a fine jewelry label crafted from gold and precious gemstones. Collections are organized around the human body (ear, hand, neck, wrist) instead of typical product categories, paired with striking black-and-white photography and 3D product renders. The store supports full catalog browsing, collection filtering, a smooth checkout flow, and a custom-branded shopping experience that matches the studio\'s minimalist, engineered aesthetic.',
-    image: '/1.png',
-    tech: ['Shopify', 'React', 'Tailwind', 'Framer Motion'],
-  },
-  {
-    title: 'Matcha Ren',
-    link: 'https://matcharen.com',
-    category: 'Website',
-    filter: 'restaurants',
-    description:
-      'A vibrant, green-and-white branded website for a matcha-focused dessert and drinks shop with multiple California locations. The site presents the full menu, brand story, and store locations in a playful, modern layout, with smooth scroll-triggered animations that keep the browsing experience light and appetizing. Built to convert casual visitors into in-store customers with clear calls to action for directions and ordering.',
-    image: '/1 (3).png',
-    tech: ['Next.js', 'Tailwind', 'Framer Motion'],
-  },
-  {
-    title: 'Alter Geneva',
-    link: 'https://altergeneva.com',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'An ultra-minimalist landing page for a Swiss bespoke watch customization studio, built around a restrained palette of Swiss-snow white and deep black. The design leans on generous whitespace, a bold sans-serif wordmark, and a numbered project gallery (Project 001, 002, 003...) to communicate exclusivity without ever feeling cluttered. Sections walk clients through the customization process, past projects, and warranty details in a calm, editorial rhythm that mirrors the precision of the watches themselves.',
-    image: '/1 (4).png',
-    tech: ['Webflow', 'GSAP', 'Framer Motion'],
-  },
-  {
-    title: 'Revitin',
-    link: 'https://revitin.com',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'An ecommerce storefront for a prebiotic, fluoride-free and SLS-free toothpaste brand focused on supporting a healthy oral microbiome. The site presents the product line (toothpaste, sonic toothbrushes, water flossers) with clean, health-forward visuals, subscription options for recurring deliveries, and educational content on oral microbiome health, all wrapped in a smooth, conversion-focused shopping experience.',
-    image: '/1 (5).png',
-    tech: ['Shopify', 'React', 'Tailwind'],
-  },
-  {
-    title: 'DOHA Bazaar',
-    link: 'https://bazardoha.vercel.app/',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'A fully integrated ecommerce store for selling clothing that dynamically displays products with an advanced filtering and search system to make shopping easier. Supports efficient management of a large number of products, and is equipped with a powerful dashboard that makes it easy to add, edit, and delete products, with a modern design and fast performance that suits all devices.',
-    image:
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(1972).png?raw=true',
-    tech: [],
-  },
-  // {
-  //   title: 'Our Own Company Website, CodeLegacy — About Page & Services Network',
-  //   link: 'https://codelegacy.tech',
-  //   category: 'Website',
-  //   description:
-  //     "CodeLegacy's official website: showcasing services, our projects, our team, and quick contact. A clean design to present the brand identity, testimonials, and technical service offerings.",
-  //   image:
-  //     'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(791).png?raw=true',
-  //   tech: ['Next.js', 'Node.js', 'MongoDB', 'Mapbox'],
-  // },
-  // {
-  //   title: 'Kremora — Online Sweets Store',
-  //   link: 'https://hanynan8.github.io/test-Sweety/',
-  //   category: 'Website',
-  //   description:
-  //     'An online sweets store showcasing multiple categories of sweets with detailed product pages, a shopping cart, and an order/booking form. A lovely design focused on photos and seasonal products.',
-  //   image:
-  //     'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(794).png?raw=true',
-  //   tech: ['React', 'Django (API-ready)', 'PostgreSQL', 'OAuth (optional)'],
-  // },
-  {
-    title: 'Personal Portfolio',
-    link: 'https://my-portfolio-tau-six-33.vercel.app/',
-    category: 'Website',
-    filter: 'portfolio',
-    description:
-      'A personal portfolio for showcasing projects, skills, resume, and contact links. A simple, fast design for visitors and employers to view experience and practical examples.',
-    image:
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(483).png?raw=true',
-    tech: ['React', 'Django (forms/blog)', 'PostgreSQL', 'OAuth'],
-  },
-
-
-];
-/* ───────────────────────────────────────────────
-   Filters
-   Each project has a `filter` field matching one of these ids.
-   To move a project to another category, just change its `filter`.
-─────────────────────────────────────────────── */
-const FILTERS = [
-  { id: 'all', label: 'All' },
-  { id: 'ecommerce', label: 'E-Commerce Store' },
-  { id: 'restaurants', label: 'Restaurants' },
-  { id: 'tourism', label: 'Tourism Websites' },
-  { id: 'education', label: 'Educational Platforms' },
-  { id: '3d', label: '3D Websites' },
-  { id: 'portfolio', label: 'Portfolio' },
-];
+  );
+};
 
 /* ───────────────────────────────────────────────
    Combined list, shuffled once with a fixed seed.
@@ -602,6 +342,13 @@ const PortfolioSection = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+
+  // /lastprojects?filter=restaurants#portfolio opens with that category pre-selected
+  useEffect(() => {
+    if (!showFilter) return;
+    const wanted = new URLSearchParams(window.location.search).get('filter');
+    if (wanted && FILTERS.some((f) => f.id === wanted)) setActiveFilter(wanted);
+  }, [showFilter]);
 
   const visibleProjects =
     showFilter && activeFilter !== 'all'

@@ -1,4 +1,5 @@
 // app/services/page.js
+import { siteIcons } from '../(components)/brand';
 import React from 'react';
 import ServicesPageClient from './_client';
 import { servicesData } from '../(components)/(realComponents)/ServiceData'
@@ -39,7 +40,7 @@ export const metadata = {
     description: 'Learn about our services: design, development, cloud, performance, security, and maintenance.',
     images: [`${SITE_DOMAIN}/twitter-services.jpg`],
   },
-  icons: { icon: '/icons/code.svg' },
+  icons: siteIcons,
   robots: 'index, follow',
 };
 

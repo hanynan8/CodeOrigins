@@ -16,7 +16,7 @@ const CFG = {
   parallax: 8,
   maxDpr: 1.5,
 };
-const NEAR_PX = 300; // how far off-screen (above/below) the effect keeps running
+const NEAR_PX = 0; // strict: runs only while the section is actually on screen
 const rnd = (a, b) => a + Math.random() * (b - a);
 // cool blue -> white-cyan as heat rises
 const heatColor = (h) => {
@@ -33,10 +33,11 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
   const host = useRef(null);
 
   useEffect(() => {
-    let disposed = false, app = null, off = () => {};
+    let disposed = false, inited = false, app = null, off = () => {};
 
     (async () => {
       const [px, { AdvancedBloomFilter }] = await Promise.all([import('pixi.js'), import('pixi-filters')]);
+      if (disposed) return;
       const { Application, Container, Graphics, Sprite, Texture, BlurFilter } = px;
       const el = host.current; if (!el) return;
       app = new Application();
@@ -45,7 +46,8 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
         resolution: Math.min(window.devicePixelRatio || 1, CFG.maxDpr),
         powerPreference: 'low-power', preference: 'webgl',
       });
-      if (disposed) { try { app.destroy(true, { children: true }); } catch {} return; }
+      if (disposed) { try { app.destroy(true, { children: true }); } catch {} app = null; return; }
+      inited = true;
       el.appendChild(app.canvas);
 
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -61,6 +63,7 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
       let surgeAt = -99;
 
       function layout() {
+        if (disposed || !app || !app.renderer) return;
         app.stage.removeChildren().forEach((c) => c.destroy({ children: true }));
         sides.length = 0;
         const W = app.screen.width, H = app.screen.height;
@@ -127,6 +130,7 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
       const B = CFG.buckets;
       let t = 0;
       const frame = (tk) => {
+        if (disposed) return;
         const dt = Math.min(tk.deltaMS / 1000, 0.05); t += dt;
         const decay = Math.exp(-dt / CFG.afterglow);
         ptr.cx += (ptr.x - ptr.cx) * 0.05; ptr.cy += (ptr.y - ptr.cy) * 0.05;
@@ -167,11 +171,11 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
       };
       if (reduce) { app.ticker.stop(); app.render(); } else app.ticker.add(frame);
 
-      // Runs (and uses CPU/GPU) only while the screen is on the hero or within a small distance of it
-      // (NEAR_PX above/below); paused otherwise, and while the tab is hidden.
+      // Runs (and uses CPU/GPU) only while the hero is on screen; paused otherwise and while the tab is hidden.
+      // (The wrapper also unmounts this component when the hero leaves the screen, freeing all memory.)
       let inView = false;
       app.ticker.stop(); // stays idle until the observer says the hero is near the screen
-      const sync = () => { if (reduce) return; (inView && !document.hidden) ? app.ticker.start() : app.ticker.stop(); };
+      const sync = () => { if (disposed || !app || reduce) return; (inView && !document.hidden) ? app.ticker.start() : app.ticker.stop(); };
       const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { rootMargin: `${NEAR_PX}px 0px ${NEAR_PX}px 0px` });
       io.observe(el);
       const vis = () => sync();
@@ -183,7 +187,7 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
 
     return () => {
       disposed = true; off();
-      if (app) { try { app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
+      if (app && inited) { try { app.ticker.stop(); app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
     };
   }, [side, speedScale, sizeScale]); // eslint-disable-line react-hooks/exhaustive-deps
   return <div ref={host} className="circuit-bolts__canvas" />;

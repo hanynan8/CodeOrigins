@@ -25,7 +25,7 @@ const CFG = {
   segPx: 8,
   maxDpr: 1.5,
 };
-const NEAR_PX = 300; // how far off-screen (above/below) the effect keeps running
+const NEAR_PX = 0; // strict: runs only while the section is actually on screen
 const rnd = (a, b) => a + Math.random() * (b - a);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 // cool blue -> white-cyan as heat rises (same palette as the rest of the site)
@@ -44,10 +44,11 @@ export default function LightningCanvas({ side = 'both', onReady }) {
   const host = useRef(null);
 
   useEffect(() => {
-    let disposed = false, app = null, off = () => {};
+    let disposed = false, inited = false, app = null, off = () => {};
 
     (async () => {
       const [px, { AdvancedBloomFilter }] = await Promise.all([import('pixi.js'), import('pixi-filters')]);
+      if (disposed) return;
       const { Application, Container, Graphics, Sprite, Texture, BlurFilter, Rectangle } = px;
       const el = host.current; if (!el) return;
       const weak = (navigator.hardwareConcurrency || 4) < 4;
@@ -57,7 +58,8 @@ export default function LightningCanvas({ side = 'both', onReady }) {
         resolution: Math.min(window.devicePixelRatio || 1, weak ? 1.25 : CFG.maxDpr),
         powerPreference: 'low-power', preference: 'webgl',
       });
-      if (disposed) { try { app.destroy(true, { children: true }); } catch {} return; }
+      if (disposed) { try { app.destroy(true, { children: true }); } catch {} app = null; return; }
+      inited = true;
       el.appendChild(app.canvas);
 
       const halo = canvasTex(Texture, 64, (g, w) => {
@@ -103,6 +105,7 @@ export default function LightningCanvas({ side = 'both', onReady }) {
       const circBk = Array.from({ length: B + 1 }, () => []);
 
       function layout() {
+        if (disposed || !app || !app.renderer) return;
         app.stage.removeChildren().forEach((c) => c.destroy({ children: true }));
         sides.length = 0;
         W = app.screen.width; H = app.screen.height;
@@ -237,7 +240,7 @@ export default function LightningCanvas({ side = 'both', onReady }) {
 
       layout();
       app.renderer.on('resize', layout);
-      const tick = (tk) => update(Math.min(tk.deltaMS / 1000, 0.05));
+      const tick = (tk) => { if (disposed) return; update(Math.min(tk.deltaMS / 1000, 0.05)); };
       app.ticker.add(tick);
 
       // dev-only handles used to inspect the animation deterministically
@@ -248,11 +251,11 @@ export default function LightningCanvas({ side = 'both', onReady }) {
         };
       }
 
-      // Runs (and uses CPU/GPU) only while the screen is on the hero or within a small distance of it
-      // (NEAR_PX above/below); paused otherwise, and while the tab is hidden.
+      // Runs (and uses CPU/GPU) only while the hero is on screen; paused otherwise and while the tab is hidden.
+      // (The wrapper also unmounts this component when the hero leaves the screen, freeing all memory.)
       let inView = false;
       app.ticker.stop(); // stays idle until the observer says the hero is near the screen
-      const sync = () => { (inView && !document.hidden) ? app.ticker.start() : app.ticker.stop(); };
+      const sync = () => { if (disposed || !app) return; (inView && !document.hidden) ? app.ticker.start() : app.ticker.stop(); };
       const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { rootMargin: `${NEAR_PX}px 0px ${NEAR_PX}px 0px` });
       io.observe(el);
       const vis = () => sync();
@@ -264,7 +267,7 @@ export default function LightningCanvas({ side = 'both', onReady }) {
 
     return () => {
       disposed = true; off();
-      if (app) { try { app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
+      if (app && inited) { try { app.ticker.stop(); app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
     };
   }, [side]); // eslint-disable-line react-hooks/exhaustive-deps
   return <div ref={host} className="circuit-bolts__canvas" />;

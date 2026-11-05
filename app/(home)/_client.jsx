@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ExternalLink, CheckCircle, Star, MessageCircle } from 'lucide-react';
+import { ArrowRight, ExternalLink, CheckCircle, Star } from 'lucide-react';
 
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import PortfolioSection from '../(components)/(realComponents)/Projectcard';
@@ -57,25 +57,18 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             With Code
           </span>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both] px-2 mt-[75px]">
-<button
-  onClick={handleWhatsAppClick}
-  className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto"
->
-  Start Your Journey With Us
-  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-</button>
-            <button
-              onClick={handleWhatsAppClick}
-              className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 active:bg-green-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all transform hover:scale-105 shadow-glow"
-            >
-              <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span>Contact via WhatsApp</span>
-            </button>
             <Link href="/lastprojects/#portfolio" className="w-full sm:w-auto">
-              <button className="border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm w-full sm:w-auto">
+              <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto">
                 Discover Our Previous Work
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
+            <button
+              onClick={handleWhatsAppClick}
+              className="border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm w-full sm:w-auto"
+            >
+              Let&apos;s Chat
+            </button>
           </div>
         </div>
       </section>

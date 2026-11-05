@@ -20,20 +20,31 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function HeroLightning({ side = 'both', className = '' }) {
   const [Live, setLive] = useState(null);
   const [ready, setReady] = useState(false);
-  const [near, setNear] = useState(false);
   const root = useRef(null);
 
-  // Do nothing (no download, no WebGL context) until the screen gets close to this section.
+  // Strict visibility: the effect exists ONLY while the hero is actually on screen.
+  // When the user scrolls down to the next section it is unmounted completely
+  // (ticker stopped, WebGL context + textures + buffers destroyed => RAM/GPU/CPU freed).
+  // Scrolling back up mounts it again.
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = root.current;
-    if (!el || !('IntersectionObserver' in window)) { setNear(true); return; }
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setNear(true); io.disconnect(); } }, { rootMargin: '600px 0px 600px 0px' });
+    if (!el || !('IntersectionObserver' in window)) { setVisible(true); return; }
+    // Entering: mount at once. Leaving: the animation pauses immediately (inside the canvas),
+    // and the whole thing is torn down a moment later, so quick scrolling never thrashes WebGL.
+    let timer = 0;
+    const io = new IntersectionObserver(([e]) => {
+      clearTimeout(timer);
+      if (e.isIntersecting) setVisible(true);
+      else timer = setTimeout(() => { setVisible(false); setReady(false); }, 500);
+    }, { rootMargin: '0px', threshold: 0 });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { clearTimeout(timer); io.disconnect(); };
   }, []);
 
+  // Download/prepare the heavy module only the first time the hero becomes visible.
   useEffect(() => {
-    if (!near) return;
+    if (!visible || Live) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let gl = false;
     try { const c = document.createElement('canvas'); gl = !!(c.getContext('webgl2') || c.getContext('webgl')); } catch {}
@@ -41,7 +52,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
     const run = () => import('./LightningCanvas').then((m) => setLive(() => m.default)).catch(() => {});
     const id = 'requestIdleCallback' in window ? requestIdleCallback(run, { timeout: 1500 }) : setTimeout(run, 600);
     return () => ('cancelIdleCallback' in window ? cancelIdleCallback(id) : clearTimeout(id));
-  }, [near]);
+  }, [visible, Live]);
 
   return (
     <div
@@ -49,7 +60,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
       aria-hidden="true"
       className={`circuit-bolts ${ready ? 'circuit-bolts--live' : ''} ${className}`}
     >
-      {Live && <Live side={side} onReady={() => setReady(true)} />}
+      {Live && visible && <Live side={side} onReady={() => setReady(true)} />}
     </div>
   );
 }

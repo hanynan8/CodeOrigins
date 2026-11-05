@@ -7,6 +7,7 @@ import './globals.css';
 import Navbar from './(components)/navbar';
 import Script from 'next/script';
 import Footer from './(components)/footer';
+import { siteIcons, LOGO_ICON, logoUrl } from './(components)/brand';
 
 const rubik = Rubik({
   variable: '--font-rubik-sans',
@@ -104,9 +105,7 @@ export const metadata = {
     type: 'website'
   },
   icons: {
-    icon: '/coding.png',
-    shortcut: '/icons/favicon-16x16.png',
-    apple: '/icons/apple-touch-icon.png',
+    ...siteIcons,
     other: [{ rel: 'manifest', url: '/site.webmanifest' }]
   },
   manifest: '/site.webmanifest',
@@ -119,7 +118,7 @@ export const metadata = {
     '@type': 'Organization',
     name: COMPANY_NAME,
     url: SITE_DOMAIN,
-    logo: `${SITE_DOMAIN}/logo.png`,
+    logo: logoUrl(512),
     sameAs: [
       `${SITE_DOMAIN}/facebook`,
       `${SITE_DOMAIN}/twitter`,
@@ -146,7 +145,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr">
       <head>
-        <link rel="icon" href="/coding.png" />
+        <link rel="icon" type="image/png" href={LOGO_ICON} />
         <meta name="facebook-domain-verification" content="d13bgz1ob2fbw3y3hv32ufn6o2p7ec" />
 
         {/* Meta Pixel Script */}
@@ -187,7 +186,7 @@ export default function RootLayout({ children }) {
           href="https://wa.me/201213819102"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-2 md:right-6 z-50 flex items-center justify-center rounded-full shadow-glow bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
+            className="fixed bottom-6 left-2 md:left-6 z-50 flex items-center justify-center rounded-full shadow-glow bg-[#25D366] hover:bg-[#1ebe5d] hover:scale-110 transition-all duration-300 w-14 h-14 md:w-20 md:h-20"
             aria-label="WhatsApp"
           >
           <svg viewBox="0 0 32 32" className="w-9 h-9 md:w-14 md:h-14 fill-white">

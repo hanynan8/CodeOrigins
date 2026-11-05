@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {
-  Code,
   Facebook,
   Instagram,
   Linkedin,
@@ -11,6 +10,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import CircuitBolts from './CircuitBolts';
+import { logoUrl } from './brand';
 
 const Footer = () => {
   return (
@@ -21,7 +21,13 @@ const Footer = () => {
           {/* Logo and Company Intro */}
           <div className="lg:col-span-1 flex flex-col items-center sm:items-start">
             <div className="flex items-center space-x-2 mb-4">
-              <Code className="w-7 h-7 sm:w-8 sm:h-8 text-brand-cyan" />
+              <img
+                src={logoUrl(96)}
+                alt="CodeLegacy logo"
+                width={40}
+                height={40}
+                className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border-2 border-brand-cyan object-cover shadow-glow-cyan"
+              />
               <span className="text-lg sm:text-xl font-bold">
                 <span className="text-white">Code</span>
                 <span className="text-neon">Legacy</span>

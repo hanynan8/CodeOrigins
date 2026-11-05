@@ -11,6 +11,7 @@ import {
 import SendEmail from '../(components)/(realComponents)/SendEmail';
 import Tech from '../(components)/(realComponents)/tech';
 import CodeLegacyClient from './_client';
+import { siteIcons, logoUrl } from '../(components)/brand';
 import { servicesData } from '../(components)/(realComponents)/ServiceData';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -50,9 +51,7 @@ export const metadata = {
     images: [`${SITE_DOMAIN}/twitter-home.jpg`],
   },
   icons: {
-    icon: '/icons/code.svg',
-    shortcut: '/icons/favicon-16x16.png',
-    apple: '/icons/apple-touch-icon.png',
+    ...siteIcons,
     other: [{ rel: 'manifest', url: '/site.webmanifest' }],
   },
   robots: 'index, follow',
@@ -71,7 +70,7 @@ export const homeJsonLd = {
       '@id': `${SITE_DOMAIN}#organization`,
       name: COMPANY_NAME,
       url: SITE_DOMAIN,
-      logo: `${SITE_DOMAIN}/logo.png`,
+      logo: logoUrl(512),
       sameAs: [`${SITE_DOMAIN}/facebook`, `${SITE_DOMAIN}/twitter`, `${SITE_DOMAIN}/linkedin`],
       contactPoint: [{ '@type': 'ContactPoint', telephone: '+20-100-000-0000', contactType: 'customer support', areaServed: 'EG', availableLanguage: ['Arabic', 'English'] }],
     },

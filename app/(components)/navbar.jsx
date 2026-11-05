@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { logoUrl } from './brand';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -12,8 +13,7 @@ const NAV_LINKS = [
   { href: '/contact', label: 'Contact Us' },
 ];
 
-const logoURL =
-  'https://github.com/hanynan8/CodeOrigins/blob/main/Frame%201.png?raw=true';
+const logoURL = logoUrl(320); // sharp enough for the zoomed-in crop
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +49,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Left: logo + name */}
           <div className="flex-1 flex justify-start">
           <Link
@@ -57,11 +57,11 @@ const Navbar = () => {
             className="flex items-center gap-3 shrink-0"
             aria-label="CodeLegacy home"
           >
-            <span className="relative block w-14 h-14 rounded-full overflow-hidden border-2 border-brand-cyan shadow-glow-cyan">
+            <span className="relative block w-[4.25rem] h-[4.25rem] rounded-full overflow-hidden border-2 border-brand-cyan shadow-glow-cyan">
               <img
                 src={logoURL}
                 alt="CodeLegacy logo"
-                className="w-full h-full object-cover scale-125"
+                className="w-full h-full object-cover scale-150"
               />
             </span>
             <span className="text-xl font-bold tracking-wide">
