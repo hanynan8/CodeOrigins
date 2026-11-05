@@ -28,7 +28,7 @@ const Footer = () => {
                 height={40}
                 className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border-2 border-brand-cyan object-cover shadow-glow-cyan"
               />
-              <span className="text-lg sm:text-xl font-bold">
+              <span className="brand-name text-lg sm:text-xl font-bold">
                 <span className="text-ink">Code</span>
                 <span className="text-neon">Legacy</span>
               </span>

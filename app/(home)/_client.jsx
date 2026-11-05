@@ -10,6 +10,7 @@ import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import PortfolioSection from '../(components)/(realComponents)/Projectcard';
 import ServicesGrid from '../(components)/(realComponents)/ServicesGrid';  // ← shared component
 import HeroLightning from '../(components)/HeroLightning';
+import HeroWave from '../(components)/HeroWave';
 
 const CodeLegacyClient = ({ services, testimonials, webServices }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,9 +45,8 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
 
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <span className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl block mb-2 sm:mb-4">
-            <span className="text-ink font-bold">Code</span>{' '}
-            <span className="text-neon font-bold">Legacy</span>
+          <span className="hero-title text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl block mb-2 sm:mb-4">
+            <span className="text-ink">Code</span><span className="text-neon">Legacy</span>
           </span>
           <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl block mb-4 sm:mb-6">
             We Build the{' '}
@@ -71,6 +71,8 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             </button>
           </div>
         </div>
+
+        <HeroWave />
       </section>
 
       {/* ═══════════════════════════════════════

@@ -87,6 +87,7 @@ export default function PageTransition() {
   const darkRef = useRef(null);
   const accentRef = useRef(null);
   const rimRef = useRef(null);
+  const gradRef = useRef(null);
 
   // Paint one frame. dark = the dark sheet (carries the text), accent = blue wave in front.
   const draw = useCallback((dir, t) => {
@@ -109,6 +110,9 @@ export default function PageTransition() {
       return [x, y + BAND * bell * (0.55 + 0.45 * Math.sin(4 * Math.PI * u + phase * 1.3))];
     });
     const dDark = sheetPath(W, dark);
+    // light mode: hero gradient spans the whole screen, so colours don't stretch while the sheet moves
+    gradRef.current?.setAttribute('x2', W);
+    gradRef.current?.setAttribute('y2', H);
 
     darkRef.current?.setAttribute('d', dDark);
     accentRef.current?.setAttribute('d', sheetPath(W, accent));
@@ -239,17 +243,25 @@ export default function PageTransition() {
   return (
     <div className="fixed inset-0 z-[100]" aria-hidden="true">
       <svg ref={svgRef} className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          {/* light mode only (see globals.css): same gradient as the hero sections */}
+          <linearGradient ref={gradRef} id="pt-hero-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#2563eb" />
+            <stop offset="50%" stopColor="#4f46e5" />
+            <stop offset="100%" stopColor="#7e22ce" />
+          </linearGradient>
+        </defs>
         {/* thin dark edge (the water-like rim) */}
-        <path ref={accentRef} d="" style={{ fill: EDGE_COLOR }} />
-        <path ref={rimRef} d="" fill="none" strokeWidth="2" strokeOpacity="0.9" style={{ stroke: 'rgb(var(--c-cyan))' }} />
+        <path ref={accentRef} className="pt-edge" d="" style={{ fill: EDGE_COLOR }} />
+        <path ref={rimRef} className="pt-rim" d="" fill="none" strokeWidth="2" strokeOpacity="0.9" style={{ stroke: 'rgb(var(--c-cyan))' }} />
         {/* blue sheet */}
-        <path ref={darkRef} d="" style={{ fill: SHEET_COLOR }} />
+        <path ref={darkRef} className="pt-sheet" d="" style={{ fill: SHEET_COLOR }} />
       </svg>
 
       {/* page name: letters rise one by one, then leave upward */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
         <h2
-          className="flex flex-wrap justify-center overflow-hidden px-8 py-6 text-center font-bold text-ink"
+          className="pt-title flex flex-wrap justify-center overflow-hidden px-8 py-6 text-center text-ink"
           style={{
             fontSize: 'clamp(2.5rem, 9vw, 6.5rem)',
             letterSpacing: '0.03em',

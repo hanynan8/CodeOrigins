@@ -159,7 +159,7 @@ const useCardNav = (slug) => {
 };
 
 const CARD_CLASS =
-  'group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan hover:scale-105 flex flex-col h-full cursor-pointer';
+  'group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan flex flex-col h-full cursor-pointer';
 
 // Small arrow in the bottom-right corner of the image: opens the live website itself.
 const VisitArrow = ({ project }) => (

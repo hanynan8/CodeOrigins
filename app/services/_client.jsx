@@ -13,6 +13,7 @@ import Link from 'next/link';
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import ServicesGrid, { iconMap } from '../(components)/(realComponents)/ServicesGrid';
 import CircuitBolts from '../(components)/CircuitBolts';
+import HeroWave from '../(components)/HeroWave';
 
 const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, technologiesData }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,7 +40,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center text-ink">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 leading-tight">
             Web <span className="text-neon">Development Services</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
@@ -61,6 +62,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
           </div>
         </div>
 
+        <HeroWave />
       </section>
 
       {/* ═══════════════════════════════════════

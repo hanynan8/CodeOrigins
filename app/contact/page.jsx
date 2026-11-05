@@ -13,6 +13,7 @@ import {
 
 import SendEmail from '../(components)/(realComponents)/SendEmail'
 import CircuitBolts from '../(components)/CircuitBolts';
+import HeroWave from '../(components)/HeroWave';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -58,6 +59,7 @@ const ContactPage = () => {
           </button>
         </div>
 
+        <HeroWave />
       </section>
 
       {/* Contact Information Section - Mobile Optimized */}

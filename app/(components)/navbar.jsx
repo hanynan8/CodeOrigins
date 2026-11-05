@@ -66,7 +66,7 @@ const Navbar = () => {
                 className="w-full h-full object-cover scale-[1.2]"
               />
             </span>
-            <span className="text-xl font-bold tracking-wide">
+            <span className="brand-name text-xl font-bold tracking-wide">
               <span className="text-ink">Code</span>
               <span className="text-neon">Legacy</span>
             </span>

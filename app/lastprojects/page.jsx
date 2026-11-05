@@ -23,6 +23,7 @@ import {
 import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails';
 import PortfolioSection from '../(components)/(realComponents)/Projectcard';
 import CircuitBolts from '../(components)/CircuitBolts';
+import HeroWave from '../(components)/HeroWave';
 
 /* ───────────────────────────────────────────────
    Main Portfolio Page
@@ -71,6 +72,7 @@ const CodeLegacyPortfolio = () => {
           </div>
         </div>
 
+        <HeroWave />
       </section>
 
       {/* Portfolio Items Section — shared component with the homepage */}

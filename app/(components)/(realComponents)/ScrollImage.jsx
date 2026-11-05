@@ -12,14 +12,14 @@ export const FRAME_HEIGHT = 'h-64 sm:h-72 lg:h-96'; // taller frame (was h-52 sm
    START_PX_PER_SEC : speed at the moment the mouse enters (0 = starts from rest)
    RAMP_SECONDS     : how long the speed takes to climb from the start speed to the max speed
    MAX_PX_PER_SEC   : the top (constant) speed reached after the ramp, in px / second */
-const START_PX_PER_SEC = 150;
-const RAMP_SECONDS = 2.5;
-const MAX_PX_PER_SEC = 220;
+const START_PX_PER_SEC = 50;
+const RAMP_SECONDS = 2;
+const MAX_PX_PER_SEC = 200;
 
 /* Return trip (mouse leaves):
    RETURN_PX_PER_SEC : average speed going back up, a bit faster than MAX_PX_PER_SEC
    RETURN_MIN/MAX_SECONDS : clamp so very short / very long screenshots still feel right */
-const RETURN_PX_PER_SEC = 330;
+const RETURN_PX_PER_SEC = 200;
 const RETURN_MIN_SECONDS = 0.4;
 const RETURN_MAX_SECONDS = 4;
 

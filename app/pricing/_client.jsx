@@ -5,6 +5,7 @@ import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Check, ChevronDown, X } from 'lucide-react';
 import CircuitBolts from '../(components)/CircuitBolts';
+import HeroWave from '../(components)/HeroWave';
 
 /* ════════════════════════════════════════════════════════════════════════
    CONTENT — edit prices / text here
@@ -201,16 +202,16 @@ const roundTo = (n, step) => Math.round(n / step) * step;
 ════════════════════════════════════════════════════════════════════════ */
 
 const primaryBtn =
-  'group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white shadow-glow transition-all hover:scale-105 active:scale-95';
+  'group inline-flex w-full sm:w-auto min-h-[48px] items-center justify-center gap-2 text-center rounded-2xl sm:rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-white shadow-glow transition-all hover:scale-105 active:scale-95';
 const ghostBtn =
-  'inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-ink backdrop-blur-sm transition-all hover:bg-white/10';
+  'inline-flex w-full sm:w-auto min-h-[48px] items-center justify-center gap-2 text-center rounded-2xl sm:rounded-full border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-semibold text-ink backdrop-blur-sm transition-all hover:bg-white/10';
 
 const SectionHead = ({ eyebrow, title, accent, text }) => (
   <div className="text-center mb-8 sm:mb-12 md:mb-16">
     {eyebrow && (
       <p className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-cyan">{eyebrow}</p>
     )}
-    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
+    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink leading-tight">
       {title} {accent && <span className="text-brand-cyan">{accent}</span>}
     </h2>
     {text && <p className="text-sm sm:text-base md:text-lg text-gray-300 max-w-3xl mx-auto px-2">{text}</p>}
@@ -229,7 +230,7 @@ const Badge = ({ children }) => (
 
 const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '/contact' }) => (
   <div
-    className={`relative flex flex-col rounded-2xl border bg-gradient-to-br from-brand-card to-brand-alt p-6 md:p-7 shadow-glow transition-all duration-300 hover:-translate-y-2 ${
+    className={`relative flex flex-col min-w-0 rounded-2xl border bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-7 shadow-glow transition-all duration-300 md:hover:-translate-y-2 ${
       badge ? 'border-brand-cyan' : 'border-brand-line/60'
     }`}
   >
@@ -237,7 +238,7 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
     <h3 className="text-lg md:text-xl font-bold text-ink">{name}</h3>
     <div className="mt-4 flex items-end gap-1.5">
       {caption && <span className="pb-1.5 text-sm text-gray-400">{caption}</span>}
-      <span className="text-4xl md:text-5xl font-bold text-neon-white">{price}</span>
+      <span className="text-3xl min-[380px]:text-4xl md:text-5xl font-bold text-neon-white">{price}</span>
       {suffix && <span className="pb-1.5 text-sm text-gray-400">{suffix}</span>}
     </div>
     {caption && <p className="mt-1 text-xs text-gray-400">· After scope</p>}
@@ -251,7 +252,7 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
     </ul>
     <Link
       href={href}
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm md:text-base font-semibold transition-all ${
+      className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 py-3 text-sm md:text-base font-semibold transition-all ${
         badge
           ? 'bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:scale-[1.03]'
           : 'border border-brand-blue/60 text-ink hover:bg-brand-blue/20'
@@ -268,7 +269,7 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
 ════════════════════════════════════════════════════════════════════════ */
 
 const optionClass = (on) =>
-  `w-full rounded-xl border p-4 text-left transition-all duration-200 ${
+  `w-full min-h-[56px] rounded-xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${
     on
       ? 'border-brand-cyan bg-brand-blue/20 shadow-glow'
       : 'border-brand-line/60 bg-brand-card hover:border-brand-blue'
@@ -316,7 +317,7 @@ function Estimator() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
           {/* Options */}
-          <div className="space-y-8 lg:col-span-3">
+          <div className="space-y-6 sm:space-y-8 lg:col-span-3 min-w-0">
             <div>
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Project type</h3>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -368,16 +369,16 @@ function Estimator() {
           </div>
 
           {/* Result */}
-          <aside className="lg:col-span-2">
-            <div className="rounded-2xl border border-brand-cyan/60 bg-gradient-to-br from-brand-card to-brand-bg p-6 md:p-8 shadow-glow lg:sticky lg:top-28">
+          <aside className="lg:col-span-2 min-w-0">
+            <div className="rounded-2xl border border-brand-cyan/60 bg-gradient-to-br from-brand-card to-brand-bg p-5 sm:p-6 md:p-8 shadow-glow lg:sticky lg:top-28">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">Estimated range</p>
 
               <p className="mt-5 text-xs text-gray-400">Egypt market range</p>
-              <p className="mt-1 text-3xl md:text-4xl font-bold text-neon-white">
+              <p className="mt-1 text-[1.6rem] min-[380px]:text-3xl md:text-4xl font-bold text-neon-white leading-tight">
                 {fmt(result.egp[0])} – {fmt(result.egp[1])}
                 <span className="ml-1.5 text-base font-semibold text-gray-300">EGP</span>
               </p>
-              <p className="mt-2 text-xl md:text-2xl font-semibold text-brand-cyan">
+              <p className="mt-2 text-lg min-[380px]:text-xl md:text-2xl font-semibold text-brand-cyan">
                 ${fmt(result.usd[0])} – ${fmt(result.usd[1])} <span className="text-sm text-gray-300">USD</span>
               </p>
 
@@ -430,7 +431,7 @@ function Faq() {
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-4 p-4 sm:p-5 md:p-6 text-left"
+              className="flex w-full min-h-[56px] items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 md:p-6 text-left"
             >
               <span className="text-sm sm:text-base md:text-lg font-semibold text-ink">{item.q}</span>
               <ChevronDown className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -453,15 +454,15 @@ function Faq() {
 
 export default function PricingPageClient() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full overflow-x-hidden [overflow-wrap:anywhere]">
       {/* Hero */}
-      <section className="relative min-h-[90vh] md:h-[80vh] circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
+      <section className="relative min-h-[90svh] md:min-h-0 md:h-[80vh] circuit-bg flex items-center justify-center text-center text-ink overflow-hidden">
         <CircuitBolts />
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pb-10">
           <p className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-cyan">
             Clear pricing and scope
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <h1 className="text-[1.65rem] min-[380px]:text-3xl sm:text-4xl md:text-5xl xl:text-6xl mb-4 sm:mb-6 leading-tight">
             Transparent Pricing <span className="text-neon">Before Work Begins</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed px-2">
@@ -474,6 +475,7 @@ export default function PricingPageClient() {
             </Link>
           </div>
         </div>
+        <HeroWave />
       </section>
 
       {/* Project pricing */}
@@ -503,8 +505,8 @@ export default function PricingPageClient() {
             text="We believe in complete contractual clarity from day one to protect your investment and avoid scope surprises."
           />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl border border-brand-cyan/40 bg-gradient-to-br from-brand-card to-brand-alt p-6 md:p-8 shadow-glow">
-              <h3 className="text-xl md:text-2xl font-bold text-ink">Included in Every Project</h3>
+            <div className="min-w-0 rounded-2xl border border-brand-cyan/40 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">Included in Every Project</h3>
               <p className="mt-1 mb-6 text-sm text-gray-400">Standard, guaranteed deliverables baked into every proposal</p>
               <ul className="space-y-3.5">
                 {INCLUDED.map((t) => (
@@ -518,8 +520,8 @@ export default function PricingPageClient() {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-6 md:p-8 shadow-glow">
-              <h3 className="text-xl md:text-2xl font-bold text-ink">Optional Add-Ons &amp; Exclusions</h3>
+            <div className="min-w-0 rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">Optional Add-Ons &amp; Exclusions</h3>
               <p className="mt-1 mb-6 text-sm text-gray-400">Third-party platform fees or items billed as dedicated add-ons</p>
               <ul className="space-y-3.5">
                 {EXCLUDED.map((t) => (
@@ -547,11 +549,11 @@ export default function PricingPageClient() {
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {PAYMENT_PHASES.map((p) => (
-              <div key={p.phase} className="group rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-6 md:p-8 shadow-glow transition-all duration-300 hover:-translate-y-2 hover:border-brand-cyan">
+              <div key={p.phase} className="group rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow transition-all duration-300 md:hover:-translate-y-2 hover:border-brand-cyan">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">
                   {p.phase} · {p.percent}
                 </p>
-                <p className="mt-4 text-5xl md:text-6xl font-bold text-neon-white">{p.percent}</p>
+                <p className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-neon-white">{p.percent}</p>
                 <h3 className="mt-4 text-lg md:text-xl font-bold text-ink group-hover:text-brand-cyan transition-colors">{p.title}</h3>
                 <p className="mt-2 text-sm md:text-base leading-relaxed text-gray-300">{p.text}</p>
               </div>
@@ -571,7 +573,7 @@ export default function PricingPageClient() {
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {ANNUAL_COSTS.map((c) => (
-              <div key={c.title} className="flex flex-col rounded-2xl border border-brand-line/60 bg-brand-card p-6 shadow-glow transition-all duration-300 hover:-translate-y-2 hover:border-brand-cyan">
+              <div key={c.title} className="flex flex-col rounded-2xl border border-brand-line/60 bg-brand-card p-5 sm:p-6 shadow-glow transition-all duration-300 md:hover:-translate-y-2 hover:border-brand-cyan">
                 <h3 className="text-base md:text-lg font-bold text-ink">{c.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-300">{c.text}</p>
                 <div className="mt-5 border-t border-brand-line/60 pt-4">
@@ -601,7 +603,7 @@ export default function PricingPageClient() {
               <PlanCard key={h.name} name={h.name} price={h.price} suffix="/month" features={h.features} badge={h.badge} cta="Get Started" />
             ))}
           </div>
-          <p className="mt-10 text-center text-sm sm:text-base text-gray-300">
+          <p className="mt-8 sm:mt-10 text-center text-sm sm:text-base text-gray-300 px-2">
             Need custom cloud architecture?{' '}
             <Link href="/services" className="font-semibold text-brand-cyan hover:underline">
               See our Hosting &amp; DevOps service →

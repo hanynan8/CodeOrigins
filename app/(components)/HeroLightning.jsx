@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import useIsLight from './useIsLight';
 
 /**
  * Hero lightning.
@@ -21,6 +22,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
   const [Live, setLive] = useState(null);
   const [ready, setReady] = useState(false);
   const root = useRef(null);
+  const isLight = useIsLight(); // light mode: no lightning at all
 
   // Strict visibility: the effect exists ONLY while the hero is actually on screen.
   // When the user scrolls down to the next section it is unmounted completely
@@ -28,6 +30,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
   // Scrolling back up mounts it again.
   const [visible, setVisible] = useState(false);
   useEffect(() => {
+    if (isLight) { setVisible(false); setReady(false); return; }
     const el = root.current;
     if (!el || !('IntersectionObserver' in window)) { setVisible(true); return; }
     // Entering: mount at once. Leaving: the animation pauses immediately (inside the canvas),
@@ -40,7 +43,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
     }, { rootMargin: '0px', threshold: 0 });
     io.observe(el);
     return () => { clearTimeout(timer); io.disconnect(); };
-  }, []);
+  }, [isLight]);
 
   // Download/prepare the heavy module only the first time the hero becomes visible.
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function HeroLightning({ side = 'both', className = '' }) {
       aria-hidden="true"
       className={`circuit-bolts ${ready ? 'circuit-bolts--live' : ''} ${className}`}
     >
-      {Live && visible && <Live side={side} onReady={() => setReady(true)} />}
+      {Live && visible && !isLight && <Live side={side} onReady={() => setReady(true)} />}
     </div>
   );
 }

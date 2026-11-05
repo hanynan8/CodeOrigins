@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import useIsLight from './useIsLight';
 
 /**
  * CodeLegacy electric-circuit artwork.
@@ -18,6 +19,7 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', speed 
   const [Live, setLive] = useState(null);
   const [ready, setReady] = useState(false);
   const root = useRef(null);
+  const isLight = useIsLight(); // light mode: circuit art is hidden, so don't run WebGL
 
   // Strict visibility: the WebGL effect exists ONLY while this section is actually on screen.
   // When the user scrolls to the next section it is unmounted completely
@@ -25,6 +27,7 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', speed 
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     if (intensity !== 'full') return;
+    if (isLight) { setVisible(false); setReady(false); return; }
     const el = root.current;
     if (!el || !('IntersectionObserver' in window)) { setVisible(true); return; }
     // Entering: mount at once. Leaving: the animation pauses immediately (inside the canvas),
@@ -37,7 +40,7 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', speed 
     }, { rootMargin: '0px', threshold: 0 });
     io.observe(el);
     return () => { clearTimeout(timer); io.disconnect(); };
-  }, [intensity]);
+  }, [intensity, isLight]);
 
   // Download/prepare the heavy module only the first time the section becomes visible.
   useEffect(() => {
@@ -60,7 +63,7 @@ export default function CircuitBolts({ side = 'both', intensity = 'full', speed 
           Soft bands (CTA / footer) keep the light SVG. */}
       {intensity !== 'full' && (side === 'both' || side === 'left') && <span className="circuit-bolts__side circuit-bolts__side--left" />}
       {intensity !== 'full' && (side === 'both' || side === 'right') && <span className="circuit-bolts__side circuit-bolts__side--right" />}
-      {Live && visible && <Live side={side} speed={speed} scale={scale} onReady={() => setReady(true)} />}
+      {Live && visible && !isLight && <Live side={side} speed={speed} scale={scale} onReady={() => setReady(true)} />}
     </div>
   );
 }

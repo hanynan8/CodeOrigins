@@ -5,11 +5,11 @@ import React from 'react';
 import Link from 'next/link';
 
 const LegalPage = ({ title, intro, updated, sections }) => (
-  <main className="bg-brand-bg text-ink min-h-screen pt-28 sm:pt-32 pb-12 sm:pb-20">
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main className="bg-brand-bg text-ink min-h-[100svh] w-full overflow-x-hidden [overflow-wrap:anywhere] pt-24 sm:pt-32 pb-24 sm:pb-20">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+        <h1 className="text-2xl min-[380px]:text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-4">
           <span className="text-brand-cyan">{title}</span>
         </h1>
         <p className="text-gray-400 text-xs sm:text-sm">Last updated: {updated}</p>
@@ -23,9 +23,9 @@ const LegalPage = ({ title, intro, updated, sections }) => (
         {sections.map((section, i) => (
           <section
             key={section.heading}
-            className="bg-brand-card rounded-xl sm:rounded-2xl border border-brand-line/70 p-4 sm:p-6"
+            className="bg-brand-card rounded-xl sm:rounded-2xl border border-brand-line/70 p-4 sm:p-6 min-w-0"
           >
-            <h2 className="text-lg sm:text-xl font-semibold text-ink mb-3">
+            <h2 className="text-base min-[380px]:text-lg sm:text-xl font-semibold text-ink mb-3 leading-snug">
               <span className="text-brand-cyan mr-2">{i + 1}.</span>
               {section.heading}
             </h2>
@@ -35,7 +35,7 @@ const LegalPage = ({ title, intro, updated, sections }) => (
               </p>
             ))}
             {section.items && (
-              <ul className="list-disc pl-5 space-y-1.5 text-gray-300 text-sm sm:text-base leading-relaxed">
+              <ul className="list-disc pl-4 sm:pl-5 space-y-2 text-gray-300 text-sm sm:text-base leading-relaxed">
                 {section.items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -48,7 +48,7 @@ const LegalPage = ({ title, intro, updated, sections }) => (
       {/* Contact */}
       <div className="mt-8 sm:mt-10 text-center text-gray-300 text-sm sm:text-base">
         Questions? Reach us through the{' '}
-        <Link href="/contact" className="text-brand-cyan hover:underline">
+        <Link href="/contact" className="text-brand-cyan hover:underline py-2 inline-block">
           contact page
         </Link>
         .

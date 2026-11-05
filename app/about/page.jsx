@@ -25,6 +25,7 @@ import WhatsAppButton from '../(components)/(realComponents)/WhatsForDetails'
 
 import Tech from '../(components)/(realComponents)/tech';
 import CircuitBolts from '../(components)/CircuitBolts';
+import HeroWave from '../(components)/HeroWave';
 
 
 const AboutPage = () => {
@@ -70,6 +71,7 @@ const AboutPage = () => {
           </Link>
         </div>
 
+        <HeroWave />
       </section>
 
       {/* Company Story Section - Mobile Optimized */}
