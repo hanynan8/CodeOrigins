@@ -21,8 +21,12 @@ export const typeLabel = (project) => TYPE_LABELS[project.filter] || project.cat
    back to the project's original image automatically (`fallbackImage`). */
 export const shotSlug = (url) =>
   new URL(url).host.replace(/^www\./, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+// Project types shown as a plain static image: no full-page shot and no scroll-on-hover.
+const STATIC_FILTERS = ['3d'];
+export const isStaticShot = (project) => STATIC_FILTERS.includes(project.filter);
 export const withFullShot = (project) => {
   if (!project.link) return project;
+  if (isStaticShot(project)) return { ...project, fullImage: true }; // keep the original image, static
   return {
     ...project,
     image: `/full/${shotSlug(project.link)}.webp`,
@@ -35,47 +39,7 @@ export const withFullShot = (project) => {
 /* ───────────────────────────────────────────────
    Data — Projects with IMAGE SLIDER
 ─────────────────────────────────────────────── */
-const sliderRaw = [
-  {
-    title: 'LapTech',
-    category: 'Website',
-    filter: 'ecommerce',
-    description:
-      'A fully integrated ecommerce store for showcasing and selling tech devices and accessories (capacity for 5,000+ products). Equipped with an advanced filtering system, precise search, and fast performance. Includes a free admin dashboard for the owner to easily manage products (add, edit, delete) and inventory.',
-    tech: [],
-    images: [
-      'https://github.com/hanynan8/forImages/blob/main/Screenshot%20(786).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(817).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(816).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(818).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(820).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(822).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(825).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(827).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(828).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(829).png?raw=true',
-    ],
-  },
-  {
-    title: 'Your Restaurant',
-    category: 'Website',
-    filter: 'restaurants',
-    description:
-      'A modern restaurant website that showcases menus and dishes in an attractive way, with an online ordering and booking system and filters for quick access to dishes. Includes a dashboard for managing menus and offers.',
-    tech: ['Tailwind', 'Node.js', 'MongoDB', 'React'],
-    images: [
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(729).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(730).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(731).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(736).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(737).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(735).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(732).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(734).png?raw=true',
-      'https://github.com/hanynan8/CodeOrigins/blob/main/images/Screenshot%20(733).png?raw=true',
-    ],
-  },
-];
+const sliderRaw = []; // no slider-style projects at the moment
 
 /* ───────────────────────────────────────────────
    Data — Regular projects
@@ -116,6 +80,7 @@ const regularRaw = [
     link: 'https://matcharen.com',
     category: 'Website',
     filter: 'restaurants',
+    hideFromRelated: true, // not listed under "More … work" on other projects' detail pages
     description:
       'A vibrant, green-and-white branded website for a matcha-focused dessert and drinks shop with multiple California locations. The site presents the full menu, brand story, and store locations in a playful, modern layout, with smooth scroll-triggered animations that keep the browsing experience light and appetizing. Built to convert casual visitors into in-store customers with clear calls to action for directions and ordering.',
     image: '/1 (3).png',

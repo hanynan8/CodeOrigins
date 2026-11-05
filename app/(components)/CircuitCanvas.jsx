@@ -46,7 +46,8 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
         resolution: Math.min(window.devicePixelRatio || 1, CFG.maxDpr),
         powerPreference: 'low-power', preference: 'webgl',
       });
-      if (disposed) { try { app.destroy(true, { children: true }); } catch {} app = null; return; }
+      // NOTE: pass an options object (not `true`) so pixi does NOT release its GLOBAL pools — other pixi canvases on the page share them
+      if (disposed) { try { app.destroy({ removeView: true }, { children: true }); } catch {} app = null; return; }
       inited = true;
       el.appendChild(app.canvas);
 
@@ -187,7 +188,7 @@ export default function CircuitCanvas({ side = 'both', speed: speedScale = 1, sc
 
     return () => {
       disposed = true; off();
-      if (app && inited) { try { app.ticker.stop(); app.destroy(true, { children: true, texture: true }); } catch {} app = null; }
+      if (app && inited) { try { app.ticker.stop(); app.destroy({ removeView: true }, { children: true, texture: true }); } catch {} app = null; }
     };
   }, [side, speedScale, sizeScale]); // eslint-disable-line react-hooks/exhaustive-deps
   return <div ref={host} className="circuit-bolts__canvas" />;

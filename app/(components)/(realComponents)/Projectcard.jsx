@@ -170,7 +170,7 @@ const VisitArrow = ({ project }) => (
     onClick={(e) => e.stopPropagation()}
     aria-label={`Open ${project.title} website`}
     title="Open website"
-    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-black/60 backdrop-blur-sm border border-white/30 text-white hover:bg-brand-blue hover:border-brand-cyan hover:scale-110 transition-all"
+    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan hover:scale-110 transition-all"
   >
     <ArrowUpRight className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
   </a>

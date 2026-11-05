@@ -59,7 +59,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both] px-2 mt-[75px]">
             <Link href="/lastprojects/#portfolio" className="w-full sm:w-auto">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto">
-                Discover Our Previous Work
+                Discover our work
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>

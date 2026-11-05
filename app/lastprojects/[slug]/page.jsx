@@ -2,8 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, ArrowRight, Tag, Globe } from 'lucide-react';
-import { everyProject, getProjectBySlug, typeLabel, withFullShot, FILTERS } from '../../(components)/(realComponents)/projectsData';
+import { ArrowLeft, ArrowRight, Tag, Globe } from 'lucide-react';
+import { everyProject, getProjectBySlug, typeLabel, withFullShot, isStaticShot, FILTERS } from '../../(components)/(realComponents)/projectsData';
 import ProjectShot from './ProjectShot';
 import ProjectGallery from './ProjectGallery';
 import RelatedCard from './RelatedCard';
@@ -52,11 +52,9 @@ export default async function ProjectDetailPage({ params }) {
 
   const label = typeLabel(project);
   const host = project.link ? hostOf(project.link) : '';
-  // static hero screenshot of the project (original image, not the tall full-page shot)
-  const heroImage = project.fallbackImage || project.image || project.images?.[0];
   const hasGallery = Array.isArray(project.images) && project.images.length > 0;
   const related = everyProject
-    .filter((p) => p.slug !== project.slug && p.filter === project.filter)
+    .filter((p) => p.slug !== project.slug && p.filter === project.filter && !p.hideFromRelated)
     .slice(0, 3)
     .map(withFullShot);
   const filterLabel = FILTERS.find((f) => f.id === project.filter)?.label;
@@ -67,70 +65,8 @@ export default async function ProjectDetailPage({ params }) {
 
   return (
     <div className="min-h-screen bg-brand-bg text-white">
-      {/* Header */}
-      <section className="relative circuit-bg pt-28 sm:pt-32 pb-10 sm:pb-14 overflow-hidden">
-        {heroImage && (
-          <>
-            {/* the project's own hero screenshot as a static background */}
-            <img
-              src={heroImage}
-              alt=""
-              aria-hidden="true"
-              fetchPriority="high"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top"
-            />
-            {/* dark overlay keeps the text readable and fades into the page below */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-brand-bg/75 to-brand-bg"
-            />
-          </>
-        )}
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/lastprojects#portfolio"
-            className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-brand-cyan transition-colors mb-6 sm:mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Our Work
-          </Link>
-
-          <div className="inline-block rounded-full border border-brand-cyan/40 bg-brand-blue/10 px-3 py-1 text-xs sm:text-sm font-semibold text-brand-cyan mb-3 sm:mb-4">
-            {label}
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
-            {project.title}
-          </h1>
-          <p className="text-base sm:text-lg text-gray-200 max-w-3xl leading-relaxed">
-            {project.description}
-          </p>
-
-          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 shadow-glow"
-              >
-                Visit Website
-                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            )}
-            <a
-              href={chatUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-white/10 transition-all backdrop-blur-sm"
-            >
-              I Want a Similar Website
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Preview */}
-      <section className="py-8 sm:py-12">
+      <section className="pt-28 sm:pt-32 pb-8 sm:pb-12">
         <div className="max-w-5xl mx-auto px-3 sm:px-6 lg:px-8">
           {project.link && project.image ? (
             <ProjectShot
@@ -138,6 +74,8 @@ export default async function ProjectDetailPage({ params }) {
               fallback={project.fallbackImage}
               alt={`${project.title} website preview`}
               host={host}
+              visitUrl={project.link}
+              staticImage={isStaticShot(project)}
             />
           ) : hasGallery ? (
             <ProjectGallery images={project.images} title={project.title} />
@@ -149,10 +87,30 @@ export default async function ProjectDetailPage({ params }) {
       <section className="pb-10 sm:pb-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           <div className="md:col-span-2">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
-              About this <span className="text-brand-cyan">project</span>
-            </h2>
+            <Link
+              href="/lastprojects#portfolio"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-gray-300 hover:text-brand-cyan transition-colors mb-4"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Back to Our Work
+            </Link>
+
+            <div className="block w-fit rounded-full border border-brand-cyan/40 bg-brand-blue/10 px-2.5 py-0.5 text-[11px] sm:text-xs font-semibold text-brand-cyan mb-2 sm:mb-3">
+              {label}
+            </div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-2 sm:mb-3">
+              {project.title}
+            </h1>
             <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{project.description}</p>
+
+            <a
+              href={chatUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 sm:mt-5 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm font-semibold text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105"
+            >
+              I Want a Similar Website
+            </a>
 
             {project.tech?.length > 0 && (
               <div className="mt-6 sm:mt-8">
@@ -216,6 +174,7 @@ export default async function ProjectDetailPage({ params }) {
                   label={typeLabel(p)}
                   description={p.description}
                   image={p.link ? p.image : p.images?.[0]}
+                  staticImage={isStaticShot(p)}
                   fallback={p.fallbackImage}
                 />
               ))}
