@@ -7,6 +7,8 @@ import { everyProject, getProjectBySlug, typeLabel, withFullShot, isStaticShot, 
 import ProjectShot from './ProjectShot';
 import ProjectGallery from './ProjectGallery';
 import RelatedCard from './RelatedCard';
+import { getDictionary } from '@/lib/dictionaries';
+import { similarProjectMessage, whatsappLink } from '@/lib/whatsapp';
 
 const COMPANY_NAME = 'CodeLegacy';
 const SITE_DOMAIN = 'https://codelegacy.tech';
@@ -46,7 +48,8 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProjectDetailPage({ params }) {
-  const { slug } = await params;
+  const { slug, lang } = await params;
+  const dictionary = await getDictionary(lang);
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
@@ -59,9 +62,7 @@ export default async function ProjectDetailPage({ params }) {
     .map(withFullShot);
   const filterLabel = FILTERS.find((f) => f.id === project.filter)?.label;
 
-  const chatUrl = `https://wa.me/201213819102?text=${encodeURIComponent(
-    `Hello!\n\nI saw your project "${project.title}" and I'd like a similar website.\n\nCould you tell me about the pricing and available packages?`
-  )}`;
+  const chatUrl = whatsappLink(similarProjectMessage(dictionary, project.title));
 
   return (
     <div className="min-h-screen bg-brand-bg text-ink">

@@ -18,9 +18,94 @@
     "switchTo": "Switch language",
     "en": "English",
     "ar": "العربية",
-    "short": { "en": "EN", "ar": "AR" }
+    "short": {
+      "en": "EN",
+      "ar": "AR"
+    }
   },
   "common": {
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "contactViaWhatsapp": "Contact via WhatsApp"
+  },
+  "pageNames": {
+    "home": "Home",
+    "projectDetails": "Project Details",
+    "ourWork": "Our Work",
+    "services": "Services",
+    "pricing": "Pricing",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "footer": {
+    "intro": "A company specialized in designing and developing modern websites, providing comprehensive technical solutions for various types of businesses to ensure a strong online presence.",
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "websiteTypes": "Website Types",
+    "types": {
+      "saas": "SaaS Platforms",
+      "landing": "Landing Pages",
+      "ecommerce": "E-commerce Stores",
+      "restaurant": "Restaurant Websites",
+      "clinic": "Clinic Websites",
+      "portfolio": "Personal Portfolios"
+    },
+    "company": "Company",
+    "companyLinks": {
+      "about": "About Us",
+      "services": "Our Services",
+      "work": "Our Previous Work",
+      "contact": "Contact Us",
+      "faq": "FAQ"
+    },
+    "support": "Support",
+    "supportLinks": {
+      "technologies": "Technologies Used",
+      "reviews": "Client Reviews",
+      "features": "CodeLegacy Features",
+      "message": "Send Us a Message"
+    },
+    "security": "Advanced Security",
+    "rating": "5 Star Rating",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "rights": "© {year} CodeLegacy. All rights reserved."
+  },
+  "whatsapp": {
+    "pricing": "Hello!\n\nI want to develop my own website.\n\nCould you tell me about the pricing and available packages?",
+    "similar": "Hello!\n\nI saw your project \"{title}\" and I'd like a similar website.\n\nCould you tell me about the pricing and available packages?",
+    "cta": "Hi, I'd like to develop a website with you and get the full details",
+    "general": {
+      "greeting": "Hello! 🌟",
+      "line1": "I'd like to inquire about your web and app development services",
+      "line2": "It would be great if you could help me choose the right service for my project",
+      "listTitle": "📋 Services you offer:",
+      "list": [
+        "E-commerce stores, educational platforms, and SaaS",
+        "Landing pages, restaurant and café websites",
+        "Clinic, hospital, and company websites",
+        "Personal websites, portfolios, news, and magazines"
+      ],
+      "closing": "💡 Looking forward to hearing your project details 🙏"
+    },
+    "service": {
+      "greeting": "Hello! 🌟",
+      "intro": "I have an inquiry about this service:",
+      "details": "📝 *Service Details:*",
+      "technologies": "⚡ *Technologies Used:*",
+      "needs": "💼 I need the following:",
+      "needList": [
+        "A detailed price quote",
+        "A work plan and timeline",
+        "Examples of similar work",
+        "A free consultation"
+      ],
+      "followUp": "📞 Please get back to me as soon as possible",
+      "thanks": "🚀 Thank you very much"
+    }
   }
 }

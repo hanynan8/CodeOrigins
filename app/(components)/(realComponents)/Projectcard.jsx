@@ -10,6 +10,8 @@ import {
 } from './projectsData';
 import CircuitBolts from '../CircuitBolts';
 import { ScrollImage, FRAME_HEIGHT } from './ScrollImage';
+import { useI18n } from '../LocaleProvider';
+import { ctaMessage, whatsappLink } from '@/lib/whatsapp';
 
 const INITIAL_COUNT = 9; // projects shown first
 const LOAD_STEP = 6;     // projects added by each "Show More" click
@@ -340,6 +342,7 @@ const PortfolioSection = ({
   showCtaButton = true,
   showFilter = false,
 }) => {
+  const { dictionary } = useI18n();
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
@@ -446,7 +449,7 @@ const PortfolioSection = ({
         {showCtaButton && (
           <div className="text-center mb-8 sm:mb-16 px-4">
             <a
-              href="https://wa.me/201213819102?text=Hi, I'd like to develop a website with you and get the full details"
+              href={whatsappLink(ctaMessage(dictionary))}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"

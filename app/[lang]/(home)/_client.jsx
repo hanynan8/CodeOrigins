@@ -11,9 +11,12 @@ import PortfolioSection from '@/app/(components)/(realComponents)/Projectcard';
 import ServicesGrid from '@/app/(components)/(realComponents)/ServicesGrid';  // ← shared component
 import HeroLightning from '@/app/(components)/HeroLightning';
 import HeroWave from '@/app/(components)/HeroWave';
+import { useI18n } from '@/app/(components)/LocaleProvider';
+import { pricingMessage, whatsappLink } from '@/lib/whatsapp';
 
 const CodeLegacyClient = ({ services, testimonials, webServices }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { dictionary } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -21,9 +24,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const whatsappPhone = '201213819102';
-  const whatsappMessage = `Hello!\n\nI want to develop my own website.\n\nCould you tell me about the pricing and available packages?`;
-  const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappURL = whatsappLink(pricingMessage(dictionary));
   const handleWhatsAppClick = (e) => { e.preventDefault(); window.open(whatsappURL, '_blank'); };
 
   return (

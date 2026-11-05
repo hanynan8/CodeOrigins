@@ -5,7 +5,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { localePath, stripLocale } from '@/lib/i18n';
-import { useLocale } from './LocaleProvider';
+import { useI18n } from './LocaleProvider';
 
 // ── Timings (ms) — raise the numbers to make it slower ──────────────────
 const COVER = 1000;    // curtain falling
@@ -19,24 +19,24 @@ const EDGE_COLOR = 'rgb(var(--c-blue))'; // thin edge colour (electric blue)
 const BAND = 16;       // thickness of the thin blue edge (px) - lower = thinner
 const SAMPLES = 48;    // smoothness of the wavy edge
 
-// Page names shown on the curtain. First match wins.
+// Page names shown on the curtain (route without language prefix -> pageNames.* in the dictionary). First match wins.
 const PAGE_NAMES = [
-  ['/lastprojects/', 'Project Details'],
-  ['/lastprojects', 'Our Work'],
-  ['/services', 'Services'],
-  ['/pricing', 'Pricing'],
-  ['/about', 'About Us'],
-  ['/contact', 'Contact Us'],
-  ['/privacy-policy', 'Privacy Policy'],
-  ['/terms-and-conditions', 'Terms & Conditions'],
+  ['/lastprojects/', 'projectDetails'],
+  ['/lastprojects', 'ourWork'],
+  ['/services', 'services'],
+  ['/pricing', 'pricing'],
+  ['/about', 'about'],
+  ['/contact', 'contact'],
+  ['/privacy-policy', 'privacy'],
+  ['/terms-and-conditions', 'terms'],
 ];
 
 // pathname may or may not carry the language prefix ('/en/pricing' or '/pricing')
-function nameFor(rawPathname) {
+function nameFor(rawPathname, t) {
   const pathname = stripLocale(rawPathname).path;
-  if (pathname === '/') return 'Home';
+  if (pathname === '/') return t('pageNames.home');
   const hit = PAGE_NAMES.find(([p]) => pathname.startsWith(p));
-  if (hit) return hit[1];
+  if (hit) return t(`pageNames.${hit[1]}`);
   return (
     pathname.split('/').filter(Boolean).pop()?.replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || ''
   );
@@ -75,7 +75,7 @@ function linePath(pts) {
 export default function PageTransition() {
   const router = useRouter();
   const pathname = usePathname();
-  const { lang } = useLocale();
+  const { lang, t } = useI18n();
 
   const [active, setActive] = useState(false);
   const [label, setLabel] = useState('');
@@ -212,13 +212,13 @@ export default function PageTransition() {
 
       fromPath.current = window.location.pathname;
       pending.current = target + url.search + url.hash;
-      setLabel(nameFor(target));
+      setLabel(nameFor(target, t));
       setActive(true);
     };
 
     document.addEventListener('click', onClick, true);
     return () => document.removeEventListener('click', onClick, true);
-  }, [lang]);
+  }, [lang, t]);
 
   // New route is rendered -> let the sequence continue
   useEffect(() => {
@@ -245,7 +245,12 @@ export default function PageTransition() {
 
   if (!active) return null;
 
-  const letters = Array.from(label);
+  // Latin: one unit per letter. Arabic: one unit per word, because separate inline-blocks
+  // (and letter-spacing) break the joined Arabic letter shapes.
+  const isArabic = lang === 'ar';
+  const letters = isArabic ? label.split(' ').filter(Boolean) : Array.from(label);
+  const step = isArabic ? 90 : 55;     // delay between units on the way in (ms)
+  const stepOut = isArabic ? 45 : 25;  // ... and on the way out
   const lift = textPhase === 'out';
 
   return (
@@ -272,7 +277,7 @@ export default function PageTransition() {
           className="pt-title flex flex-wrap justify-center overflow-hidden px-8 py-6 text-center text-ink"
           style={{
             fontSize: 'clamp(2.5rem, 9vw, 6.5rem)',
-            letterSpacing: '0.03em',
+            letterSpacing: isArabic ? 'normal' : '0.03em',
             lineHeight: 1.15,
             textShadow: 'var(--neon-glow)',
           }}
@@ -283,12 +288,13 @@ export default function PageTransition() {
               className="inline-block"
               style={{
                 whiteSpace: 'pre',
+                marginInline: isArabic ? '0.15em' : undefined,
                 opacity: textPhase === 'in' ? 1 : 0,
                 transform:
                   textPhase === 'pre' ? 'translateY(110%)' : textPhase === 'in' ? 'translateY(0)' : 'translateY(-110%)',
                 transition: lift
-                  ? `transform ${TEXT_OUT}ms cubic-bezier(0.55, 0, 0.8, 0.3) ${i * 25}ms, opacity ${TEXT_OUT}ms ease ${i * 25}ms`
-                  : `transform 800ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 55}ms, opacity 600ms ease ${i * 55}ms`,
+                  ? `transform ${TEXT_OUT}ms cubic-bezier(0.55, 0, 0.8, 0.3) ${i * stepOut}ms, opacity ${TEXT_OUT}ms ease ${i * stepOut}ms`
+                  : `transform 800ms cubic-bezier(0.16, 1, 0.3, 1) ${i * step}ms, opacity 600ms ease ${i * step}ms`,
               }}
             >
               {ch}
