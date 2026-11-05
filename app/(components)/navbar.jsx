@@ -61,7 +61,7 @@ const Navbar = () => {
               <img
                 src={logoURL}
                 alt="CodeLegacy logo"
-                className="w-full h-full object-cover scale-150"
+                className="w-full h-full object-cover scale-[1.2]"
               />
             </span>
             <span className="text-xl font-bold tracking-wide">

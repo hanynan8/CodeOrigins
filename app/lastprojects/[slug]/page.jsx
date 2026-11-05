@@ -87,8 +87,6 @@ export default async function ProjectDetailPage({ params }) {
           </>
         )}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* data panel: its own background colour, so the text stays readable over the hero image */}
-          <div className="rounded-2xl sm:rounded-3xl border border-brand-cyan/30 bg-gradient-to-br from-brand-card/90 via-brand-bg/85 to-brand-card/90 backdrop-blur-md shadow-glow p-5 sm:p-8 lg:p-10">
           <Link
             href="/lastprojects#portfolio"
             className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-brand-cyan transition-colors mb-6 sm:mb-8"
@@ -127,7 +125,6 @@ export default async function ProjectDetailPage({ params }) {
             >
               I Want a Similar Website
             </a>
-          </div>
           </div>
         </div>
       </section>
