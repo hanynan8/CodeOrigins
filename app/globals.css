@@ -345,7 +345,7 @@ html[data-theme="light"] .pt-title { color: #fff; text-shadow: none; }
    duration-500 classes on individual buttons and cards can't make them snappy again
    (the theme-switch cross-fade below still wins because its selector is more specific). */
 /* ← change this one number to make every hover transition faster / slower */
-:root { --hover-dur: 2s; --hover-dur-img: 3s; --card-dur: 3s; --card-dur-img: 4.5s; }
+:root { --hover-dur: 2s; --hover-dur-img: 3s; --card-dur: 0.8s; --card-dur-img: 1s; }
 
 a, button, [data-card] {
   transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale, transform;

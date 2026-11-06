@@ -22,6 +22,12 @@ const BLOCK_SELECTOR = [
   'a[class*="rounded-full"]', 'button[class*="rounded"]',
 ].join(',');
 const EASE = [0.22, 1, 0.36, 1];
+// the reveal starts when an element's top reaches this point of the screen (0.75 = 75% of the way down)
+const TRIGGER_AT = 0.75;
+// the fade (transparent -> opaque) is faster than the movement, so the content is clear long before it lands
+const FADE_HEADING = 1; // seconds (movement: 2.6s)
+const FADE_CARD = 1.2;  // seconds (movement: 3.4s)
+const FADE_BLOCK = 1;   // seconds (movement: 3.4s)
 
 // only an ancestor that really became a card counts (a big page panel that was skipped must not
 // swallow the cards inside it - that is what made some elements appear with no transition)
@@ -93,21 +99,20 @@ export default function MotionEffects() {
       const heads = batch.filter((el) => el.dataset.card === undefined && el.dataset.block === undefined);
       // delay between items in a group, capped so a long group never waits too long
       const gap = (step, max) => (i) => Math.min(i * step, max);
-      const run = (els, heading, step, max) => {
+      const run = (els, heading, step, max, fade) => {
         if (!els.length) return;
-        const to = heading
-          ? { opacity: 1, transform: 'translateY(0px)' }
-          : { opacity: 1, transform: 'translateY(0px) scale(1)' };
-        const controls = animate(els, to, {
-          duration: heading ? 2.6 : 3.4,
-          ease: EASE,
-          delay: gap(step, max),
-        });
-        Promise.resolve(controls.finished ?? controls).then(() => els.forEach(clear), () => els.forEach(clear));
+        const moveTo = heading
+          ? { transform: 'translateY(0px)' }
+          : { transform: 'translateY(0px) scale(1)' };
+        const delay = gap(step, max);
+        const move = animate(els, moveTo, { duration: heading ? 2.6 : 3.4, ease: EASE, delay });
+        const fadeIn = animate(els, { opacity: 1 }, { duration: fade, ease: 'easeOut', delay });
+        const done = (c) => Promise.resolve(c.finished ?? c);
+        Promise.all([done(move), done(fadeIn)]).then(() => els.forEach(clear), () => els.forEach(clear));
       };
-      run(heads, true, 0.4, 2);
-      run(cards, false, 0.5, 2.5);
-      run(blocks, true, 0.15, 1.2);
+      run(heads, true, 0.4, 2, FADE_HEADING);
+      run(cards, false, 0.5, 2.5, FADE_CARD);
+      run(blocks, true, 0.15, 1.2, FADE_BLOCK);
     };
 
     // entries arriving in the same tick animate as one staggered group
@@ -120,7 +125,7 @@ export default function MotionEffects() {
         batch.forEach((el) => io.unobserve(el));
         reveal(batch);
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      { threshold: 0, rootMargin: `0px 0px -${(1 - TRIGGER_AT) * 100}% 0px` }
     );
 
     const scan = () => {
@@ -167,7 +172,7 @@ export default function MotionEffects() {
           return;
         }
         const r = el.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight * 0.9) return;
+        if (r.bottom < 0 || r.top > window.innerHeight * TRIGGER_AT) return;
         const n = Number(el.getAttribute('data-stuck') || 0) + 1;
         el.setAttribute('data-stuck', String(n));
         if (n >= 3) {
