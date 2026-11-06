@@ -45,10 +45,10 @@ export default function ThemeToggle({ className = '' }) {
       {theme && (
         <>
           <Sun
-            className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
+            data-fast className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
           />
           <Moon
-            className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
+            data-fast className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
           />
         </>
       )}

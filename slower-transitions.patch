@@ -1,0 +1,385 @@
+diff --git a/app/(components)/MotionEffects.jsx b/app/(components)/MotionEffects.jsx
+index 8de0dfb..2494120 100644
+--- a/app/(components)/MotionEffects.jsx
++++ b/app/(components)/MotionEffects.jsx
+@@ -7,7 +7,7 @@
+ // revealed again by a safety timer, so content can never stay invisible.
+ import { useEffect } from 'react';
+ import { usePathname } from 'next/navigation';
+-import { animate, stagger } from 'motion';
++import { animate } from 'motion';
+ 
+ const CARD_SELECTOR = [
+   '.glow-card',
+@@ -15,18 +15,40 @@ const CARD_SELECTOR = [
+   '[class*="rounded-xl"][class*="border"]',
+ ].join(',');
+ const HEADING_SELECTOR = 'h1, h2';
++// everything else that should fade/slide in when it reaches the screen (text, lists, panels, CTAs...)
++const BLOCK_SELECTOR = [
++  'p', 'h3', 'h4', 'ul', 'ol', 'form', 'table', 'blockquote', 'details',
++  '[class*="rounded-"][class*="bg-"]',
++  'a[class*="rounded-full"]', 'button[class*="rounded"]',
++].join(',');
+ const EASE = [0.22, 1, 0.36, 1];
+ 
++// only an ancestor that really became a card counts (a big page panel that was skipped must not
++// swallow the cards inside it - that is what made some elements appear with no transition)
+ const isCard = (el) => {
+   if (el.closest('nav, footer, aside, [data-no-motion]')) return false;
+-  if (el.parentElement?.closest(CARD_SELECTOR)) return false; // only the outer card
++  if (el.parentElement?.closest('[data-card]')) return false; // only the outer card
+   const r = el.getBoundingClientRect();
+   return r.width < 900 && r.height < 800; // skip big page panels
+ };
+ 
+ const isHeading = (el) => !el.closest('nav, footer, [data-card], [data-no-motion]');
+ 
++const isBlock = (el) => {
++  if (el.closest('nav, footer, aside, [data-card], [data-no-motion]')) return false;
++  if (el.parentElement?.closest('[data-motion]')) return false; // already moves with its parent
++  if (el.matches('[class*="translate-"], [class*="animate-"], [aria-hidden="true"]')) return false;
++  const cs = getComputedStyle(el);
++  if (cs.display === 'none' || cs.visibility === 'hidden') return false;
++  if (['absolute', 'fixed', 'sticky'].includes(cs.position)) return false; // would jump
++  const r = el.getBoundingClientRect();
++  return r.width > 40 && r.height > 12 && r.height < 1400;
++};
++
+ const hide = (el, heading) => {
++  // data-revealing switches the slow CSS hover transitions off (globals.css), because the stylesheet's
++  // !important durations beat an inline `transition: none` and made hidden cards visibly shrink/fade away
++  el.setAttribute('data-revealing', '');
+   el.style.transition = 'none'; // no visible fade-out while hiding
+   el.style.opacity = '0';
+   el.style.transform = heading ? 'translateY(26px)' : 'translateY(40px) scale(0.96)';
+@@ -39,6 +61,8 @@ const clear = (el) => {
+   el.style.filter = '';
+   el.style.willChange = '';
+   el.style.transition = '';
++  el.removeAttribute('data-revealing');
++  el.removeAttribute('data-stuck');
+ };
+ 
+ const curtainUp = () => !!document.querySelector('.pt-sheet');
+@@ -50,6 +74,7 @@ export default function MotionEffects() {
+     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+ 
+     let stopped = false;
++    const watching = new WeakSet();
+     let io;
+     let mo;
+     let timer;
+@@ -64,21 +89,25 @@ export default function MotionEffects() {
+ 
+     const reveal = (batch) => {
+       const cards = batch.filter((el) => el.dataset.card !== undefined);
+-      const heads = batch.filter((el) => el.dataset.card === undefined);
+-      const run = (els, heading) => {
++      const blocks = batch.filter((el) => el.dataset.block !== undefined);
++      const heads = batch.filter((el) => el.dataset.card === undefined && el.dataset.block === undefined);
++      // delay between items in a group, capped so a long group never waits too long
++      const gap = (step, max) => (i) => Math.min(i * step, max);
++      const run = (els, heading, step, max) => {
+         if (!els.length) return;
+         const to = heading
+           ? { opacity: 1, transform: 'translateY(0px)' }
+           : { opacity: 1, transform: 'translateY(0px) scale(1)' };
+         const controls = animate(els, to, {
+-          duration: heading ? 1.2 : 1.1,
++          duration: heading ? 2.6 : 3.4,
+           ease: EASE,
+-          delay: stagger(heading ? 0.2 : 0.18),
++          delay: gap(step, max),
+         });
+         Promise.resolve(controls.finished ?? controls).then(() => els.forEach(clear), () => els.forEach(clear));
+       };
+-      run(heads, true);
+-      run(cards, false);
++      run(heads, true, 0.4, 2);
++      run(cards, false, 0.5, 2.5);
++      run(blocks, true, 0.15, 1.2);
+     };
+ 
+     // entries arriving in the same tick animate as one staggered group
+@@ -108,20 +137,46 @@ export default function MotionEffects() {
+         el.dataset.motion = '1';
+         pending.push([el, true]);
+       });
+-      pending.forEach(([el, heading]) => {
+-        hide(el, heading);
++      document.querySelectorAll(BLOCK_SELECTOR).forEach((el) => {
++        if (el.dataset.motion || !isBlock(el)) return;
++        el.dataset.motion = '1';
++        el.dataset.block = '';
++        pending.push([el, true]);
++      });
++      pending.forEach(([el, heading]) => hide(el, heading));
++      // observe everything that is hidden - including elements hidden by an earlier run of this effect
++      // (hot reload / React strict mode / route change) that nobody is watching any more
++      document.querySelectorAll('[data-revealing]').forEach((el) => {
++        if (watching.has(el)) return;
++        watching.add(el);
+         io.observe(el);
+-        // safety net: never leave anything hidden
+-        later(() => {
+-          if (el.style.opacity === '0') {
+-            io.unobserve(el);
+-            const c = animate(el, { opacity: 1, transform: 'none' }, { duration: 0.4 });
+-            Promise.resolve(c.finished ?? c).then(() => clear(el), () => clear(el));
+-          }
+-        }, 9000);
+       });
+     };
+ 
++    // watchdog: an element that is ON SCREEN, still hidden and not animating is stuck -> show it.
++    // (Elements below the fold are left alone, so they still get their scroll-in transition later.)
++    const showNow = (el) => {
++      io.unobserve(el);
++      const c = animate(el, { opacity: 1, transform: 'none' }, { duration: 0.6 });
++      Promise.resolve(c.finished ?? c).then(() => clear(el), () => clear(el));
++    };
++    const watchdog = setInterval(() => {
++      document.querySelectorAll('[data-revealing]').forEach((el) => {
++        if (el.style.opacity !== '0' || el.getAnimations().length) {
++          el.removeAttribute('data-stuck');
++          return;
++        }
++        const r = el.getBoundingClientRect();
++        if (r.bottom < 0 || r.top > window.innerHeight * 0.9) return;
++        const n = Number(el.getAttribute('data-stuck') || 0) + 1;
++        el.setAttribute('data-stuck', String(n));
++        if (n >= 3) {
++          el.removeAttribute('data-stuck');
++          showNow(el);
++        }
++      });
++    }, 1500);
++
+     // wait for the page-transition curtain (if any), then start observing
+     const start = () => {
+       if (stopped) return;
+@@ -142,6 +197,7 @@ export default function MotionEffects() {
+ 
+     return () => {
+       stopped = true;
++      clearInterval(watchdog);
+       clearTimeout(timer);
+       timers.forEach(clearTimeout);
+       io?.disconnect();
+diff --git a/app/(components)/SmoothScroll.jsx b/app/(components)/SmoothScroll.jsx
+new file mode 100644
+index 0000000..da6a052
+--- /dev/null
++++ b/app/(components)/SmoothScroll.jsx
+@@ -0,0 +1,63 @@
++'use client';
++// "Heavy" page scroll: the wheel moves a target position and the page glides after it
++// with inertia (Lenis). Tune the feel with the 3 numbers below.
++import { useEffect } from 'react';
++import { usePathname } from 'next/navigation';
++import Lenis from 'lenis';
++
++const LERP = 0.07;         // 0.01 - 0.2: LOWER = heavier / slower glide (default Lenis is 0.1)
++const WHEEL_SPEED = 0.9;   // 1 = normal browser wheel speed; LOWER = each wheel notch scrolls less
++const KEY_DURATION = 1.8;  // seconds for anchor links / programmatic scrolls
++
++let instance = null;
++
++export default function SmoothScroll() {
++  const pathname = usePathname();
++
++  useEffect(() => {
++    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
++
++    const lenis = new Lenis({
++      lerp: LERP,
++      wheelMultiplier: WHEEL_SPEED,
++      smoothWheel: true,
++      // while the page-transition curtain is up, ignore the wheel
++      prevent: () => !!document.querySelector('.pt-sheet'),
++    });
++    instance = lenis;
++
++    let raf;
++    const loop = (time) => {
++      lenis.raf(time);
++      raf = requestAnimationFrame(loop);
++    };
++    raf = requestAnimationFrame(loop);
++
++    // in-page anchors (#section) glide too
++    const onClick = (e) => {
++      const a = e.target.closest?.('a[href*="#"]');
++      if (!a || e.defaultPrevented) return;
++      const url = new URL(a.href, window.location.href);
++      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || !url.hash) return;
++      const el = document.querySelector(url.hash);
++      if (!el) return;
++      e.preventDefault();
++      lenis.scrollTo(el, { duration: KEY_DURATION });
++    };
++    document.addEventListener('click', onClick);
++
++    return () => {
++      document.removeEventListener('click', onClick);
++      cancelAnimationFrame(raf);
++      lenis.destroy();
++      instance = null;
++    };
++  }, []);
++
++  // new page always starts at the top (no glide)
++  useEffect(() => {
++    instance?.scrollTo(0, { immediate: true });
++  }, [pathname]);
++
++  return null;
++}
+diff --git a/app/(components)/ThemeToggle.jsx b/app/(components)/ThemeToggle.jsx
+index 4eeafac..3eea8ae 100644
+--- a/app/(components)/ThemeToggle.jsx
++++ b/app/(components)/ThemeToggle.jsx
+@@ -45,10 +45,10 @@ export default function ThemeToggle({ className = '' }) {
+       {theme && (
+         <>
+           <Sun
+-            className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
++            data-fast className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'}`}
+           />
+           <Moon
+-            className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
++            data-fast className={`absolute h-5 w-5 transition-all duration-500 ${isLight ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'}`}
+           />
+         </>
+       )}
+diff --git a/app/[lang]/layout.jsx b/app/[lang]/layout.jsx
+index e7496d4..190fdbb 100644
+--- a/app/[lang]/layout.jsx
++++ b/app/[lang]/layout.jsx
+@@ -11,6 +11,7 @@ import Footer from '@/app/(components)/footer';
+ import PageTransition from '@/app/(components)/PageTransition';
+ import ThemeSync from '@/app/(components)/ThemeSync';
+ import MotionEffects from '@/app/(components)/MotionEffects';
++import SmoothScroll from '@/app/(components)/SmoothScroll';
+ import { LocaleProvider } from '@/app/(components)/LocaleProvider';
+ import { siteIcons, LOGO_ICON, logoUrl } from '@/app/(components)/brand';
+ import { LOCALES, dirOf, isLocale } from '@/lib/i18n';
+@@ -230,6 +231,7 @@ export default async function RootLayout({ children, params }) {
+         <LocaleProvider lang={lang} dictionary={dictionary}>
+           <ThemeSync />
+           <MotionEffects />
++          <SmoothScroll />
+           <PageTransition />
+           <Navbar />
+           {children}
+diff --git a/app/globals.css b/app/globals.css
+index 862ee76..0395e5c 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -72,7 +72,6 @@ html[data-theme="light"] {
+ }
+ 
+ html {
+-  scroll-behavior: smooth;
+   background: rgb(var(--c-bg));
+ }
+ 
+@@ -115,6 +114,12 @@ footer {
+   background-image: linear-gradient(to bottom, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size));
+ }
+ 
++/* Lenis smooth-scroll (app/(components)/SmoothScroll.jsx) */
++html.lenis, html.lenis body { height: auto; }
++.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
++.lenis.lenis-smooth { scroll-behavior: auto !important; }
++.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
++
+ /* Glowing brand text */
+ .text-neon {
+   color: rgb(var(--c-cyan));
+@@ -339,21 +344,41 @@ html[data-theme="light"] .pt-title { color: #fff; text-shadow: none; }
+ /* Slow, visible hover transitions. !important on the duration so Tailwind's duration-300 /
+    duration-500 classes on individual buttons and cards can't make them snappy again
+    (the theme-switch cross-fade below still wins because its selector is more specific). */
++/* ← change this one number to make every hover transition faster / slower */
++:root { --hover-dur: 2s; --hover-dur-img: 3s; --card-dur: 3s; --card-dur-img: 4.5s; }
++
+ a, button, [data-card] {
+   transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale, transform;
+-  transition-duration: 0.9s !important;
++  transition-duration: var(--hover-dur) !important;
+   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+ }
+ 
++/* everything else that uses a Tailwind `transition*` class (icon wrappers, headings, plain divs...)
++   defaults to 150-300ms, which felt too fast next to the cards. Slow them to the same pace. */
++[class*="transition"]:not([data-fast]) {
++  transition-duration: var(--hover-dur) !important;
++  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
++}
++
++/* cards are the slowest thing on the page: their own pace, plus everything animating inside them */
++[data-card]:not([data-fast]),
++[data-card] [class*="transition"]:not([data-fast]) {
++  transition-duration: var(--card-dur) !important;
++}
++
++/* while MotionEffects hides / reveals an element it drives opacity + transform itself: no CSS transition then
++   (otherwise the slow hover durations above make cards shrink, drift and fade out on their own) */
++[data-revealing][data-revealing][data-revealing] { transition: none !important; }
++
+ /* cards (tagged with data-card by MotionEffects): lift + glow on hover */
+ [data-card]:hover {
+   translate: 0 -10px;
+   box-shadow: var(--shadow-glow);
+   border-color: rgb(var(--c-blue) / 0.7);
+ }
+-[data-card] img { transition: scale 1.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
++[data-card] img { transition: scale var(--card-dur-img) cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+ [data-card]:hover img { scale: 1.08; }
+-[data-card] svg { transition: translate 0.9s ease, scale 0.9s ease !important; }
++[data-card] svg { transition: translate var(--card-dur) ease, scale var(--card-dur) ease !important; }
+ [data-card]:hover svg:not(.shrink-0) { scale: 1.08; }
+ 
+ /* pill buttons / links: small lift on hover, press on click */
+@@ -361,7 +386,7 @@ a, button, [data-card] {
+ :is(a, button)[class*="rounded-full"]:active { translate: 0 0; scale: 0.97; }
+ 
+ /* list items & nav / footer links nudge toward the reading direction */
+-footer ul a { display: inline-block; transition: translate 0.9s ease, color 0.9s ease !important; }
++footer ul a { display: inline-block; transition: translate var(--hover-dur) ease, color var(--hover-dur) ease !important; }
+ footer ul a:hover { translate: 8px 0; }
+ [dir="rtl"] footer ul a:hover { translate: -8px 0; }
+ 
+@@ -379,15 +404,15 @@ html:not([data-theme="light"]) .text-neon {
+   color: transparent;
+   text-shadow: none;
+   filter: var(--neon-filter);
+-  animation: text-shimmer 6s linear infinite;
++  animation: text-shimmer 16s linear infinite;
+ }
+ /* light-mode hero accent gradient also drifts slowly */
+ html[data-theme="light"] .circuit-bg .text-neon:not(.hero-title *) {
+   background-size: 200% auto;
+-  animation: text-shimmer 6s linear infinite;
++  animation: text-shimmer 16s linear infinite;
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+   .text-neon, .hero-wave use { animation: none !important; }
+-  [data-card], [data-card] img, a, button { transition: none !important; }
++  [data-card], [data-card] img, a, button, [class*="transition"] { transition: none !important; }
+ }
+diff --git a/package.json b/package.json
+index f54d9a1..f625b48 100644
+--- a/package.json
++++ b/package.json
+@@ -9,6 +9,7 @@
+     "lint": "eslint"
+   },
+   "dependencies": {
++    "lenis": "^1.3.27",
+     "lucide": "^0.542.0",
+     "lucide-react": "^0.542.0",
+     "motion": "^14.9.1",

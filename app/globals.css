@@ -72,7 +72,6 @@ html[data-theme="light"] {
 }
 
 html {
-  scroll-behavior: smooth;
   background: rgb(var(--c-bg));
 }
 
@@ -114,6 +113,12 @@ section[class*="bg-brand-"] {
 footer {
   background-image: linear-gradient(to bottom, var(--fade-color), rgba(30, 91, 255, 0) var(--fade-size));
 }
+
+/* Lenis smooth-scroll (app/(components)/SmoothScroll.jsx) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 
 /* Glowing brand text */
 .text-neon {
@@ -339,11 +344,31 @@ html[data-theme="light"] .pt-title { color: #fff; text-shadow: none; }
 /* Slow, visible hover transitions. !important on the duration so Tailwind's duration-300 /
    duration-500 classes on individual buttons and cards can't make them snappy again
    (the theme-switch cross-fade below still wins because its selector is more specific). */
+/* ← change this one number to make every hover transition faster / slower */
+:root { --hover-dur: 2s; --hover-dur-img: 3s; --card-dur: 3s; --card-dur-img: 4.5s; }
+
 a, button, [data-card] {
   transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale, transform;
-  transition-duration: 0.9s !important;
+  transition-duration: var(--hover-dur) !important;
   transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
+/* everything else that uses a Tailwind `transition*` class (icon wrappers, headings, plain divs...)
+   defaults to 150-300ms, which felt too fast next to the cards. Slow them to the same pace. */
+[class*="transition"]:not([data-fast]) {
+  transition-duration: var(--hover-dur) !important;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* cards are the slowest thing on the page: their own pace, plus everything animating inside them */
+[data-card]:not([data-fast]),
+[data-card] [class*="transition"]:not([data-fast]) {
+  transition-duration: var(--card-dur) !important;
+}
+
+/* while MotionEffects hides / reveals an element it drives opacity + transform itself: no CSS transition then
+   (otherwise the slow hover durations above make cards shrink, drift and fade out on their own) */
+[data-revealing][data-revealing][data-revealing] { transition: none !important; }
 
 /* cards (tagged with data-card by MotionEffects): lift + glow on hover */
 [data-card]:hover {
@@ -351,9 +376,9 @@ a, button, [data-card] {
   box-shadow: var(--shadow-glow);
   border-color: rgb(var(--c-blue) / 0.7);
 }
-[data-card] img { transition: scale 1.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+[data-card] img { transition: scale var(--card-dur-img) cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
 [data-card]:hover img { scale: 1.08; }
-[data-card] svg { transition: translate 0.9s ease, scale 0.9s ease !important; }
+[data-card] svg { transition: translate var(--card-dur) ease, scale var(--card-dur) ease !important; }
 [data-card]:hover svg:not(.shrink-0) { scale: 1.08; }
 
 /* pill buttons / links: small lift on hover, press on click */
@@ -361,7 +386,7 @@ a, button, [data-card] {
 :is(a, button)[class*="rounded-full"]:active { translate: 0 0; scale: 0.97; }
 
 /* list items & nav / footer links nudge toward the reading direction */
-footer ul a { display: inline-block; transition: translate 0.9s ease, color 0.9s ease !important; }
+footer ul a { display: inline-block; transition: translate var(--hover-dur) ease, color var(--hover-dur) ease !important; }
 footer ul a:hover { translate: 8px 0; }
 [dir="rtl"] footer ul a:hover { translate: -8px 0; }
 
@@ -379,15 +404,15 @@ html:not([data-theme="light"]) .text-neon {
   color: transparent;
   text-shadow: none;
   filter: var(--neon-filter);
-  animation: text-shimmer 6s linear infinite;
+  animation: text-shimmer 16s linear infinite;
 }
 /* light-mode hero accent gradient also drifts slowly */
 html[data-theme="light"] .circuit-bg .text-neon:not(.hero-title *) {
   background-size: 200% auto;
-  animation: text-shimmer 6s linear infinite;
+  animation: text-shimmer 16s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .text-neon, .hero-wave use { animation: none !important; }
-  [data-card], [data-card] img, a, button { transition: none !important; }
+  [data-card], [data-card] img, a, button, [class*="transition"] { transition: none !important; }
 }

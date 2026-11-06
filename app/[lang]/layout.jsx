@@ -11,6 +11,7 @@ import Footer from '@/app/(components)/footer';
 import PageTransition from '@/app/(components)/PageTransition';
 import ThemeSync from '@/app/(components)/ThemeSync';
 import MotionEffects from '@/app/(components)/MotionEffects';
+import SmoothScroll from '@/app/(components)/SmoothScroll';
 import { LocaleProvider } from '@/app/(components)/LocaleProvider';
 import { siteIcons, LOGO_ICON, logoUrl } from '@/app/(components)/brand';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n';
@@ -230,6 +231,7 @@ export default async function RootLayout({ children, params }) {
         <LocaleProvider lang={lang} dictionary={dictionary}>
           <ThemeSync />
           <MotionEffects />
+          <SmoothScroll />
           <PageTransition />
           <Navbar />
           {children}
