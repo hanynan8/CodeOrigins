@@ -1,8 +1,10 @@
 {
   "name": "CodeLegacy",
   "short_name": "CodeLegacy",
-  "description": "شركة تطوير ويب احترافية",
+  "description": "Professional web development company",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0ea5a4",

@@ -25,7 +25,8 @@
   },
   "common": {
     "whatsapp": "WhatsApp",
-    "contactViaWhatsapp": "Contact via WhatsApp"
+    "contactViaWhatsapp": "Contact via WhatsApp",
+    "logoAlt": "CodeLegacy logo"
   },
   "pageNames": {
     "home": "Home",
@@ -424,6 +425,10 @@
     "send": "Send Message"
   },
   "aboutPage": {
+    "meta": {
+      "title": "About Us",
+      "description": "Learn about CodeLegacy: our story, mission and the team building fast, secure websites, ecommerce stores and SaaS platforms."
+    },
     "hero": {
       "subtitle": "Our journey in building exceptional websites, combining beautiful design with cutting-edge technology to deliver digital experiences that make a real difference.",
       "cta": "Discover Our Story"
@@ -480,6 +485,10 @@
     }
   },
   "contactPage": {
+    "meta": {
+      "title": "Contact Us",
+      "description": "Get in touch with CodeLegacy to discuss your website, ecommerce store or SaaS project. We reply quickly by form, email or WhatsApp."
+    },
     "hero": {
       "titleBefore": "Get in Touch with",
       "subtitle": "We're here to help you bring your tech ideas to life. Tell us about your project and we'll get back to you as soon as possible.",
@@ -996,6 +1005,10 @@
     "cta": "Contact Us for Your Next Project"
   },
   "ourWork": {
+    "meta": {
+      "title": "Our Work",
+      "description": "Browse our latest projects: ecommerce stores, restaurant, tourism and educational websites, portfolios and 3D experiences built by CodeLegacy."
+    },
     "heroBefore": "Our",
     "heroHighlight": "Previous Work",
     "heroText": "We are proud to showcase a collection of previous web development projects we have successfully completed, reflecting our expertise in delivering innovative and effective web solutions.",
@@ -1096,5 +1109,15 @@
     "switchToLight": "Switch to light mode",
     "dark": "Dark mode",
     "light": "Light mode"
+  },
+  "notFound": {
+    "meta": {
+      "title": "Page not found"
+    },
+    "code": "404",
+    "heading": "Page not found",
+    "text": "The page you are looking for doesn't exist or has been moved.",
+    "home": "Back to Home",
+    "contact": "Contact Us"
   }
 }

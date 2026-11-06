@@ -18,8 +18,7 @@ import { getDictionary } from '@/lib/dictionaries';
 // ─────────────────────────────────────────────────────────────────────────────
 // Metadata
 // ─────────────────────────────────────────────────────────────────────────────
-export const COMPANY_NAME = 'CodeLegacy';
-export const SITE_DOMAIN = 'https://codelegacy.tech';
+import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageUrl } from '@/lib/seo';
 
 const baseMetadata = {
   title: `Home`,
@@ -56,7 +55,6 @@ const baseMetadata = {
     other: [{ rel: 'manifest', url: '/site.webmanifest' }],
   },
   robots: 'index, follow',
-  themeColor: '#0ea5a4',
   verification: { google: 'GOOGLE_SITE_VERIFICATION_TOKEN' },
 };
 
@@ -67,7 +65,8 @@ export async function generateMetadata({ params }) {
     ...baseMetadata,
     title: m.title,
     description: m.description,
-    openGraph: { ...baseMetadata.openGraph, title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+    alternates: pageAlternates(lang, '/'),
+    openGraph: { ...baseMetadata.openGraph, url: pageUrl(lang, '/'), title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
     twitter: { ...baseMetadata.twitter, title: m.twitterTitle, description: m.twitterDescription },
   };
 }

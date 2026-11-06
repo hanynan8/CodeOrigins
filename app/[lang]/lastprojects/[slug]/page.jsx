@@ -11,8 +11,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { similarProjectMessage, fillTemplate, whatsappLink } from '@/lib/whatsapp';
 import { localePath } from '@/lib/i18n';
 
-const COMPANY_NAME = 'CodeLegacy';
-const SITE_DOMAIN = 'https://codelegacy.tech';
+import { COMPANY_NAME, SITE_DOMAIN, pageAlternates } from '@/lib/seo';
 
 export const dynamicParams = false; // only the known projects exist
 
@@ -39,7 +38,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${project.title} — ${label}`,
     description,
-    alternates: { canonical: url },
+    alternates: pageAlternates(lang, `/lastprojects/${project.slug}`),
     openGraph: {
       title: `${project.title} — ${label} | ${COMPANY_NAME}`,
       description,

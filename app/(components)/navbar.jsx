@@ -68,7 +68,7 @@ const Navbar = () => {
             <span className="relative block w-[4.25rem] h-[4.25rem] rounded-full overflow-hidden border-2 border-brand-cyan shadow-glow-cyan">
               <img
                 src={logoURL}
-                alt="CodeLegacy logo"
+                alt={t('common.logoAlt')}
                 className="w-full h-full object-cover scale-[1.2]"
               />
             </span>

@@ -2,9 +2,7 @@
 import React from 'react';
 import LegalPage from '@/app/(components)/(realComponents)/LegalPage';
 import { getDictionary } from '@/lib/dictionaries';
-import { localePath } from '@/lib/i18n';
-
-const SITE_DOMAIN = 'https://codelegacy.tech';
+import { pageAlternates } from '@/lib/seo';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -12,7 +10,7 @@ export async function generateMetadata({ params }) {
   return {
     title: m.title,
     description: m.description,
-    alternates: { canonical: `${SITE_DOMAIN}${localePath(lang, '/privacy-policy')}` },
+    alternates: pageAlternates(lang, '/privacy-policy'),
     robots: 'index, follow',
   };
 }

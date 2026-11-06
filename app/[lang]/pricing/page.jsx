@@ -4,8 +4,7 @@ import { siteIcons } from '@/app/(components)/brand';
 import PricingPageClient from './_client';
 import { getDictionary } from '@/lib/dictionaries';
 
-export const COMPANY_NAME = 'CodeLegacy';
-export const SITE_DOMAIN = 'https://code-origins.vercel.app';
+import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageUrl } from '@/lib/seo';
 
 const baseMetadata = {
   title: 'Pricing',
@@ -38,7 +37,8 @@ export async function generateMetadata({ params }) {
     ...baseMetadata,
     title: m.title,
     description: m.description,
-    openGraph: { ...baseMetadata.openGraph, title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+    alternates: pageAlternates(lang, '/pricing'),
+    openGraph: { ...baseMetadata.openGraph, url: pageUrl(lang, '/pricing'), title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
   };
 }
 

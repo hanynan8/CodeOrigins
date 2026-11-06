@@ -8,8 +8,7 @@ import { getDictionary } from '@/lib/dictionaries';
 // ─────────────────────────────────────────────────────────────────────────────
 // Metadata
 // ─────────────────────────────────────────────────────────────────────────────
-export const COMPANY_NAME = 'CodeLegacy';
-export const SITE_DOMAIN = 'https://code-origins.vercel.app';
+import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageUrl } from '@/lib/seo';
 
 const baseMetadata = {
   title: `Our Services`,
@@ -52,7 +51,8 @@ export async function generateMetadata({ params }) {
     ...baseMetadata,
     title: m.title,
     description: m.description,
-    openGraph: { ...baseMetadata.openGraph, title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+    alternates: pageAlternates(lang, '/services'),
+    openGraph: { ...baseMetadata.openGraph, url: pageUrl(lang, '/services'), title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
     twitter: { ...baseMetadata.twitter, title: m.ogTitle, description: m.twitterDescription },
   };
 }

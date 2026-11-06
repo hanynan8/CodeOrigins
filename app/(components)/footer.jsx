@@ -14,7 +14,7 @@ import { logoUrl } from './brand';
 import { useI18n } from './LocaleProvider';
 import { fillTemplate } from '@/lib/whatsapp';
 
-const COPYRIGHT_YEAR = 2025;
+const COPYRIGHT_YEAR = new Date().getFullYear();
 
 // href = route without the language prefix (href() from useI18n adds '/en' or '/ar').
 // NB: the old links "//#clients", "//#feat" and "/lastprojects//#tech" started with '//'
@@ -61,7 +61,7 @@ const Footer = () => {
             <div className="flex items-center gap-2 mb-4">
               <img
                 src={logoUrl(96)}
-                alt="CodeLegacy logo"
+                alt={t('common.logoAlt')}
                 width={40}
                 height={40}
                 className="h-9 w-9 sm:h-10 sm:w-10 rounded-full border-2 border-brand-cyan object-cover shadow-glow-cyan"

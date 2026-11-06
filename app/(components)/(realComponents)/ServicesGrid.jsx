@@ -134,7 +134,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-brand-alt border-b border-brand-line/70">
-          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-left">
+          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-start">
             {title}
           </h3>
           <button
@@ -237,7 +237,7 @@ export const ServiceCard = ({ service }) => {
               }}
             />
             {hasMultiple && (
-              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+              <div className="absolute top-2 end-2 sm:top-3 sm:end-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                 <span>📷</span>
                 <span>{fillTemplate(sg.photos, { count: images.length })}</span>
               </div>
@@ -275,7 +275,7 @@ export const ServiceCard = ({ service }) => {
             <ul className="space-y-1.5">
               {service.features.slice(0, 4).map((feature, index) => (
                 <li key={index} className="flex items-start text-xs sm:text-sm text-gray-300">
-                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 me-2 flex-shrink-0 mt-0.5" />
                   <span className="leading-relaxed">{localized(feature, lang)}</span>
                 </li>
               ))}

@@ -62,7 +62,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             <Link href={href('/lastprojects/#portfolio')} className="w-full sm:w-auto">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto">
                 {h.hero.discover}
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
               </button>
             </Link>
             <button
@@ -134,7 +134,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"
                 >
                   {h.about.learnStory}
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 rtl:rotate-180" />
                 </Link>
               </div>
               <div className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-brand-blue/10 rounded-full animate-pulse"></div>
@@ -145,7 +145,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                 <h3 className="text-lg sm:text-xl font-semibold text-ink mb-3 sm:mb-4">{h.about.setApartTitle}</h3>
                 <div className="space-y-3 sm:space-y-4">
                   {h.about.setApart.map((item, index) => (
-                    <div key={index} className="flex items-start space-x-2 sm:space-x-3">
+                    <div key={index} className="flex items-start gap-2 sm:gap-3">
                       <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-brand-cyan flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span className="text-sm sm:text-base text-gray-300">{item}</span>
                     </div>
@@ -222,7 +222,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                 <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 italic">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="flex items-center">
                   <Image src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" width={50} height={50} />
-                  <div className="ml-3 sm:ml-4">
+                  <div className="ms-3 sm:ms-4">
                     <h4 className="font-semibold text-ink text-sm sm:text-base">{testimonial.name}</h4>
                     <p className="text-xs sm:text-sm text-gray-400">{testimonial.company}</p>
                   </div>

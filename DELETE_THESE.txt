@@ -1,4 +1,3 @@
-احذف المسارات القديمة دي بعد ما تنسخ الملفات الجديدة (الصفحات اتنقلت لـ app/[lang]/):
 app/(home)/_client.jsx
 app/(home)/page.jsx
 app/about/page.jsx

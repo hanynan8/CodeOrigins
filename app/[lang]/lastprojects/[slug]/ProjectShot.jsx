@@ -65,7 +65,7 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
             className="group absolute start-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all"
           >
             {d.visit}
-            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5 transition-transform" />
           </a>
         )}
         {/* enlarge (kept clear of the scrollbar on the right edge) */}

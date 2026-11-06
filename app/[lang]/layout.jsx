@@ -14,6 +14,7 @@ import { siteIcons, LOGO_ICON, logoUrl } from '@/app/(components)/brand';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n';
 import { getDictionary } from '@/lib/dictionaries';
 import { whatsappLink } from '@/lib/whatsapp';
+import { COMPANY_NAME, SITE_DOMAIN, OG_LOCALE, pageAlternates } from '@/lib/seo';
 
 const rubik = Rubik({
   variable: '--font-rubik-sans',
@@ -30,8 +31,8 @@ const geistMono = Geist_Mono({
 // SEO / Keywords bundle
 // ---------------------------
 // Change COMPANY_NAME and SITE_DOMAIN according to your project
-export const COMPANY_NAME = 'CodeLegacy'; // Change company name here
-export const SITE_DOMAIN = 'https://codelegacy.tech'; // Change to the actual domain
+// (defined once in lib/seo.js so every page, the sitemap and robots use the same values)
+export { COMPANY_NAME, SITE_DOMAIN };
 
 export const seoKeywords = {
   primary: [
@@ -86,7 +87,7 @@ export const viewport = {
 // ---------------------------
 // Next.js metadata export (app dir)
 // ---------------------------
-export const metadata = {
+const baseMetadata = {
   title: {
     default: `${COMPANY_NAME} | Integrated Web Development & Software Solutions`,
     template: `%s | ${COMPANY_NAME}`,
@@ -142,6 +143,30 @@ export const metadata = {
     ]
   }
 };
+
+// Language-aware metadata: title/description/openGraph come from dictionaries/*.json -> "meta".
+// Pages override title/description/alternates with their own generateMetadata.
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  if (!isLocale(lang)) return {};
+  const m = (await getDictionary(lang)).meta;
+  return {
+    ...baseMetadata,
+    title: {
+      default: `${COMPANY_NAME} | ${m.title}`,
+      template: `%s | ${COMPANY_NAME}`,
+    },
+    description: m.description,
+    alternates: pageAlternates(lang, '/'),
+    openGraph: {
+      ...baseMetadata.openGraph,
+      title: `${COMPANY_NAME} — ${m.title}`,
+      description: m.description,
+      url: `${SITE_DOMAIN}/${lang}`,
+      locale: OG_LOCALE[lang],
+    },
+  };
+}
 
 const FB_PIXEL_ID = '891356743903601';
 

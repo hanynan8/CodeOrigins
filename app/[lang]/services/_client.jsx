@@ -54,7 +54,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, technologiesD
             <Link href="#services">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white w-full sm:w-auto justify-center">
                 {p.hero.explore}
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
               </button>
             </Link>
             <Link href={href('/lastprojects/#portfolio')}>

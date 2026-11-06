@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Lets app/global-not-found.jsx render the 404 page (needed because the root layout is app/[lang]/layout.jsx).
+  experimental: { globalNotFound: true },
     images: {
     remotePatterns: [
       {

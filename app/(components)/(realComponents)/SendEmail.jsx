@@ -186,6 +186,7 @@ export default function ContactSection() {
                     id="email"
                     name="email"
                     type="email"
+                    dir="ltr"
                     required
                     className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                     placeholder="name@example.com"
@@ -201,6 +202,7 @@ export default function ContactSection() {
                   id="phone"
                   name="phone"
                   type="tel"
+                  dir="ltr"
                   className="w-full px-4 py-3 rounded-lg border border-brand-line focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/40 transition-all"
                   placeholder="+20 1XXXXXXXXX"
                 />

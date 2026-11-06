@@ -17,7 +17,10 @@ export function proxy(request) {
 
   if (lang) {
     // Already localised: just remember the choice (so the switcher sticks next visit).
-    const response = NextResponse.next();
+    // x-locale lets app/global-not-found.jsx (which has no params) render in the right language.
+    const headers = new Headers(request.headers);
+    headers.set('x-locale', lang);
+    const response = NextResponse.next({ request: { headers } });
     if (request.cookies.get(LOCALE_COOKIE)?.value !== lang) {
       response.cookies.set(LOCALE_COOKIE, lang, { path: '/', maxAge: ONE_YEAR, sameSite: 'lax' });
     }
