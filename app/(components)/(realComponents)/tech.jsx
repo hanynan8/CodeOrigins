@@ -3,7 +3,10 @@
 // NOTE: add Devicon stylesheet in your _app.js / index.html for the icons to show:
 // <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@master/devicon.min.css">
 
+'use client';
+
 import React from 'react';
+import { useI18n } from '../LocaleProvider';
 
 const defaultTechs = [
   { name: 'React', iconClass: 'devicon-react-original colored' },
@@ -21,16 +24,17 @@ const defaultTechs = [
 ];
 
 export default function TechSection({ techs = defaultTechs, id = 'tech', className = '' }) {
+  const { dictionary } = useI18n();
+  const tt = dictionary.tech;
   return (
     <section className={`py-20 bg-brand-bg ${className}`} id={id}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-ink">
-            The <span className="text-brand-cyan">Advanced Technologies</span> We Use
+            {tt.before} <span className="text-brand-cyan">{tt.highlight}</span> {tt.after}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We rely on the latest technologies and software tools to ensure
-            the development of modern, powerful websites
+            {tt.subtitle}
           </p>
         </div>
 

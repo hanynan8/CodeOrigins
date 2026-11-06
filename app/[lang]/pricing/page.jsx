@@ -2,11 +2,12 @@
 import React from 'react';
 import { siteIcons } from '@/app/(components)/brand';
 import PricingPageClient from './_client';
+import { getDictionary } from '@/lib/dictionaries';
 
 export const COMPANY_NAME = 'CodeLegacy';
 export const SITE_DOMAIN = 'https://code-origins.vercel.app';
 
-export const metadata = {
+const baseMetadata = {
   title: 'Pricing',
   description:
     'Transparent pricing for websites, ecommerce stores and web applications. See starting prices, what is included, milestone-linked payment terms, annual running costs, hosting plans and an interactive project cost estimator.',
@@ -29,6 +30,17 @@ export const metadata = {
   icons: siteIcons,
   robots: 'index, follow',
 };
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const m = (await getDictionary(lang)).pricingPage.meta;
+  return {
+    ...baseMetadata,
+    title: m.title,
+    description: m.description,
+    openGraph: { ...baseMetadata.openGraph, title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+  };
+}
 
 export default function PricingPage() {
   return <PricingPageClient />;

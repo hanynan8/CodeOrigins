@@ -107,5 +107,994 @@
       "followUp": "📞 Please get back to me as soon as possible",
       "thanks": "🚀 Thank you very much"
     }
+  },
+  "home": {
+    "meta": {
+      "title": "Home",
+      "description": "CodeLegacy — your partner in building fast and secure websites, scalable ecommerce stores, and SaaS platforms. UX/UI design services, performance optimization, security, and professional cloud deployment.",
+      "ogTitle": "CodeLegacy | Web Development Company in Cairo",
+      "ogDescription": "See our services and portfolio: website development, ecommerce stores, SaaS platforms, performance optimization, and application security.",
+      "twitterTitle": "CodeLegacy — Web Development & Ecommerce Stores",
+      "twitterDescription": "Your partner in building fast, scalable web applications. Get a free consultation now."
+    },
+    "hero": {
+      "line1": "We Build the",
+      "highlight": "Future",
+      "line2": "With Code",
+      "discover": "Discover our work",
+      "chat": "Let's Chat"
+    },
+    "portfolioTitle": "Some of Our Previous Work",
+    "exploreWork": "Explore All Our Work",
+    "services": {
+      "title": "Web Development Services",
+      "subtitle": "We provide comprehensive web solutions for all types of websites and digital platforms, using the latest technologies and global quality standards"
+    },
+    "about": {
+      "titleBefore": "Discover",
+      "subtitle": "Our journey in building the digital future, where we combine creativity and technology to deliver websites that make a difference.",
+      "whoTitle": "Who We Are?",
+      "whoP1": "CodeLegacy is a leading web development company, founded with a vision to turn ideas into innovative websites. We're a team of passionate experts who combine technical creativity with hands-on experience to deliver websites that exceed expectations.",
+      "whoP2": "Our mission is to empower businesses to achieve their digital ambitions through custom websites that support growth and strengthen competitiveness in today's fast-paced web world.",
+      "learnStory": "Learn Our Story",
+      "setApartTitle": "What Sets Us Apart",
+      "setApart": [
+        "A dedicated control panel for the site owner to manage all site data seamlessly",
+        "A team certified by top global institutions",
+        "Commitment to quality and on-time delivery",
+        "A smooth, fast website that's easy to edit",
+        "Long-term partnerships with our clients, backed by continuous technical support",
+        "SEO optimization to help the site rank at the top of Google search results",
+        "Using the latest web technologies to ensure performance and efficiency",
+        "Technical support for up to 12 months after website delivery",
+        "Over 5 years of experience developing innovative websites"
+      ],
+      "stats": [
+        {
+          "number": "50+",
+          "label": "Completed Web Projects"
+        },
+        {
+          "number": "50+",
+          "label": "Satisfied Clients"
+        },
+        {
+          "number": "24/7",
+          "label": "Technical Support"
+        },
+        {
+          "number": "100%",
+          "label": "Client Satisfaction"
+        }
+      ]
+    },
+    "benefits": {
+      "before": "Benefits of",
+      "highlight": "Working With Us",
+      "subtitle": "We provide comprehensive web development services to ensure you get the perfect website that meets your needs.",
+      "items": [
+        {
+          "title": "Website Development",
+          "description": "Building responsive, fast websites using the latest technologies like React and Next.js."
+        },
+        {
+          "title": "Responsive Design",
+          "description": "Designing websites that work perfectly on all devices, from phones to desktop computers."
+        },
+        {
+          "title": "UI/UX Design",
+          "description": "Designing attractive interfaces and an outstanding user experience that increases conversion rates."
+        },
+        {
+          "title": "SEO Optimization",
+          "description": "Search engine optimization to ensure your site ranks at the top of search results."
+        },
+        {
+          "title": "Security & Protection",
+          "description": "Implementing the highest security standards to protect your site and your customers' data."
+        },
+        {
+          "title": "Support & Maintenance",
+          "description": "Ongoing technical support and regular maintenance to ensure your site runs efficiently after delivery."
+        }
+      ]
+    },
+    "testimonials": {
+      "before": "What Our",
+      "highlight": "Clients Say",
+      "subtitle": "Our clients' opinions are our true testament to the quality of our work and our commitment to delivering the best",
+      "items": [
+        {
+          "name": "Ahmed El-Sayed",
+          "company": "Marketing Manager, Tech Company",
+          "content": "Working with CodeLegacy was a fantastic experience — a professional and creative team that delivered solutions exceeding our expectations and helped us achieve our digital goals successfully."
+        },
+        {
+          "name": "Sara Mohamed",
+          "company": "Ecommerce Store Owner",
+          "content": "The ecommerce platform built by the CodeLegacy team helped double my sales and improve the customer experience. Thank you for the great work."
+        },
+        {
+          "name": "Khaled Abdullah",
+          "company": "IT Manager, Learning Institute",
+          "content": "The learning management system CodeLegacy built was a dream come true — easy to use and provides everything we need to manage remote learning efficiently."
+        }
+      ]
+    }
+  },
+  "servicesPage": {
+    "meta": {
+      "title": "Our Services",
+      "description": "Our services include website and ecommerce store design & development, SaaS application development, DevOps and cloud services, performance optimization and technical SEO, UX/UI design, product strategy, and full maintenance & technical support.",
+      "ogTitle": "Our Services — CodeLegacy",
+      "ogDescription": "A complete set of services: website and store development, SaaS solutions, performance optimization, security, DevOps and cloud.",
+      "twitterDescription": "Learn about our services: design, development, cloud, performance, security, and maintenance."
+    },
+    "hero": {
+      "titleBefore": "Web",
+      "titleHighlight": "Development Services",
+      "subtitle": "We develop all types of websites with the latest technologies and the highest quality standards - from ecommerce stores to educational platforms and custom solutions",
+      "explore": "Explore Our Services",
+      "viewWork": "View Our Previous Work"
+    },
+    "grid": {
+      "title": "Web Development Services",
+      "subtitle": "We provide comprehensive web solutions for all types of websites and digital platforms using the latest technologies and global quality standards"
+    },
+    "why": {
+      "before": "Why Choose",
+      "highlight": "Our Services",
+      "after": "?",
+      "subtitle": "We stand out with high quality standards and professional services that guarantee you an outstanding and distinguished website",
+      "items": [
+        {
+          "title": "Fast Delivery",
+          "description": "We commit to agreed deadlines and deliver your project on time while maintaining the highest quality standards."
+        },
+        {
+          "title": "Lightning-Fast Websites",
+          "description": "We build performance-optimized websites with exceptional load speeds that guarantee a great user experience."
+        },
+        {
+          "title": "Advanced SEO",
+          "description": "Our sites are fully optimized for search engines to ensure top rankings and attract more customers."
+        },
+        {
+          "title": "Outstanding Performance",
+          "description": "We guarantee exceptional performance for your site with fast loading and excellent responsiveness on all devices and networks."
+        },
+        {
+          "title": "Built From Scratch",
+          "description": "We don't use pre-made templates. Every site is coded from scratch specifically to meet your unique needs."
+        },
+        {
+          "title": "Advanced Security",
+          "description": "We apply the highest cybersecurity standards to protect your website and your customers' data from any threats."
+        },
+        {
+          "title": "Responsive Design",
+          "description": "Our websites work perfectly on all devices, from mobile phones to desktop computers."
+        },
+        {
+          "title": "Modern Technologies",
+          "description": "We use the latest technologies and frameworks to ensure you get a modern, scalable website."
+        },
+        {
+          "title": "Ongoing Technical Support",
+          "description": "Our support team is available 24/7 to help you and resolve any issue you may encounter with your site."
+        }
+      ]
+    },
+    "process": {
+      "before": "How Do We",
+      "highlight": "Develop",
+      "after": "Your Site?",
+      "subtitle": "A carefully structured process that ensures your website meets your goals and exceeds your expectations",
+      "steps": [
+        {
+          "title": "Consultation & Planning",
+          "description": "We start by understanding your requirements and goals to build the right strategy for your website"
+        },
+        {
+          "title": "Design & Development",
+          "description": "Our development team builds your site from scratch using the latest technologies"
+        },
+        {
+          "title": "Testing & Optimization",
+          "description": "We thoroughly test the site and optimize performance and speed to ensure the best experience"
+        },
+        {
+          "title": "Delivery & Support",
+          "description": "We deliver the site with ongoing technical support and usage training"
+        }
+      ]
+    },
+    "techSection": {
+      "before": "The",
+      "highlight": "Advanced Technologies",
+      "after": "We Use",
+      "subtitle": "We rely on the latest technologies and programming tools to ensure the development of modern, powerful websites"
+    },
+    "faq": {
+      "before": "Frequently Asked",
+      "highlight": "Questions",
+      "subtitle": "Answers to the most common questions about our web development services",
+      "items": [
+        {
+          "question": "How long does it take to develop a professional website?",
+          "answer": "The timeline varies depending on the project's complexity and requirements. Simple websites take 2-4 weeks, while complex platforms may need 8-16 weeks. We provide a detailed timeline before starting each project."
+        },
+        {
+          "question": "Do you offer a quality guarantee on the websites you develop?",
+          "answer": "Yes, we provide a comprehensive quality guarantee for 6 months that covers fixing any bugs, in addition to 3 months of free full technical support with the option to extend."
+        },
+        {
+          "question": "Are the websites you develop optimized for search engines?",
+          "answer": "Of course! All our sites are developed according to SEO best practices with comprehensive optimization of code, content, and speed to ensure a strong presence in search results."
+        },
+        {
+          "question": "Can I manage the website content myself after delivery?",
+          "answer": "Yes, we build an easy-to-use content management system that lets you update content easily. We also provide comprehensive training and detailed guides for using the system."
+        },
+        {
+          "question": "Do you build responsive websites that work on phones?",
+          "answer": "All our websites are fully responsive and optimized to work on all devices, from smartphones to desktop computers, with a consistent and excellent user experience."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready to Launch Your New Website?",
+      "subtitle": "Contact us today and get a custom quote with a free comprehensive consultation to discuss your project and identify the best technical solutions",
+      "viewWork": "View All Our Previous Work",
+      "contact": "Contact Us Now",
+      "perks": [
+        {
+          "title": "Free Consultation",
+          "desc": "We analyze your requirements and suggest the best solutions"
+        },
+        {
+          "title": "Custom Quote",
+          "desc": "Competitive prices and flexible packages"
+        },
+        {
+          "title": "Quality Guarantee",
+          "desc": "Full commitment to quality and deadlines"
+        }
+      ]
+    }
+  },
+  "servicesGrid": {
+    "title": "Web Development Services",
+    "subtitle": "We provide comprehensive web solutions for all types of websites and digital platforms, using the latest technologies and global quality standards",
+    "keyFeatures": "Key Features:",
+    "photos": "{count} photos",
+    "viewImages": "View Images ({count})",
+    "requestService": "Request Service",
+    "exploreAll": "Explore All Our Services",
+    "loading": "Loading...",
+    "imageAlt": "Image {n}",
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image"
+  },
+  "tech": {
+    "before": "The",
+    "highlight": "Advanced Technologies",
+    "after": "We Use",
+    "subtitle": "We rely on the latest technologies and software tools to ensure the development of modern, powerful websites"
+  },
+  "contactForm": {
+    "title": {
+      "before": "Ready to Start",
+      "highlight": "Your Project",
+      "after": "?"
+    },
+    "subtitle": "Contact us today and let's turn your idea into a stunning website that achieves your goals and exceeds your expectations",
+    "direct": "Contact Us Directly",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "addressLine1": "Tahrir Street, Downtown",
+    "addressLine2": "Cairo, Egypt",
+    "hours": "Working Hours",
+    "hoursValue": "Every day",
+    "follow": "Follow Us on Social Media",
+    "formTitle": "Send Us a Message",
+    "emailSubject": "New message from CodeLegacy website",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your full name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone Number",
+    "serviceLabel": "Service Type",
+    "serviceDefault": "Select service type",
+    "services": {
+      "web": "Website Development",
+      "ecommerce": "E-commerce Website Development",
+      "webapp": "Web App Development",
+      "security": "Website Security",
+      "ai": "AI Integration for Websites",
+      "design": "Web UI/UX Design",
+      "other": "Other"
+    },
+    "messageLabel": "Your Message",
+    "messagePlaceholder": "Write your project details or inquiry here...",
+    "success": "Your message has been sent successfully ✅",
+    "error": "An error occurred while sending. Please try again or contact us directly via email.",
+    "sending": "Sending...",
+    "send": "Send Message"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "Our journey in building exceptional websites, combining beautiful design with cutting-edge technology to deliver digital experiences that make a real difference.",
+      "cta": "Discover Our Story"
+    },
+    "story": {
+      "titleBefore": "Our Story in",
+      "titleHighlight": "Web Development",
+      "subtitle": "CodeLegacy was founded with a vision to turn ideas into innovative websites and digital applications, with a focus on quality and outstanding performance.",
+      "startTitle": "Our Start in the World of the Web",
+      "p1": "CodeLegacy began as a simple idea, when a group of passionate web developers joined forces to deliver high-quality websites. Since then, the company has grown to become a leader in web development, focusing on modern technologies and attractive design.",
+      "p2": "Today, we're proud of our specialized team in web development that brings together expertise from Frontend, Backend, and UX/UI, enabling us to deliver comprehensive web solutions that meet our clients' needs across all sectors.",
+      "setApartTitle": "What Sets Us Apart in Web Development",
+      "setApart": [
+        "A dedicated admin dashboard for the site owner to easily manage content and data",
+        "Search engine optimization (SEO) to increase visibility and Google rankings",
+        "Fast, responsive, and secure websites that work on all devices",
+        "Built with modern, scalable technologies (such as React and Next.js)",
+        "Attractive, easy-to-use interface design (professional UX/UI)",
+        "An experienced team committed to quality and on-time delivery",
+        "Technical support and regular maintenance after delivery (long-term partnerships, with support up to 12 months depending on agreement)"
+      ]
+    },
+    "stats": [
+      {
+        "number": "50+",
+        "label": "Websites Developed"
+      },
+      {
+        "number": "50+",
+        "label": "Happy Clients"
+      },
+      {
+        "number": "5+",
+        "label": "Years in Web Development"
+      },
+      {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      }
+    ],
+    "vm": {
+      "titleBefore": "Our Vision &",
+      "titleHighlight": "Mission",
+      "subtitle": "We work to build a better digital world by developing exceptional websites that serve our clients' needs to the highest global standards.",
+      "visionTitle": "Our Vision",
+      "vision": "To be the leading partner in web development for Arab and global companies, by delivering advanced websites that enhance digital presence and achieve business goals with the highest quality standards.",
+      "missionTitle": "Our Mission",
+      "mission": "Developing high-quality, fast-performing, and secure websites, with a focus on exceptional user experience and attractive design to maximize digital presence and drive business growth."
+    },
+    "cta": {
+      "title": "Start Your Website Project With Us",
+      "text": "If you're looking for a trusted web development partner, CodeLegacy is the perfect choice to achieve your digital vision and build your ideal website.",
+      "button": "Start Your Project Now"
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "titleBefore": "Get in Touch with",
+      "subtitle": "We're here to help you bring your tech ideas to life. Tell us about your project and we'll get back to you as soon as possible.",
+      "cta": "Start the Conversation"
+    },
+    "social": {
+      "title": "Follow Us on Social Media",
+      "text": "Stay up to date with our latest work and technical tips by following us on social platforms.",
+      "followOn": "Follow us on {name}"
+    }
+  },
+  "legal": {
+    "lastUpdated": "Last updated: {date}",
+    "updated": "November 2026",
+    "questions": "Questions? Reach us through the",
+    "contactLink": "contact page",
+    "privacy": {
+      "meta": {
+        "title": "Privacy Policy",
+        "description": "How CodeLegacy collects, uses and protects your personal information when you use our website and services."
+      },
+      "title": "Privacy Policy",
+      "intro": "At CodeLegacy, we respect your privacy. This policy explains what information we collect when you visit our website or use our web development services, how we use it, and the choices you have.",
+      "sections": [
+        {
+          "heading": "Information We Collect",
+          "paragraphs": [
+            "We only collect the information needed to respond to you and deliver our services:"
+          ],
+          "items": [
+            "Contact details you give us, such as your name, email address and phone number, when you fill in a form, send us a message or contact us on WhatsApp.",
+            "Project details you share with us, such as your business type, requirements and any files or links you send.",
+            "Basic technical data collected automatically, such as browser type, device, pages visited and approximate location, to help us keep the website working and improve it."
+          ]
+        },
+        {
+          "heading": "How We Use Your Information",
+          "items": [
+            "To reply to your enquiries and prepare quotes or proposals.",
+            "To design, build, deliver and support the websites and services you request.",
+            "To improve our website, services and user experience.",
+            "To send important updates about your project or our services. You can opt out of non-essential messages at any time.",
+            "To protect our website and prevent fraud or misuse."
+          ]
+        },
+        {
+          "heading": "Cookies and Analytics",
+          "paragraphs": [
+            "Our website may use cookies and similar technologies to remember your preferences and to understand how visitors use the site. You can disable cookies in your browser settings, although some parts of the website may not work as expected."
+          ]
+        },
+        {
+          "heading": "Sharing of Information",
+          "paragraphs": [
+            "We do not sell or rent your personal information. We may share it only with trusted service providers who help us operate the website or deliver your project (for example hosting, email or analytics providers), and only as far as needed for that purpose. We may also disclose information if required by law."
+          ]
+        },
+        {
+          "heading": "Third-Party Services and Links",
+          "paragraphs": [
+            "Our website may link to third-party websites and services, including our client projects, social media pages and WhatsApp. We are not responsible for the privacy practices of those third parties, so please review their policies before sharing information with them."
+          ]
+        },
+        {
+          "heading": "Data Security and Retention",
+          "paragraphs": [
+            "We take reasonable technical and organisational measures to protect your information from unauthorised access, loss or misuse. No method of transmission or storage is completely secure, so we cannot guarantee absolute security. We keep your information only for as long as needed for the purposes described in this policy or as required by law."
+          ]
+        },
+        {
+          "heading": "Your Rights",
+          "paragraphs": [
+            "You may ask us to access, correct or delete the personal information we hold about you, or object to how we use it. To make a request, please contact us and we will respond within a reasonable time."
+          ]
+        },
+        {
+          "heading": "Children's Privacy",
+          "paragraphs": [
+            "Our services are intended for businesses and adults. We do not knowingly collect personal information from children under 16."
+          ]
+        },
+        {
+          "heading": "Changes to This Policy",
+          "paragraphs": [
+            "We may update this Privacy Policy from time to time. The latest version will always be available on this page with its updated date. Continued use of the website after changes means you accept the updated policy."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "meta": {
+        "title": "Terms & Conditions",
+        "description": "The terms and conditions that apply when you use the CodeLegacy website and hire us for web development services."
+      },
+      "title": "Terms & Conditions",
+      "intro": "Please read these terms carefully. They explain the rules for using the CodeLegacy website and for hiring us to design and build your website.",
+      "sections": [
+        {
+          "heading": "Acceptance of Terms",
+          "paragraphs": [
+            "By accessing this website or requesting any service from CodeLegacy, you agree to these Terms & Conditions. If you do not agree, please do not use the website or our services."
+          ]
+        },
+        {
+          "heading": "Our Services",
+          "paragraphs": [
+            "We design and develop websites and web applications, including e-commerce stores, restaurant, clinic, business, educational and portfolio websites, landing pages, SaaS platforms and related services. The scope, features, timeline and price of each project are agreed with you in writing (a quote, proposal or message confirmation) before work starts."
+          ]
+        },
+        {
+          "heading": "Client Responsibilities",
+          "items": [
+            "Provide accurate information, content, images, logos and feedback on time.",
+            "Make sure you have the right to use any content, trademarks or materials you give us.",
+            "Review deliverables and give approval or change requests within a reasonable time."
+          ],
+          "paragraphs": [
+            "Delays in providing materials or feedback may extend the project timeline."
+          ]
+        },
+        {
+          "heading": "Payments",
+          "paragraphs": [
+            "Prices, payment amounts and schedules are agreed before the project begins. Unless agreed otherwise, work starts after the initial payment is received, and the final delivery or launch is subject to payment of the remaining balance. Third-party costs such as domains, hosting, paid plugins or licences are not included unless stated in the quote."
+          ]
+        },
+        {
+          "heading": "Revisions and Changes in Scope",
+          "paragraphs": [
+            "The agreed scope includes a reasonable number of revisions to the delivered work. Requests that go beyond the agreed scope, such as new features or a change of direction, may be quoted and scheduled separately."
+          ]
+        },
+        {
+          "heading": "Intellectual Property",
+          "paragraphs": [
+            "After full payment, you own the final website design and the content you supplied. We keep ownership of our pre-existing tools, code libraries, templates and know-how, and of any third-party or open-source components, which remain subject to their own licences. We may show the finished project in our portfolio unless you ask us in writing not to."
+          ]
+        },
+        {
+          "heading": "Confidentiality",
+          "paragraphs": [
+            "We treat non-public information you share about your business and project as confidential and will not disclose it to third parties except as needed to deliver the work or as required by law."
+          ]
+        },
+        {
+          "heading": "Support and Maintenance",
+          "paragraphs": [
+            "Support, maintenance and hosting terms, if included, are described in your quote or agreement. Anything not included there is handled as a separate service."
+          ]
+        },
+        {
+          "heading": "Limitation of Liability",
+          "paragraphs": [
+            "We work to deliver high-quality results, but we do not guarantee specific business outcomes such as sales, rankings or traffic. To the fullest extent allowed by law, CodeLegacy is not liable for indirect or consequential losses, and our total liability for any claim is limited to the amount you paid us for the service concerned."
+          ]
+        },
+        {
+          "heading": "Cancellation",
+          "paragraphs": [
+            "Either party may end a project by written notice. Work completed up to the date of cancellation, and any non-refundable third-party costs, remain payable."
+          ]
+        },
+        {
+          "heading": "Use of the Website",
+          "paragraphs": [
+            "You agree not to misuse this website, including attempting to gain unauthorised access, interfering with its operation or copying content for unlawful purposes. Content on this website belongs to us or is used with permission."
+          ]
+        },
+        {
+          "heading": "Changes to These Terms",
+          "paragraphs": [
+            "We may update these Terms & Conditions from time to time. The latest version is always available on this page, and continued use of the website or services means you accept the updated terms."
+          ]
+        }
+      ]
+    }
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Pricing",
+      "description": "Transparent pricing for websites, ecommerce stores and web applications. See starting prices, what is included, milestone-linked payment terms, annual running costs, hosting plans and an interactive project cost estimator.",
+      "ogTitle": "Pricing — CodeLegacy",
+      "ogDescription": "Clear pricing and scope before work begins: project prices, payment milestones, hosting plans and a cost estimator."
+    },
+    "hero": {
+      "eyebrow": "Clear pricing and scope",
+      "titleBefore": "Transparent Pricing",
+      "titleHighlight": "Before Work Begins",
+      "subtitle": "Every project has its own scope. We review the need, then document the deliverables, milestones, and proposed price before delivery begins.",
+      "cta": "Request a Project Quote"
+    },
+    "plan": {
+      "from": "From",
+      "afterScope": "· After scope",
+      "perMonth": "/month"
+    },
+    "projects": {
+      "eyebrow": "Projects",
+      "title": "Project",
+      "accent": "Pricing",
+      "text": "Every project has its own scope. These are starting prices for typical projects; contact us to review your needs and receive a written proposal.",
+      "cta": "Get a Quote",
+      "items": [
+        {
+          "name": "Landing Page",
+          "features": [
+            "Up to 5 sections",
+            "Mobile responsive",
+            "Contact form + WhatsApp CTA",
+            "Basic SEO setup",
+            "Post-launch support option"
+          ]
+        },
+        {
+          "name": "Business Website",
+          "badge": "Most Popular",
+          "features": [
+            "Up to 10 pages",
+            "Mobile responsive",
+            "CMS integration (Sanity)",
+            "Blog or portfolio section",
+            "Contact + inquiry forms",
+            "SEO + Schema markup",
+            "Post-launch support option"
+          ]
+        },
+        {
+          "name": "eCommerce",
+          "features": [
+            "Unlimited products",
+            "Fawry / Paymob integration",
+            "Arabic RTL support",
+            "Inventory management",
+            "Order tracking",
+            "SEO + Schema markup",
+            "Post-launch support option"
+          ]
+        },
+        {
+          "name": "Web Application",
+          "features": [
+            "Custom backend API",
+            "User auth & dashboard",
+            "Database design",
+            "Third-party integrations",
+            "Scalable cloud architecture",
+            "Post-launch support option"
+          ]
+        }
+      ]
+    },
+    "scope": {
+      "eyebrow": "Delivery Transparency",
+      "title": "What's Included vs. Excluded",
+      "accent": "in Our Projects?",
+      "text": "We believe in complete contractual clarity from day one to protect your investment and avoid scope surprises.",
+      "includedTitle": "Included in Every Project",
+      "includedSub": "Standard, guaranteed deliverables baked into every proposal",
+      "included": [
+        "Custom bespoke UI/UX design crafted in Figma (no generic templates)",
+        "Modern full-stack engineering (Next.js / React / TypeScript / Laravel)",
+        "100% mobile-first responsive layouts across all devices and screen sizes",
+        "Native bilingual Arabic (RTL) and English (LTR) architecture",
+        "Full source code ownership, repository handover, and deployment docs",
+        "Technical SEO readiness, Core Web Vitals optimization, and Schema.org markup",
+        "Interactive contact forms, WhatsApp click-to-chat, and Google Analytics (GA4)",
+        "30-day post-launch warranty and bug-fixing support"
+      ],
+      "excludedTitle": "Optional Add-Ons & Exclusions",
+      "excludedSub": "Third-party platform fees or items billed as dedicated add-ons",
+      "excluded": [
+        "Third-party SaaS subscriptions, gateway fees, or paid API licenses (billed directly by providers)",
+        "Specialized marketing copywriting or legal document translation (client-provided or quoted separately)",
+        "Professional product photography and custom high-end video production",
+        "Domain registration and dedicated cloud server hosting (we can manage both for you)",
+        "Major feature additions outside the signed milestone scope"
+      ]
+    },
+    "payments": {
+      "eyebrow": "Payment Structure",
+      "title": "Milestone-Linked,",
+      "accent": "Transparent Payment Terms",
+      "text": "You never pay 100% upfront. Payments are linked to verifiable deliverables that you review and approve.",
+      "phases": [
+        {
+          "phase": "Phase 1",
+          "title": "Deposit & Discovery Sign-Off",
+          "text": "Upon contract signing, project kickoff, UX wireframing, and design approval in Figma."
+        },
+        {
+          "phase": "Phase 2",
+          "title": "Core Development & Beta Preview",
+          "text": "Access to a private staging environment to test functional features, review layouts, and populate content."
+        },
+        {
+          "phase": "Phase 3",
+          "title": "Final QA, Launch & Handover",
+          "text": "After user acceptance testing (UAT), domain connection, production deployment, and full code handover."
+        }
+      ]
+    },
+    "annual": {
+      "eyebrow": "Annual Recurring Costs",
+      "title": "Expected Annual Running",
+      "accent": "& Maintenance Budget",
+      "text": "Building your custom website or app is a one-time investment; running it reliably requires predictable annual infrastructure expenses.",
+      "estimated": "Estimated Cost:",
+      "items": [
+        {
+          "title": "Domain Name (.com / .eg)",
+          "text": "Annual registration of your brand's digital address to protect your digital identity.",
+          "cost": "$15 – $35 / year"
+        },
+        {
+          "title": "Managed Cloud Hosting & Daily Backups",
+          "text": "High-speed isolated server resources, daily automated offsite backups, and uptime monitoring.",
+          "cost": "$120 – $600 / year"
+        },
+        {
+          "title": "SSL Certificates & WAF Protection",
+          "text": "Automated SSL certificates, DDoS mitigation, and Cloudflare cloud edge firewall protection.",
+          "cost": "Free with our hosting"
+        },
+        {
+          "title": "Technical Maintenance & Security Updates",
+          "text": "Dependency upgrades, security patching, and on-call developer support for peace of mind.",
+          "cost": "Optional plans from $50 / month"
+        }
+      ]
+    },
+    "hosting": {
+      "eyebrow": "Managed Hosting",
+      "title": "Hosting",
+      "accent": "Plans",
+      "text": "Managed hosting options with plan-specific features such as backups, SSL certificates, and technical support.",
+      "cta": "Get Started",
+      "customCloud": "Need custom cloud architecture?",
+      "customCloudLink": "See our Hosting & DevOps service →",
+      "items": [
+        {
+          "name": "Economy",
+          "features": [
+            "1 domain",
+            "10 GB SSD storage",
+            "200 GB monthly transfer",
+            "20 mailboxes",
+            "Custom SMTP gateway",
+            "SSL certificate included",
+            "Setup included",
+            "Technical support option"
+          ]
+        },
+        {
+          "name": "Prime",
+          "badge": "Best Value",
+          "features": [
+            "5 domains",
+            "25 GB SSD storage",
+            "400 GB monthly transfer",
+            "40 mailboxes",
+            "Custom SMTP gateway",
+            "SSL certificate included",
+            "Setup included",
+            "Technical support option"
+          ]
+        },
+        {
+          "name": "Standard Pack",
+          "features": [
+            "Unlimited domains",
+            "50 GB SSD storage",
+            "Unlimited transfer",
+            "Unlimited mailboxes",
+            "Custom SMTP gateway",
+            "SSL certificate included",
+            "Setup included",
+            "Technical support option"
+          ]
+        }
+      ]
+    },
+    "estimator": {
+      "eyebrow": "2026 Market Estimator",
+      "title": "Estimate your project cost",
+      "accent": "in minutes",
+      "text": "Interactive ranges based on 2026 Egypt and MENA market guides. A written proposal still follows discovery.",
+      "projectType": "Project type",
+      "scale": "Scale / page count",
+      "features": "Additional features",
+      "types": {
+        "corporate": "Corporate website",
+        "mobile": "Mobile app",
+        "ecommerce": "E-commerce store",
+        "saas": "Custom web app (SaaS)"
+      },
+      "scales": {
+        "compact": {
+          "label": "Compact",
+          "hint": "About 5–8 pages or an MVP slice"
+        },
+        "standard": {
+          "label": "Standard",
+          "hint": "About 9–15 pages or a full product slice"
+        },
+        "large": {
+          "label": "Large",
+          "hint": "16+ pages or a multi-role platform"
+        }
+      },
+      "featureItems": {
+        "payments": {
+          "label": "Payment gateways",
+          "hint": "Paymob, Fawry, or card checkout"
+        },
+        "rtl": {
+          "label": "Arabic RTL multi-language",
+          "hint": "Included in our bilingual delivery"
+        },
+        "realtime": {
+          "label": "Real-time tracking",
+          "hint": "Live maps or operations events"
+        },
+        "cms": {
+          "label": "Custom admin CMS",
+          "hint": "Editable content or catalogue admin"
+        },
+        "cloud": {
+          "label": "Managed cloud setup",
+          "hint": "Managed hosting, SSL, and backups"
+        }
+      },
+      "range": "Estimated range",
+      "egypt": "Egypt market range",
+      "egp": "EGP",
+      "usd": "USD",
+      "timeline": "Estimated timeline",
+      "weeks": "{from}–{to} weeks",
+      "notes": [
+        "Custom UI and Arabic RTL routing",
+        "Responsive build and technical SEO markup",
+        "CMS or page editing where scoped",
+        "30-day post-launch bugfix window"
+      ],
+      "disclaimer": "Indicative 2026 benchmarks, not a binding quote. Scope, integrations, and content still change the final proposal.",
+      "cta": "Request a detailed quote from these requirements"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Pricing",
+      "accent": "Questions",
+      "items": [
+        {
+          "q": "Are your prices in USD or EGP?",
+          "a": "Starting prices on this page are shown in USD, and the estimator below also shows an EGP range for the Egyptian market. Your written proposal states the final price and currency clearly before any work begins."
+        },
+        {
+          "q": "Do you offer installment payments?",
+          "a": "Yes. You never pay 100% upfront. Payment is split across three milestones: 50% at kickoff and design approval, 30% at the staging preview, and 20% at final QA, launch and handover."
+        },
+        {
+          "q": "How is a project price set?",
+          "a": "We review your requirements, then document the deliverables, milestones and proposed price in a written proposal. The number of pages or screens, integrations, backend complexity and content readiness are what move the price."
+        },
+        {
+          "q": "Do you offer ongoing maintenance after launch?",
+          "a": "Every project includes a 30-day post-launch warranty with bug fixing. After that, optional maintenance plans start from $50 per month and cover dependency upgrades, security patching and developer support."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Get your quote",
+      "title": "Ready to Start Your Project?",
+      "text": "Share what you need. Once scope is clear, we will send a proposal that outlines the milestones, proposed price, and next step.",
+      "quote": "Request a Project Quote",
+      "process": "See Our Process"
+    }
+  },
+  "projectTypes": {
+    "ecommerce": "E-Commerce Store",
+    "restaurants": "Restaurant",
+    "tourism": "Tourism Website",
+    "education": "Educational Platform",
+    "3d": "3D Website",
+    "portfolio": "Portfolio"
+  },
+  "filters": {
+    "all": "All",
+    "ecommerce": "E-Commerce Store",
+    "restaurants": "Restaurants",
+    "tourism": "Tourism Websites",
+    "education": "Educational Platforms",
+    "3d": "3D Websites",
+    "portfolio": "Portfolio"
+  },
+  "projectCard": {
+    "titleBefore": "Some of",
+    "titleHighlight": "Our Previous Work",
+    "subtitle": "Here we present a collection of our web development work, where we focused on delivering advanced, fast, and secure web solutions that meet our clients' diverse needs.",
+    "filterAria": "Filter projects by category",
+    "photos": "{count} photos",
+    "viewPhotos": "View Photos",
+    "viewWebsite": "View Website",
+    "openWebsite": "Open {title} website",
+    "openWebsiteTitle": "Open website",
+    "imageAlt": "Image {n}",
+    "projectImage": "Project image",
+    "loading": "Loading...",
+    "close": "Close",
+    "prev": "Previous image",
+    "next": "Next image",
+    "emptyTitle": "No {category} projects yet",
+    "emptyText": "New projects in this category are coming soon.",
+    "showMore": "Show More",
+    "cta": "Contact Us for Your Next Project"
+  },
+  "ourWork": {
+    "heroBefore": "Our",
+    "heroHighlight": "Previous Work",
+    "heroText": "We are proud to showcase a collection of previous web development projects we have successfully completed, reflecting our expertise in delivering innovative and effective web solutions.",
+    "whyBefore": "Why Choose Us for",
+    "whyHighlight": "Web Development",
+    "whyAfter": "?",
+    "whyText": "In our services, we focus on developing websites with the highest quality standards, emphasizing the features that make your site stand out and perform effectively in a competitive online market.",
+    "advantages": [
+      {
+        "title": "Responsive Design",
+        "description": "We ensure your website works perfectly on all devices, from mobile phones to desktop computers."
+      },
+      {
+        "title": "High Performance Speed",
+        "description": "We optimize site performance so it loads in seconds, improving user experience and reducing bounce rate."
+      },
+      {
+        "title": "Search Engine Optimization (SEO)",
+        "description": "We structure the site and its content to rank at the top of Google search results, increasing organic traffic."
+      },
+      {
+        "title": "Advanced Security",
+        "description": "We apply the latest security standards to protect the site from cyberattacks and ensure data privacy."
+      },
+      {
+        "title": "Integration with External Systems",
+        "description": "We integrate the site with external services like online payment, maps, and cloud systems to enhance functionality."
+      },
+      {
+        "title": "Ongoing Technical Support",
+        "description": "We provide technical support after launch to ensure the site continues running smoothly with regular updates."
+      },
+      {
+        "title": "Attractive, Easy-to-Use Design",
+        "description": "We focus on attractive, intuitive user interfaces to improve visitor engagement with the site."
+      },
+      {
+        "title": "Cross-Browser Compatibility",
+        "description": "We test the site on different browsers to ensure a consistent experience for all users."
+      },
+      {
+        "title": "Advanced Analytics & Data",
+        "description": "We integrate analytics tools to track site performance and understand visitor behavior for continuous improvement."
+      }
+    ],
+    "stats": [
+      {
+        "number": "50+",
+        "label": "Completed Projects"
+      },
+      {
+        "number": "50+",
+        "label": "Happy Clients"
+      },
+      {
+        "number": "5+",
+        "label": "Years of Experience"
+      },
+      {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      }
+    ],
+    "contactTitle": "Start Your Project With Us Today",
+    "contactText": "Contact us now and get a free consultation for your next project",
+    "email": "Email",
+    "phone": "Phone Number",
+    "location": "Location",
+    "locationValue": "Cairo, Egypt",
+    "contactNow": "Contact Us Now"
+  },
+  "projectDetail": {
+    "notFound": "Project not found",
+    "previewAlt": "{title} website preview",
+    "back": "Back to Our Work",
+    "similar": "I Want a Similar Website",
+    "technologies": "Technologies",
+    "info": "Project info",
+    "type": "Type",
+    "website": "Website",
+    "photos": "Photos",
+    "moreBefore": "More",
+    "moreAfter": "work",
+    "seeAll": "See All {category}",
+    "allProjects": "All Projects",
+    "visit": "Visit Website",
+    "enlarge": "Enlarge preview",
+    "enlargeTitle": "Enlarge",
+    "scrollHint": "Scroll inside the window to see the whole page",
+    "openPhoto": "Open photo {n} of {total}",
+    "photoAlt": "{title} — photo {n}",
+    "close": "Close",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo"
+  },
+  "theme": {
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode",
+    "dark": "Dark mode",
+    "light": "Light mode"
   }
 }

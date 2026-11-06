@@ -13,6 +13,7 @@ import Tech from '@/app/(components)/(realComponents)/tech';
 import CodeLegacyClient from './_client';
 import { siteIcons, logoUrl } from '@/app/(components)/brand';
 import { servicesData } from '@/app/(components)/(realComponents)/ServiceData';
+import { getDictionary } from '@/lib/dictionaries';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Metadata
@@ -20,7 +21,7 @@ import { servicesData } from '@/app/(components)/(realComponents)/ServiceData';
 export const COMPANY_NAME = 'CodeLegacy';
 export const SITE_DOMAIN = 'https://codelegacy.tech';
 
-export const metadata = {
+const baseMetadata = {
   title: `Home`,
   description:
     'CodeLegacy — your partner in building fast and secure websites, scalable ecommerce stores, and SaaS platforms. UX/UI design services, performance optimization, security, and professional cloud deployment.',
@@ -58,6 +59,18 @@ export const metadata = {
   themeColor: '#0ea5a4',
   verification: { google: 'GOOGLE_SITE_VERIFICATION_TOKEN' },
 };
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const m = (await getDictionary(lang)).home.meta;
+  return {
+    ...baseMetadata,
+    title: m.title,
+    description: m.description,
+    openGraph: { ...baseMetadata.openGraph, title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+    twitter: { ...baseMetadata.twitter, title: m.twitterTitle, description: m.twitterDescription },
+  };
+}
 
 // ─────────────────────────────────────────────────────────────────────────────
 // JSON-LD
@@ -97,37 +110,21 @@ export const homeJsonLd = {
 // ─────────────────────────────────────────────────────────────────────────────
 // Data specific to the homepage only
 // ─────────────────────────────────────────────────────────────────────────────
+// Only the non-text parts live here (avatars, ratings, icons). The texts come from
+// dictionaries/*.json -> home.testimonials.items / home.benefits.items, matched by index.
 const testimonials = [
-  {
-    name: 'Ahmed El-Sayed',
-    company: 'Marketing Manager, Tech Company',
-    content: 'Working with CodeLegacy was a fantastic experience — a professional and creative team that delivered solutions exceeding our expectations and helped us achieve our digital goals successfully.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-    rating: 5,
-  },
-  {
-    name: 'Sara Mohamed',
-    company: 'Ecommerce Store Owner',
-    content: 'The ecommerce platform built by the CodeLegacy team helped double my sales and improve the customer experience. Thank you for the great work.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-    rating: 5,
-  },
-  {
-    name: 'Khaled Abdullah',
-    company: 'IT Manager, Learning Institute',
-    content: 'The learning management system CodeLegacy built was a dream come true — easy to use and provides everything we need to manage remote learning efficiently.',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
-    rating: 5,
-  },
+  { avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80', rating: 5 },
+  { avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80', rating: 5 },
+  { avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80', rating: 5 },
 ];
 
 const webServices = [
-  { icon: <Globe className="w-8 h-8" />,      title: 'Website Development',   description: 'Building responsive, fast websites using the latest technologies like React and Next.js.' },
-  { icon: <Smartphone className="w-8 h-8" />, title: 'Responsive Design',     description: 'Designing websites that work perfectly on all devices, from phones to desktop computers.' },
-  { icon: <Palette className="w-8 h-8" />,    title: 'UI/UX Design',          description: 'Designing attractive interfaces and an outstanding user experience that increases conversion rates.' },
-  { icon: <Search className="w-8 h-8" />,     title: 'SEO Optimization',      description: 'Search engine optimization to ensure your site ranks at the top of search results.' },
-  { icon: <Shield className="w-8 h-8" />,     title: 'Security & Protection', description: 'Implementing the highest security standards to protect your site and your customers\' data.' },
-  { icon: <Users className="w-8 h-8" />,      title: 'Support & Maintenance', description: 'Ongoing technical support and regular maintenance to ensure your site runs efficiently after delivery.' },
+  { icon: <Globe className="w-8 h-8" /> },
+  { icon: <Smartphone className="w-8 h-8" /> },
+  { icon: <Palette className="w-8 h-8" /> },
+  { icon: <Search className="w-8 h-8" /> },
+  { icon: <Shield className="w-8 h-8" /> },
+  { icon: <Users className="w-8 h-8" /> },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────

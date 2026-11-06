@@ -6,192 +6,39 @@ import Link from 'next/link';
 import { ArrowRight, Check, ChevronDown, X } from 'lucide-react';
 import CircuitBolts from '@/app/(components)/CircuitBolts';
 import HeroWave from '@/app/(components)/HeroWave';
+import { useI18n } from '@/app/(components)/LocaleProvider';
+import { fillTemplate } from '@/lib/whatsapp';
 
 /* ════════════════════════════════════════════════════════════════════════
    CONTENT — edit prices / text here
 ════════════════════════════════════════════════════════════════════════ */
 
-const PROJECTS = [
-  {
-    name: 'Landing Page',
-    price: '$1,500',
-    features: [
-      'Up to 5 sections',
-      'Mobile responsive',
-      'Contact form + WhatsApp CTA',
-      'Basic SEO setup',
-      'Post-launch support option',
-    ],
-  },
-  {
-    name: 'Business Website',
-    price: '$3,000',
-    badge: 'Most Popular',
-    features: [
-      'Up to 10 pages',
-      'Mobile responsive',
-      'CMS integration (Sanity)',
-      'Blog or portfolio section',
-      'Contact + inquiry forms',
-      'SEO + Schema markup',
-      'Post-launch support option',
-    ],
-  },
-  {
-    name: 'eCommerce',
-    price: '$5,000',
-    features: [
-      'Unlimited products',
-      'Fawry / Paymob integration',
-      'Arabic RTL support',
-      'Inventory management',
-      'Order tracking',
-      'SEO + Schema markup',
-      'Post-launch support option',
-    ],
-  },
-  {
-    name: 'Web Application',
-    price: '$8,000',
-    features: [
-      'Custom backend API',
-      'User auth & dashboard',
-      'Database design',
-      'Third-party integrations',
-      'Scalable cloud architecture',
-      'Post-launch support option',
-    ],
-  },
-];
-
-const INCLUDED = [
-  'Custom bespoke UI/UX design crafted in Figma (no generic templates)',
-  'Modern full-stack engineering (Next.js / React / TypeScript / Laravel)',
-  '100% mobile-first responsive layouts across all devices and screen sizes',
-  'Native bilingual Arabic (RTL) and English (LTR) architecture',
-  'Full source code ownership, repository handover, and deployment docs',
-  'Technical SEO readiness, Core Web Vitals optimization, and Schema.org markup',
-  'Interactive contact forms, WhatsApp click-to-chat, and Google Analytics (GA4)',
-  '30-day post-launch warranty and bug-fixing support',
-];
-
-const EXCLUDED = [
-  'Third-party SaaS subscriptions, gateway fees, or paid API licenses (billed directly by providers)',
-  'Specialized marketing copywriting or legal document translation (client-provided or quoted separately)',
-  'Professional product photography and custom high-end video production',
-  'Domain registration and dedicated cloud server hosting (we can manage both for you)',
-  'Major feature additions outside the signed milestone scope',
-];
-
-const PAYMENT_PHASES = [
-  {
-    phase: 'Phase 1',
-    percent: '50%',
-    title: 'Deposit & Discovery Sign-Off',
-    text: 'Upon contract signing, project kickoff, UX wireframing, and design approval in Figma.',
-  },
-  {
-    phase: 'Phase 2',
-    percent: '30%',
-    title: 'Core Development & Beta Preview',
-    text: 'Access to a private staging environment to test functional features, review layouts, and populate content.',
-  },
-  {
-    phase: 'Phase 3',
-    percent: '20%',
-    title: 'Final QA, Launch & Handover',
-    text: 'After user acceptance testing (UAT), domain connection, production deployment, and full code handover.',
-  },
-];
-
-const ANNUAL_COSTS = [
-  {
-    title: 'Domain Name (.com / .eg)',
-    text: "Annual registration of your brand's digital address to protect your digital identity.",
-    cost: '$15 – $35 / year',
-  },
-  {
-    title: 'Managed Cloud Hosting & Daily Backups',
-    text: 'High-speed isolated server resources, daily automated offsite backups, and uptime monitoring.',
-    cost: '$120 – $600 / year',
-  },
-  {
-    title: 'SSL Certificates & WAF Protection',
-    text: 'Automated SSL certificates, DDoS mitigation, and Cloudflare cloud edge firewall protection.',
-    cost: 'Free with our hosting',
-  },
-  {
-    title: 'Technical Maintenance & Security Updates',
-    text: 'Dependency upgrades, security patching, and on-call developer support for peace of mind.',
-    cost: 'Optional plans from $50 / month',
-  },
-];
-
-const HOSTING = [
-  {
-    name: 'Economy',
-    price: '$15',
-    features: ['1 domain', '10 GB SSD storage', '200 GB monthly transfer', '20 mailboxes', 'Custom SMTP gateway', 'SSL certificate included', 'Setup included', 'Technical support option'],
-  },
-  {
-    name: 'Prime',
-    price: '$22',
-    badge: 'Best Value',
-    features: ['5 domains', '25 GB SSD storage', '400 GB monthly transfer', '40 mailboxes', 'Custom SMTP gateway', 'SSL certificate included', 'Setup included', 'Technical support option'],
-  },
-  {
-    name: 'Standard Pack',
-    price: '$30',
-    features: ['Unlimited domains', '50 GB SSD storage', 'Unlimited transfer', 'Unlimited mailboxes', 'Custom SMTP gateway', 'SSL certificate included', 'Setup included', 'Technical support option'],
-  },
-];
-
-const FAQ = [
-  {
-    q: 'Are your prices in USD or EGP?',
-    a: 'Starting prices on this page are shown in USD, and the estimator below also shows an EGP range for the Egyptian market. Your written proposal states the final price and currency clearly before any work begins.',
-  },
-  {
-    q: 'Do you offer installment payments?',
-    a: 'Yes. You never pay 100% upfront. Payment is split across three milestones: 50% at kickoff and design approval, 30% at the staging preview, and 20% at final QA, launch and handover.',
-  },
-  {
-    q: 'How is a project price set?',
-    a: 'We review your requirements, then document the deliverables, milestones and proposed price in a written proposal. The number of pages or screens, integrations, backend complexity and content readiness are what move the price.',
-  },
-  {
-    q: 'Do you offer ongoing maintenance after launch?',
-    a: 'Every project includes a 30-day post-launch warranty with bug fixing. After that, optional maintenance plans start from $50 per month and cover dependency upgrades, security patching and developer support.',
-  },
-];
+// Only numbers / ids live here. All visible text comes from dictionaries/*.json -> pricingPage
+// (items are matched by index, estimator options by id).
+const PROJECT_PRICES = ['$1,500', '$3,000', '$5,000', '$8,000'];
+const PAYMENT_PERCENTS = ['50%', '30%', '20%'];
+const HOSTING_PRICES = ['$15', '$22', '$30'];
 
 /* ── Estimator data (all ranges are indicative) ───────────────────────── */
 const EST_TYPES = [
-  { id: 'corporate', label: 'Corporate website', egp: [60000, 160000], usd: [2500, 5000], weeks: [4, 7] },
-  { id: 'mobile', label: 'Mobile app', egp: [150000, 400000], usd: [6000, 14000], weeks: [8, 14] },
-  { id: 'ecommerce', label: 'E-commerce store', egp: [100000, 260000], usd: [4000, 9000], weeks: [6, 10] },
-  { id: 'saas', label: 'Custom web app (SaaS)', egp: [200000, 550000], usd: [8000, 20000], weeks: [10, 18] },
+  { id: 'corporate', egp: [60000, 160000], usd: [2500, 5000], weeks: [4, 7] },
+  { id: 'mobile', egp: [150000, 400000], usd: [6000, 14000], weeks: [8, 14] },
+  { id: 'ecommerce', egp: [100000, 260000], usd: [4000, 9000], weeks: [6, 10] },
+  { id: 'saas', egp: [200000, 550000], usd: [8000, 20000], weeks: [10, 18] },
 ];
 
 const EST_SCALES = [
-  { id: 'compact', label: 'Compact', hint: 'About 5–8 pages or an MVP slice', price: 1, time: 1 },
-  { id: 'standard', label: 'Standard', hint: 'About 9–15 pages or a full product slice', price: 1.6, time: 1.4 },
-  { id: 'large', label: 'Large', hint: '16+ pages or a multi-role platform', price: 2.6, time: 2 },
+  { id: 'compact', price: 1, time: 1 },
+  { id: 'standard', price: 1.6, time: 1.4 },
+  { id: 'large', price: 2.6, time: 2 },
 ];
 
 const EST_FEATURES = [
-  { id: 'payments', label: 'Payment gateways', hint: 'Paymob, Fawry, or card checkout', egp: [8000, 20000], usd: [300, 800], weeks: [0.5, 1] },
-  { id: 'rtl', label: 'Arabic RTL multi-language', hint: 'Included in our bilingual delivery', egp: [0, 0], usd: [0, 0], weeks: [0, 0] },
-  { id: 'realtime', label: 'Real-time tracking', hint: 'Live maps or operations events', egp: [25000, 60000], usd: [900, 2200], weeks: [2, 3] },
-  { id: 'cms', label: 'Custom admin CMS', hint: 'Editable content or catalogue admin', egp: [15000, 40000], usd: [600, 1500], weeks: [1, 2] },
-  { id: 'cloud', label: 'Managed cloud setup', hint: 'Managed hosting, SSL, and backups', egp: [6000, 15000], usd: [250, 600], weeks: [0.5, 1] },
-];
-
-const EST_NOTES = [
-  'Custom UI and Arabic RTL routing',
-  'Responsive build and technical SEO markup',
-  'CMS or page editing where scoped',
-  '30-day post-launch bugfix window',
+  { id: 'payments', egp: [8000, 20000], usd: [300, 800], weeks: [0.5, 1] },
+  { id: 'rtl', egp: [0, 0], usd: [0, 0], weeks: [0, 0] },
+  { id: 'realtime', egp: [25000, 60000], usd: [900, 2200], weeks: [2, 3] },
+  { id: 'cms', egp: [15000, 40000], usd: [600, 1500], weeks: [1, 2] },
+  { id: 'cloud', egp: [6000, 15000], usd: [250, 600], weeks: [0.5, 1] },
 ];
 
 const fmt = (n) => n.toLocaleString('en-US');
@@ -228,7 +75,9 @@ const Badge = ({ children }) => (
   </span>
 );
 
-const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '/contact' }) => (
+const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '/contact' }) => {
+  const { dictionary, href: localHref } = useI18n();
+  return (
   <div
     className={`relative flex flex-col min-w-0 rounded-2xl border bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-7 shadow-glow transition-all duration-300 md:hover:-translate-y-2 ${
       badge ? 'border-brand-cyan' : 'border-brand-line/60'
@@ -241,7 +90,7 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
       <span className="text-3xl min-[380px]:text-4xl md:text-5xl font-bold text-neon-white">{price}</span>
       {suffix && <span className="pb-1.5 text-sm text-gray-400">{suffix}</span>}
     </div>
-    {caption && <p className="mt-1 text-xs text-gray-400">· After scope</p>}
+    {caption && <p className="mt-1 text-xs text-gray-400">{dictionary.pricingPage.plan.afterScope}</p>}
     <ul className="mt-6 mb-8 flex-1 space-y-3">
       {features.map((f) => (
         <li key={f} className="flex items-start gap-2.5 text-sm md:text-base text-gray-200">
@@ -251,7 +100,7 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
       ))}
     </ul>
     <Link
-      href={href}
+      href={localHref(href)}
       className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 py-3 text-sm md:text-base font-semibold transition-all ${
         badge
           ? 'bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:scale-[1.03]'
@@ -259,23 +108,26 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
       }`}
     >
       {cta}
-      <ArrowRight className="h-4 w-4" />
+      <ArrowRight className="h-4 w-4 rtl:rotate-180" />
     </Link>
   </div>
-);
+  );
+};
 
 /* ════════════════════════════════════════════════════════════════════════
    ESTIMATOR
 ════════════════════════════════════════════════════════════════════════ */
 
 const optionClass = (on) =>
-  `w-full min-h-[56px] rounded-xl border p-3.5 sm:p-4 text-left transition-all duration-200 ${
+  `w-full min-h-[56px] rounded-xl border p-3.5 sm:p-4 text-start transition-all duration-200 ${
     on
       ? 'border-brand-cyan bg-brand-blue/20 shadow-glow'
       : 'border-brand-line/60 bg-brand-card hover:border-brand-blue'
   }`;
 
 function Estimator() {
+  const { dictionary, href } = useI18n();
+  const e = dictionary.pricingPage.estimator;
   const [type, setType] = useState('corporate');
   const [scale, setScale] = useState('compact');
   const [features, setFeatures] = useState([]);
@@ -309,40 +161,40 @@ function Estimator() {
     <section id="estimator" className="py-10 sm:py-16 md:py-20 bg-brand-alt">
       <Container>
         <SectionHead
-          eyebrow="2026 Market Estimator"
-          title="Estimate your project cost"
-          accent="in minutes"
-          text="Interactive ranges based on 2026 Egypt and MENA market guides. A written proposal still follows discovery."
+          eyebrow={e.eyebrow}
+          title={e.title}
+          accent={e.accent}
+          text={e.text}
         />
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-5 lg:gap-8">
           {/* Options */}
           <div className="space-y-6 sm:space-y-8 lg:col-span-3 min-w-0">
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Project type</h3>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">{e.projectType}</h3>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {EST_TYPES.map((t) => (
                   <button key={t.id} type="button" onClick={() => setType(t.id)} className={optionClass(type === t.id)} aria-pressed={type === t.id}>
-                    <span className="font-semibold text-ink">{t.label}</span>
+                    <span className="font-semibold text-ink">{e.types[t.id]}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Scale / page count</h3>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">{e.scale}</h3>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                 {EST_SCALES.map((s) => (
                   <button key={s.id} type="button" onClick={() => setScale(s.id)} className={optionClass(scale === s.id)} aria-pressed={scale === s.id}>
-                    <span className="block font-semibold text-ink">{s.label}</span>
-                    <span className="mt-1 block text-xs text-gray-400">{s.hint}</span>
+                    <span className="block font-semibold text-ink">{e.scales[s.id].label}</span>
+                    <span className="mt-1 block text-xs text-gray-400">{e.scales[s.id].hint}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">Additional features</h3>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-gray-300">{e.features}</h3>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {EST_FEATURES.map((f) => {
                   const on = features.includes(f.id);
@@ -357,8 +209,8 @@ function Estimator() {
                           {on && <Check className="h-3.5 w-3.5 text-brand-bg" strokeWidth={3} />}
                         </span>
                         <span>
-                          <span className="block font-semibold text-ink">{f.label}</span>
-                          <span className="mt-1 block text-xs text-gray-400">{f.hint}</span>
+                          <span className="block font-semibold text-ink">{e.featureItems[f.id].label}</span>
+                          <span className="mt-1 block text-xs text-gray-400">{e.featureItems[f.id].hint}</span>
                         </span>
                       </span>
                     </button>
@@ -371,26 +223,26 @@ function Estimator() {
           {/* Result */}
           <aside className="lg:col-span-2 min-w-0">
             <div className="rounded-2xl border border-brand-cyan/60 bg-gradient-to-br from-brand-card to-brand-bg p-5 sm:p-6 md:p-8 shadow-glow lg:sticky lg:top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">Estimated range</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">{e.range}</p>
 
-              <p className="mt-5 text-xs text-gray-400">Egypt market range</p>
+              <p className="mt-5 text-xs text-gray-400">{e.egypt}</p>
               <p className="mt-1 text-[1.6rem] min-[380px]:text-3xl md:text-4xl font-bold text-neon-white leading-tight">
-                {fmt(result.egp[0])} – {fmt(result.egp[1])}
-                <span className="ml-1.5 text-base font-semibold text-gray-300">EGP</span>
+                <bdi>{fmt(result.egp[0])} – {fmt(result.egp[1])}</bdi>
+                <span className="ms-1.5 text-base font-semibold text-gray-300">{e.egp}</span>
               </p>
               <p className="mt-2 text-lg min-[380px]:text-xl md:text-2xl font-semibold text-brand-cyan">
-                ${fmt(result.usd[0])} – ${fmt(result.usd[1])} <span className="text-sm text-gray-300">USD</span>
+                <bdi>${fmt(result.usd[0])} – ${fmt(result.usd[1])}</bdi> <span className="text-sm text-gray-300">{e.usd}</span>
               </p>
 
               <div className="my-6 h-px bg-brand-line/60" />
 
-              <p className="text-xs text-gray-400">Estimated timeline</p>
+              <p className="text-xs text-gray-400">{e.timeline}</p>
               <p className="mt-1 text-2xl font-bold text-ink">
-                {result.weeks[0]}–{result.weeks[1]} weeks
+                {fillTemplate(e.weeks, { from: result.weeks[0], to: result.weeks[1] })}
               </p>
 
               <ul className="mt-6 space-y-2.5">
-                {EST_NOTES.map((n) => (
+                {e.notes.map((n) => (
                   <li key={n} className="flex items-start gap-2.5 text-sm text-gray-200">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" />
                     <span>{n}</span>
@@ -399,12 +251,12 @@ function Estimator() {
               </ul>
 
               <p className="mt-6 text-xs leading-relaxed text-gray-400">
-                Indicative 2026 benchmarks, not a binding quote. Scope, integrations, and content still change the final proposal.
+                {e.disclaimer}
               </p>
 
-              <Link href="/contact" className={`${primaryBtn} mt-6 !w-full`}>
-                Request a detailed quote from these requirements
-                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
+              <Link href={href('/contact')} className={`${primaryBtn} mt-6 !w-full`}>
+                {e.cta}
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
               </Link>
             </div>
           </aside>
@@ -419,11 +271,12 @@ function Estimator() {
 ════════════════════════════════════════════════════════════════════════ */
 
 function Faq() {
+  const { dictionary } = useI18n();
   const [open, setOpen] = useState(0);
 
   return (
     <div className="space-y-4">
-      {FAQ.map((item, i) => {
+      {dictionary.pricingPage.faq.items.map((item, i) => {
         const isOpen = open === i;
         return (
           <div key={item.q} className="overflow-hidden rounded-xl border border-brand-line/60 bg-brand-card shadow-glow">
@@ -431,7 +284,7 @@ function Faq() {
               type="button"
               onClick={() => setOpen(isOpen ? -1 : i)}
               aria-expanded={isOpen}
-              className="flex w-full min-h-[56px] items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 md:p-6 text-left"
+              className="flex w-full min-h-[56px] items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 md:p-6 text-start"
             >
               <span className="text-sm sm:text-base md:text-lg font-semibold text-ink">{item.q}</span>
               <ChevronDown className={`h-5 w-5 shrink-0 text-brand-cyan transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
@@ -453,6 +306,8 @@ function Faq() {
 ════════════════════════════════════════════════════════════════════════ */
 
 export default function PricingPageClient() {
+  const { dictionary, href } = useI18n();
+  const p = dictionary.pricingPage;
   return (
     <div className="min-h-screen w-full overflow-x-hidden [overflow-wrap:anywhere]">
       {/* Hero */}
@@ -460,18 +315,18 @@ export default function PricingPageClient() {
         <CircuitBolts />
         <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 sm:pb-10">
           <p className="mb-4 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-cyan">
-            Clear pricing and scope
+            {p.hero.eyebrow}
           </p>
           <h1 className="text-[1.65rem] min-[380px]:text-3xl sm:text-4xl md:text-5xl xl:text-6xl mb-4 sm:mb-6 leading-tight">
-            Transparent Pricing <span className="text-neon">Before Work Begins</span>
+            {p.hero.titleBefore} <span className="text-neon">{p.hero.titleHighlight}</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed px-2">
-            Every project has its own scope. We review the need, then document the deliverables, milestones, and proposed price before delivery begins.
+            {p.hero.subtitle}
           </p>
           <div className="flex justify-center px-4">
-            <Link href="/contact" className={primaryBtn}>
-              Request a Project Quote
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+            <Link href={href('/contact')} className={primaryBtn}>
+              {p.hero.cta}
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
             </Link>
           </div>
         </div>
@@ -482,14 +337,14 @@ export default function PricingPageClient() {
       <section id="projects" className="py-10 sm:py-16 md:py-20 bg-brand-bg">
         <Container>
           <SectionHead
-            eyebrow="Projects"
-            title="Project"
-            accent="Pricing"
-            text="Every project has its own scope. These are starting prices for typical projects; contact us to review your needs and receive a written proposal."
+            eyebrow={p.projects.eyebrow}
+            title={p.projects.title}
+            accent={p.projects.accent}
+            text={p.projects.text}
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 pt-3">
-            {PROJECTS.map((p) => (
-              <PlanCard key={p.name} name={p.name} caption="From" price={p.price} features={p.features} badge={p.badge} cta="Get a Quote" />
+            {p.projects.items.map((item, i) => (
+              <PlanCard key={i} name={item.name} caption={p.plan.from} price={PROJECT_PRICES[i]} features={item.features} badge={item.badge} cta={p.projects.cta} />
             ))}
           </div>
         </Container>
@@ -499,17 +354,17 @@ export default function PricingPageClient() {
       <section id="scope" className="py-10 sm:py-16 md:py-20 bg-brand-alt">
         <Container>
           <SectionHead
-            eyebrow="Delivery Transparency"
-            title="What's Included vs. Excluded"
-            accent="in Our Projects?"
-            text="We believe in complete contractual clarity from day one to protect your investment and avoid scope surprises."
+            eyebrow={p.scope.eyebrow}
+            title={p.scope.title}
+            accent={p.scope.accent}
+            text={p.scope.text}
           />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <div className="min-w-0 rounded-2xl border border-brand-cyan/40 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">Included in Every Project</h3>
-              <p className="mt-1 mb-6 text-sm text-gray-400">Standard, guaranteed deliverables baked into every proposal</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">{p.scope.includedTitle}</h3>
+              <p className="mt-1 mb-6 text-sm text-gray-400">{p.scope.includedSub}</p>
               <ul className="space-y-3.5">
-                {INCLUDED.map((t) => (
+                {p.scope.included.map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm md:text-base text-gray-200">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-cyan/20">
                       <Check className="h-3.5 w-3.5 text-brand-cyan" strokeWidth={3} />
@@ -521,10 +376,10 @@ export default function PricingPageClient() {
             </div>
 
             <div className="min-w-0 rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">Optional Add-Ons &amp; Exclusions</h3>
-              <p className="mt-1 mb-6 text-sm text-gray-400">Third-party platform fees or items billed as dedicated add-ons</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-ink">{p.scope.excludedTitle}</h3>
+              <p className="mt-1 mb-6 text-sm text-gray-400">{p.scope.excludedSub}</p>
               <ul className="space-y-3.5">
-                {EXCLUDED.map((t) => (
+                {p.scope.excluded.map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm md:text-base text-gray-200">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-line/40">
                       <X className="h-3.5 w-3.5 text-gray-300" strokeWidth={3} />
@@ -542,20 +397,20 @@ export default function PricingPageClient() {
       <section id="payments" className="py-10 sm:py-16 md:py-20 bg-brand-bg">
         <Container>
           <SectionHead
-            eyebrow="Payment Structure"
-            title="Milestone-Linked,"
-            accent="Transparent Payment Terms"
-            text="You never pay 100% upfront. Payments are linked to verifiable deliverables that you review and approve."
+            eyebrow={p.payments.eyebrow}
+            title={p.payments.title}
+            accent={p.payments.accent}
+            text={p.payments.text}
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {PAYMENT_PHASES.map((p) => (
-              <div key={p.phase} className="group rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow transition-all duration-300 md:hover:-translate-y-2 hover:border-brand-cyan">
+            {p.payments.phases.map((phase, i) => (
+              <div key={i} className="group rounded-2xl border border-brand-line/60 bg-gradient-to-br from-brand-card to-brand-alt p-5 sm:p-6 md:p-8 shadow-glow transition-all duration-300 md:hover:-translate-y-2 hover:border-brand-cyan">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">
-                  {p.phase} · {p.percent}
+                  {phase.phase} · <bdi>{PAYMENT_PERCENTS[i]}</bdi>
                 </p>
-                <p className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-neon-white">{p.percent}</p>
-                <h3 className="mt-4 text-lg md:text-xl font-bold text-ink group-hover:text-brand-cyan transition-colors">{p.title}</h3>
-                <p className="mt-2 text-sm md:text-base leading-relaxed text-gray-300">{p.text}</p>
+                <p className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-neon-white"><bdi>{PAYMENT_PERCENTS[i]}</bdi></p>
+                <h3 className="mt-4 text-lg md:text-xl font-bold text-ink group-hover:text-brand-cyan transition-colors">{phase.title}</h3>
+                <p className="mt-2 text-sm md:text-base leading-relaxed text-gray-300">{phase.text}</p>
               </div>
             ))}
           </div>
@@ -566,18 +421,18 @@ export default function PricingPageClient() {
       <section id="annual" className="py-10 sm:py-16 md:py-20 bg-gradient-to-r from-brand-alt to-brand-card">
         <Container>
           <SectionHead
-            eyebrow="Annual Recurring Costs"
-            title="Expected Annual Running"
-            accent="& Maintenance Budget"
-            text="Building your custom website or app is a one-time investment; running it reliably requires predictable annual infrastructure expenses."
+            eyebrow={p.annual.eyebrow}
+            title={p.annual.title}
+            accent={p.annual.accent}
+            text={p.annual.text}
           />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {ANNUAL_COSTS.map((c) => (
+            {p.annual.items.map((c) => (
               <div key={c.title} className="flex flex-col rounded-2xl border border-brand-line/60 bg-brand-card p-5 sm:p-6 shadow-glow transition-all duration-300 md:hover:-translate-y-2 hover:border-brand-cyan">
                 <h3 className="text-base md:text-lg font-bold text-ink">{c.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-300">{c.text}</p>
                 <div className="mt-5 border-t border-brand-line/60 pt-4">
-                  <p className="text-xs text-gray-400">Estimated Cost:</p>
+                  <p className="text-xs text-gray-400">{p.annual.estimated}</p>
                   <p className="mt-1 text-lg font-bold text-brand-cyan">{c.cost}</p>
                 </div>
               </div>
@@ -593,20 +448,20 @@ export default function PricingPageClient() {
       <section id="hosting" className="py-10 sm:py-16 md:py-20 bg-brand-bg">
         <Container>
           <SectionHead
-            eyebrow="Managed Hosting"
-            title="Hosting"
-            accent="Plans"
-            text="Managed hosting options with plan-specific features such as backups, SSL certificates, and technical support."
+            eyebrow={p.hosting.eyebrow}
+            title={p.hosting.title}
+            accent={p.hosting.accent}
+            text={p.hosting.text}
           />
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 pt-3">
-            {HOSTING.map((h) => (
-              <PlanCard key={h.name} name={h.name} price={h.price} suffix="/month" features={h.features} badge={h.badge} cta="Get Started" />
+            {p.hosting.items.map((h, i) => (
+              <PlanCard key={i} name={h.name} price={HOSTING_PRICES[i]} suffix={p.plan.perMonth} features={h.features} badge={h.badge} cta={p.hosting.cta} />
             ))}
           </div>
           <p className="mt-8 sm:mt-10 text-center text-sm sm:text-base text-gray-300 px-2">
-            Need custom cloud architecture?{' '}
-            <Link href="/services" className="font-semibold text-brand-cyan hover:underline">
-              See our Hosting &amp; DevOps service →
+            {p.hosting.customCloud}{' '}
+            <Link href={href('/services')} className="font-semibold text-brand-cyan hover:underline">
+              {p.hosting.customCloudLink}
             </Link>
           </p>
         </Container>
@@ -615,7 +470,7 @@ export default function PricingPageClient() {
       {/* FAQ */}
       <section id="faq" className="py-10 sm:py-16 md:py-20 bg-brand-alt">
         <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
-          <SectionHead eyebrow="FAQ" title="Pricing" accent="Questions" />
+          <SectionHead eyebrow={p.faq.eyebrow} title={p.faq.title} accent={p.faq.accent} />
           <Faq />
         </div>
       </section>
@@ -624,20 +479,20 @@ export default function PricingPageClient() {
       <section className="relative overflow-hidden py-10 sm:py-16 md:py-20 bg-gradient-to-r from-[#031a5e] via-brand-blue/60 to-[#031a5e] border-y border-brand-blue/40">
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
-          <p className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-cyan">Get your quote</p>
+          <p className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-brand-cyan">{p.cta.eyebrow}</p>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-ink leading-tight">
-            Ready to Start Your Project?
+            {p.cta.title}
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed px-2">
-            Share what you need. Once scope is clear, we will send a proposal that outlines the milestones, proposed price, and next step.
+            {p.cta.text}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-            <Link href="/contact" className={primaryBtn}>
-              Request a Project Quote
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
+            <Link href={href('/contact')} className={primaryBtn}>
+              {p.cta.quote}
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
             </Link>
-            <Link href="/services#process" className={ghostBtn}>
-              See Our Process
+            <Link href={href('/services#process')} className={ghostBtn}>
+              {p.cta.process}
             </Link>
           </div>
         </div>

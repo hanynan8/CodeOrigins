@@ -32,6 +32,9 @@ import {
   Phone,
 } from 'lucide-react';
 import WhatsAppButton from './WhatsForDetails';
+import { useI18n } from '../LocaleProvider';
+import { fillTemplate } from '@/lib/whatsapp';
+import { localized } from '@/lib/i18n';
 
 export const iconMap = {
   ShoppingCart,
@@ -64,6 +67,8 @@ export const iconMap = {
 // ImageSliderModal
 // ─────────────────────────────────────────────
 const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
+  const { dictionary } = useI18n();
+  const sg = dictionary.servicesGrid;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -116,6 +121,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       {/* Left arrow */}
       <button
         onClick={goLeft}
+        aria-label={sg.prev}
         className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
       >
         <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
@@ -133,6 +139,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
           </h3>
           <button
             onClick={onClose}
+            aria-label={sg.close}
             className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-ink flex-shrink-0"
           >
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -148,13 +155,13 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
             <div className="absolute inset-0 flex items-center justify-center bg-brand-bg z-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin" />
-                <span className="text-gray-400 text-xs sm:text-sm">Loading...</span>
+                <span className="text-gray-400 text-xs sm:text-sm">{sg.loading}</span>
               </div>
             </div>
           )}
           <img
             src={images[currentIndex]}
-            alt={`Image ${currentIndex + 1}`}
+            alt={fillTemplate(sg.imageAlt, { n: currentIndex + 1 })}
             className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoad={() => setIsLoading(false)}
           />
@@ -180,6 +187,7 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       {/* Right arrow */}
       <button
         onClick={goRight}
+        aria-label={sg.next}
         className="flex-shrink-0 bg-brand-card hover:bg-brand-blue/20 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors z-10 mx-0.5 sm:mx-3"
       >
         <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
@@ -192,6 +200,10 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
 // ServiceCard
 // ─────────────────────────────────────────────
 export const ServiceCard = ({ service }) => {
+  const { lang, dictionary } = useI18n();
+  const sg = dictionary.servicesGrid;
+  const title = localized(service.title, lang);
+  const shortDescription = localized(service.shortDescription, lang);
   const [modalOpen, setModalOpen] = useState(false);
   const IconComponent = iconMap[service.icon];
 
@@ -216,7 +228,7 @@ export const ServiceCard = ({ service }) => {
           >
             <img
               src={images[0]}
-              alt={service.title}
+              alt={title}
               className="w-full h-full object-cover"
               style={{
                 transform: 'scaleX(1.01)',
@@ -227,7 +239,7 @@ export const ServiceCard = ({ service }) => {
             {hasMultiple && (
               <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                 <span>📷</span>
-                <span>{images.length} photos</span>
+                <span>{fillTemplate(sg.photos, { count: images.length })}</span>
               </div>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
@@ -248,23 +260,23 @@ export const ServiceCard = ({ service }) => {
           <div className="flex items-start gap-3 mb-2">
             <span className={`mt-1.5 w-3 h-3 rounded-full flex-shrink-0 bg-gradient-to-br ${service.color}`} />
             <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
-              {service.title}
+              {title}
             </h3>
           </div>
 
           {/* Short description */}
           <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 sm:min-h-[4.875em]">
-            {service.shortDescription}
+            {shortDescription}
           </p>
 
           {/* Key features */}
           <div className="mb-3 sm:mb-4">
-            <h4 className="font-semibold text-xs sm:text-sm text-ink mb-2">Key Features:</h4>
+            <h4 className="font-semibold text-xs sm:text-sm text-ink mb-2">{sg.keyFeatures}</h4>
             <ul className="space-y-1.5">
               {service.features.slice(0, 4).map((feature, index) => (
                 <li key={index} className="flex items-start text-xs sm:text-sm text-gray-300">
                   <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                  <span className="leading-relaxed">{feature}</span>
+                  <span className="leading-relaxed">{localized(feature, lang)}</span>
                 </li>
               ))}
             </ul>
@@ -278,7 +290,7 @@ export const ServiceCard = ({ service }) => {
                 className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm"
               >
                 <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                View Images ({images.length})
+                {fillTemplate(sg.viewImages, { count: images.length })}
               </button>
             )}
 
@@ -286,7 +298,7 @@ export const ServiceCard = ({ service }) => {
               service={service}
               className={`w-full py-2.5 sm:py-3 px-4 rounded-xl bg-gradient-to-r ${service.color} text-white text-sm sm:text-base font-semibold hover:opacity-90 transition-all transform hover:scale-105 text-center block`}
             >
-              Request Service
+              {sg.requestService}
             </WhatsAppButton>
           </div>
 
@@ -296,7 +308,7 @@ export const ServiceCard = ({ service }) => {
       {hasMultiple && (
         <ImageSliderModal
           images={images}
-          title={service.title}
+          title={title}
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
         />
@@ -310,12 +322,16 @@ export const ServiceCard = ({ service }) => {
 // ─────────────────────────────────────────────
 const ServicesGrid = ({
   services,
-  title = 'Web Development Services',
-  subtitle = 'We provide comprehensive web solutions for all types of websites and digital platforms, using the latest technologies and global quality standards',
+  title,
+  subtitle,
   showViewAll = false,
   sectionId = 'services',
   className = '',
 }) => {
+  const { dictionary, href } = useI18n();
+  const sg = dictionary.servicesGrid;
+  title = title ?? sg.title;
+  subtitle = subtitle ?? sg.subtitle;
   return (
     <section
       className={`py-10 sm:py-16 md:py-20 bg-brand-bg ${className}`}
@@ -344,10 +360,10 @@ const ServicesGrid = ({
         {showViewAll && (
           <div className="text-center mt-8 sm:mt-12">
             <Link
-              href="/services"
+              href={href('/services')}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"
             >
-              Explore All Our Services
+              {sg.exploreAll}
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </Link>
           </div>

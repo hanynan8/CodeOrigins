@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight, Maximize2, X } from 'lucide-react';
+import { useI18n } from '@/app/(components)/LocaleProvider';
 
 /**
  * Browser-window mock-up that shows the project's full-page screenshot.
@@ -9,6 +10,8 @@ import { ArrowUpRight, Maximize2, X } from 'lucide-react';
  * If the full-page shot is missing it falls back to the project's original image.
  */
 export default function ProjectShot({ src, fallback, alt, host, visitUrl, staticImage = false }) {
+  const { dictionary } = useI18n();
+  const d = dictionary.projectDetail;
   const [useFallback, setUseFallback] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [zoomed, setZoomed] = useState(false); // enlarged view open?
@@ -59,9 +62,9 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
             href={visitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all"
+            className="group absolute start-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan px-4 py-2 text-xs sm:text-sm font-semibold text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all"
           >
-            Visit Website
+            {d.visit}
             <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         )}
@@ -69,9 +72,9 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
         <button
           type="button"
           onClick={() => setZoomed(true)}
-          aria-label="Enlarge preview"
-          title="Enlarge"
-          className="absolute right-5 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan hover:scale-110 transition-all"
+          aria-label={d.enlarge}
+          title={d.enlargeTitle}
+          className="absolute end-5 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan hover:scale-110 transition-all"
         >
           <Maximize2 className="w-4 h-4" />
         </button>
@@ -90,7 +93,7 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
       </div>
       {!staticImage && (
         <p className="px-3 sm:px-4 py-2 text-center text-[11px] sm:text-xs text-gray-400 bg-brand-alt border-t border-brand-line/70">
-          Scroll inside the window to see the whole page
+          {d.scrollHint}
         </p>
       )}
     </div>
@@ -106,8 +109,8 @@ export default function ProjectShot({ src, fallback, alt, host, visitUrl, static
         <button
           type="button"
           onClick={() => setZoomed(false)}
-          aria-label="Close"
-          className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan p-2 text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all"
+          aria-label={d.close}
+          className="absolute top-3 end-3 sm:top-5 sm:end-5 z-10 rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan p-2 text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan transition-all"
         >
           <X className="w-5 h-5" />
         </button>

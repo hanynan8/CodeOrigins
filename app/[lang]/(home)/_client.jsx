@@ -16,7 +16,8 @@ import { pricingMessage, whatsappLink } from '@/lib/whatsapp';
 
 const CodeLegacyClient = ({ services, testimonials, webServices }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { dictionary } = useI18n();
+  const { dictionary, href } = useI18n();
+  const h = dictionary.home;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -50,17 +51,17 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             <span className="text-ink">Code</span><span className="text-neon">Legacy</span>
           </span>
           <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl block mb-4 sm:mb-6">
-            We Build the{' '}
+            {h.hero.line1}{' '}
             <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent">
-              Future
+              {h.hero.highlight}
             </span>
             <br />
-            With Code
+            {h.hero.line2}
           </span>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both] px-2 mt-[75px]">
-            <Link href="/lastprojects/#portfolio" className="w-full sm:w-auto">
+            <Link href={href('/lastprojects/#portfolio')} className="w-full sm:w-auto">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto">
-                Discover our work
+                {h.hero.discover}
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
@@ -68,7 +69,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
               onClick={handleWhatsAppClick}
               className="border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm w-full sm:w-auto"
             >
-              Let&apos;s Chat
+              {h.hero.chat}
             </button>
           </div>
         </div>
@@ -79,13 +80,13 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       {/* ═══════════════════════════════════════
           Portfolio Section
       ═══════════════════════════════════════ */}
-      <PortfolioSection title="Some of Our Previous Work" showCtaButton={false} showFilter />
+      <PortfolioSection title={h.portfolioTitle} showCtaButton={false} showFilter />
       <div className="text-center pb-12 sm:pb-16 lg:pb-20 bg-brand-bg -mt-8 sm:-mt-12">
         <Link
-          href="/lastprojects/#portfolio"
+          href={href('/lastprojects/#portfolio')}
           className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"
         >
-          Explore All Our Work
+          {h.exploreWork}
           <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
         </Link>
       </div>
@@ -96,8 +97,8 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
       ═══════════════════════════════════════ */}
       <ServicesGrid
         services={services}
-        title="Web Development Services"
-        subtitle="We provide comprehensive web solutions for all types of websites and digital platforms, using the latest technologies and global quality standards"
+        title={h.services.title}
+        subtitle={h.services.subtitle}
         showViewAll={true}
         sectionId="services-home"
       />
@@ -109,38 +110,30 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
-              Discover{' '}
+              {h.about.titleBefore}{' '}
               <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent">
                 CodeLegacy
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-2">
-              Our journey in building the digital future, where we combine
-              creativity and technology to deliver websites that make a
-              difference.
+              {h.about.subtitle}
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="bg-brand-card rounded-2xl p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-shadow duration-300">
-                <h3 className="text-xl sm:text-2xl font-semibold text-ink mb-3 sm:mb-4">Who We Are?</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-ink mb-3 sm:mb-4">{h.about.whoTitle}</h3>
                 <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-                  CodeLegacy is a leading web development company, founded with
-                  a vision to turn ideas into innovative websites. We're a team
-                  of passionate experts who combine technical creativity with
-                  hands-on experience to deliver websites that exceed
-                  expectations.
+                  {h.about.whoP1}
                 </p>
                 <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
-                  Our mission is to empower businesses to achieve their digital
-                  ambitions through custom websites that support growth and
-                  strengthen competitiveness in today's fast-paced web world.
+                  {h.about.whoP2}
                 </p>
                 <Link
-                  href="/about"
+                  href={href('/about')}
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"
                 >
-                  Learn Our Story
+                  {h.about.learnStory}
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </Link>
               </div>
@@ -149,19 +142,9 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
             </div>
             <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
               <div className="bg-brand-card rounded-2xl p-4 sm:p-6 shadow-glow border border-brand-blue/40">
-                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-3 sm:mb-4">What Sets Us Apart</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-3 sm:mb-4">{h.about.setApartTitle}</h3>
                 <div className="space-y-3 sm:space-y-4">
-                  {[
-                    'A dedicated control panel for the site owner to manage all site data seamlessly',
-                    'A team certified by top global institutions',
-                    'Commitment to quality and on-time delivery',
-                    "A smooth, fast website that's easy to edit",
-                    'Long-term partnerships with our clients, backed by continuous technical support',
-                    'SEO optimization to help the site rank at the top of Google search results',
-                    'Using the latest web technologies to ensure performance and efficiency',
-                    'Technical support for up to 12 months after website delivery',
-                    'Over 5 years of experience developing innovative websites',
-                  ].map((item, index) => (
+                  {h.about.setApart.map((item, index) => (
                     <div key={index} className="flex items-start space-x-2 sm:space-x-3">
                       <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-brand-cyan flex-shrink-0 mt-0.5 sm:mt-1" />
                       <span className="text-sm sm:text-base text-gray-300">{item}</span>
@@ -170,12 +153,7 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                {[
-                  { number: '50+', label: 'Completed Web Projects' },
-                  { number: '50+', label: 'Satisfied Clients' },
-                  { number: '24/7', label: 'Technical Support' },
-                  { number: '100%', label: 'Client Satisfaction' },
-                ].map((stat, index) => (
+                {h.about.stats.map((stat, index) => (
                   <div key={index} className="text-center p-3 sm:p-4 bg-gradient-to-r from-brand-blue/10 to-brand-cyan/10 rounded-xl hover:scale-105 transition-transform duration-300">
                     <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent mb-1 sm:mb-2">
                       {stat.number}
@@ -196,11 +174,10 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
-              Benefits of <span className="text-brand-cyan">Working With Us</span>
+              {h.benefits.before} <span className="text-brand-cyan">{h.benefits.highlight}</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-              We provide comprehensive web development services to ensure you
-              get the perfect website that meets your needs.
+              {h.benefits.subtitle}
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -210,9 +187,9 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                   {service.icon}
                 </div>
                 <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors">
-                  {service.title}
+                  {h.benefits.items[index].title}
                 </h3>
-                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{service.description}</p>
+                <p className="text-sm sm:text-base text-gray-300 leading-relaxed">{h.benefits.items[index].description}</p>
               </div>
             ))}
           </div>
@@ -226,22 +203,23 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-ink">
-              What Our <span className="text-brand-cyan">Clients Say</span>
+              {h.testimonials.before} <span className="text-brand-cyan">{h.testimonials.highlight}</span>
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-              Our clients' opinions are our true testament to the quality of
-              our work and our commitment to delivering the best
+              {h.testimonials.subtitle}
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((base, index) => {
+              const testimonial = { ...base, ...h.testimonials.items[index] };
+              return (
               <div key={index} className="bg-brand-card p-4 sm:p-6 rounded-2xl shadow-glow border border-brand-line/60">
                 <div className="flex items-center mb-3 sm:mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
-                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 italic">"{testimonial.content}"</p>
+                <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 italic">&ldquo;{testimonial.content}&rdquo;</p>
                 <div className="flex items-center">
                   <Image src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover" width={50} height={50} />
                   <div className="ml-3 sm:ml-4">
@@ -250,7 +228,8 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

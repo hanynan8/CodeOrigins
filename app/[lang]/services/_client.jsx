@@ -14,8 +14,11 @@ import WhatsAppButton from '@/app/(components)/(realComponents)/WhatsForDetails'
 import ServicesGrid, { iconMap } from '@/app/(components)/(realComponents)/ServicesGrid';
 import CircuitBolts from '@/app/(components)/CircuitBolts';
 import HeroWave from '@/app/(components)/HeroWave';
+import { useI18n } from '@/app/(components)/LocaleProvider';
 
-const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, technologiesData }) => {
+const ServicesPageClient = ({ services, processSteps, whyChooseUs, technologiesData }) => {
+  const { dictionary, href } = useI18n();
+  const p = dictionary.servicesPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -41,22 +44,22 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center text-ink">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-4 sm:mb-6 leading-tight">
-            Web <span className="text-neon">Development Services</span>
+            {p.hero.titleBefore} <span className="text-neon">{p.hero.titleHighlight}</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-200 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2">
-            We develop all types of websites with the latest technologies and the highest quality standards - from ecommerce stores to educational platforms and custom solutions
+            {p.hero.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <Link href="#services">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 text-white w-full sm:w-auto justify-center">
-                Explore Our Services
+                {p.hero.explore}
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
-            <Link href="/lastprojects/#portfolio">
+            <Link href={href('/lastprojects/#portfolio')}>
               <button className="border-2 border-white/30 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm w-full sm:w-auto">
-                View Our Previous Work
+                {p.hero.viewWork}
               </button>
             </Link>
           </div>
@@ -70,8 +73,8 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
       ═══════════════════════════════════════ */}
       <ServicesGrid
         services={services}
-        title="Web Development Services"
-        subtitle="We provide comprehensive web solutions for all types of websites and digital platforms using the latest technologies and global quality standards"
+        title={p.grid.title}
+        subtitle={p.grid.subtitle}
         sectionId="services"
         showViewAll={false}
       />
@@ -83,15 +86,16 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
-              Why Choose <span className="text-brand-cyan">Our Services</span>?
+              {p.why.before} <span className="text-brand-cyan">{p.why.highlight}</span>{p.why.after}
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-              We stand out with high quality standards and professional services that guarantee you an outstanding and distinguished website
+              {p.why.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {whyChooseUs.map((feature, index) => {
+            {whyChooseUs.map((base, index) => {
+              const feature = { ...base, ...p.why.items[index] };
               const IconComponent = iconMap[feature.icon];
               return (
                 <div
@@ -121,15 +125,16 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
-              How Do We <span className="text-brand-cyan">Develop</span> Your Site?
+              {p.process.before} <span className="text-brand-cyan">{p.process.highlight}</span> {p.process.after}
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-              A carefully structured process that ensures your website meets your goals and exceeds your expectations
+              {p.process.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {processSteps.map((step, index) => {
+            {processSteps.map((base, index) => {
+              const step = { ...base, ...p.process.steps[index] };
               const IconComponent = iconMap[step.icon];
               return (
                 <div key={index} className="text-center group">
@@ -163,10 +168,10 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
-              The <span className="text-brand-cyan">Advanced Technologies</span> We Use
+              {p.techSection.before} <span className="text-brand-cyan">{p.techSection.highlight}</span> {p.techSection.after}
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
-              We rely on the latest technologies and programming tools to ensure the development of modern, powerful websites
+              {p.techSection.subtitle}
             </p>
           </div>
 
@@ -195,15 +200,15 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         <div className="w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
-              Frequently Asked <span className="text-brand-cyan">Questions</span>
+              {p.faq.before} <span className="text-brand-cyan">{p.faq.highlight}</span>
             </h2>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 px-2">
-              Answers to the most common questions about our web development services
+              {p.faq.subtitle}
             </p>
           </div>
 
           <div className="space-y-4 sm:space-y-6">
-            {faqData.map((faq, index) => (
+            {p.faq.items.map((faq, index) => (
               <div key={index} className="bg-brand-card rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/60">
                 <h3 className="text-sm sm:text-base md:text-lg font-semibold text-ink mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3 leading-tight">
                   <div className="w-5 h-5 sm:w-6 sm:h-6 bg-brand-blue rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -211,7 +216,7 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
                   </div>
                   <span>{faq.question}</span>
                 </h3>
-                <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed pl-6 sm:pl-7 md:pl-9">
+                <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed ps-6 sm:ps-7 md:ps-9">
                   {faq.answer}
                 </p>
               </div>
@@ -227,32 +232,28 @@ const ServicesPageClient = ({ services, processSteps, whyChooseUs, faqData, tech
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-ink leading-tight">
-            Ready to Launch Your New Website?
+            {p.cta.title}
           </h2>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2">
-            Contact us today and get a custom quote with a free comprehensive consultation to discuss your project and identify the best technical solutions
+            {p.cta.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-10 md:mb-12 px-4">
-            <Link href="/lastprojects/#portfolio">
+            <Link href={href('/lastprojects/#portfolio')}>
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold transition-all transform hover:scale-105 flex items-center gap-2 w-full sm:w-auto justify-center">
-                View All Our Previous Work
+                {p.cta.viewWork}
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
               </button>
             </Link>
 
             <WhatsAppButton className="border-2 border-white/30 px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-semibold hover:bg-white/10 transition-all backdrop-blur-sm text-ink flex items-center gap-2 w-full sm:w-auto justify-center">
               <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-              Contact Us Now
+              {p.cta.contact}
             </WhatsAppButton>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 text-center">
-            {[
-              { title: 'Free Consultation', desc: 'We analyze your requirements and suggest the best solutions' },
-              { title: 'Custom Quote', desc: 'Competitive prices and flexible packages' },
-              { title: 'Quality Guarantee', desc: 'Full commitment to quality and deadlines' },
-            ].map((item, i) => (
+            {p.cta.perks.map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                 <div className="text-lg sm:text-xl md:text-2xl font-bold text-brand-cyan mb-2">{item.title}</div>
                 <div className="text-xs sm:text-sm md:text-base text-blue-100 leading-relaxed">{item.desc}</div>

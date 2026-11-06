@@ -13,7 +13,17 @@ export const TYPE_LABELS = {
   '3d': '3D Website',
   portfolio: 'Portfolio',
 };
-export const typeLabel = (project) => TYPE_LABELS[project.filter] || project.category;
+// `dictionary` (optional) gives the translated label; without it the English label is used.
+export const typeLabel = (project, dictionary) =>
+  dictionary?.projectTypes?.[project.filter] || TYPE_LABELS[project.filter] || project.category;
+
+// Description in the visitor's language. English text lives in the data files; other languages
+// come from dictionary.projectDescriptions[slug] (falls back to the English text).
+export const projectDescription = (project, dictionary) =>
+  dictionary?.projectDescriptions?.[project.slug] || project.description;
+
+// Filter chip label (translated when a dictionary is given).
+export const filterLabel = (filter, dictionary) => dictionary?.filters?.[filter.id] || filter.label;
 
 /* Full-page screenshots made by scripts/fullpage-shots.mjs -> public/full/<host>.webp
    A project with a `link` automatically uses its full-page shot, so the card can scroll

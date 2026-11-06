@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ChevronRight, ChevronLeft, X, Eye, ExternalLink, ArrowUpRight } from 'lucide-react';
 import {
-  FILTERS, typeLabel, withFullShot,
+  FILTERS, typeLabel, filterLabel, projectDescription, withFullShot,
   sliderProjects, regularProjects, tourismProjects, educationProjects, storeProjects, restaurantProjects,
 } from './projectsData';
 import CircuitBolts from '../CircuitBolts';
 import { ScrollImage, FRAME_HEIGHT } from './ScrollImage';
 import { useI18n } from '../LocaleProvider';
-import { ctaMessage, whatsappLink } from '@/lib/whatsapp';
+import { ctaMessage, fillTemplate, whatsappLink } from '@/lib/whatsapp';
 
 const INITIAL_COUNT = 9; // projects shown first
 const LOAD_STEP = 6;     // projects added by each "Show More" click
@@ -20,6 +20,8 @@ const LOAD_STEP = 6;     // projects added by each "Show More" click
    Image Slider Modal Component
 ─────────────────────────────────────────────── */
 const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
+  const { dictionary } = useI18n();
+  const pc = dictionary.projectCard;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -76,11 +78,12 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
       >
         {/* Header */}
         <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 bg-brand-alt border-b border-brand-line/70">
-          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-left">
+          <h3 className="text-xs sm:text-base font-semibold text-ink truncate max-w-[75%] text-start">
             {title}
           </h3>
           <button
             onClick={onClose}
+            aria-label={pc.close}
             className="p-1 sm:p-1.5 rounded-full hover:bg-brand-card2 transition-colors text-gray-400 hover:text-ink flex-shrink-0"
           >
             <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -96,13 +99,13 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
             <div className="absolute inset-0 flex items-center justify-center bg-brand-bg z-10">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 border-4 border-gray-600 border-t-blue-500 rounded-full animate-spin" />
-                <span className="text-gray-400 text-xs sm:text-sm">Loading...</span>
+                <span className="text-gray-400 text-xs sm:text-sm">{pc.loading}</span>
               </div>
             </div>
           )}
           <img
             src={images[currentIndex]}
-            alt={`Image ${currentIndex + 1}`}
+            alt={fillTemplate(pc.imageAlt, { n: currentIndex + 1 })}
             className={`max-w-full max-h-full object-contain transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
             onLoad={() => setIsLoading(false)}
           />
@@ -110,12 +113,14 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
           {/* Arrows over the image */}
           <button
             onClick={goLeft}
+            aria-label={pc.prev}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
           >
             <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7" />
           </button>
           <button
             onClick={goRight}
+            aria-label={pc.next}
             className="absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-brand-card/80 hover:bg-brand-card2 border border-brand-blue/50 text-ink hover:text-brand-cyan rounded-full p-1.5 sm:p-3 shadow-glow transition-colors"
           >
             <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7" />
@@ -151,7 +156,8 @@ const ImageSliderModal = ({ images, title, isOpen, onClose }) => {
 // (Inner links/buttons call stopPropagation so they keep their own action.)
 const useCardNav = (slug) => {
   const router = useRouter();
-  const href = `/lastprojects/${slug}`;
+  const { href: localHref } = useI18n();
+  const href = localHref(`/lastprojects/${slug}`);
   const onClick = (e) => {
     if (e.defaultPrevented) return;
     if (e.metaKey || e.ctrlKey) { window.open(href, '_blank'); return; }
@@ -164,19 +170,23 @@ const CARD_CLASS =
   'group bg-brand-card rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan flex flex-col h-full cursor-pointer';
 
 // Small arrow in the bottom-right corner of the image: opens the live website itself.
-const VisitArrow = ({ project }) => (
+const VisitArrow = ({ project }) => {
+  const { dictionary } = useI18n();
+  const pc = dictionary.projectCard;
+  return (
   <a
     href={project.link}
     target="_blank"
     rel="noopener noreferrer"
     onClick={(e) => e.stopPropagation()}
-    aria-label={`Open ${project.title} website`}
-    title="Open website"
-    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan hover:scale-110 transition-all"
+    aria-label={fillTemplate(pc.openWebsite, { title: project.title })}
+    title={pc.openWebsiteTitle}
+    className="absolute bottom-2 end-2 sm:bottom-3 sm:end-3 z-10 flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan text-white shadow-glow hover:from-brand-sky hover:to-brand-cyan hover:scale-110 transition-all"
   >
-    <ArrowUpRight className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
+    <ArrowUpRight className="w-4 h-4 sm:w-[18px] sm:h-[18px] rtl:-scale-x-100" />
   </a>
-);
+  );
+};
 
 /* ───────────────────────────────────────────────
    Image Slider Project Card Component
@@ -184,36 +194,38 @@ const VisitArrow = ({ project }) => (
 const SliderProjectCard = ({ project }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { href, onClick } = useCardNav(project.slug);
+  const { dictionary } = useI18n();
+  const pc = dictionary.projectCard;
 
   return (
     <>
       <div onClick={onClick} className={CARD_CLASS}>
         <ScrollImage
           src={project.images[0]}
-          alt={project.title || 'Project image'}
+          alt={project.title || pc.projectImage}
         >
-          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+          <div className="absolute top-2 end-2 sm:top-3 sm:end-3 bg-brand-blue text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
             <span>📷</span>
-            <span>{project.images.length} photos</span>
+            <span>{fillTemplate(pc.photos, { count: project.images.length })}</span>
           </div>
         </ScrollImage>
 
         <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
           <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
-            {typeLabel(project)}
+            {typeLabel(project, dictionary)}
           </div>
           <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
             <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
           </h3>
           <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
-            {project.description}
+            {projectDescription(project, dictionary)}
           </p>
           <button
             onClick={(e) => { e.stopPropagation(); setModalOpen(true); }}
             className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium hover:text-brand-cyan transition-colors text-xs sm:text-sm self-start"
           >
             <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            View Photos
+            {pc.viewPhotos}
           </button>
         </div>
       </div>
@@ -233,6 +245,8 @@ const SliderProjectCard = ({ project }) => {
 ─────────────────────────────────────────────── */
 const RegularProjectCard = ({ project }) => {
   const { href, onClick } = useCardNav(project.slug);
+  const { dictionary } = useI18n();
+  const pc = dictionary.projectCard;
 
   return (
     <div onClick={onClick} className={CARD_CLASS}>
@@ -245,7 +259,7 @@ const RegularProjectCard = ({ project }) => {
           <div className={`relative overflow-hidden bg-brand-bg ${FRAME_HEIGHT}`}>
             <img
               src={project.image}
-              alt={project.title || 'Project image'}
+              alt={project.title || pc.projectImage}
               className="block w-full h-full object-cover object-top"
               loading="lazy"
             />
@@ -254,7 +268,7 @@ const RegularProjectCard = ({ project }) => {
           <ScrollImage
             src={project.image}
             fallback={project.fallbackImage}
-            alt={project.title || 'Project image'}
+            alt={project.title || pc.projectImage}
           />
         )}
         {project.link && <VisitArrow project={project} />}
@@ -262,13 +276,13 @@ const RegularProjectCard = ({ project }) => {
 
       <div className="p-3 sm:p-4 lg:p-6 flex flex-col flex-1">
         <div className="text-xs sm:text-sm text-brand-cyan font-semibold mb-1.5 sm:mb-2">
-          {typeLabel(project)}
+          {typeLabel(project, dictionary)}
         </div>
         <h3 className="text-sm sm:text-base lg:text-lg font-semibold mb-2 sm:mb-3 text-ink group-hover:text-brand-cyan transition-colors leading-snug line-clamp-1">
           <Link href={href} onClick={(e) => e.stopPropagation()}>{project.title}</Link>
         </h3>
         <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3 flex-1">
-          {project.description}
+          {projectDescription(project, dictionary)}
         </p>
         <a
           href={project.link}
@@ -278,7 +292,7 @@ const RegularProjectCard = ({ project }) => {
           className="flex items-center gap-1.5 sm:gap-2 text-brand-cyan font-medium group-hover:text-brand-cyan transition-colors text-xs sm:text-sm self-start"
         >
           <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          View Website
+          {pc.viewWebsite}
         </a>
       </div>
     </div>
@@ -338,11 +352,12 @@ const orderedProjects = [...baseProjects, ...addedProjects];
    Main Portfolio Section
 ─────────────────────────────────────────────── */
 const PortfolioSection = ({
-  title = 'Web Development Projects',
+  title,
   showCtaButton = true,
   showFilter = false,
 }) => {
   const { dictionary } = useI18n();
+  const pc = dictionary.projectCard;
   const [activeFilter, setActiveFilter] = useState('all');
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
 
@@ -361,7 +376,7 @@ const PortfolioSection = ({
   const shownProjects = visibleProjects.slice(0, visibleCount);
   const hasMore = visibleCount < visibleProjects.length;
 
-  const activeLabel = FILTERS.find((f) => f.id === activeFilter)?.label;
+  const activeLabel = filterLabel(FILTERS.find((f) => f.id === activeFilter) || FILTERS[0], dictionary);
 
   return (
     <section id="portfolio" className="relative overflow-hidden py-8 sm:py-12 lg:py-20 bg-brand-bg">
@@ -369,18 +384,16 @@ const PortfolioSection = ({
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-ink px-2">
-            {title.includes('Web Development Projects') ? (
-              <>
-                Some of <span className="text-brand-cyan">Our Previous Work</span>
-              </>
-            ) : (
+            {title ? (
               title
+            ) : (
+              <>
+                {pc.titleBefore} <span className="text-brand-cyan">{pc.titleHighlight}</span>
+              </>
             )}
           </h2>
           <p className="text-xs sm:text-base lg:text-xl text-gray-300 max-w-4xl mx-auto px-4">
-            Here we present a collection of our web development work, where we
-            focused on delivering advanced, fast, and secure web solutions
-            that meet our clients' diverse needs.
+            {pc.subtitle}
           </p>
         </div>
 
@@ -389,9 +402,10 @@ const PortfolioSection = ({
           <div
             className="flex flex-nowrap sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 overflow-x-auto pb-2 -mx-3 px-3 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="tablist"
-            aria-label="Filter projects by category"
+            aria-label={pc.filterAria}
           >
-            {FILTERS.map(({ id, label }) => {
+            {FILTERS.map((filter) => {
+              const { id } = filter;
               const isActive = activeFilter === id;
               return (
                 <button
@@ -406,7 +420,7 @@ const PortfolioSection = ({
                       : 'bg-brand-bg text-gray-200 border-brand-line hover:border-brand-cyan hover:text-brand-cyan'
                   }`}
                 >
-                  {label}
+                  {filterLabel(filter, dictionary)}
                 </button>
               );
             })}
@@ -426,10 +440,10 @@ const PortfolioSection = ({
         ) : (
           <div className="text-center py-12 sm:py-16 mb-8 sm:mb-12 bg-brand-card rounded-2xl border border-dashed border-brand-line">
             <p className="text-base sm:text-lg font-semibold text-gray-200 mb-1">
-              No {activeLabel} projects yet
+              {fillTemplate(pc.emptyTitle, { category: activeLabel })}
             </p>
             <p className="text-xs sm:text-sm text-gray-400">
-              New projects in this category are coming soon.
+              {pc.emptyText}
             </p>
           </div>
         )}
@@ -441,7 +455,7 @@ const PortfolioSection = ({
               onClick={() => setVisibleCount((c) => c + LOAD_STEP)}
               className="inline-flex items-center gap-2 border border-brand-cyan text-brand-cyan hover:bg-brand-cyan/10 hover:shadow-glow px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-all text-sm sm:text-base"
             >
-              Show More
+              {pc.showMore}
             </button>
           </div>
         )}
@@ -454,7 +468,7 @@ const PortfolioSection = ({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-5 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base"
             >
-              Contact Us for Your Next Project
+              {pc.cta}
               <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           </div>

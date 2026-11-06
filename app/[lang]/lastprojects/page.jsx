@@ -24,11 +24,14 @@ import WhatsAppButton from '@/app/(components)/(realComponents)/WhatsForDetails'
 import PortfolioSection from '@/app/(components)/(realComponents)/Projectcard';
 import CircuitBolts from '@/app/(components)/CircuitBolts';
 import HeroWave from '@/app/(components)/HeroWave';
+import { useI18n } from '@/app/(components)/LocaleProvider';
 
 /* ───────────────────────────────────────────────
    Main Portfolio Page
 ─────────────────────────────────────────────── */
 const CodeLegacyPortfolio = () => {
+  const { dictionary } = useI18n();
+  const o = dictionary.ourWork;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -59,15 +62,13 @@ const CodeLegacyPortfolio = () => {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center min-h-screen">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-4 sm:mb-6 leading-tight">
-              Our{' '}
+              {o.heroBefore}{' '}
               <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent sm:inline">
-                Previous Work
+                {o.heroHighlight}
               </span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed opacity-90 px-2">
-              We are proud to showcase a collection of previous web development
-              projects we have successfully completed, reflecting our expertise
-              in delivering innovative and effective web solutions.
+              {o.heroText}
             </p>
           </div>
         </div>
@@ -83,64 +84,28 @@ const CodeLegacyPortfolio = () => {
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 text-ink px-2">
-              Why Choose Us for{' '}
-              <span className="text-brand-cyan block sm:inline">Web Development</span>?
+              {o.whyBefore}{' '}
+              <span className="text-brand-cyan block sm:inline">{o.whyHighlight}</span>{o.whyAfter}
             </h2>
             <p className="text-sm sm:text-base lg:text-xl text-gray-300 max-w-4xl mx-auto px-4">
-              In our services, we focus on developing websites with the highest
-              quality standards, emphasizing the features that make your site
-              stand out and perform effectively in a competitive online market.
+              {o.whyText}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {[
-              {
-                title: 'Responsive Design',
-                description: 'We ensure your website works perfectly on all devices, from mobile phones to desktop computers.',
-                icon: <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'High Performance Speed',
-                description: 'We optimize site performance so it loads in seconds, improving user experience and reducing bounce rate.',
-                icon: <PerformanceIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Search Engine Optimization (SEO)',
-                description: 'We structure the site and its content to rank at the top of Google search results, increasing organic traffic.',
-                icon: <Search className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Advanced Security',
-                description: 'We apply the latest security standards to protect the site from cyberattacks and ensure data privacy.',
-                icon: <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Integration with External Systems',
-                description: 'We integrate the site with external services like online payment, maps, and cloud systems to enhance functionality.',
-                icon: <WorldIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Ongoing Technical Support',
-                description: 'We provide technical support after launch to ensure the site continues running smoothly with regular updates.',
-                icon: <SupportIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Attractive, Easy-to-Use Design',
-                description: 'We focus on attractive, intuitive user interfaces to improve visitor engagement with the site.',
-                icon: <DesignIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Cross-Browser Compatibility',
-                description: 'We test the site on different browsers to ensure a consistent experience for all users.',
-                icon: <CompatibilityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-              {
-                title: 'Advanced Analytics & Data',
-                description: 'We integrate analytics tools to track site performance and understand visitor behavior for continuous improvement.',
-                icon: <BarChart className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
-              },
-            ].map((advantage, index) => (
+              <Smartphone className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <PerformanceIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <Search className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <WorldIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <SupportIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <DesignIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <CompatibilityIcon className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+              <BarChart className="w-8 h-8 sm:w-10 sm:h-10 text-brand-cyan" />,
+            ].map((icon, index) => {
+              const advantage = { icon, ...o.advantages[index] };
+              return (
               <div
                 key={index}
                 className="bg-brand-card rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-glow hover:shadow-glow transition-all duration-300 border border-brand-line/70 hover:border-brand-cyan text-center"
@@ -155,7 +120,8 @@ const CodeLegacyPortfolio = () => {
                   {advantage.description}
                 </p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -166,17 +132,20 @@ const CodeLegacyPortfolio = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-center">
             {[
-              { number: '50+', label: 'Completed Projects', icon: <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '50+', label: 'Happy Clients', icon: <ThumbsUp className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '5+', label: 'Years of Experience', icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-              { number: '100%', label: 'Client Satisfaction', icon: <Star className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" /> },
-            ].map((stat, index) => (
+              <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" />,
+              <ThumbsUp className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" />,
+              <Clock className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" />,
+              <Star className="w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-1 sm:mb-2" />,
+            ].map((icon, index) => {
+              const stat = { icon, ...o.stats[index] };
+              return (
               <div key={index} className="p-2 sm:p-4">
                 {stat.icon}
                 <div className="text-xl sm:text-2xl lg:text-3xl font-bold">{stat.number}</div>
                 <div className="text-xs sm:text-sm lg:text-base opacity-90">{stat.label}</div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -185,39 +154,39 @@ const CodeLegacyPortfolio = () => {
       <section className="py-8 sm:py-12 lg:py-20 bg-brand-alt">
         <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-ink">
-            Start Your Project With Us Today
+            {o.contactTitle}
           </h2>
           <p className="text-sm sm:text-base lg:text-xl text-gray-300 mb-6 sm:mb-8 px-4">
-            Contact us now and get a free consultation for your next project
+            {o.contactText}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm">
               <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
-              <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-400">Email</div>
-                <div className="text-sm sm:text-base font-semibold text-ink">CodeLegacy1@gmail.com</div>
+              <div className="text-start">
+                <div className="text-xs sm:text-sm text-gray-400">{o.email}</div>
+                <div className="text-sm sm:text-base font-semibold text-ink"><bdi>CodeLegacy1@gmail.com</bdi></div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm">
               <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
-              <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-400">Phone Number</div>
-                <div className="text-sm sm:text-base font-semibold text-ink">01201061216</div>
+              <div className="text-start">
+                <div className="text-xs sm:text-sm text-gray-400">{o.phone}</div>
+                <div className="text-sm sm:text-base font-semibold text-ink"><bdi>01201061216</bdi></div>
               </div>
             </div>
             <div className="flex items-center justify-center gap-3 p-3 sm:p-4 bg-brand-card rounded-lg shadow-sm sm:col-span-2 lg:col-span-1">
               <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan" />
-              <div className="text-left">
-                <div className="text-xs sm:text-sm text-gray-400">Location</div>
-                <div className="text-sm sm:text-base font-semibold text-ink">Cairo, Egypt</div>
+              <div className="text-start">
+                <div className="text-xs sm:text-sm text-gray-400">{o.location}</div>
+                <div className="text-sm sm:text-base font-semibold text-ink">{o.locationValue}</div>
               </div>
             </div>
           </div>
 
           <WhatsAppButton className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 text-sm sm:text-base">
-            Contact Us Now
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+            {o.contactNow}
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 rtl:rotate-180" />
           </WhatsAppButton>
         </div>
       </section>

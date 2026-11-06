@@ -26,9 +26,12 @@ import WhatsAppButton from '@/app/(components)/(realComponents)/WhatsForDetails'
 import Tech from '@/app/(components)/(realComponents)/tech';
 import CircuitBolts from '@/app/(components)/CircuitBolts';
 import HeroWave from '@/app/(components)/HeroWave';
+import { useI18n } from '@/app/(components)/LocaleProvider';
 
 
 const AboutPage = () => {
+  const { dictionary } = useI18n();
+  const a = dictionary.aboutPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -59,14 +62,12 @@ const AboutPage = () => {
             </span>
           </h1>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-6 sm:mb-8 opacity-90 animate-[fadeInUp_1s_ease_0.4s_both] max-w-5xl mx-auto px-1 xs:px-2 leading-relaxed xs:leading-relaxed sm:leading-loose">
-            Our journey in building exceptional websites, combining beautiful
-            design with cutting-edge technology to deliver digital experiences
-            that make a real difference.
+            {a.hero.subtitle}
           </p>
           <Link href={'#story'}>
             <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-glow mx-auto touch-manipulation min-h-[44px]">
-              Discover Our Story
-              <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              {a.hero.cta}
+              <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform duration-300" />
             </button>
           </Link>
         </div>
@@ -79,15 +80,13 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-ink leading-tight px-2">
-              Our Story in{' '}
+              {a.story.titleBefore}{' '}
               <span className="bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent block xs:block sm:inline mt-1 xs:mt-2 sm:mt-0">
-                Web Development
+                {a.story.titleHighlight}
               </span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed xs:leading-relaxed sm:leading-loose px-2">
-              CodeLegacy was founded with a vision to turn ideas into innovative
-              websites and digital applications, with a focus on quality and
-              outstanding performance.
+              {a.story.subtitle}
             </p>
           </div>
 
@@ -95,20 +94,13 @@ const AboutPage = () => {
             <div className="relative order-2 lg:order-1">
               <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-shadow duration-300">
                 <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-ink mb-3 xs:mb-4 leading-tight">
-                  Our Start in the World of the Web
+                  {a.story.startTitle}
                 </h3>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-300 mb-4 xs:mb-6 leading-relaxed">
-                  CodeLegacy began as a simple idea, when a group of passionate
-                  web developers joined forces to deliver high-quality websites.
-                  Since then, the company has grown to become a leader in web
-                  development, focusing on modern technologies and attractive
-                  design.
+                  {a.story.p1}
                 </p>
                 <p className="text-sm xs:text-base sm:text-lg text-gray-300 mb-4 xs:mb-6 sm:mb-8 leading-relaxed">
-                  Today, we're proud of our specialized team in web development
-                  that brings together expertise from Frontend, Backend, and
-                  UX/UI, enabling us to deliver comprehensive web solutions that
-                  meet our clients' needs across all sectors.
+                  {a.story.p2}
                 </p>
               </div>
               <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-8 h-8 xs:w-12 xs:h-12 sm:w-16 sm:h-16 bg-brand-blue/10 rounded-full animate-pulse"></div>
@@ -118,21 +110,13 @@ const AboutPage = () => {
             <div className="space-y-4 xs:space-y-6 order-1 lg:order-2">
               <div className="bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 shadow-glow border border-brand-blue/40">
                 <h3 className="text-base xs:text-lg sm:text-xl font-semibold text-ink mb-3 xs:mb-4 leading-tight">
-                  What Sets Us Apart in Web Development
+                  {a.story.setApartTitle}
                 </h3>
                 <div className="space-y-3 xs:space-y-4">
-                  {[
-                    'A dedicated admin dashboard for the site owner to easily manage content and data',
-                    'Search engine optimization (SEO) to increase visibility and Google rankings',
-                    'Fast, responsive, and secure websites that work on all devices',
-                    'Built with modern, scalable technologies (such as React and Next.js)',
-                    'Attractive, easy-to-use interface design (professional UX/UI)',
-                    'An experienced team committed to quality and on-time delivery',
-                    'Technical support and regular maintenance after delivery (long-term partnerships, with support up to 12 months depending on agreement)',
-                  ].map((item, index) => (
+                  {a.story.setApart.map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-start space-x-2 xs:space-x-3"
+                      className="flex items-start gap-2 xs:gap-3"
                     >
                       <CheckCircle className="w-4 h-4 xs:w-5 xs:h-5 text-brand-cyan flex-shrink-0 mt-0.5 xs:mt-1" />
                       <span className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed">{item}</span>
@@ -152,26 +136,20 @@ const AboutPage = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-6 sm:gap-8 text-center">
             {[
               {
-                number: '50+',
-                label: 'Websites Developed',
                 icon: <Globe className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
-                number: '50+',
-                label: 'Happy Clients',
                 icon: <ThumbsUp className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
-                number: '5+',
-                label: 'Years in Web Development',
                 icon: <Clock className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
               {
-                number: '100%',
-                label: 'Client Satisfaction',
                 icon: <Star className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mx-auto mb-2 xs:mb-3 sm:mb-4" />,
               },
-            ].map((stat, index) => (
+            ].map((base, index) => {
+              const stat = { ...base, ...a.stats[index] };
+              return (
               <div key={index} className="p-2 xs:p-3 sm:p-4">
                 {stat.icon}
                 <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-1 xs:mb-2">
@@ -181,7 +159,8 @@ const AboutPage = () => {
                   {stat.label}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
@@ -191,12 +170,10 @@ const AboutPage = () => {
         <div className="max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 xs:mb-12 sm:mb-16">
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 xs:mb-4 sm:mb-6 text-ink leading-tight px-2">
-              Our Vision & <span className="text-brand-cyan">Mission</span>
+              {a.vm.titleBefore} <span className="text-brand-cyan">{a.vm.titleHighlight}</span>
             </h2>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-2">
-              We work to build a better digital world by developing exceptional
-              websites that serve our clients' needs to the highest global
-              standards.
+              {a.vm.subtitle}
             </p>
           </div>
 
@@ -205,27 +182,22 @@ const AboutPage = () => {
               <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Globe className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-left">
-                Our Vision
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-start">
+                {a.vm.visionTitle}
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
-                To be the leading partner in web development for Arab and
-                global companies, by delivering advanced websites that enhance
-                digital presence and achieve business goals with the highest
-                quality standards.
+              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-start">
+                {a.vm.vision}
               </p>
             </div>
             <div className="group bg-brand-card rounded-xl xs:rounded-2xl p-4 xs:p-6 sm:p-8 shadow-glow border border-brand-blue/40 hover:shadow-glow transition-all duration-300">
               <div className="text-brand-cyan mb-3 xs:mb-4 group-hover:scale-110 transition-transform duration-300 flex justify-center md:justify-start">
                 <Code className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12" />
               </div>
-              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-left">
-                Our Mission
+              <h3 className="text-base xs:text-lg sm:text-xl font-semibold mb-2 xs:mb-3 text-ink group-hover:text-brand-cyan transition-colors text-center md:text-start">
+                {a.vm.missionTitle}
               </h3>
-              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-left">
-                Developing high-quality, fast-performing, and secure websites,
-                with a focus on exceptional user experience and attractive
-                design to maximize digital presence and drive business growth.
+              <p className="text-xs xs:text-sm sm:text-base text-gray-300 leading-relaxed text-center md:text-start">
+                {a.vm.mission}
               </p>
             </div>
           </div>
@@ -242,18 +214,16 @@ const AboutPage = () => {
         <CircuitBolts intensity="soft" />
         <div className="relative z-10 max-w-7xl mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 xs:mb-6 sm:mb-8 text-ink leading-tight px-2">
-            Start Your Website Project With Us
+            {a.cta.title}
           </h2>
           <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-ink mb-6 xs:mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed px-2">
-            If you're looking for a trusted web development partner, CodeLegacy
-            is the perfect choice to achieve your digital vision and build your
-            ideal website.
+            {a.cta.text}
           </p>
           <WhatsAppButton
             className="inline-flex items-center gap-2 bg-brand-card text-brand-cyan px-5 py-3 xs:px-6 xs:py-3 sm:px-8 sm:py-4 rounded-full text-sm xs:text-base sm:text-lg font-semibold hover:bg-brand-card2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-glow touch-manipulation min-h-[44px]"
           >
-            Start Your Project Now
-            <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
+            {a.cta.button}
+            <ArrowRight className="w-4 h-4 xs:w-4 xs:h-4 sm:w-5 sm:h-5 rtl:rotate-180" />
           </WhatsAppButton>
         </div>
       </section>
