@@ -8,12 +8,11 @@
    (bg-brand-blue/20). The default (no attribute) = dark mode.
    html[data-theme="light"] = light mode.
    Sections that must always stay dark (heroes with the lightning effect,
-   footer, blue CTA bands, photo lightboxes) re-declare the dark tokens.
+   blue CTA bands, photo lightboxes) re-declare the dark tokens. The footer follows the theme.
 ═══════════════════════════════════════════════════════════════════════ */
 :root,
 .theme-dark,
 .circuit-bg,
-footer,
 [class*="031a5e"] {
   color-scheme: dark;
   --c-bg: 1 6 26;
@@ -31,8 +30,9 @@ footer,
   --c-g400: 156 163 175;
   --shadow-glow: 0 0 18px rgba(30, 91, 255, 0.55), 0 0 40px rgba(30, 91, 255, 0.25);
   --shadow-glow-cyan: 0 0 18px rgba(48, 216, 248, 0.55), 0 0 40px rgba(48, 216, 248, 0.2);
-  --neon-glow: 0 0 14px rgba(48, 216, 248, 0.65), 0 0 36px rgba(30, 91, 255, 0.45);
-  --neon-white-glow: 0 0 10px rgba(255, 255, 255, 0.35);
+  --neon-glow: none;            /* no blurry glow on text */
+  --neon-white-glow: none;
+  --neon-filter: none;
   --fade-color: rgba(30, 91, 255, 0.13);
   --field-bg: 2 10 38;
   --field-placeholder: 107 122 176;
@@ -64,6 +64,7 @@ html[data-theme="light"] {
   --shadow-glow-cyan: 0 1px 2px rgba(0, 0, 0, 0.08);
   --neon-glow: none;
   --neon-white-glow: none;
+  --neon-filter: none;
   --fade-color: rgba(0, 0, 0, 0);
   --field-bg: 255 255 255;
   --field-placeholder: 156 163 175;
@@ -298,17 +299,95 @@ html[data-theme="light"] .brand-name > span {
   text-shadow: none;
 }
 
-/* Footer: gray-900 like the original */
+/* Footer (light mode): same blue -> indigo -> purple gradient as the hero, with white text */
 html[data-theme="light"] footer {
-  --c-accent: 96 165 250;       /* blue-400 hover */
-  background-color: #111827;
-  background-image: none;
-  border-color: #1f2937;
+  --c-ink: 255 255 255;
+  --c-g200: 243 244 246;
+  --c-g300: 229 231 235;
+  --c-g400: 191 219 254;        /* blue-200 */
+  --c-blue: 59 130 246;         /* blue-500 (social buttons) */
+  --c-sky: 37 99 235;
+  --c-cyan: 168 85 247;
+  --c-accent: 253 224 71;       /* yellow-300 hover / icons, same as hero accents */
+  --shadow-glow-cyan: none;
+  background-color: #4f46e5;
+  background-image: linear-gradient(to bottom right, #2563eb, #4f46e5, #7e22ce);
+  border-color: transparent;
 }
-html[data-theme="light"] footer .brand-name { background-image: linear-gradient(to right, #3b82f6, #a855f7); }
+html[data-theme="light"] footer .border-gray-700 { border-color: rgba(255, 255, 255, 0.25); }
+html[data-theme="light"] footer .brand-name { background-image: none; }
+html[data-theme="light"] footer .brand-name > span { color: #fff; }
+html[data-theme="light"] footer .brand-name > span.text-neon {
+  color: transparent;
+  background-image: linear-gradient(to right, #facc15, #fb923c);
+  -webkit-background-clip: text;
+          background-clip: text;
+}
 
 /* Page-transition splash (light mode): hero gradient curtain + white text */
 html[data-theme="light"] .pt-sheet { fill: url(#pt-hero-grad) !important; }
 html[data-theme="light"] .pt-edge  { fill: rgba(255, 255, 255, 0.35) !important; }
 html[data-theme="light"] .pt-rim   { stroke: #fff !important; }
 html[data-theme="light"] .pt-title { color: #fff; text-shadow: none; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MOTION — hover transitions + animated text
+   (card reveal / heading reveal is done in app/(components)/MotionEffects.jsx)
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Slow, visible hover transitions. !important on the duration so Tailwind's duration-300 /
+   duration-500 classes on individual buttons and cards can't make them snappy again
+   (the theme-switch cross-fade below still wins because its selector is more specific). */
+a, button, [data-card] {
+  transition-property: color, background-color, border-color, box-shadow, opacity, translate, scale, transform;
+  transition-duration: 0.9s !important;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* cards (tagged with data-card by MotionEffects): lift + glow on hover */
+[data-card]:hover {
+  translate: 0 -10px;
+  box-shadow: var(--shadow-glow);
+  border-color: rgb(var(--c-blue) / 0.7);
+}
+[data-card] img { transition: scale 1.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+[data-card]:hover img { scale: 1.08; }
+[data-card] svg { transition: translate 0.9s ease, scale 0.9s ease !important; }
+[data-card]:hover svg:not(.shrink-0) { scale: 1.08; }
+
+/* pill buttons / links: small lift on hover, press on click */
+:is(a, button)[class*="rounded-full"]:hover { translate: 0 -4px; }
+:is(a, button)[class*="rounded-full"]:active { translate: 0 0; scale: 0.97; }
+
+/* list items & nav / footer links nudge toward the reading direction */
+footer ul a { display: inline-block; transition: translate 0.9s ease, color 0.9s ease !important; }
+footer ul a:hover { translate: 8px 0; }
+[dir="rtl"] footer ul a:hover { translate: -8px 0; }
+
+/* animated text: accent words shimmer (dark mode; light mode keeps the hero gradients) */
+@keyframes text-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: -250% 50%; }
+}
+html:not([data-theme="light"]) .text-neon {
+  background-image: linear-gradient(100deg, rgb(var(--c-cyan)) 0%, rgb(var(--c-sky)) 30%, #ffffff 50%, rgb(var(--c-sky)) 70%, rgb(var(--c-cyan)) 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+  filter: var(--neon-filter);
+  animation: text-shimmer 6s linear infinite;
+}
+/* light-mode hero accent gradient also drifts slowly */
+html[data-theme="light"] .circuit-bg .text-neon:not(.hero-title *) {
+  background-size: 200% auto;
+  animation: text-shimmer 6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-neon, .hero-wave use { animation: none !important; }
+  [data-card], [data-card] img, a, button { transition: none !important; }
+}

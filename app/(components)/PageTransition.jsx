@@ -201,6 +201,9 @@ export default function PageTransition() {
         return;
       }
       if (url.origin !== window.location.origin) return;       // external link
+      // language switch (/en/... -> /ar/...): no curtain, just let the link navigate
+      const targetLang = stripLocale(url.pathname).lang;
+      if (a.hasAttribute('hreflang') || (targetLang && targetLang !== lang)) return;
       // links without a language prefix ('/pricing') get the current one, so the
       // curtain waits for the real final route instead of a redirect
       const target = stripLocale(url.pathname).lang ? url.pathname : localePath(lang, url.pathname);

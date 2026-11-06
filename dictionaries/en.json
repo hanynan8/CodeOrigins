@@ -20,7 +20,7 @@
     "ar": "العربية",
     "short": {
       "en": "EN",
-      "ar": "AR"
+      "ar": "عربي"
     }
   },
   "common": {
@@ -825,8 +825,6 @@
       "accent": "Plans",
       "text": "Managed hosting options with plan-specific features such as backups, SSL certificates, and technical support.",
       "cta": "Get Started",
-      "customCloud": "Need custom cloud architecture?",
-      "customCloudLink": "See our Hosting & DevOps service →",
       "items": [
         {
           "name": "Economy",

@@ -85,10 +85,10 @@ const PlanCard = ({ name, price, suffix, caption, features, badge, cta, href = '
   >
     {badge && <Badge>{badge}</Badge>}
     <h3 className="text-lg md:text-xl font-bold text-ink">{name}</h3>
-    <div className="mt-4 flex items-end gap-1.5">
-      {caption && <span className="pb-1.5 text-sm text-gray-400">{caption}</span>}
-      <span className="text-3xl min-[380px]:text-4xl md:text-5xl font-bold text-neon-white">{price}</span>
-      {suffix && <span className="pb-1.5 text-sm text-gray-400">{suffix}</span>}
+    <div className="mt-4 flex flex-nowrap items-baseline gap-1.5 whitespace-nowrap">
+      {caption && <span className="text-sm text-gray-400">{caption}</span>}
+      <span className="text-lg min-[380px]:text-xl md:text-2xl font-bold text-neon-white">{price}</span>
+      {suffix && <span className="text-sm text-gray-400">{suffix}</span>}
     </div>
     {caption && <p className="mt-1 text-xs text-gray-400">{dictionary.pricingPage.plan.afterScope}</p>}
     <ul className="mt-6 mb-8 flex-1 space-y-3">
@@ -126,7 +126,7 @@ const optionClass = (on) =>
   }`;
 
 function Estimator() {
-  const { dictionary, href } = useI18n();
+  const { dictionary, href, dir } = useI18n();
   const e = dictionary.pricingPage.estimator;
   const [type, setType] = useState('corporate');
   const [scale, setScale] = useState('compact');
@@ -226,18 +226,18 @@ function Estimator() {
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">{e.range}</p>
 
               <p className="mt-5 text-xs text-gray-400">{e.egypt}</p>
-              <p className="mt-1 text-[1.6rem] min-[380px]:text-3xl md:text-4xl font-bold text-neon-white leading-tight">
-                <bdi>{fmt(result.egp[0])} – {fmt(result.egp[1])}</bdi>
-                <span className="ms-1.5 text-base font-semibold text-gray-300">{e.egp}</span>
+              <p className="mt-1 text-xl min-[380px]:text-2xl md:text-3xl font-bold text-neon-white leading-tight">
+                <bdi dir={dir}>{fmt(result.egp[0])} – {fmt(result.egp[1])}</bdi>
+                <span className="ms-1.5 text-sm font-semibold text-gray-300">{e.egp}</span>
               </p>
-              <p className="mt-2 text-lg min-[380px]:text-xl md:text-2xl font-semibold text-brand-cyan">
-                <bdi>${fmt(result.usd[0])} – ${fmt(result.usd[1])}</bdi> <span className="text-sm text-gray-300">{e.usd}</span>
+              <p className="mt-2 text-base min-[380px]:text-lg md:text-xl font-semibold text-brand-cyan">
+                <bdi dir={dir}>${fmt(result.usd[0])} – ${fmt(result.usd[1])}</bdi> <span className="text-sm text-gray-300">{e.usd}</span>
               </p>
 
               <div className="my-6 h-px bg-brand-line/60" />
 
               <p className="text-xs text-gray-400">{e.timeline}</p>
-              <p className="mt-1 text-2xl font-bold text-ink">
+              <p className="mt-1 text-lg md:text-xl font-bold text-ink">
                 {fillTemplate(e.weeks, { from: result.weeks[0], to: result.weeks[1] })}
               </p>
 
@@ -408,7 +408,7 @@ export default function PricingPageClient() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-cyan">
                   {phase.phase} · <bdi>{PAYMENT_PERCENTS[i]}</bdi>
                 </p>
-                <p className="mt-3 sm:mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-neon-white"><bdi>{PAYMENT_PERCENTS[i]}</bdi></p>
+                <p className="mt-3 sm:mt-4 text-2xl sm:text-3xl md:text-4xl font-bold text-neon-white"><bdi>{PAYMENT_PERCENTS[i]}</bdi></p>
                 <h3 className="mt-4 text-lg md:text-xl font-bold text-ink group-hover:text-brand-cyan transition-colors">{phase.title}</h3>
                 <p className="mt-2 text-sm md:text-base leading-relaxed text-gray-300">{phase.text}</p>
               </div>
@@ -458,12 +458,6 @@ export default function PricingPageClient() {
               <PlanCard key={i} name={h.name} price={HOSTING_PRICES[i]} suffix={p.plan.perMonth} features={h.features} badge={h.badge} cta={p.hosting.cta} />
             ))}
           </div>
-          <p className="mt-8 sm:mt-10 text-center text-sm sm:text-base text-gray-300 px-2">
-            {p.hosting.customCloud}{' '}
-            <Link href={href('/services')} className="font-semibold text-brand-cyan hover:underline">
-              {p.hosting.customCloudLink}
-            </Link>
-          </p>
         </Container>
       </section>
 

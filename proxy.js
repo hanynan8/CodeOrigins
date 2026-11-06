@@ -1,14 +1,14 @@
 // Next.js 16 "proxy" (formerly middleware): sends every URL without a language
 // prefix to /en/... or /ar/... (saved choice -> browser language -> default).
 import { NextResponse } from 'next/server';
-import { DEFAULT_LOCALE, LOCALE_COOKIE, isLocale, matchAcceptLanguage, stripLocale } from './lib/i18n';
+import { DEFAULT_LOCALE, LOCALE_COOKIE, isLocale, stripLocale } from './lib/i18n';
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
 
 function preferredLocale(request) {
   const saved = request.cookies.get(LOCALE_COOKIE)?.value;
   if (isLocale(saved)) return saved;
-  return matchAcceptLanguage(request.headers.get('accept-language') ?? '') ?? DEFAULT_LOCALE;
+  return DEFAULT_LOCALE; // always English for first-time visitors
 }
 
 export function proxy(request) {

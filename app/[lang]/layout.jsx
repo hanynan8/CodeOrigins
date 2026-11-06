@@ -9,6 +9,8 @@ import Navbar from '@/app/(components)/navbar';
 import Script from 'next/script';
 import Footer from '@/app/(components)/footer';
 import PageTransition from '@/app/(components)/PageTransition';
+import ThemeSync from '@/app/(components)/ThemeSync';
+import MotionEffects from '@/app/(components)/MotionEffects';
 import { LocaleProvider } from '@/app/(components)/LocaleProvider';
 import { siteIcons, LOGO_ICON, logoUrl } from '@/app/(components)/brand';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n';
@@ -226,6 +228,8 @@ export default async function RootLayout({ children, params }) {
 
       <body className={`${rubik.className} ${geistMono.variable} antialiased bg-brand-bg text-ink`}>
         <LocaleProvider lang={lang} dictionary={dictionary}>
+          <ThemeSync />
+          <MotionEffects />
           <PageTransition />
           <Navbar />
           {children}
