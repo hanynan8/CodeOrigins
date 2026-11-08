@@ -1,76 +1,28 @@
 // app/services/page.js
-import { siteIcons } from '@/app/(components)/brand';
 import React from 'react';
 import ServicesPageClient from './_client';
 import { servicesData } from '@/app/(components)/(realComponents)/ServiceData';
 import { getDictionary } from '@/lib/dictionaries';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Metadata
+// Metadata + structured data
 // ─────────────────────────────────────────────────────────────────────────────
-import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageUrl } from '@/lib/seo';
-
-const baseMetadata = {
-  title: `Our Services`,
-  description:
-    'Our services include website and ecommerce store design & development, SaaS application development, DevOps and cloud services, performance optimization and technical SEO, UX/UI design, product strategy, and full maintenance & technical support.',
-  keywords: [
-    'web development services', 'software services', 'website development services', 'website design services', 'SaaS services',
-    'Next.js development', 'Next.js development', 'React development', 'Node.js development',
-    'TypeScript development', 'PWA development', 'Progressive Web App', 'headless ecommerce',
-    'ecommerce store development', 'ecommerce development', 'WooCommerce development', 'Shopify development',
-    'payment gateway integration', 'cloud migration', 'AWS migration', 'DevOps services',
-    'CI/CD pipeline', 'performance optimization', 'core web vitals optimization',
-    'technical SEO', 'hire web developer egypt', 'request a service quote',
-  ],
-  authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
-  alternates: { canonical: `${SITE_DOMAIN}/services` },
-  openGraph: {
-    title: `Our Services — ${COMPANY_NAME}`,
-    description: 'A complete set of services: website and store development, SaaS solutions, performance optimization, security, DevOps and cloud.',
-    url: `${SITE_DOMAIN}/services`,
-    siteName: COMPANY_NAME,
-    images: [{ url: `${SITE_DOMAIN}/og-services.jpg`, width: 1200, height: 630, alt: `${COMPANY_NAME} — Web Development Services` }],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `Our Services — ${COMPANY_NAME}`,
-    description: 'Learn about our services: design, development, cloud, performance, security, and maintenance.',
-    images: [`${SITE_DOMAIN}/twitter-services.jpg`],
-  },
-  icons: siteIcons,
-  robots: 'index, follow',
-};
+import JsonLd from '@/app/(components)/JsonLd';
+import { pageAlternates, pageSocial, breadcrumbJsonLd, faqJsonLd, servicesJsonLd } from '@/lib/seo';
+import { keywordsFor } from '@/lib/seoKeywords';
+import { localized } from '@/lib/i18n';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const m = (await getDictionary(lang)).servicesPage.meta;
   return {
-    ...baseMetadata,
     title: m.title,
     description: m.description,
+    keywords: keywordsFor(lang, 'services'),
     alternates: pageAlternates(lang, '/services'),
-    openGraph: { ...baseMetadata.openGraph, url: pageUrl(lang, '/services'), title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
-    twitter: { ...baseMetadata.twitter, title: m.ogTitle, description: m.twitterDescription },
+    ...pageSocial(lang, '/services', { title: m.ogTitle, description: m.ogDescription }),
   };
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// JSON-LD
-// ─────────────────────────────────────────────────────────────────────────────
-export const servicesItemListJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  name: `${COMPANY_NAME} — Web Development Services`,
-  description: 'List of technical services offered by CodeLegacy.',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, url: `${SITE_DOMAIN}/services/web-development`, item: { '@type': 'Service', name: 'Website & Web App Development', description: 'Professional website development using Next.js, React, Node.js.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
-    { '@type': 'ListItem', position: 2, url: `${SITE_DOMAIN}/services/ecommerce-development`, item: { '@type': 'Service', name: 'Ecommerce Store Development', description: 'Building scalable ecommerce stores with local and global payment gateway integration.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
-    { '@type': 'ListItem', position: 3, url: `${SITE_DOMAIN}/services/saas-development`, item: { '@type': 'Service', name: 'SaaS & MVP Development', description: 'Designing and building multi-tenant SaaS solutions.', provider: { '@type': 'Organization', name: COMPANY_NAME, url: SITE_DOMAIN } } },
-  ],
-};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Data specific to the services page only
@@ -114,14 +66,32 @@ const technologiesData = [
 // ─────────────────────────────────────────────────────────────────────────────
 // Page Component
 // ─────────────────────────────────────────────────────────────────────────────
-const ServicesPage = () => {
+const ServicesPage = async ({ params }) => {
+  const { lang } = await params;
+  const dictionary = await getDictionary(lang);
+  const names = dictionary.pageNames;
+  const jsonLd = [
+    breadcrumbJsonLd(lang, [[names.home, '/'], [names.services, '/services']]),
+    servicesJsonLd(
+      lang,
+      servicesData.map((service) => ({
+        name: localized(service.title, lang),
+        description: localized(service.shortDescription, lang),
+      }))
+    ),
+    faqJsonLd(dictionary.servicesPage.faq.items),
+  ];
+
   return (
-    <ServicesPageClient
-      services={servicesData}          // ← from the shared data file
-      processSteps={processSteps}
-      whyChooseUs={whyChooseUs}
-      technologiesData={technologiesData}
-    />
+    <>
+      <JsonLd data={jsonLd} />
+      <ServicesPageClient
+        services={servicesData}          // ← from the shared data file
+        processSteps={processSteps}
+        whyChooseUs={whyChooseUs}
+        technologiesData={technologiesData}
+      />
+    </>
   );
 };
 

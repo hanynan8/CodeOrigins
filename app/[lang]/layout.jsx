@@ -17,7 +17,9 @@ import { siteIcons, LOGO_ICON, logoUrl } from '@/app/(components)/brand';
 import { LOCALES, dirOf, isLocale } from '@/lib/i18n';
 import { getDictionary } from '@/lib/dictionaries';
 import { whatsappLink } from '@/lib/whatsapp';
-import { COMPANY_NAME, SITE_DOMAIN, OG_LOCALE, pageAlternates } from '@/lib/seo';
+import JsonLd from '@/app/(components)/JsonLd';
+import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageSocial, siteJsonLd } from '@/lib/seo';
+import { allKeywords } from '@/lib/seoKeywords';
 
 const rubik = Rubik({
   variable: '--font-rubik-sans',
@@ -29,54 +31,13 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // ---------------------------
-// SEO / Keywords bundle
+// SEO bundle
 // ---------------------------
-// Change COMPANY_NAME and SITE_DOMAIN according to your project
-// (defined once in lib/seo.js so every page, the sitemap and robots use the same values)
+// COMPANY_NAME / SITE_DOMAIN live in lib/seo.js (set NEXT_PUBLIC_SITE_URL to your real domain);
+// keyword sets live in lib/seoKeywords.js; the Google Search Console token is read from
+// NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION (see the end of this file's metadata block).
 export { COMPANY_NAME, SITE_DOMAIN };
-
-export const seoKeywords = {
-  primary: [
-    'web development company', 'website development', 'website design', 'software company egypt', 'web development services', 'web app development', 'user interface design', 'UI UX design', 'online store', 'ecommerce store development',
-    'web development company', 'web app development', 'website design company', 'software company', 'saas development company'
-  ],
-  technical: [
-    'Next.js development', 'Next.js development', 'React developer', 'React developer', 'Node.js development', 'TypeScript developer', 'typescript development', 'Headless CMS', 'headless ecommerce', 'PWA development', 'Progressive Web App', 'serverless architecture', 'Docker deployment', 'Kubernetes deployment', 'microservices architecture', 'graphql api', 'REST API development', 'websocket real-time', 'socket.io development', 'performance optimization', 'core web vitals optimization', 'technical seo'
-  ],
-  commercial: [
-    'website design pricing', 'website design cost in egypt', 'ecommerce store cost 2025', 'hire web developer egypt', 'hire next.js developer', 'best web development company egypt', 'affordable ecommerce development', 'web development cost estimate', 'web development consultation', 'website development plan'
-  ],
-  local: [
-    'web development company in cairo', 'web development company in egypt', 'web development cairo', 'web developer cairo', 'website developer cairo', 'website design in cairo', 'seo services egypt', 'digital agency cairo', 'web design agency egypt'
-  ],
-  longTail: [
-    'how much does an ecommerce store cost in egypt 2025', 'how to choose a web development company in cairo', 'guide to building a woocommerce store with a local payment gateway', 'building a saas mvp step by step', 'Next.js vs React for dynamic websites', 'how to improve LCP on a wordpress site', 'integrating fawry payment gateway with woocommerce', 'how to choose fast hosting for your website', 'how to improve ux for an ecommerce store', 'security audit for small business web applications', 'best practices for SEO on Next.js', 'how to migrate to headless cms', 'how to build pwa for ecommerce', 'guide to scaling web apps on aws', 'cost to build saas in egypt'
-  ],
-  industry: [
-    'real estate website development egypt', 'hotel booking system', 'lms development platform', 'ecommerce solutions for brands', 'custom crm development', 'enterprise web app development', 'hospitality software solutions', 'ecommerce for fashion brands', 'marketplace development'
-  ],
-  securityInfra: [
-    'web application security', 'penetration testing', 'web application penetration testing', 'sre site reliability engineering', 'cloud migration aws', 'gcp cloud migration', 'azure devops services', 'ci cd pipeline', 'continuous integration', 'monitoring and observability'
-  ],
-  marketingContent: [
-    'content marketing for saas', 'seo for ecommerce egypt', 'local seo services cairo', 'social media for startups', 'growth hacking for startups', 'product-led growth', 'conversion rate optimization', 'email marketing for ecommerce'
-  ],
-  all: [] // will be filled below by concatenation
-};
-
-// Build aggregated list (seoKeywords.all) from categories (useful for metadata.keywords)
-seoKeywords.all = [
-  ...seoKeywords.primary,
-  ...seoKeywords.technical,
-  ...seoKeywords.commercial,
-  ...seoKeywords.local,
-  ...seoKeywords.longTail,
-  ...seoKeywords.industry,
-  ...seoKeywords.securityInfra,
-  ...seoKeywords.marketingContent
-];
 
 // ---------------------------
 // Viewport configuration
@@ -90,84 +51,40 @@ export const viewport = {
 // ---------------------------
 // Next.js metadata export (app dir)
 // ---------------------------
-const baseMetadata = {
-  title: {
-    default: `${COMPANY_NAME} | Integrated Web Development & Software Solutions`,
-    template: `%s | ${COMPANY_NAME}`,
-  },
-  description:
-    'A company specialized in developing websites and web applications, SaaS, ecommerce stores, attractive user interfaces, performance optimization, and cloud infrastructure setup.',
-  keywords: seoKeywords.all,
-  authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
-  metadataBase: new URL(SITE_DOMAIN),
-  openGraph: {
-    title: `${COMPANY_NAME} — Integrated Web Development & Software Solutions`,
-    description: 'Website development, ecommerce stores, SaaS applications, cloud solutions.',
-    url: SITE_DOMAIN,
-    siteName: COMPANY_NAME,
-    images: [
-      {
-        url: 'https://raw.githubusercontent.com/hanynan8/forImages/refs/heads/main/Screenshot%20(791).png',
-        width: 1200,
-        height: 630,
-        alt: `${COMPANY_NAME} — Web & Software Development`
-      }
-    ],
-    locale: 'en_US',
-    type: 'website'
-  },
-  icons: {
-    ...siteIcons,
-    other: [{ rel: 'manifest', url: '/site.webmanifest' }]
-  },
-  manifest: '/site.webmanifest',
-  robots: 'index, follow',
-  verification: {
-    google: 'GOOGLE_SITE_VERIFICATION_TOKEN'
-  },
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: COMPANY_NAME,
-    url: SITE_DOMAIN,
-    logo: logoUrl(512),
-    sameAs: [
-      `${SITE_DOMAIN}/facebook`,
-      `${SITE_DOMAIN}/twitter`,
-      `${SITE_DOMAIN}/linkedin`
-    ],
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: '+20-100-000-0000',
-        contactType: 'customer support',
-        areaServed: 'EG'
-      }
-    ]
-  }
-};
-
-// Language-aware metadata: title/description/openGraph come from dictionaries/*.json -> "meta".
-// Pages override title/description/alternates with their own generateMetadata.
+// Language-aware: title/description come from dictionaries/*.json -> "meta". Pages override
+// title/description/alternates/openGraph with their own generateMetadata.
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const m = (await getDictionary(lang)).meta;
+  const fullTitle = `${COMPANY_NAME} | ${m.title}`;
+  const verification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+  const bing = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
+
   return {
-    ...baseMetadata,
-    title: {
-      default: `${COMPANY_NAME} | ${m.title}`,
-      template: `%s | ${COMPANY_NAME}`,
-    },
+    metadataBase: new URL(SITE_DOMAIN),
+    applicationName: COMPANY_NAME,
+    title: { default: fullTitle, template: `%s | ${COMPANY_NAME}` },
     description: m.description,
+    keywords: allKeywords(lang),
+    authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
+    creator: COMPANY_NAME,
+    publisher: COMPANY_NAME,
+    category: 'technology',
+    formatDetection: { telephone: false, email: false, address: false },
     alternates: pageAlternates(lang, '/'),
-    openGraph: {
-      ...baseMetadata.openGraph,
-      title: `${COMPANY_NAME} — ${m.title}`,
-      description: m.description,
-      url: `${SITE_DOMAIN}/${lang}`,
-      locale: OG_LOCALE[lang],
+    ...pageSocial(lang, '/', { title: fullTitle, description: m.description }),
+    icons: { ...siteIcons, other: [{ rel: 'manifest', url: '/site.webmanifest' }] },
+    manifest: '/site.webmanifest',
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
     },
+    // Only emitted when the token exists, so no placeholder text ever ships.
+    ...(verification || bing
+      ? { verification: { ...(verification ? { google: verification } : {}), ...(bing ? { other: { 'msvalidate.01': bing } } : {}) } }
+      : {}),
   };
 }
 
@@ -228,6 +145,7 @@ export default async function RootLayout({ children, params }) {
       </head>
 
       <body className={`${rubik.className} ${geistMono.variable} antialiased bg-brand-bg text-ink`}>
+        <JsonLd data={siteJsonLd(lang, { logo: logoUrl(512), description: dictionary.meta.description })} />
         <LocaleProvider lang={lang} dictionary={dictionary}>
           <ThemeSync />
           <MotionEffects />
@@ -254,10 +172,3 @@ export default async function RootLayout({ children, params }) {
     </html>
   );
 }
-
-// ---------------------------
-// TODO / Notes:
-// - Place the code icon (SVG) at: public/icons/code.svg
-// - Place OG/twitter images in public (og-image.jpg, twitter-card.jpg)
-// - If you want me to split seoKeywords into a separate file, let me know
-// - If you use TypeScript, let me know and I'll set it up

@@ -1,6 +1,7 @@
-// Server-side metadata for a page whose body is a client component.
+// Server-side metadata for the projects pages (the list page; detail pages override it).
 import { getDictionary } from '@/lib/dictionaries';
-import { COMPANY_NAME, OG_LOCALE, pageAlternates, pageUrl } from '@/lib/seo';
+import { pageAlternates, pageSocial } from '@/lib/seo';
+import { keywordsFor } from '@/lib/seoKeywords';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -8,15 +9,9 @@ export async function generateMetadata({ params }) {
   return {
     title: m.title,
     description: m.description,
+    keywords: keywordsFor(lang, 'work'),
     alternates: pageAlternates(lang, '/lastprojects'),
-    openGraph: {
-      title: `${m.title} | ${COMPANY_NAME}`,
-      description: m.description,
-      url: pageUrl(lang, '/lastprojects'),
-      siteName: COMPANY_NAME,
-      locale: OG_LOCALE[lang],
-      type: 'website',
-    },
+    ...pageSocial(lang, '/lastprojects', { title: m.title, description: m.description }),
   };
 }
 
