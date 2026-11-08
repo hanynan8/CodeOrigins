@@ -9,6 +9,7 @@ import {
   Star,
 } from 'lucide-react';
 import Link from 'next/link';
+import { serviceLandingPath } from '@/lib/serviceLandings';
 import CircuitBolts from './CircuitBolts';
 import { logoUrl } from './brand';
 import { useI18n } from './LocaleProvider';
@@ -21,11 +22,14 @@ const COPYRIGHT_YEAR = new Date().getFullYear();
 // (= external link) and pointed at the wrong page; the anchors really live on:
 //   #clients / #feat -> home, #tech / #faq -> services, #portfolio -> lastprojects, #mail -> contact
 const WEBSITE_TYPES = ['saas', 'landing', 'ecommerce', 'restaurant', 'clinic', 'portfolio'];
+// Each website type links to its own service page (internal links that help those pages rank).
+const TYPE_SERVICE_ID = { saas: 3, landing: 4, ecommerce: 13, restaurant: 5, clinic: 6, portfolio: 8 };
 
 const COMPANY_LINKS = [
   { key: 'about', href: '/about' },
   { key: 'services', href: '/services' },
   { key: 'work', href: '/lastprojects' },
+  { key: 'blog', href: '/blog' },
   { key: 'contact', href: '/contact' },
   { key: 'faq', href: '/services#faq' },
 ];
@@ -97,7 +101,7 @@ const Footer = () => {
             <ul className={listClass}>
               {WEBSITE_TYPES.map((type) => (
                 <li key={type}>
-                  <Link href={href('/lastprojects#portfolio')} className={linkClass}>
+                  <Link href={href(serviceLandingPath(TYPE_SERVICE_ID[type]))} className={linkClass}>
                     {t(`footer.types.${type}`)}
                   </Link>
                 </li>

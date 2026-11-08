@@ -47,17 +47,20 @@ const CodeLegacyClient = ({ services, testimonials, webServices }) => {
 
         {/* Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <h1 className="contents">
           <span className="hero-title text-4xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl block mb-2 sm:mb-4">
             <span className="text-ink">Code</span><span className="text-neon">Legacy</span>
-          </span>
+          </span>{' '}
           <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl block mb-4 sm:mb-6">
             {h.hero.line1}{' '}
             <span className="bg-gradient-to-r from-brand-cyan to-brand-sky bg-clip-text text-transparent">
               {h.hero.highlight}
-            </span>
+            </span>{' '}
             <br />
             {h.hero.line2}
           </span>
+          <span className="sr-only"> - {dictionary.meta.title}</span>
+          </h1>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-[fadeInUp_1s_ease_0.6s_both] px-2 mt-[75px]">
             <Link href={href('/lastprojects/#portfolio')} className="w-full sm:w-auto">
               <button className="group bg-gradient-to-r from-brand-blue to-brand-cyan px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:from-brand-sky hover:to-brand-cyan transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-glow w-full sm:w-auto">
