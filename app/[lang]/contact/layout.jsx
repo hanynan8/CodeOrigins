@@ -1,7 +1,7 @@
 // Server-side metadata for a page whose body is a client component.
 import JsonLd from '@/app/(components)/JsonLd';
 import { getDictionary } from '@/lib/dictionaries';
-import { pageAlternates, pageSocial, breadcrumbJsonLd } from '@/lib/seo';
+import { pageAlternates, pageSocial, breadcrumbJsonLd, contactPageJsonLd } from '@/lib/seo';
 import { keywordsFor } from '@/lib/seoKeywords';
 
 export async function generateMetadata({ params }) {
@@ -21,7 +21,12 @@ export default async function Layout({ children, params }) {
   const names = (await getDictionary(lang)).pageNames;
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(lang, [[names.home, '/'], [names.contact, '/contact']])} />
+      <JsonLd
+        data={[
+          breadcrumbJsonLd(lang, [[names.home, '/'], [names.contact, '/contact']]),
+          contactPageJsonLd(lang, '/contact'),
+        ]}
+      />
       {children}
     </>
   );

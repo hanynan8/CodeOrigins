@@ -62,7 +62,7 @@ const regularRaw = [
     filter: '3d',
     description:
       'A bold one-page portfolio for an award-winning, female-led 3D motion and CGI studio. The site is built around immersive hover-reveal project thumbnails, playful animated 3D shapes representing each case study, and smooth border-transition effects that give the whole experience a distinctly experimental, design-forward feel. It showcases campaign work for major brands such as Adidas, Nike, and Calvin Klein, with a fully responsive layout that keeps the animations fluid across desktop and mobile.',
-    image: '/1 (1).png',
+    image: '/projects/shot-1.webp',
     tech: ['Next.js', 'Three.js', 'Framer Motion', 'Tailwind'],
   },
   {
@@ -72,7 +72,7 @@ const regularRaw = [
     filter: '3d',
     description:
       'A sleek consultancy website presenting Rumfoords\' dual offering in Artificial Intelligence and Web3/Metaverse strategy. The site walks visitors through the studio\'s process with cinematic full-bleed video sections, and highlights flagship case studies (including campaigns for adidas, Ralph Lauren, and JD Sports) in a clean, editorial-style work section. Built with a headless CMS to let the team update case studies and client logos without touching code.',
-    image: '/1 (2).png',
+    image: '/projects/shot-2.webp',
     tech: ['Next.js', 'Prismic CMS', 'Node.js', 'Framer Motion'],
   },
   {
@@ -82,7 +82,7 @@ const regularRaw = [
     filter: 'ecommerce',
     description:
       'A refined ecommerce experience for a fine jewelry label crafted from gold and precious gemstones. Collections are organized around the human body (ear, hand, neck, wrist) instead of typical product categories, paired with striking black-and-white photography and 3D product renders. The store supports full catalog browsing, collection filtering, a smooth checkout flow, and a custom-branded shopping experience that matches the studio\'s minimalist, engineered aesthetic.',
-    image: '/1.png',
+    image: '/projects/shot-3.webp',
     tech: ['Shopify', 'React', 'Tailwind', 'Framer Motion'],
   },
   {
@@ -93,7 +93,7 @@ const regularRaw = [
     hideFromRelated: true, // not listed under "More … work" on other projects' detail pages
     description:
       'A vibrant, green-and-white branded website for a matcha-focused dessert and drinks shop with multiple California locations. The site presents the full menu, brand story, and store locations in a playful, modern layout, with smooth scroll-triggered animations that keep the browsing experience light and appetizing. Built to convert casual visitors into in-store customers with clear calls to action for directions and ordering.',
-    image: '/1 (3).png',
+    image: '/projects/shot-4.webp',
     tech: ['Next.js', 'Tailwind', 'Framer Motion'],
   },
   {
@@ -103,7 +103,7 @@ const regularRaw = [
     filter: 'ecommerce',
     description:
       'An ultra-minimalist landing page for a Swiss bespoke watch customization studio, built around a restrained palette of Swiss-snow white and deep black. The design leans on generous whitespace, a bold sans-serif wordmark, and a numbered project gallery (Project 001, 002, 003...) to communicate exclusivity without ever feeling cluttered. Sections walk clients through the customization process, past projects, and warranty details in a calm, editorial rhythm that mirrors the precision of the watches themselves.',
-    image: '/1 (4).png',
+    image: '/projects/shot-5.webp',
     tech: ['Webflow', 'GSAP', 'Framer Motion'],
   },
   {
@@ -113,7 +113,7 @@ const regularRaw = [
     filter: 'ecommerce',
     description:
       'An ecommerce storefront for a prebiotic, fluoride-free and SLS-free toothpaste brand focused on supporting a healthy oral microbiome. The site presents the product line (toothpaste, sonic toothbrushes, water flossers) with clean, health-forward visuals, subscription options for recurring deliveries, and educational content on oral microbiome health, all wrapped in a smooth, conversion-focused shopping experience.',
-    image: '/1 (5).png',
+    image: '/projects/shot-6.webp',
     tech: ['Shopify', 'React', 'Tailwind'],
   },
   {

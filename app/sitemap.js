@@ -3,6 +3,7 @@ import { LOCALES } from '@/lib/i18n';
 import { pageUrl } from '@/lib/seo';
 import { everyProject } from '@/app/(components)/(realComponents)/projectsData';
 import { serviceSlugs } from '@/lib/serviceLandings';
+import { regionSlugs, regionPath } from '@/lib/regionPages';
 import { POSTS } from '@/lib/blogPosts';
 
 const STATIC_PAGES = [
@@ -23,6 +24,11 @@ export default function sitemap() {
     ...STATIC_PAGES,
     ...serviceSlugs().map((slug) => ({
       path: `/services/${slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })),
+    ...regionSlugs().map((slug) => ({
+      path: regionPath(slug),
       changeFrequency: 'monthly',
       priority: 0.8,
     })),

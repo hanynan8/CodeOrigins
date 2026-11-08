@@ -14,6 +14,7 @@ import { getDictionary } from '@/lib/dictionaries';
 import { fillTemplate, inquiryMessage, whatsappLink } from '@/lib/whatsapp';
 import { keywordsFor } from '@/lib/seoKeywords';
 import { pageAlternates, pageSocial, breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from '@/lib/seo';
+import { REGIONS, regionPath } from '@/lib/regionPages';
 import {
   SERVICE_LANDINGS,
   SERVICE_UI,
@@ -208,6 +209,18 @@ export default async function ServiceLandingPage({ params }) {
               >
                 {ui.allServices}
               </Link>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2 mb-10 sm:mb-14">
+              {Object.keys(REGIONS).map((k) => (
+                <Link
+                  key={k}
+                  href={href(regionPath(k))}
+                  className="rounded-full border border-brand-line bg-brand-card px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-gray-200 hover:text-brand-cyan hover:border-brand-cyan/50 transition-colors"
+                >
+                  {REGIONS[k][lang].h1}
+                </Link>
+              ))}
             </div>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">{ui.ctaTitle}</h2>

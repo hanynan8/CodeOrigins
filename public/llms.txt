@@ -1,0 +1,30 @@
+# CodeLegacy
+
+> CodeLegacy is a web development company in Egypt serving the Gulf. We design and build custom websites, ecommerce stores, landing pages and SaaS platforms with Next.js and React, in Arabic and English.
+
+## Main pages
+- [Home (English)](https://www.codelegacy.tech/en): company overview
+- [Home (Arabic)](https://www.codelegacy.tech/ar): نظرة عامة بالعربية
+- [Services](https://www.codelegacy.tech/en/services): all web development services
+- [Pricing](https://www.codelegacy.tech/en/pricing): starting prices and estimator
+- [Our work](https://www.codelegacy.tech/en/lastprojects): portfolio of delivered websites
+- [About](https://www.codelegacy.tech/en/about)
+- [Contact](https://www.codelegacy.tech/en/contact)
+- [Blog](https://www.codelegacy.tech/en/blog): guides on websites, ecommerce and SEO
+
+## Services
+- [Ecommerce website development](https://www.codelegacy.tech/en/services/ecommerce-website-development)
+- [Landing page design](https://www.codelegacy.tech/en/services/landing-page-design)
+- [Restaurant website design](https://www.codelegacy.tech/en/services/restaurant-website-design)
+- [Medical website design](https://www.codelegacy.tech/en/services/medical-website-design)
+- [SaaS platform development](https://www.codelegacy.tech/en/services/saas-platform-development)
+- [Educational platform development](https://www.codelegacy.tech/en/services/educational-platform-development)
+- [Business website design](https://www.codelegacy.tech/en/services/business-website-design)
+- [Portfolio website design](https://www.codelegacy.tech/en/services/portfolio-website-design)
+- [Booking platform development](https://www.codelegacy.tech/en/services/booking-platform-development)
+- [Event website design](https://www.codelegacy.tech/en/services/event-website-design)
+- [News website development](https://www.codelegacy.tech/en/services/news-website-development)
+- [Community platform development](https://www.codelegacy.tech/en/services/community-platform-development)
+
+## Markets
+Egypt, Saudi Arabia, UAE, Kuwait, Qatar and Oman: https://www.codelegacy.tech/en/web-development-company/egypt
