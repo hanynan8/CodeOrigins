@@ -1,6 +1,8 @@
 // Server-side metadata for a page whose body is a client component.
+import JsonLd from '@/app/(components)/JsonLd';
 import { getDictionary } from '@/lib/dictionaries';
-import { COMPANY_NAME, OG_LOCALE, pageAlternates, pageUrl } from '@/lib/seo';
+import { pageAlternates, pageSocial, breadcrumbJsonLd } from '@/lib/seo';
+import { keywordsFor } from '@/lib/seoKeywords';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -8,18 +10,19 @@ export async function generateMetadata({ params }) {
   return {
     title: m.title,
     description: m.description,
+    keywords: keywordsFor(lang, 'contact'),
     alternates: pageAlternates(lang, '/contact'),
-    openGraph: {
-      title: `${m.title} | ${COMPANY_NAME}`,
-      description: m.description,
-      url: pageUrl(lang, '/contact'),
-      siteName: COMPANY_NAME,
-      locale: OG_LOCALE[lang],
-      type: 'website',
-    },
+    ...pageSocial(lang, '/contact', { title: m.title, description: m.description }),
   };
 }
 
-export default function Layout({ children }) {
-  return children;
+export default async function Layout({ children, params }) {
+  const { lang } = await params;
+  const names = (await getDictionary(lang)).pageNames;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd(lang, [[names.home, '/'], [names.contact, '/contact']])} />
+      {children}
+    </>
+  );
 }

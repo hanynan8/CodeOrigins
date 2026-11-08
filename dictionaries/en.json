@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Integrated Web Development & Software Solutions",
-    "description": "A company specialized in developing websites and web applications, SaaS, ecommerce stores, attractive user interfaces, performance optimization, and cloud infrastructure setup."
+    "title": "Web Development Company for Websites, Stores & SaaS",
+    "description": "CodeLegacy is a web development company in Egypt serving the Gulf: custom websites, ecommerce stores and SaaS apps built with Next.js and React."
   },
   "nav": {
     "home": "Home",
@@ -111,9 +111,9 @@
   },
   "home": {
     "meta": {
-      "title": "Home",
-      "description": "CodeLegacy — your partner in building fast and secure websites, scalable ecommerce stores, and SaaS platforms. UX/UI design services, performance optimization, security, and professional cloud deployment.",
-      "ogTitle": "CodeLegacy | Web Development Company in Cairo",
+      "title": "Web Development Company: Websites, Stores & SaaS",
+      "description": "Hire a web development company for fast, secure, SEO-ready websites, ecommerce stores and SaaS apps built with Next.js and React. Get a free quote.",
+      "ogTitle": "CodeLegacy | Web Development Company in Egypt & the Gulf",
       "ogDescription": "See our services and portfolio: website development, ecommerce stores, SaaS platforms, performance optimization, and application security.",
       "twitterTitle": "CodeLegacy — Web Development & Ecommerce Stores",
       "twitterDescription": "Your partner in building fast, scalable web applications. Get a free consultation now."
@@ -225,8 +225,8 @@
   },
   "servicesPage": {
     "meta": {
-      "title": "Our Services",
-      "description": "Our services include website and ecommerce store design & development, SaaS application development, DevOps and cloud services, performance optimization and technical SEO, UX/UI design, product strategy, and full maintenance & technical support.",
+      "title": "Web Development Services: Websites, Ecommerce & SaaS",
+      "description": "Website design and development, ecommerce stores, SaaS and web apps, UI/UX design, technical SEO, performance optimization, cloud deployment and support.",
       "ogTitle": "Our Services — CodeLegacy",
       "ogDescription": "A complete set of services: website and store development, SaaS solutions, performance optimization, security, DevOps and cloud.",
       "twitterDescription": "Learn about our services: design, development, cloud, performance, security, and maintenance."
@@ -426,8 +426,8 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "About Us",
-      "description": "Learn about CodeLegacy: our story, mission and the team building fast, secure websites, ecommerce stores and SaaS platforms."
+      "title": "About Us: Web Development Company",
+      "description": "Meet CodeLegacy, the web development company building fast, secure, SEO-friendly websites, stores and SaaS platforms for clients in Egypt and the Gulf."
     },
     "hero": {
       "subtitle": "Our journey in building exceptional websites, combining beautiful design with cutting-edge technology to deliver digital experiences that make a real difference.",
@@ -486,8 +486,8 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact Us",
-      "description": "Get in touch with CodeLegacy to discuss your website, ecommerce store or SaaS project. We reply quickly by form, email or WhatsApp."
+      "title": "Contact Us: Get a Free Website Quote",
+      "description": "Contact CodeLegacy for a free quote on your website, ecommerce store, web app or SaaS project. Reach us by form, email or WhatsApp and get a fast reply."
     },
     "hero": {
       "titleBefore": "Get in Touch with",
@@ -668,8 +668,8 @@
   },
   "pricingPage": {
     "meta": {
-      "title": "Pricing",
-      "description": "Transparent pricing for websites, ecommerce stores and web applications. See starting prices, what is included, milestone-linked payment terms, annual running costs, hosting plans and an interactive project cost estimator.",
+      "title": "Website Design & Development Pricing",
+      "description": "Clear website pricing: starting prices for websites, ecommerce stores and web apps, payment milestones, hosting plans and a project cost estimator.",
       "ogTitle": "Pricing — CodeLegacy",
       "ogDescription": "Clear pricing and scope before work begins: project prices, payment milestones, hosting plans and a cost estimator."
     },
@@ -1004,8 +1004,8 @@
   },
   "ourWork": {
     "meta": {
-      "title": "Our Work",
-      "description": "Browse our latest projects: ecommerce stores, restaurant, tourism and educational websites, portfolios and 3D experiences built by CodeLegacy."
+      "title": "Our Work: Websites, Stores & Web Apps Portfolio",
+      "description": "Browse our web development portfolio: ecommerce stores, restaurant, tourism and education sites and web apps built for clients in Egypt and the Gulf."
     },
     "heroBefore": "Our",
     "heroHighlight": "Previous Work",

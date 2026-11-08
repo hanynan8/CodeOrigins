@@ -1,47 +1,31 @@
 // app/pricing/page.jsx
 import React from 'react';
-import { siteIcons } from '@/app/(components)/brand';
 import PricingPageClient from './_client';
 import { getDictionary } from '@/lib/dictionaries';
 
-import { COMPANY_NAME, SITE_DOMAIN, pageAlternates, pageUrl } from '@/lib/seo';
-
-const baseMetadata = {
-  title: 'Pricing',
-  description:
-    'Transparent pricing for websites, ecommerce stores and web applications. See starting prices, what is included, milestone-linked payment terms, annual running costs, hosting plans and an interactive project cost estimator.',
-  keywords: [
-    'web development pricing', 'website design pricing', 'website design cost in egypt',
-    'ecommerce store cost', 'web application cost', 'landing page price',
-    'web hosting plans', 'project cost estimator', 'request a project quote',
-    'hire web developer egypt',
-  ],
-  authors: [{ name: `${COMPANY_NAME} Team`, url: SITE_DOMAIN }],
-  alternates: { canonical: `${SITE_DOMAIN}/pricing` },
-  openGraph: {
-    title: `Pricing — ${COMPANY_NAME}`,
-    description: 'Clear pricing and scope before work begins: project prices, payment milestones, hosting plans and a cost estimator.',
-    url: `${SITE_DOMAIN}/pricing`,
-    siteName: COMPANY_NAME,
-    locale: 'en_US',
-    type: 'website',
-  },
-  icons: siteIcons,
-  robots: 'index, follow',
-};
+import JsonLd from '@/app/(components)/JsonLd';
+import { pageAlternates, pageSocial, breadcrumbJsonLd } from '@/lib/seo';
+import { keywordsFor } from '@/lib/seoKeywords';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const m = (await getDictionary(lang)).pricingPage.meta;
   return {
-    ...baseMetadata,
     title: m.title,
     description: m.description,
+    keywords: keywordsFor(lang, 'pricing'),
     alternates: pageAlternates(lang, '/pricing'),
-    openGraph: { ...baseMetadata.openGraph, url: pageUrl(lang, '/pricing'), title: m.ogTitle, description: m.ogDescription, locale: lang === 'ar' ? 'ar_EG' : 'en_US' },
+    ...pageSocial(lang, '/pricing', { title: m.ogTitle, description: m.ogDescription }),
   };
 }
 
-export default function PricingPage() {
-  return <PricingPageClient />;
+export default async function PricingPage({ params }) {
+  const { lang } = await params;
+  const names = (await getDictionary(lang)).pageNames;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd(lang, [[names.home, '/'], [names.pricing, '/pricing']])} />
+      <PricingPageClient />
+    </>
+  );
 }

@@ -11,7 +11,9 @@ import { getDictionary } from '@/lib/dictionaries';
 import { similarProjectMessage, fillTemplate, whatsappLink } from '@/lib/whatsapp';
 import { localePath } from '@/lib/i18n';
 
-import { COMPANY_NAME, SITE_DOMAIN, pageAlternates } from '@/lib/seo';
+import JsonLd from '@/app/(components)/JsonLd';
+import { COMPANY_NAME, OG_IMAGE, pageAlternates, pageSocial, pageUrl, breadcrumbJsonLd } from '@/lib/seo';
+import { keywordsFor } from '@/lib/seoKeywords';
 
 export const dynamicParams = false; // only the known projects exist
 
@@ -33,20 +35,20 @@ export async function generateMetadata({ params }) {
   const full = projectDescription(project, dictionary);
   const description = full.length > 160 ? `${full.slice(0, 157).trimEnd()}...` : full;
   const ogImage = project.fallbackImage || project.image || project.images?.[0];
-  const url = `${SITE_DOMAIN}${localePath(lang, `/lastprojects/${project.slug}`)}`;
+  const path = `/lastprojects/${project.slug}`;
+  const title = `${project.title} — ${label}`;
 
   return {
-    title: `${project.title} — ${label}`,
+    title,
     description,
-    alternates: pageAlternates(lang, `/lastprojects/${project.slug}`),
-    openGraph: {
-      title: `${project.title} — ${label} | ${COMPANY_NAME}`,
+    keywords: [project.title, label, ...keywordsFor(lang, 'work')],
+    alternates: pageAlternates(lang, path),
+    ...pageSocial(lang, path, {
+      title: `${title} | ${COMPANY_NAME}`,
       description,
-      url,
       type: 'article',
-      locale: lang === 'ar' ? 'ar_EG' : 'en_US',
-      ...(ogImage ? { images: [{ url: ogImage, alt: project.title }] } : {}),
-    },
+      image: ogImage ? { url: ogImage, alt: project.title } : OG_IMAGE,
+    }),
   };
 }
 
@@ -70,7 +72,32 @@ export default async function ProjectDetailPage({ params }) {
 
   const chatUrl = whatsappLink(similarProjectMessage(dictionary, project.title));
 
+  const names = dictionary.pageNames;
+  const projectPath = `/lastprojects/${project.slug}`;
+  const shot = project.fallbackImage || project.image || project.images?.[0];
+  const jsonLd = [
+    breadcrumbJsonLd(lang, [
+      [names.home, '/'],
+      [names.ourWork, '/lastprojects'],
+      [project.title, projectPath],
+    ]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: project.title,
+      description: projectDescription(project, dictionary),
+      url: pageUrl(lang, projectPath),
+      inLanguage: lang,
+      genre: label,
+      ...(shot ? { image: shot } : {}),
+      ...(project.link ? { sameAs: project.link } : {}),
+      creator: { '@type': 'Organization', name: COMPANY_NAME },
+    },
+  ];
+
   return (
+    <>
+    <JsonLd data={jsonLd} />
     <div className="min-h-screen bg-brand-bg text-ink">
       {/* Preview */}
       <section className="pt-28 sm:pt-32 pb-8 sm:pb-12">
@@ -211,5 +238,6 @@ export default async function ProjectDetailPage({ params }) {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -15,6 +15,7 @@ const STATIC_PAGES = [
 ];
 
 export default function sitemap() {
+  const lastModified = new Date(); // refreshed on every build/deploy
   const pages = [
     ...STATIC_PAGES,
     ...everyProject.map(({ slug }) => ({
@@ -27,10 +28,14 @@ export default function sitemap() {
   return pages.flatMap(({ path, changeFrequency, priority }) =>
     LOCALES.map((lang) => ({
       url: pageUrl(lang, path),
+      lastModified,
       changeFrequency,
       priority,
       alternates: {
-        languages: Object.fromEntries(LOCALES.map((l) => [l, pageUrl(l, path)])),
+        languages: {
+          ...Object.fromEntries(LOCALES.map((l) => [l, pageUrl(l, path)])),
+          'x-default': pageUrl('en', path),
+        },
       },
     }))
   );
